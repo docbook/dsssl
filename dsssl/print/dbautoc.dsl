@@ -158,13 +158,8 @@
 ;; and shouldn't be set by the initial caller...
 ;;
 (define (build-lot nd lotgi #!optional (first? #t))
-  (let* ((lotlist (node-list-filter-by-gi (children nd)
-					  (append (division-element-list)
-						  (component-element-list)
-						  (section-element-list)
-						  (block-element-list)
-						  (list-element-list)
-						  (list (normalize "para"))))))
+  (let* ((lotlist (select-elements (descendants nd)
+				   (normalize lotgi))))
     (if (node-list-empty? lotlist)
 	(empty-sosofo)
 	(make sequence

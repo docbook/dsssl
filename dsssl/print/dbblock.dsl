@@ -114,7 +114,7 @@
 (element formalpara ($para-container$))
 
 (element (formalpara title) ($runinhead$))
-(element (formalpara para) (make sequence (process-children)))
+(element (formalpara para) (make sequence (process-children-trim)))
 
 (element sidebar 
   (make box

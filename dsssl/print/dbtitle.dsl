@@ -40,7 +40,7 @@
 		       %default-title-end-punct%)))
     (make sequence
       font-weight: 'bold
-      (process-children)
+      (process-children-trim)
       (literal punct " "))))
 
 (element title ($lowtitle$ 2 4))         ;; the default TITLE format

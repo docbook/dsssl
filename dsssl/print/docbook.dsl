@@ -373,6 +373,12 @@
 (declare-characteristic page-number-restart?
    "UNREGISTERED::James Clark//Characteristic::page-number-restart?" #f)
 
+(declare-characteristic page-two-side?
+   "UNREGISTERED::OpenJade//Characteristic::page-two-side?" %two-side%)
+
+(declare-characteristic two-side-start-on-right?
+   "UNREGISTERED::OpenJade//Characteristic::two-side-start-on-right?" %two-side%)
+
 (declare-characteristic page-n-columns
    "UNREGISTERED::James Clark//Characteristic::page-n-columns" 1)
 

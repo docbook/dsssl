@@ -1803,7 +1803,9 @@
 	       (extension (file-extension filename))
 	       (notation  (attribute-string (normalize "format") objdata)))
 	  (if (or (normalized-member notation notlist)
-		  (normalized-member extension extlist))
+		  (normalized-member extension extlist)
+		  (and notation
+		       (string=? notation (normalize "linespecific"))))
 	      (node-list-first nl)
 	      (loop (node-list-rest nl)))))))
 

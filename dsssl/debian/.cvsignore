@@ -1,5 +1,5 @@
 docbook-dsssl
+*.debhelper
+*substvars
 files
 postinst
-p*.debhelper
-substvars

@@ -1,3 +1,20 @@
+docbook-dsssl (1.78-3) unstable; urgency=low
+
+  * debian/templates: more translatable choices; closes: #185880
+  * Build-Depends-Indep: remove m4, add po-debconf, since it's part of the
+    build rule (if it needs to be run)
+  * sgml-catalog-check.pl no longer needed, sgml-data build depend goes away
+  * use new dh_installcatalogs system; don't ship useless catalogs
+    /usr/share/sgml/docbook/stylesheet/dsssl/modular/{html,print}/catalog
+  * policy checked against 3.5.9
+  * don't ship /var/www/docbook-dsssl symlink in the package, but handle
+    it in the maintainer scripts such that it is created on install, but
+    not recreated on upgrade; this allows the local system administrator
+    to remove the symlink if they prefer; closes: #184962
+  * rules: minor cleanups and redundancy removal
+
+ -- Adam Di Carlo <aph@debian.org>  Sat, 22 Mar 2003 13:20:06 -0500
+
 docbook-dsssl (1.78-2) unstable; urgency=low
 
   * fix README.Debian; closes: #185322

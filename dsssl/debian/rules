@@ -44,14 +44,20 @@ build:	bin/collateindex.pl.1 common/catalog \
 
 clean:
 	dh_testdir
-	dh_clean debian/postinst
+	dh_clean debian/postinst debian/templates.old
 
 debian/postinst: debian/postinst.m4 debian/rules
-	perl -p -e "s/M4package$$/$(package)/g; s|M4DTDDIR|$(subst $(prefix),,$(dsssldir))|g; s|M4CONFDIR|$(subst $(prefix),,$(confdir))|g; s|M4CONFTEMPLATEDIR|$(subst $(prefix),,$(conftemplatedir))|g; s|M4ORDCATS|catalog common/catalog|g; s|M4IMAGEDIR|$(subst $(prefix),,$(dsssldir))/images|g;" $< > $@
+	perl -p -e "s/M4package$$/$(package)/g; s|M4CONFDIR|$(subst $(prefix),,$(confdir))|g; s|M4CONFTEMPLATEDIR|$(subst $(prefix),,$(conftemplatedir))|g; s|M4IMAGEDIR|$(subst $(prefix),,$(dsssldir))/images|g;" $< > $@
 	chmod 0555 $@
 
+test:	debian/postinst
+#	 check that maintainer scripts are good
+	sh -n debian/postinst
+	sh -n debian/postrm
+	sh -n debian/preinst
+
 # Build architecture-independent files here.
-binary-indep: build debian/postinst
+binary-indep: build debian/postinst test
 	dh_testdir
 	dh_testroot
 	dh_clean -k
@@ -61,11 +67,12 @@ binary-indep: build debian/postinst
 	for file in VERSION catalog \
 		    `find images -name \*.\*` \
 		    `find dtds -name \*.dtd -o -name dbhtml.dcl` \
-		    `find common lib html print olink -name \*.dsl -o -name \*.ent -o -name catalog`; \
+		    `find common lib html print olink -name \*.dsl -o -name \*.ent`; \
 	do \
 		$(make_directory) $(dsssldir)/`dirname $$file`; \
 		$(install_file) $$file $(dsssldir)/$$file; \
 	done
+	dh_installcatalogs -i
 
 ##
 ##	 site configuration
@@ -88,10 +95,6 @@ binary-indep: build debian/postinst
 #	 compatability symlink for older versions
 	$(make_directory) `dirname $(dssslcompatlnk)`
 	ln -sf $(dssslcompatlnkto) $(dssslcompatlnk)
-
-#	 create all the extended links as specified in the Debian SGML Guidelines
-	/usr/share/sgml-data/sgml-catalog-check.pl -l -v 0 -d $(prefix)/usr/share/sgml $(dsssldir)/catalog
-	/usr/share/sgml-data/sgml-catalog-check.pl -l -v 0 -e -d $(prefix)/usr/share/sgml $(dsssldir)/common/catalog
 
 	dh_installdocs -p$(package) BUGS README TODO $(wildcard WhatsNew)
 #	 dsssl source refers to ../README
@@ -125,11 +128,6 @@ binary-indep: build debian/postinst
 	$(install_file) bin/collateindex.pl.1 $(mandir)/man1
 
 	dh_compress -i
-
-#	 check that maintainer scripts are good
-	sh -n debian/postinst
-	sh -n debian/prerm
-	sh -n debian/postrm
 
 	dh_installdeb -i
 #	 perl depends policy

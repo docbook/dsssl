@@ -3,9 +3,6 @@
 . /usr/share/debconf/confmodule
 
 PACKAGE=M4package
-CENTRALCAT=/etc/sgml/${PACKAGE}.cat
-DTDDIR=M4DTDDIR
-ORDCATS="M4ORDCATS"
 COMPATLNK=/usr/lib/sgml/stylesheet/dsssl/docbook/nwalsh
 COMPATLNKTO=../../../../../share/sgml/docbook/stylesheet/dsssl/modular
 CONFDIR=M4CONFDIR
@@ -118,28 +115,11 @@ if [ "$1" = configure ]; then
     fi
 
     ##
-    ## catalog handling
+    ## cruft removal
     ##
     # remove old entries from transitional.cat
     install-sgmlcatalog ${quiet} --remove docbook-stylesheets
 
-    # make the central catalog a clean slate (in case some catalogs
-    # were removed or moved)
-    rm -f ${CENTRALCAT}
-
-    debug "registering $ORDCATS in $CENTRALCAT"
-
-    # install the new delegated catalogs into a central catalog
-    for ordcat in ${ORDCATS}; do
-        update-catalog ${quiet} --add ${CENTRALCAT} ${DTDDIR}/${ordcat}
-    done
-
-    # install that central catalog into the super catalog
-    update-catalog ${quiet} --add --super ${CENTRALCAT}
-
-    ##
-    ## cruft removal
-    ##
     # old dhelp cruft
     [ ! -d /usr/doc/$PACKAGE/doc ] || rmdir --ignore-fail-on-non-empty /usr/doc/$PACKAGE/doc || true
     # postinst substitution broke

@@ -1305,6 +1305,10 @@
   ;; /REFENTRY
   "../images/")
 
+
+;; just for back compat, set it false to say its not set
+(define admon-graphic-default-extension #f)
+
 (define %admon-graphics-extension%
   ;; REFENTRY admon-graphic-extension
   ;; PURP Admonition graphic file extension

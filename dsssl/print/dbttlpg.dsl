@@ -898,6 +898,7 @@
       space-before: (* (HSIZE 5) %head-before-factor%)
       quadding: %division-title-quadding%
       keep-with-next?: #t
+      heading-level: (if %generate-heading-level% 1 0)
       (with-mode title-mode
 	(process-children-trim))))
 
@@ -2168,6 +2169,7 @@
       space-before: (* (HSIZE 5) %head-before-factor%)
       quadding: %division-title-quadding%
       keep-with-next?: #t
+      heading-level: (if %generate-heading-level% 1 0)
       (with-mode title-mode
 	(process-children-trim))))
 

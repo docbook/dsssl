@@ -157,18 +157,20 @@
     (make element gi: "DIV"
 	  attributes: (list
 		       (list "CLASS" (gi)))
-	  (if id
-	      (make element gi: "A"
-		    attributes: (list (list "NAME" id))
-		    (empty-sosofo))
-	      (empty-sosofo))
-
 	  (if %spacing-paras%
 	      (make element gi: "P" (empty-sosofo))
 	      (empty-sosofo))
 	  
 	  (if rule-before?
 	      (make empty-element gi: "HR")
+	      (empty-sosofo))
+
+	  (if id
+              ;; empty A is a little evil but for instance you can't
+              ;; wrap TABLE within A
+	      (make element gi: "A"
+		    attributes: (list (list "NAME" id))
+		    (empty-sosofo))
 	      (empty-sosofo))
 
           ;; reset the mode to make processing of elements within an

@@ -539,7 +539,7 @@
       (process-children)
       (if (not (last-sibling? (current-node)))
 	  (literal ", ")
-	  (literal (string-append " " (gentext-by) " ")))))
+	  (literal " "))))
   
   (element (copyright holder) ($charseq$))
 
@@ -1030,8 +1030,8 @@
       (process-children)
       (if (not (last-sibling? (current-node)))
 	  (literal ", ")
-	  (literal (string-append " " (gentext-by) " ")))))
-  
+	  (literal " "))))
+
   (element (copyright holder) ($charseq$))
 
   (element corpauthor
@@ -1845,8 +1845,8 @@
       (process-children)
       (if (not (last-sibling? (current-node)))
 	  (literal ", ")
-	  (literal (string-append " " (gentext-by) " ")))))
-  
+	  (literal " "))))
+
   (element (copyright holder) ($charseq$))
 
   (element corpauthor
@@ -2339,8 +2339,8 @@
       (process-children)
       (if (not (last-sibling? (current-node)))
 	  (literal ", ")
-	  (literal (string-append " " (gentext-by) " ")))))
-  
+	  (literal " "))))
+
   (element (copyright holder) ($charseq$))
 
   (element corpauthor
@@ -3156,8 +3156,8 @@
       (process-children)
       (if (not (last-sibling? (current-node)))
 	  (literal ", ")
-	  (literal (string-append " " (gentext-by) " ")))))
-  
+	  (literal " "))))
+
   (element (copyright holder) ($charseq$))
 
   (element corpauthor
@@ -3652,8 +3652,8 @@
       (process-children)
       (if (not (last-sibling? (current-node)))
 	  (literal ", ")
-	  (literal (string-append " " (gentext-by) " ")))))
-  
+	  (literal " "))))
+
   (element (copyright holder) ($charseq$))
 
   (element corpauthor
@@ -4434,8 +4434,8 @@
       (process-children)
       (if (not (last-sibling? (current-node)))
 	  (literal ", ")
-	  (literal (string-append " " (gentext-by) " ")))))
-  
+	  (literal " "))))
+
   (element (copyright holder) ($charseq$))
 
   (element corpauthor
@@ -4924,8 +4924,8 @@
       (process-children)
       (if (not (last-sibling? (current-node)))
 	  (literal ", ")
-	  (literal (string-append " " (gentext-by) " ")))))
-  
+	  (literal " "))))
+
   (element (copyright holder) ($charseq$))
 
   (element corpauthor
@@ -5749,8 +5749,8 @@
       (process-children)
       (if (not (last-sibling? (current-node)))
 	  (literal ", ")
-	  (literal (string-append " " (gentext-by) " ")))))
-  
+	  (literal " "))))
+
   (element (copyright holder) ($charseq$))
 
   (element corpauthor
@@ -6244,8 +6244,8 @@
       (process-children)
       (if (not (last-sibling? (current-node)))
 	  (literal ", ")
-	  (literal (string-append " " (gentext-by) " ")))))
-  
+	  (literal " "))))
+
   (element (copyright holder) ($charseq$))
 
   (element corpauthor

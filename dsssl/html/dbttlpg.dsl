@@ -121,7 +121,7 @@
 		(dingbat-sosofo "copyright")
 		(literal " ")
 		(process-node-list years)
-		(literal (string-append " " (gentext-by) " "))
+		(literal " ")
 		(process-node-list holders))
 	      (make sequence
 		(literal (gentext-element-name (gi node)))
@@ -129,7 +129,7 @@
 		(dingbat-sosofo "copyright")
 		(literal " ")
 		(process-node-list years)
-		(literal (string-append " " (gentext-by) " "))
+		(literal " ")
 		(process-node-list holders))))))
 
 ;; == Title pages for SETs ==============================================
@@ -721,7 +721,7 @@
       (process-children)
       (if (not (last-sibling? (current-node)))
 	  (literal ", ")
-	  (literal (string-append " " (gentext-by) " ")))))
+	  (literal " "))))
 
   (element (copyright holder)
     (make sequence
@@ -1714,7 +1714,7 @@
       (process-children)
       (if (not (last-sibling? (current-node)))
 	  (literal ", ")
-	  (literal (string-append " " (gentext-by) " ")))))
+	  (literal " "))))
 
   (element (copyright holder)
     (make sequence
@@ -2601,7 +2601,7 @@
       (process-children)
       (if (not (last-sibling? (current-node)))
 	  (literal ", ")
-	  (literal (string-append " " (gentext-by) " ")))))
+	  (literal " "))))
 
   (element (copyright holder)
     (make sequence
@@ -3580,7 +3580,7 @@
       (process-children)
       (if (not (last-sibling? (current-node)))
 	  (literal ", ")
-	  (literal (string-append " " (gentext-by) " ")))))
+	  (literal " "))))
 
   (element (copyright holder)
     (make sequence
@@ -4468,7 +4468,7 @@
       (process-children)
       (if (not (last-sibling? (current-node)))
 	  (literal ", ")
-	  (literal (string-append " " (gentext-by) " ")))))
+	  (literal " "))))
 
   (element (copyright holder)
     (make sequence

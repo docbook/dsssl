@@ -860,7 +860,7 @@
     (process-children)
     (if (not (last-sibling? (current-node)))
 	(literal ", ")
-	(literal (string-append " " (gentext-by) " ")))))
+	(literal " "))))
 
 (element holder ($charseq$))
 

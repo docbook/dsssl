@@ -308,9 +308,12 @@
   ;; /DESC
   ;; AUTHOR N/A
   ;; /REFENTRY
-  (string-append "ln" 
-	 (number->string (all-element-number legalnotice))
-	 %html-ext%))
+  (if (and %use-id-as-filename% (attribute-string (normalize "id") legalnotice))
+      (string-append (attribute-string (normalize "id") legalnotice)
+		     %html-ext%)
+      (string-append "ln"
+		     (number->string (all-element-number legalnotice))
+		     %html-ext%)))
 
 (define %author-othername-in-middle%
   ;; REFENTRY othername-in-middle

@@ -186,7 +186,7 @@
   (let* ((class (if (and (attribute-string (normalize "role"))
 			 %emphasis-propagates-style%)
 		    (attribute-string (normalize "role"))
-		    (literal "emphasis"))))
+		    "emphasis")))
     (make element gi: "SPAN"
 	  attributes: (list (list "CLASS" class))
 	  (if (and (attribute-string (normalize "role"))
@@ -202,7 +202,7 @@
   (let* ((class (if (and (attribute-string (normalize "role"))
 			 %phrase-propagates-style%)
 		    (attribute-string (normalize "role"))
-		    (literal "phrase"))))
+		    "phrase")))
     (make element gi: "SPAN"
 	  attributes: (list (list "CLASS" class))
 	  ($charseq$))))

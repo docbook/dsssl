@@ -10,3 +10,6 @@ XREF: db31.dsl dbadmon.dsl dbautoc.dsl dbbibl.dsl dbblock.dsl \
       dbsynop.dsl dbtable.dsl dbtitle.dsl dbttlpg.dsl dbverb.dsl \
       docbook.dsl notoc.dsl plain.dsl version.dsl
 	$(DSLXREF) docbook.dsl > XREF
+
+clean:
+	rm -f XREF

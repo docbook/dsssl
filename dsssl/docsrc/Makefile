@@ -17,3 +17,9 @@ libref/dblib.sgm: ../lib/dblib.dsl
 
 %.olink: %.sgm
 	$(JADE) sgml ../olink/olink.dsl $< > $@
+
+clean:
+	rm -f *.olink
+	rm -f htmlpr/*.sgm htmlpr/*.ent
+	rm -f printpr/*.sgm printpr/*.ent
+	rm -f libref/*.sgm libref/*.ent

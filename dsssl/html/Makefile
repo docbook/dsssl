@@ -11,3 +11,7 @@ XREF: db31.dsl dbadmon.dsl dbautoc.dsl dbbibl.dsl dbblock.dsl \
       dbtable.dsl dbtitle.dsl dbttlpg.dsl dbverb.dsl docbook.dsl \
       version.dsl
 	$(DSLXREF) docbook.dsl > XREF
+
+clean:
+	rm -f XREF
+

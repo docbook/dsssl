@@ -261,6 +261,7 @@
 			    0pt)
 	  keep-with-next?: #t
 	  first-line-start-indent: 0pt
+	  start-indent: 0pt
 	  (process-children)))
 
 (element (varlistentry listitem)

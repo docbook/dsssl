@@ -145,6 +145,23 @@
   ;; /REFENTRY
   #f)
 
+(define ($generate-article-lot-list$)
+  ;; REFENTRY generate-article-lot-list
+  ;; PURP Which Lists of Titles should be produced for Books?
+  ;; DESC
+  ;; This parameter should be a list (possibly empty) of the elements
+  ;; for which Lists of Titles shold be produced for each 'Article'.
+  ;;
+  ;; It is meaningless to put elements that do not have titles in this
+  ;; list.  If elements with optional titles are placed in this list, only
+  ;; the instances of those elements that do have titles will appear in
+  ;; the LOT.
+  ;;
+  ;; /DESC
+  ;; AUTHOR N/A
+  ;; /REFENTRY
+(list))
+
 (define %generate-reference-toc% 
   ;; REFENTRY generate-reference-toc
   ;; PURP Should a Table of Contents be produced for References?

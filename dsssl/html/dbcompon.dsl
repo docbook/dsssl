@@ -186,7 +186,18 @@
 		 (build-toc (current-node)
 			    (toc-depth (current-node))))
 	       (empty-sosofo))
-	   
+	  
+	   (let loop ((gilist ($generate-article-lot-list$)))
+	     (if (null? gilist)
+		 (empty-sosofo)
+		 (if (not (node-list-empty?
+			   (select-elements (descendants (current-node))
+					    (car gilist))))
+                          (make sequence
+			    (build-lot (current-node) (car gilist))
+			    (loop (cdr gilist)))
+                          (loop (cdr gilist)))))
+
 	   (if (generate-toc-in-front)
 	       (process-children)
 	       (empty-sosofo))))))

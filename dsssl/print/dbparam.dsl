@@ -1298,7 +1298,8 @@
   ;; PURP Path to admonition graphics
   ;; DESC
   ;; Sets the path, probably relative to the directory where the HTML
-  ;; files are created, to the admonition graphics.
+  ;; files are created, to the admonition graphics.  Must include
+  ;; trailing directory separator.
   ;; /DESC
   ;; AUTHOR N/A
   ;; /REFENTRY

@@ -247,8 +247,33 @@
 
 (element (figure title) (empty-sosofo)) ; don't show caption below figure
 
-(element figure 
-  ($formal-object$ %figure-rules% %figure-rules%))
+(element figure
+  ;; FIXME: this is a bit crude...
+  (let* ((mediaobj (select-elements (children (current-node))
+				    (normalize "mediaobject")))
+	 (imageobj (select-elements (children mediaobj)
+				    (normalize "imageobject")))
+	 (image    (select-elements (children imageobj)
+				    (normalize "imagedata")))
+	 (graphic  (select-elements (children (current-node))
+				    (normalize "graphic")))
+	 (align    (if (node-list-empty? image)
+		       (if (node-list-empty? graphic)
+			   #f
+			   (attribute-string (normalize "align")
+					     (node-list-first graphic)))
+		       (attribute-string (normalize "align") (node-list-first image))))
+	 (dalign  (cond ((equal? align (normalize "center"))
+			 'center)
+			((equal? align (normalize "right"))
+			 'end)
+			(else
+			 'start))))
+    (if align
+	(make display-group
+	  quadding: dalign
+	  ($formal-object$ %figure-rules% %figure-rules%))
+	($formal-object$ %figure-rules% %figure-rules%))))
 
 (element informaltable 
   ($informal-object$ %informaltable-rules% %informaltable-rules%))

@@ -1,8 +1,9 @@
 docbook-dsssl (1.77-1) unstable; urgency=low
 
   * new upstream version
+  * debian/rules: changes for building from CVS, clean out some old stuff
 
- -- Adam Di Carlo <aph@debian.org>  Wed,  7 Aug 2002 01:48:56 -0400
+ -- Adam Di Carlo <aph@debian.org>  Wed,  7 Aug 2002 22:38:31 -0400
 
 docbook-dsssl (1.76-1.cvs.1) unstable; urgency=low
 

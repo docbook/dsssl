@@ -25,6 +25,9 @@ PUBLIC "-//Norman Walsh//DTD DocBook OLink Summary V1.1//EN"
 PUBLIC "-//Norman Walsh//DTD DocBook HTML 1.0//EN"
   dtds/html/dbhtml.dtd
 
+DTDDECL "-//Norman Walsh//DTD DocBook HTML 1.0//EN"
+  dtds/html/dbhtml.dcl
+
 PUBLIC "-//Norman Walsh//DTD Image Library 1.0//EN"
   dtds/imagelib/imagelib.dtd
 

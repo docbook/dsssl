@@ -172,9 +172,13 @@
 		   (normalize "element"))))
     (cond
 <![CDATA[
-      ((equal? class (normalize "attribute")) ($charseq$))
+      ((equal? class (normalize "attribute")) ($mono-seq$))
       ((equal? class (normalize "attvalue")) ($mono-seq$))
-      ((equal? class (normalize "element")) ($charseq$))
+      ((equal? class (normalize "element")) ($mono-seq$))
+      ((equal? class (normalize "emptytag")) ($mono-seq$ (make sequence 
+				  (literal "<") 
+				  (process-children)
+				  (literal "/>"))))
       ((equal? class (normalize "endtag")) ($mono-seq$ (make sequence 
 			       (literal "</") 
 			       (process-children)
@@ -203,6 +207,10 @@
 				     (literal "<!--")
 				     (process-children)
 				     (literal "-->"))))
+      ((equal? class (normalize "xmlpi")) ($mono-seq$ (make sequence 
+			    (literal "<?")
+			    (process-children)
+			    (literal "?>"))))
 ]]>
       (else ($charseq$)))))
 

@@ -94,10 +94,11 @@
 		       (set-titlepage-recto-elements)
 		       (set-titlepage-verso-elements))
 		   elements)))
-    (make simple-page-sequence
-      page-n-columns: %titlepage-n-columns%
-      input-whitespace-treatment: 'collapse
-      use: default-text-style
+;;    (make simple-page-sequence
+;;      page-n-columns: %titlepage-n-columns%
+;;      input-whitespace-treatment: 'collapse
+;;      use: default-text-style
+      (make sequence
 
       ;; This hack is required for the RTF backend. If an external-graphic
       ;; is the first thing on the page, RTF doesn't seem to do the right
@@ -1391,10 +1392,11 @@
 		       (book-titlepage-recto-elements)
 		       (book-titlepage-verso-elements))
 		   elements)))
-    (make simple-page-sequence
-      page-n-columns: %titlepage-n-columns%
-      input-whitespace-treatment: 'collapse
-      use: default-text-style
+;;    (make simple-page-sequence
+;;      page-n-columns: %titlepage-n-columns%
+;;      input-whitespace-treatment: 'collapse
+;;      use: default-text-style
+      (make sequence
 
       ;; This hack is required for the RTF backend. If an external-graphic
       ;; is the first thing on the page, RTF doesn't seem to do the right
@@ -2677,11 +2679,12 @@
 	(partintro (node-list-first
 		    (node-list-filter-by-gi elements (list (normalize "partintro"))))))
     (if (part-titlepage-content? elements side)
-	(make simple-page-sequence
-	  page-n-columns: %titlepage-n-columns%
-	  input-whitespace-treatment: 'collapse
-	  use: default-text-style
-	  
+;;	(make simple-page-sequence
+;;	  page-n-columns: %titlepage-n-columns%
+;;	  input-whitespace-treatment: 'collapse
+;;	  use: default-text-style
+	(make sequence
+  
 	  ;; This hack is required for the RTF backend. If an external-graphic
 	  ;; is the first thing on the page, RTF doesn't seem to do the right
 	  ;; thing (the graphic winds up on the baseline of the first line

@@ -12,9 +12,14 @@
 	 (nl       (titlepage-info-elements (current-node) setinfo)))
     (make sequence
       (if %generate-set-titlepage%
-	  (make sequence
+	  (make simple-page-sequence
+	    page-n-columns: %titlepage-n-columns%
+	    input-whitespace-treatment: 'collapse
+	    use: default-text-style
 	    (set-titlepage nl 'recto)
-	    (set-titlepage nl 'verso))
+	    (make display-group
+	      break-before: 'page
+	      (set-titlepage nl 'verso)))
 	  (empty-sosofo))
       
       (if (not (generate-toc-in-front))
@@ -51,9 +56,14 @@
 	 (nl        (titlepage-info-elements (current-node) bookinfo)))
     (make sequence
       (if %generate-book-titlepage%
-	  (make sequence
+	  (make simple-page-sequence
+	    page-n-columns: %titlepage-n-columns%
+	    input-whitespace-treatment: 'collapse
+	    use: default-text-style
 	    (book-titlepage nl 'recto)
-	    (book-titlepage nl 'verso))
+	    (make display-group
+	      break-before: 'page
+	      (book-titlepage nl 'verso)))
 	  (empty-sosofo))
 
       (if (node-list-empty? dedication)
@@ -122,9 +132,14 @@
 			 (empty-node-list)))))
     (make sequence
       (if %generate-part-titlepage%
-	  (make sequence
+	  (make simple-page-sequence
+	    page-n-columns: %titlepage-n-columns%
+	    input-whitespace-treatment: 'collapse
+	    use: default-text-style
 	    (part-titlepage nl 'recto)
-	    (part-titlepage nl 'verso))
+	    (make display-group
+	      break-before: 'page
+	      (part-titlepage nl 'verso)))
 	  (empty-sosofo))
 
       (if (not (generate-toc-in-front))

@@ -382,6 +382,8 @@
 (element preface ($component$))
 (element (preface title) (empty-sosofo))
 
+(element colophon ($component$))
+
 ;; Dedication is empty except in a special mode so that it can be
 ;; reordered (made to come before the TOCs)
 (element dedication (empty-sosofo))

@@ -36,6 +36,7 @@
 <!ENTITY dbmsgset.dsl SYSTEM "dbmsgset.dsl">
 <!ENTITY dbprint.dsl  SYSTEM "dbprint.dsl">
 <!ENTITY dbprocdr.dsl SYSTEM "dbprocdr.dsl">
+<!ENTITY dbqanda.dsl  SYSTEM "dbqanda.dsl">
 <!ENTITY dbrfntry.dsl SYSTEM "dbrfntry.dsl">
 <!ENTITY dbsect.dsl   SYSTEM "dbsect.dsl">
 <!ENTITY dbsynop.dsl  SYSTEM "dbsynop.dsl">
@@ -45,7 +46,6 @@
 <!ENTITY dbttlpg.dsl  SYSTEM "dbttlpg.dsl">
 <!ENTITY dbverb.dsl   SYSTEM "dbverb.dsl">
 <!ENTITY version.dsl  SYSTEM "version.dsl">
-<!ENTITY db31.dsl     SYSTEM "db31.dsl">
 ]>
 
 <style-sheet>
@@ -140,6 +140,7 @@
 &dbmsgset.dsl;  <!-- MsgSet                                                -->
 &dbprint.dsl;   <!-- Print macros                                          -->
 &dbprocdr.dsl;  <!-- Procedures                                            -->
+&dbqanda.dsl;   <!-- QandASet                                              -->
 &dbrfntry.dsl;  <!-- References and RefEntrys                              -->
 &dbsect.dsl;    <!-- Sections                                              -->
 &dbsynop.dsl;   <!-- Synopsis                                              -->
@@ -149,7 +150,6 @@
 &dbttlpg.dsl;   <!-- Title Page                                            -->
 &dbverb.dsl;    <!-- Verbatim (ProgramListing, LiteralLayout, etc.)        -->
 &version.dsl;
-&db31.dsl;      <!-- DocBook 3.1 elements -->
 
 </style-specification-body>
 </style-specification>

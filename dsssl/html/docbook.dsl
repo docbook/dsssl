@@ -37,6 +37,7 @@
 <!ENTITY dbchunk.dsl  SYSTEM "dbchunk.dsl">
 <!ENTITY dbpi.dsl     SYSTEM "dbpi.dsl">
 <!ENTITY dbprocdr.dsl SYSTEM "dbprocdr.dsl">
+<!ENTITY dbqanda.dsl  SYSTEM "dbqanda.dsl">
 <!ENTITY dbrfntry.dsl SYSTEM "dbrfntry.dsl">
 <!ENTITY dbsect.dsl   SYSTEM "dbsect.dsl">
 <!ENTITY dbsynop.dsl  SYSTEM "dbsynop.dsl">
@@ -46,7 +47,6 @@
 <!ENTITY dbttlpg.dsl  SYSTEM "dbttlpg.dsl">
 <!ENTITY dbverb.dsl   SYSTEM "dbverb.dsl">
 <!ENTITY version.dsl  SYSTEM "version.dsl">
-<!ENTITY db31.dsl     SYSTEM "db31.dsl">
 ]>
 
 <style-sheet>
@@ -183,6 +183,7 @@
 &dbchunk.dsl;   <!-- Chunking                                              -->
 &dbpi.dsl;      <!-- HTML PIs (dbhtml)                                     -->
 &dbprocdr.dsl;  <!-- Procedures                                            -->
+&dbqanda.dsl;   <!-- QandASet                                              -->
 &dbrfntry.dsl;  <!-- References and RefEntrys                              -->
 &dbsect.dsl;    <!-- Sections                                              -->
 &dbsynop.dsl;   <!-- Synopsis                                              -->
@@ -191,8 +192,7 @@
 &dbtitle.dsl;   <!-- Titles                                                -->
 &dbttlpg.dsl;   <!-- Title Page                                            -->
 &dbverb.dsl;    <!-- Verbatim (ProgramListing, LiteralLayout, etc.)        -->
-&version.dsl;   <!-- Version -->
-&db31.dsl;      <!-- DocBook 3.1 elements -->
+&version.dsl;   <!-- Version                                               -->
 
 </style-specification-body>
 </style-specification>

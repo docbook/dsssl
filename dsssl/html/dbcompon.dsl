@@ -154,6 +154,8 @@
   (element (dedication title) (empty-sosofo))
 )
 
+(element colophon ($component$))
+
 ;; Articles are like components, except that if they may have much
 ;; more formal title pages (created with article-titlepage).
 ;;

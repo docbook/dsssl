@@ -1,93 +1,10 @@
 ;; $Id$
 ;;
 ;; This file is part of the Modular DocBook Stylesheet distribution.
-;; See ../README or http://nwalsh.com/docbook/dsssl/
+;; See ../README or http://docbook.sourceforge.net/projects/dsssl/
 ;;
 
-;; This module implements support for elements introduced in DocBook 3.1.
-;; When DocBook 3.1 is officially released, these rules will get folded
-;; into more appropriate modules.
-
-;; ======================================================================
-;; MediaObject and friends...
-
-(define preferred-mediaobject-notations
-  (list "EPS" "PS" "JPG" "JPEG" "PNG" "linespecific"))
-
-(define preferred-mediaobject-extensions
-  (list "eps" "ps" "jpg" "jpeg" "png"))
-
-(define acceptable-mediaobject-notations
-  (list "GIF" "GIF87a" "GIF89a" "BMP" "WMF"))
-
-(define acceptable-mediaobject-extensions
-  (list "gif" "bmp" "wmf"))
-
-(element mediaobject
-  (make paragraph
-    ($mediaobject$)))
-
-(element inlinemediaobject
-  (make sequence
-    ($mediaobject$)))
-
-(element mediaobjectco
-  (error "MediaObjectCO is not supported yet."))
-
-(element imageobjectco
-  (error "ImageObjectCO is not supported yet."))
-
-(element objectinfo
-  (empty-sosofo))
-
-(element videoobject
-  (process-children))
-
-(element videodata
-  (empty-sosofo))
-
-(element audioobject
-  (process-children))
-
-(element audiodata
-  (empty-sosofo))
-
-(element imageobject
-  (process-children))
-
-(element imagedata
-  (if (have-ancestor? (normalize "mediaobject"))
-      ($img$ (current-node) #t)
-      ($img$ (current-node) #f)))
-
-(element textobject
-  (make display-group
-    (process-children)))
-
-(element caption
-  (process-children))
-
-;; ======================================================================
-;; InformalFigure
-
-(element informalfigure
-  ($informal-object$ %informalfigure-rules% %informalfigure-rules%))
-
-;; ======================================================================
-;; Colophon
-
-(element colophon
-  ($component$))
-
-;; ======================================================================
-;; section
-;; sectioninfo
-
-(element section ($section$))
-(element (section title) (empty-sosofo))
-
-;; ======================================================================
-;; QandASet and friends
+;; ============================== QANDASET ==============================
 
 (define (qanda-defaultlabel)
   (normalize "number"))
@@ -173,9 +90,6 @@
 (element qandaentry
   (process-children))
 
-;; space-after on quanda answer is excessive; keep with next should be
-;; upstream
-;; Adam Di Carlo, adam@onshore.com
 (element question
   (let* ((chlist   (children (current-node)))
          (firstch  (node-list-first chlist))
@@ -210,15 +124,3 @@
 		(literal label " ")))
 	  (process-node-list (children firstch))))
       (process-node-list restch))))
-
-;; ======================================================================
-;; constant
-
-(element constant 
-  ($mono-seq$))
-
-;; ======================================================================
-;; varname
-
-(element varname
-  ($mono-seq$))

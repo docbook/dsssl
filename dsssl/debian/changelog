@@ -1,8 +1,10 @@
 docbook-dsssl (1.78-2) unstable; urgency=low
 
-  * fix README
+  * fix README.Debian; closes: #185322
+  * debconf: "Show contents of comments?" wording fixed;
+    closes: #185124
 
- --
+ -- Adam Di Carlo <aph@debian.org>  Thu, 20 Mar 2003 20:47:53 -0500
 
 docbook-dsssl (1.78-1) unstable; urgency=low
 

@@ -1,8 +1,9 @@
 Template: docbook-dsssl/show-comments
 Type: boolean
 Default: true
-Description: Show comments?
- Would you to show remark and comments in HTML and print output?
+Description: Show contents of comments?
+ Should the contents of DocBook 'remark' and 'comment' elements be
+ displayed in the HTML and print output that is produced?
 
 Template: docbook-dsssl/set-papersize
 Type: select

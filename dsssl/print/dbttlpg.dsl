@@ -668,7 +668,20 @@
       quadding: %division-title-quadding%
       (process-children)))
 
-  (element keywordset (empty-sosofo))
+  (element keywordset
+    (make paragraph
+      quadding: 'start
+      (make sequence
+	font-weight: 'bold
+	(literal "Keywords: "))
+      (process-children)))
+
+  (element (keyword)
+    (make sequence
+      (process-children)
+      (if (not (last-sibling?))
+	  (literal ", ")
+	  (literal ""))))
 
   (element legalnotice
     (make display-group
@@ -1112,7 +1125,20 @@
       use: set-titlepage-verso-style
       (process-children)))
 
-  (element keywordset (empty-sosofo))
+  (element keywordset
+    (make paragraph
+      quadding: 'start
+      (make sequence
+	font-weight: 'bold
+	(literal "Keywords: "))
+      (process-children)))
+
+  (element (keyword)
+    (make sequence
+      (process-children)
+      (if (not (last-sibling?))
+	  (literal ", ")
+	  (literal ""))))
 
   (element legalnotice
     (make display-group
@@ -1939,7 +1965,20 @@
       quadding: %division-title-quadding%
       (process-children)))
 
-  (element keywordset (empty-sosofo))
+  (element keywordset
+    (make paragraph
+      quadding: 'start
+      (make sequence
+	font-weight: 'bold
+	(literal "Keywords: "))
+      (process-children)))
+
+  (element (keyword)
+    (make sequence
+      (process-children)
+      (if (not (last-sibling?))
+	  (literal ", ")
+	  (literal ""))))
 
   (element legalnotice
     (make display-group
@@ -2383,7 +2422,20 @@
       use: book-titlepage-verso-style
       (process-children)))
 
-  (element keywordset (empty-sosofo))
+  (element keywordset
+    (make paragraph
+      quadding: 'start
+      (make sequence
+	font-weight: 'bold
+	(literal "Keywords: "))
+      (process-children)))
+
+  (element (keyword)
+    (make sequence
+      (process-children)
+      (if (not (last-sibling?))
+	  (literal ", ")
+	  (literal ""))))
 
   (element legalnotice
     (make display-group
@@ -3212,7 +3264,20 @@
       quadding: %division-title-quadding%
       (process-children)))
 
-  (element keywordset (empty-sosofo))
+  (element keywordset
+    (make paragraph
+      quadding: 'start
+      (make sequence
+	font-weight: 'bold
+	(literal "Keywords: "))
+      (process-children)))
+
+  (element (keyword)
+    (make sequence
+      (process-children)
+      (if (not (last-sibling?))
+	  (literal ", ")
+	  (literal ""))))
 
   (element legalnotice
     (make display-group
@@ -3660,7 +3725,20 @@
       use: part-titlepage-verso-style
       (process-children)))
 
-  (element keywordset (empty-sosofo))
+  (element keywordset
+    (make paragraph
+      quadding: 'start
+      (make sequence
+	font-weight: 'bold
+	(literal "Keywords: "))
+      (process-children)))
+
+  (element (keyword)
+    (make sequence
+      (process-children)
+      (if (not (last-sibling?))
+	  (literal ", ")
+	  (literal ""))))
 
   (element legalnotice
     (make display-group
@@ -4455,7 +4533,20 @@
       quadding: %article-title-quadding%
       (process-children)))
 
-  (element keywordset (empty-sosofo))
+  (element keywordset
+    (make paragraph
+      quadding: 'start
+      (make sequence
+	font-weight: 'bold
+	(literal "Keywords: "))
+      (process-children)))
+
+  (element keyword
+    (make sequence
+      (process-children)
+      (if (not (last-sibling?))
+	  (literal ", ")
+	  (literal ""))))
 
   (element legalnotice
     (make display-group
@@ -4898,7 +4989,20 @@
       use: article-titlepage-verso-style
       (process-children)))
 
-  (element keywordset (empty-sosofo))
+  (element keywordset
+    (make paragraph
+      quadding: 'start
+      (make sequence
+	font-weight: 'bold
+	(literal "Keywords: "))
+      (process-children)))
+
+  (element (keyword)
+    (make sequence
+      (process-children)
+      (if (not (last-sibling?))
+	  (literal ", ")
+	  (literal ""))))
 
   (element legalnotice
     (make display-group
@@ -5736,7 +5840,20 @@
       quadding: %division-title-quadding%
       (process-children)))
 
-  (element keywordset (empty-sosofo))
+  (element keywordset
+    (make paragraph
+      quadding: 'start
+      (make sequence
+	font-weight: 'bold
+	(literal "Keywords: "))
+      (process-children)))
+
+  (element (keyword)
+    (make sequence
+      (process-children)
+      (if (not (last-sibling?))
+	  (literal ", ")
+	  (literal ""))))
 
   (element legalnotice
     (make display-group
@@ -6183,7 +6300,20 @@
       use: reference-titlepage-verso-style
       (process-children)))
 
-  (element keywordset (empty-sosofo))
+  (element keywordset
+    (make paragraph
+      quadding: 'start
+      (make sequence
+	font-weight: 'bold
+	(literal "Keywords: "))
+      (process-children)))
+
+  (element (keyword)
+    (make sequence
+      (process-children)
+      (if (not (last-sibling?))
+	  (literal ", ")
+	  (literal ""))))
 
   (element legalnotice
     (make display-group

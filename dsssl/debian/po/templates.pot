@@ -15,7 +15,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2003-03-20 22:41-0500\n"
+"POT-Creation-Date: 2003-03-22 11:49-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,6 +33,11 @@ msgstr ""
 msgid ""
 "Should the contents of DocBook 'remark' and 'comment' elements be displayed "
 "in the HTML and print output that is produced?"
+msgstr ""
+
+#. Choices
+#: ../templates:10
+msgid "do not set, A4, A4landscape, USletter, USlandscape, LC_PAPER, paperconf"
 msgstr ""
 
 #. Description
@@ -90,6 +95,11 @@ msgstr ""
 #. Description
 #: ../templates:42
 msgid "Should the textual body of a printed document be indented?"
+msgstr ""
+
+#. Choices
+#: ../templates:47
+msgid "tiny, normal, presbyopic, large-type"
 msgstr ""
 
 #. Description

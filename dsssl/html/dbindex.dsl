@@ -34,14 +34,15 @@
     (html-document 
      (with-mode head-title-mode 
        (literal (element-title-string (current-node))))
-     (make sequence
-       ($component-separator$)
-       ($component-title$)
-       (process-node-list preamble)
-       (if (node-list-empty? entries)
-	   (empty-sosofo)
-	   (make element gi: "DL"
-		 (process-node-list entries)))))))
+     (make element gi: "DIV"
+	   attributes: (list (list "CLASS" (gi)))
+	   ($component-separator$)
+	   ($component-title$)
+	   (process-node-list preamble)
+	   (if (node-list-empty? entries)
+	       (empty-sosofo)
+	       (make element gi: "DL"
+		     (process-node-list entries)))))))
 
 (element (index title) (empty-sosofo))
 (element index 
@@ -54,14 +55,15 @@
     (html-document 
      (with-mode head-title-mode 
        (literal (element-title-string (current-node))))
-     (make sequence
-       ($component-separator$)
-       ($component-title$)
-       (process-node-list preamble)
-       (if (node-list-empty? entries)
-	   (empty-sosofo)
-	   (make element gi: "DL"
-		 (process-node-list entries)))))))
+     (make element gi: "DIV"
+	   attributes: (list (list "CLASS" (gi)))
+	   ($component-separator$)
+	   ($component-title$)
+	   (process-node-list preamble)
+	   (if (node-list-empty? entries)
+	       (empty-sosofo)
+	       (make element gi: "DL"
+		     (process-node-list entries)))))))
 
 
 (element (indexdiv title) (empty-sosofo))
@@ -75,14 +77,15 @@
     (html-document
      (with-mode head-title-mode
        (literal (element-title-string (current-node))))
-     (make sequence
-       ($section-separator$)
-       ($section-title$)
-       (process-node-list preamble)
-       (if (node-list-empty? entries)
-	   (empty-sosofo)
-	   (make element gi: "DL"
-		 (process-node-list entries)))))))
+     (make element gi: "DIV"
+	   attributes: (list (list "CLASS" (gi)))
+	   ($section-separator$)
+	   ($section-title$)
+	   (process-node-list preamble)
+	   (if (node-list-empty? entries)
+	       (empty-sosofo)
+	       (make element gi: "DL"
+		     (process-node-list entries)))))))
 
 (define (break-node-list nodes breakatgi)
   ;; Given a _node_ list "PRIM SEC TERT SEC SEC TERT PRIM SEC PRIM PRIM"

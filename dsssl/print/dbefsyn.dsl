@@ -164,6 +164,7 @@
 
 (element fieldsynopsis
   (make paragraph
+    use: inline-verbatim-style
     (literal "  ")
     (process-children)
     (literal ";")))
@@ -232,6 +233,7 @@
 	 (excep      (select-elements (children nd)
 				      (normalize "exceptionname"))))
     (make paragraph
+      use: inline-verbatim-style
       (literal "  ")
       (process-node-list modifiers)
       (process-node-list type)
@@ -292,6 +294,7 @@
 
 (element fieldsynopsis
   (make paragraph
+    use: inline-verbatim-style
     (literal "  ");
     (process-children)
     (literal ";")))
@@ -358,6 +361,7 @@
 	 (excep      (select-elements (children nd)
 				      (normalize "exceptionname"))))
     (make paragraph
+      use: inline-verbatim-style
       (literal "sub ")
       (process-node-list modifiers)
       (process-node-list type)
@@ -418,6 +422,7 @@
 
 (element fieldsynopsis
   (make paragraph
+    use: inline-verbatim-style
     (literal "  ");
     (process-children)
     (literal ";")))
@@ -489,6 +494,7 @@
 	 (excep      (select-elements (children nd)
 				      (normalize "exceptionname"))))
     (make paragraph
+      use: inline-verbatim-style
       (process-node-list modifiers)
       (process-node-list type)
       (process-node-list methodname)
@@ -570,6 +576,7 @@
 	 (the-method-params (select-elements (children nd) (normalize "methodparam")))
 	 )
     (make paragraph
+      use: inline-verbatim-style
       (literal "    def ")
       (process-node-list the-method-name)
       (literal "(")

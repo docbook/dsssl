@@ -182,7 +182,7 @@
 	    (literal ", ")))))
 
 (element fieldsynopsis
-  (make element gi: "div"
+  (make element gi: "code"
 	attributes: '(("class" "fieldsynopsis"))
 	(literal "  ")
 	(process-children)
@@ -260,7 +260,7 @@
 					     (list (normalize "methodparam"))))
 	 (excep      (select-elements (children nd)
 				      (normalize "exceptionname"))))
-    (make element gi: "div"
+    (make element gi: "code"
 	  attributes: (list (list "class" (gi nd)))
 	  (if (first-sibling?)
 	      (literal "&#RE;")
@@ -343,7 +343,7 @@
 	    (literal ", ")))))
 
 (element fieldsynopsis
-  (make element gi: "div"
+  (make element gi: "code"
 	attributes: '(("class" "fieldsynopsis"))
 	(literal "  ")
 	(process-children)
@@ -421,7 +421,7 @@
 					     (list (normalize "methodparam"))))
 	 (excep      (select-elements (children nd)
 				      (normalize "exceptionname"))))
-    (make element gi: "div"
+    (make element gi: "code"
 	  attributes: (list (list "class" (gi nd)))
 	  (if (first-sibling?)
 	      (literal "&#RE;")
@@ -488,7 +488,7 @@
 	    (literal ", ")))))
 
 (element fieldsynopsis
-  (make element gi: "div"
+  (make element gi: "code"
 	attributes: '(("class" "fieldsynopsis"))
 	(literal "  ");
 	(process-children)
@@ -564,7 +564,7 @@
 						   (normalize "void"))))
 	 (excep      (select-elements (children nd)
 				      (normalize "exceptionname"))))
-    (make element gi: "div"
+    (make element gi: "code"
 	  attributes: (list (list "class" (gi nd)))
 	  (literal "sub ")
 	  (process-node-list modifiers)
@@ -628,7 +628,7 @@
 	    (literal ", ")))))
 
 (element fieldsynopsis
-  (make element gi: "div"
+  (make element gi: "code"
 	attributes: '(("class" "fieldsynopsis"))
 	(literal "  ");
 	(process-children)
@@ -712,7 +712,7 @@
 					     (list (normalize "methodparam"))))
 	 (excep      (select-elements (children nd)
 				      (normalize "exceptionname"))))
-    (make element gi: "div"
+    (make element gi: "code"
 	  attributes: (list (list "class" (gi nd)))
 	  (literal "  ")
 	  (process-node-list modifiers)
@@ -810,7 +810,7 @@
 (define (python-method-synopsis #!optional (nd (current-node)))
   (let* ((the-method-name (select-elements (children nd) (normalize "methodname")))
 	 (the-method-params (select-elements (children nd) (normalize "methodparam"))))
-    (make element gi: "div"
+    (make element gi: "code"
 	  attributes: (list (list "class" (gi nd)))
 	  (literal "    def ")
 	  (process-node-list the-method-name)

@@ -22,6 +22,18 @@
       lines: 'asis
       input-whitespace-treatment: 'preserve))
 
+(define inline-verbatim-style
+  (style
+      font-family-name: %mono-font-family%
+      font-size:        (* (inherited-font-size) 
+			   (if %verbatim-size-factor%
+			       %verbatim-size-factor%
+			       1.0))
+      font-weight:      'medium
+      font-posture:     'upright
+      lines: 'asis
+      input-whitespace-treatment: 'preserve))
+
 (define linespecific-style
   (style
       first-line-start-indent: 0pt

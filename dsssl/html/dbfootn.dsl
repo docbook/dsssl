@@ -15,9 +15,7 @@
 	  attributes: (list
 		       (list "NAME" id)
 		       (list "HREF" (string-append "#FTN." id)))
-	  (literal 
-	   (string-append 
-	    "[" ($footnote-number$ (current-node)) "]")))))
+	  ($footnote-literal$ (current-node)))))
 
 (element footnoteref
   (let* ((target   (element-with-id (attribute-string (normalize "linkend"))))
@@ -34,9 +32,7 @@
     (make element gi: "A"
 	  attributes: (list
 		       (list "HREF" href))
-	  (literal 
-	   (string-append
-	    "[" ($footnote-number$ target) "]")))))
+	  ($footnote-literal$ (current-node)))))
 
 (define (count-footnote? footnote)
   ;; don't count footnotes in comments (unless you're showing comments)
@@ -61,6 +57,14 @@
 	      (if (count-footnote? (node-list-first nl))
 		  (loop (node-list-rest nl) (+ num 1))
 		  (loop (node-list-rest nl) num)))))))
+
+(define ($footnote-literal$ node)
+  (make element gi: "SPAN"
+        attributes: (list
+                     (list "CLASS" "footnote"))
+        (literal
+         (string-append
+          "[" ($footnote-number$ target) "]"))))
 
 (define ($table-footnote-number$ footnote)
   (let* ((chunk (ancestor (normalize "tgroup") footnote))
@@ -93,11 +97,7 @@
 			attributes: (list
 				     (list "NAME" (string-append "FTN." id))
 				     (list "HREF" (href-to (parent (current-node)))))
-			(literal 
-			 (string-append "[" 
-					($footnote-number$ 
-					 (parent (current-node))) 
-					"]")))
+			($footnote-literal$ (parent (current-node))))
 		  (literal " "))
 		(literal ""))
 	    (process-children))))
@@ -186,10 +186,7 @@
 			  attributes: (list
 				       (list "NAME" (string-append "FTN." id))
 				       (list "HREF" (href-to (current-node))))
-			  (literal 
-			   (string-append "[" 
-					  ($footnote-number$ (current-node))
-					  "]"))))
+                          ($footnote-literal$ (current-node))))
 	      (make element gi: "TD"
 		    attributes: '(("ALIGN" "LEFT")
 				  ("VALIGN" "TOP")

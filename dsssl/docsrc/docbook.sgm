@@ -57,7 +57,8 @@ Please direct all questions, bug reports, or suggestions for changes
 to Norman Walsh, &lt;<literal>ndw@nwalsh.com</literal>&gt;.
 </para>
 <para>
-See <ulink url="http://nwalsh.com/docbook/dsssl/">http://nwalsh.com/docbook/dsssl/</ulink> for more information.</para>
+See <ulink url="http://docbook.sourceforge.net/projects/dsssl/doc/"></ulink>
+for more information.</para>
 </abstract>
 </bookinfo>&otherdoc;
 &dsssl.install;

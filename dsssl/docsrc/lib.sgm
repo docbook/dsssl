@@ -13,7 +13,7 @@ If you have any questions that aren't answered here, please feel free to <ulink
 url="http://nwalsh.com/~ndw/contact.html">contact me</ulink>.</para>
 <variablelist>
 <varlistentry>
-<term><ulink url="dblib.htm">Library Functions</ulink></term><listitem><para>
+<term><ulink url="lib/index.html">Library Functions</ulink></term><listitem><para>
 Reference pages for the library functions in <filename>dblib.dsl</filename>.
 (FYI: this is programmer's documentation, not user documentation.)</para>
 </listitem></varlistentry>

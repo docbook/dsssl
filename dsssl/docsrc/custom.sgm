@@ -42,17 +42,43 @@ the example above.</para>
 </filename> directory is a customization of the <filename>docbook.dsl</filename>
 print stylesheet. It turns off title page and TOC generation.</para>
 </sect1>
+
 <sect1>
 <title>Changing the Localization</title>
 <para>As distributed, the stylesheets use English for all generated text,
-but German and Russian localization files are also provided<footnote><para>
-The non-English localization layers are sometimes a little out-of-date with
-respect to generated text. If Jade reports errors that <literal>%gentext-<replaceable>
-something</replaceable></literal> is undefined, that's the problem. Hopefully
-the required text is fairly obvious, but if not, drop me a note and I'll explain
-it. In any case, if you add appropriate text, please send it to me so I can
-update the distributed localizations.</para>
-</footnote> (if you can write a localization for another language, <emphasis>
+but several other localization files are also provided. As of July 2001,
+the supported languages are:
+Afrikaans,
+Catalan,
+Chinese (Continental),
+Chinese (Traditional),
+Czech,
+Danish,
+Dutch,
+English,
+Estonian,
+Finnish,
+French,
+German,
+Greek,
+Hungarian,
+Indonesian,
+Italian,
+Japanese,
+Korean,
+Norwegian,
+Polish,
+Portuguese (Brazil),
+Portuguese,
+Romanian,
+Russian,
+Serbian,
+Slovak,
+Slovenian,
+Spanish,
+Swedish, and
+Turkish
+(if you can write a localization for another language, <emphasis>
 please do</emphasis>, and send it to me).</para>
 <para>Switching localizations is achieved by writing a customization layer
 that references the proper localization file. The customization should look

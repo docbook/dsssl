@@ -14,7 +14,7 @@ another DSSSL processor)</para>
 <listitem><para>The
 <ulink url="http://www.oasis-open.org/docbook/">DocBook DTD</ulink>.</para>
 </listitem>
-<listitem><para>The <ulink url="http://nwalsh.com/docbook/dsssl/">The Modular DocBook Stylesheets
+<listitem><para>The <ulink url="http://sourceforge.net/projects/docbook/">The Modular DocBook Stylesheets
 </ulink></para>
 </listitem>
 </itemizedlist>
@@ -132,8 +132,9 @@ http://www.oasis-open.org/cover/topics.html#entities</ulink></para>
 <sect1 id="instmds">
 <title>Installing the Modular DocBook Stylesheets</title>
 <procedure>
-<step><para>Download and unpack the <ulink url="http://nwalsh.com/docbook/dsssl/">
-stylesheet</ulink> distribution.</para>
+<step><para>Download and unpack the
+<ulink url="http://sourceforge.net/projects/docbook/">stylesheet</ulink>
+distribution.</para>
 </step>
 <step><para>Test the installation by processing <filename>test.sgm</filename>
 (from the <link linkend="dbtest">previous section)</link> with Jade:<screen>

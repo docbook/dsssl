@@ -184,6 +184,50 @@
      ((equal? calsvalign (normalize "bottom")) "BOTTOM")
      (else "MIDDLE"))))
 
+;; determine the proper setting for the html 4 FRAME attribute
+(define ($table-frame$ table)
+  (let* ((wrapper   (parent (current-node)))
+	 (frameattr (attribute-string (normalize "frame") wrapper)))
+    (if (and %html40% frameattr)
+        (cond
+         ((equal? frameattr (normalize "all"))
+          (list (list "FRAME" "border")))
+         ((equal? frameattr (normalize "bottom"))
+          (list (list "FRAME" "below")))
+         ((equal? frameattr (normalize "none"))
+          (list (list "FRAME" "void")))
+         ((equal? frameattr (normalize "sides"))
+          (list (list "FRAME" "vsides")))
+         ((equal? frameattr (normalize "top"))
+          (list (list "FRAME" "above")))
+         ((equal? frameattr (normalize "topbot"))
+          (list (list "FRAME" "hsides")))
+         (else '()))
+        '())))
+
+;; determine the proper setting for the html 4 BORDER attribute (cell frames)
+;; FIXME: deal somehow with rowsep override in colspec, row
+;; FIXME: deal somehow with colsep override in colspec, entry
+(define ($table-border$ table)
+  (let* ((wrapper   (parent (current-node)))
+         (rowsepattr (or (attribute-string (normalize "rowsep") (current-node))
+                         (attribute-string (normalize "rowsep") wrapper)))
+         (colsepattr (or (attribute-string (normalize "colsep") (current-node))
+                         (attribute-string (normalize "colsep") wrapper))))
+    (if (and %html40% (or rowsepattr colsepattr))
+        ;; remember there are actually 3 possible values: 0, 1, unset
+        (cond
+         ((and (equal? colsepattr "1") (equal? rowsepattr "1"))
+          (list (list "RULES" "all")))
+         ((and (equal? colsepattr "0") (equal? rowsepattr "0"))
+          (list (list "RULES" "none")))
+         ((and (equal? colsepattr "1") (equal? rowsepattr "0"))
+          (list (list "RULES" "cols")))
+         ((and (equal? colsepattr "0") (equal? rowsepattr "1"))
+          (list (list "RULES" "rows")))
+         (else '()))        ; if rowsep set but not colsep, ignore it
+        '())))
+
 ;; ======================================================================
 ;; Element rules
 
@@ -196,6 +240,8 @@
 	 (border (if (equal? frameattr (normalize "none"))
 		     '(("BORDER" "0"))
 		     '(("BORDER" "1"))))
+         (frame ($table-frame$ (current-node)))
+         (rules ($table-border$ (current-node)))
 	 (width (if (equal? pgwide "1")
 		    (list (list "WIDTH" ($table-width$)))
 		    '()))
@@ -205,7 +251,9 @@
     (make element gi: "TABLE"
 	  attributes: (append
 		       border
-		       width
+                       frame
+                       rules
+                       width
 		       (if %cals-table-class%
 			   (list (list "CLASS" %cals-table-class%))
 			   '()))
@@ -224,11 +272,16 @@
 			     (not (equal? tgrstyle (normalize "border"))))
 			'(("BORDER" "0"))
 			'(("BORDER" "1"))))
+         (frame ($table-frame$ (current-node)))
+         (rules ($table-border$ (current-node)))
 	 (head (select-elements (children (current-node)) (normalize "thead")))
 	 (body (select-elements (children (current-node)) (normalize "tbody"))))
     (make element gi: "TABLE"
+          ;; FIXME: see tgroup
 	  attributes: (append
 		       border
+                       frame
+                       rules
 		       (if %cals-table-class%
 			   (list (list "CLASS" %cals-table-class%))
 			   '()))
@@ -286,18 +339,7 @@
 	 (rowcells (node-list-filter-out-pis (children row)))
 	 (maxcol (string->number (attribute-string (normalize "cols") tgroup)))
 	 (lastentry (node-list-last rowcells))
-	 (table  (ancestor-member tgroup (list (normalize "table")
-					       (normalize "informaltable"))))
-	 (rowsep (if (attribute-string (normalize "rowsep") row)
-		     (attribute-string (normalize "rowsep") row)
-		     (if (attribute-string (normalize "rowsep") tgroup)
-			 (attribute-string (normalize "rowsep") tgroup)
-			 (if (attribute-string (normalize "rowsep") table)
-			     (attribute-string (normalize "rowsep") table)
-			     %cals-rule-default%))))
-	 (after-row-border (if rowsep
-			       (> (string->number rowsep) 0)
-			       #f)))
+	 (rowsep (attribute-string (normalize "rowsep") row)))
     (make element gi: "TR"
 	  (let loop ((cells rowcells)
 		     (prevcell (empty-node-list)))
@@ -395,9 +437,11 @@
 		    )
 	      (loop (overhang-skip overhang (+ count 1))))))
 
-;      (if (equal? (gi entry) (normalize "entrytbl"))
-;	  (make element gi: htmlgi
-;		(literal "ENTRYTBL not supported."))
+      ;; Now we've output empty cells for any missing entries, so we 
+      ;; are ready to output the cell for this entry...
+;;      (if (equal? (gi entry) (normalize "entrytbl"))
+;;	  (make element gi: htmlgi
+;;		(literal "ENTRYTBL not supported."))
 	  (make element gi: htmlgi
 		attributes: (append
 			     (if (> (hspan entry) 1)

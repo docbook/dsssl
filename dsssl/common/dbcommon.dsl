@@ -880,19 +880,30 @@
   "")
 
 (define (block-autolabel nd #!optional (force-label? #f))
-  (let* ((chn (element-label (ancestor (normalize "chapter") nd)))
-	 (apn (element-label (ancestor (normalize "appendix") nd)))
-	 (rfn (element-label (ancestor (normalize "refentry") nd)))
-	 (bkn (format-number (component-child-number 
-			      nd 
-			      (component-element-list)) 
-			     (label-number-format nd))))
+  (let* ((chn    (element-label (ancestor (normalize "chapter") nd)))
+	 (apn    (element-label (ancestor (normalize "appendix") nd)))
+	 (rfn    (element-label (ancestor (normalize "refentry") nd)))
+	 ;; If the root of this document isn't in component-element-list, these
+	 ;; things all wind up being numbered 0. To avoid that, we force the
+	 ;; root element to be in the list of components if it isn't already
+	 ;; a component.
+	 (incomp (member (gi (sgml-root-element)) (component-element-list)))
+	 (bkn    (if incomp
+		     (format-number (component-child-number
+				     nd
+				     (component-element-list))
+				    (label-number-format nd))
+		     (format-number (component-child-number
+				     nd
+				     (append (component-element-list)
+					     (list (gi (sgml-root-element)))))
+				    (label-number-format nd)))))
     (if (equal? chn "")
 	(if (equal? apn "")
 	    (if (equal? rfn "")
 		bkn
 		(string-append rfn (gentext-intra-label-sep nd) bkn))
-	    (string-append apn (gentext-intra-label-sep nd) bkn))  
+	    (string-append apn (gentext-intra-label-sep nd) bkn))
 	(string-append chn (gentext-intra-label-sep nd) bkn))))
 
 ;; For all elements, if a LABEL attribute is present, that is the label

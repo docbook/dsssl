@@ -27,8 +27,7 @@ install_program	:= install -o root -g root -m 755 -p --strip
 make_directory	:= install -d -o root -g root -m 755
 
 bin/collateindex.pl.1: bin/collateindex.pl
-	pod2man --section=1 --center="DocBook DSSSL" \
-		--release="docbook-dsssl v$(cat VERSION)" $< > $@
+	$(MAKE) -C bin
 
 common/catalog:
 	$(MAKE) -C common
@@ -45,11 +44,7 @@ build:	bin/collateindex.pl.1 common/catalog \
 
 clean:
 	dh_testdir
-#	 created in build target
-	rm -f bin/collateindex.pl.1
-#	 created in binary-indep target
-	rm -f debian/postinst
-	dh_clean
+	dh_clean debian/postinst
 
 debian/postinst: debian/postinst.m4 debian/rules
 	perl -p -e "s/M4package$$/$(package)/g; s|M4DTDDIR|$(subst $(prefix),,$(dsssldir))|g; s|M4CONFDIR|$(subst $(prefix),,$(confdir))|g; s|M4CONFTEMPLATEDIR|$(subst $(prefix),,$(conftemplatedir))|g; s|M4ORDCATS|catalog common/catalog|g; s|M4IMAGEDIR|$(subst $(prefix),,$(dsssldir))/images|g;" $< > $@

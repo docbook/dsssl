@@ -43,7 +43,10 @@ else
 	find . -print  | grep /doc/ | cut -c3- >> /tmp/tar.exclude
 	find . -print  | grep /docsrc/ | cut -c3- >> /tmp/tar.exclude
 	find . -type f -name "*~"  | cut -c3- >> /tmp/tar.exclude
+	find . -type f -name ".*~"  | cut -c3- >> /tmp/tar.exclude
 	find . -type f -name "#*"  | cut -c3- >> /tmp/tar.exclude
+	find . -type f -name ".#*"  | cut -c3- >> /tmp/tar.exclude
+	find . -type f -name "*.bak"  | cut -c3- >> /tmp/tar.exclude
 	find . -type f -name ".cvsignore"  | cut -c3- >> /tmp/tar.exclude
 	find . -type f -name "Makefile*"   | cut -c3- >> /tmp/tar.exclude
 	find . -type f -name "README.CVS"   | cut -c3- >> /tmp/tar.exclude

@@ -39,6 +39,7 @@
 	    #f  ;; nope
 	    #t) ;; yep
 	(if (or (equal? (gi nd) (normalize "title"))
+		(equal? (gi nd) (normalize "titleabbrev"))
 		(equal? (gi nd) (normalize "bridgehead")))
 	    #t
 	    (if (or (not (equal? (node-property 'class-name nd) 'element))

@@ -331,6 +331,20 @@
     (make display-group
       start-indent: 0pt
       (process-children)))
+
+  ;; Suggested by Nick NICHOLAS, nicholas@uci.edu
+  (element (variablelist title)
+    (make table-row
+      cell-before-row-margin: %para-sep%
+      (make table-cell
+	column-number: 1
+	n-columns-spanned: 2
+	n-rows-spanned: 1
+	(make paragraph
+	  use: title-style
+	  start-indent: 0pt
+	  (process-children)))))
+
 )
 
 (define (simplelist-table majororder cols members)

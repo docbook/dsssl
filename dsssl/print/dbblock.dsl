@@ -547,14 +547,10 @@
 					 ($table-element-list$)) "a"))
 
 (element (entry footnote)
-  (if (and (equal? (print-backend) 'tex) bop-footnotes)
-      (next-match)
-      ($ss-seq$ + (literal (table-footnote-number (current-node))))))
+  ($ss-seq$ + (literal (table-footnote-number (current-node)))))
 
 (element (entry para footnote)
-  (if (and (equal? (print-backend) 'tex) bop-footnotes)
-      (next-match)
-      ($ss-seq$ + (literal (table-footnote-number (current-node))))))
+  ($ss-seq$ + (literal (table-footnote-number (current-node)))))
 
 (define (make-table-endnote-header)
   (make paragraph

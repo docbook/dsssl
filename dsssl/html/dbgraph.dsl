@@ -68,11 +68,13 @@
 	 (if alttext (list (list "ALT" alt)) '()))
 	'())))
 
-(define ($graphic$ fileref 
-		   #!optional (format #f) (alt #f) (align #f))
+(define ($graphic$ fileref
+		   #!optional (format #f) (alt #f) (align #f) (width #f) (height #f))
   (let ((img-attr  (append
 		    (list     (list "SRC" (graphic-file fileref)))
 		    (if align (list (list "ALIGN" align)) '())
+		    (if width (list (list "WIDTH" width)) '())
+		    (if height (list (list "HEIGHT" height)) '())
 		    (if image-library (graphic-attrs fileref alt) '()))))
     (make empty-element gi: "IMG"
 	  attributes: img-attr)))
@@ -96,16 +98,18 @@
 			(if entityref
 			    (entity-notation entityref)
 			    #f)))
-	 (align     (attribute-string (normalize "align") nd)))
+	 (align     (attribute-string (normalize "align") nd))
+	 (width     (attribute-string (normalize "width") nd))
+	 (height    (attribute-string (normalize "depth") nd)))
     (if (or fileref entityref)
 	(if (equal? format (normalize "linespecific"))
-	    (if fileref 
+	    (if fileref
 		(include-file fileref)
 		(include-file (entity-generated-system-id entityref)))
 	    (if fileref
-		($graphic$ fileref format alt align)
+		($graphic$ fileref format alt align width height)
 		($graphic$ (system-id-filename entityref)
-			   format alt align)))
+			   format alt align width height)))
 	(empty-sosofo))))
 
 (element graphic

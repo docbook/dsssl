@@ -94,6 +94,8 @@ binary-indep: build debian/postinst
 	/usr/share/sgml-data/sgml-catalog-check.pl -l -v 0 -e -d $(prefix)/usr/share/sgml $(dsssldir)/common/catalog
 
 	dh_installdocs -p$(package) BUGS README TODO $(wildcard WhatsNew)
+#	 dsssl source refers to ../README
+	ln -s ../../../../../doc/$(package)/README $(dsssldir)/README
 
 	$(make_directory) \
 		$(docdir)/common $(docdir)/lib				\

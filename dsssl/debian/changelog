@@ -1,3 +1,10 @@
+docbook-dsssl (1.77-cvs.2003.01.23) unstable; urgency=low
+
+  * /usr/share/sgml/docbook/stylesheet/dsssl/modular/README symlink to
+    README in the docs; closes: #149880
+
+ -- Adam Di Carlo <aph@debian.org>  Wed, 22 Jan 2003 12:32:42 -0500
+
 docbook-dsssl (1.77-cvs.2003.01.22) unstable; urgency=low
 
   * CVS snapshot with post 1.77 fixes, the following bugs are fixed either

@@ -1,8 +1,8 @@
-docbook-dsssl (1.77-cvs.2003.01.20) unstable; urgency=low
+docbook-dsssl (1.77-cvs.2003.01.21) unstable; urgency=low
 
   * CVS snapshot with post 1.77 fixes, the following bugs are fixed either
     in this version or earlier: 
-    closes: #36886, #37098, #79432 (unapplied)
+    closes: #36886, #37098, #79432
   * Policy compliance updated to 3.5.8, no changes needed
   * package description update
   * update freebsd.dsl to rev 1.68
@@ -14,7 +14,7 @@ docbook-dsssl (1.77-cvs.2003.01.20) unstable; urgency=low
   * define local configuration files where debconf and user configuration
     goes, /etc/sgml/docbook-dsssl/{print,html}/siteconfig.dsl
 
- -- Adam Di Carlo <aph@debian.org>  Tue, 21 Jan 2003 16:09:04 -0500
+ -- Adam Di Carlo <aph@debian.org>  Tue, 21 Jan 2003 16:59:34 -0500
 
 docbook-dsssl (1.77-2) unstable; urgency=medium
 

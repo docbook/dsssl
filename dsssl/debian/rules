@@ -72,18 +72,13 @@ binary-indep: build debian/postinst
 ##
 	$(make_directory) $(confdir)/html $(confdir)/print
 	$(make_directory) $(conftemplatedir)
-	$(install_file) debian/html-siteconfig.dsl debian/print-siteconfig.dsl $(conftemplatedir)
-
+	$(install_file) debian/html-siteconfig.dsl debian/print-siteconfig.dsl $(conftemplatedir)/
 #	 hack location of admonition graphics in print output
 #	 FIXME: move to debconf/postinst
 	perl -pi -e 's|"\.\./images/"\)|"$(subst $(prefix),,$(dsssldir))/images/"\)|;' \
 		$(dsssldir)/print/dbparam.dsl
 #	 same for location of admonition and callout graphics in html output, but
-#        we have to provide a /var/www symlink
-	perl -pi -e 's|"\.\./images/"\)|"/$(package)/"\)|; \
-		     s|"\.\./images/callouts/"\)|"/$(package)/callouts/"\)|;' \
-		$(dsssldir)/html/dbparam.dsl
-
+#        /var/www symlink to html image location
 	$(make_directory) $(wwwdir)
 	ln -s $(subst $(prefix),,$(dsssldir))/images $(wwwdir)/$(package)
 

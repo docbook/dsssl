@@ -11,7 +11,7 @@ COMPATLNKTO=../../../../../share/sgml/docbook/stylesheet/dsssl/modular
 CONFDIR=M4CONFDIR
 CONFTEMPLATEDIR=M4CONFTEMPLATEDIR
 HTMLCONF=${CONFDIR}/html/siteconfig.dsl
-PRINTCONF=${CONFDIR}/html/siteconfig.dsl
+PRINTCONF=${CONFDIR}/print/siteconfig.dsl
 IMAGEDIR=M4IMAGEDIR
 
 set -e

@@ -147,7 +147,14 @@
       ($charseq$)))
 
 (element citetitle ($italic-seq$))
-(element emphasis ($italic-seq$))
+
+(element emphasis
+  (if (and (attribute-string (normalize "role"))
+	   (or (equal? (attribute-string (normalize "role")) "strong")
+	       (equal? (attribute-string (normalize "role")) "bold")))
+      ($bold-seq$)
+      ($italic-seq$)))
+
 (element foreignphrase ($italic-seq$))
 (element markup ($charseq$))
 (element phrase ($charseq$))

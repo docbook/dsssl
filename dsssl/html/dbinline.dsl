@@ -181,10 +181,31 @@
 		   ")")))
 
 (element citetitle ($italic-seq$))
-(element emphasis ($italic-seq$))
+
+(element emphasis
+  (let* ((class (if (and (attribute-string (normalize "role"))
+			 %emphasis-propagates-style%)
+		    (attribute-string (normalize "role"))
+		    (literal "emphasis"))))
+    (make element gi: "SPAN"
+	  attributes: (list (list "CLASS" class))
+	  (if (and (attribute-string (normalize "role"))
+		   (or (equal? (attribute-string (normalize "role")) "strong")
+		       (equal? (attribute-string (normalize "role")) "bold")))
+	      ($bold-seq$)
+	      ($italic-seq$)))))
+
 (element foreignphrase ($italic-seq$))
 (element markup ($charseq$))
-(element phrase ($charseq$))
+
+(element phrase
+  (let* ((class (if (and (attribute-string (normalize "role"))
+			 %phrase-propagates-style%)
+		    (attribute-string (normalize "role"))
+		    (literal "phrase"))))
+    (make element gi: "SPAN"
+	  attributes: (list (list "CLASS" class))
+	  ($charseq$))))
 
 (element quote
   (let* ((hnr   (hierarchical-number-recursive (normalize "quote") 

@@ -1394,6 +1394,28 @@
   ;; /REFENTRY
   #t)
 
+(define %emphasis-propagates-style%
+  ;; REFENTRY emphasis-propagates-style
+  ;; PURP Support propagating emphasis role attributes to HTML
+  ;; DESC
+  ;; Should the role attribute of emphasis be propagated to HTML as
+  ;; a class attribute value?
+  ;; /DESC
+  ;; AUTHOR N/A
+  ;; /REFENTRY
+  #t)
+
+(define %phrase-propagates-style%
+  ;; REFENTRY phrase-propagates-style
+  ;; PURP Support propagating phrase role attributes to HTML
+  ;; DESC
+  ;; Should the role attribute of phrase be propagated to HTML as
+  ;; a class attribute value?
+  ;; /DESC
+  ;; AUTHOR N/A
+  ;; /REFENTRY
+  #t)
+
 ;; REFERENCE Object Rules
 
 (define %example-rules%

@@ -17,7 +17,7 @@ IMAGEDIR=M4IMAGEDIR
 set -e
 
 # whether to be verbose
-verbose=true
+verbose=false
 
 # e.g.: setit print %visual-acuity% normal
 setit () {

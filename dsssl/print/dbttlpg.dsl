@@ -4294,8 +4294,8 @@
     (make display-group
       use: article-titlepage-verso-style ;; EVEN THOUGH IT'S RECTO!
       quadding: 'start
-      start-indent: (+ (inherited-start-indent) 0.5in)
-      end-indent: (+ (inherited-end-indent) 0.5in)
+      start-indent: (+ (inherited-start-indent) (/ %body-width% 24))
+      end-indent: (+ (inherited-end-indent) (/ %body-width% 24))
       ($semiformal-object$)))
 
   (element (abstract title) (empty-sosofo))

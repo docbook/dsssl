@@ -14,6 +14,7 @@ doc: all
 	$(MAKE) -C doc
 
 distrib: all doc
+	$(MAKE) -C images
 	$(MAKE) -C html XREF
 	$(MAKE) -C print XREF
 	$(CVS2LOG) -w

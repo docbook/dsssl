@@ -1420,16 +1420,18 @@
     (select-elements (children nd) (normalize "sect4info")))
    ((equal? (gi nd) (normalize "sect5"))
     (select-elements (children nd) (normalize "sect5info")))
-   ((equal? (gi nd) (normalize "refsect1")) 
+   ((equal? (gi nd) (normalize "refsect1"))
     (select-elements (children nd) (normalize "refsect1info")))
-   ((equal? (gi nd) (normalize "refsect2")) 
+   ((equal? (gi nd) (normalize "refsect2"))
     (select-elements (children nd) (normalize "refsect2info")))
-   ((equal? (gi nd) (normalize "refsect3")) 
+   ((equal? (gi nd) (normalize "refsect3"))
     (select-elements (children nd) (normalize "refsect3info")))
    ((equal? (gi nd) (normalize "refsynopsisdiv"))
     (select-elements (children nd) (normalize "refsynopsisdivinfo")))
    ((equal? (gi nd) (normalize "article"))
-    (select-elements (children nd) (normalize "artheader")))
+    (node-list-filter-by-gi (children nd) (list
+					   (normalize "artheader")
+					   (normalize "articleinfo"))))
    (else ;; BIBLIODIV, GLOSSDIV, INDEXDIV, PARTINTRO, SIMPLESECT
     (select-elements (children nd) (normalize "docinfo")))))
 

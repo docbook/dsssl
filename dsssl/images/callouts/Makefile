@@ -1,9 +1,8 @@
-all: eps pdf
+include ../Make.images
 
-.PHONY: eps pdf
+.PHONY: all clean
 
-eps:
-	for f in *.gif; do convert $$f `basename $$f .gif`.eps; done
+all: $(EPS) $(PDF)
 
-pdf: eps
-	for f in *.eps; do epstopdf --outfile=`basename $$f .eps`.pdf $$f; done
+clean:
+	rm -f $(EPS) $(PDF)

@@ -742,6 +742,7 @@
 	      attributes: '(("CLASS" "NAVHEADER"))
 	  (make element gi: "TABLE"
 		attributes: (list
+			     (list "SUMMARY" "Header navigation table")
 			     (list "WIDTH" %gentext-nav-tblwidth%)
 			     (list "BORDER" "0")
 			     (list "CELLPADDING" "0")
@@ -803,6 +804,7 @@
 	      attributes: '(("CLASS" "NAVHEADER"))
 	  (make element gi: "TABLE"
 		attributes: (list
+			     (list "SUMMARY" "Header navigation table")
 			     (list "WIDTH" %gentext-nav-tblwidth%)
 			     (list "BORDER" "0")
 			     (list "CELLPADDING" "0")
@@ -971,6 +973,7 @@
 			     (list "WIDTH" %gentext-nav-tblwidth%)))
 	  (make element gi: "TABLE"
 		attributes: (list
+			     (list "SUMMARY" "Footer navigation table")
 			     (list "WIDTH" %gentext-nav-tblwidth%)
 			     (list "BORDER" "0")
 			     (list "CELLPADDING" "0")

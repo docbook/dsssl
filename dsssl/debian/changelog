@@ -1,3 +1,16 @@
+docbook-dsssl (1.77-2) unstable; urgency=medium
+
+  * remove build depends on the following:
+
+       libdelimmatch-perl, sun-resolver, lib-saxon-java,
+       libxerces-java,
+       imagemagick, tetex-bin, gs, gsfonts, jade | openjade
+
+    These pkgs are only for building from CVS, not the source
+    distribution; closes: #156153
+
+ -- Adam Di Carlo <aph@debian.org>  Tue, 26 Nov 2002 19:22:31 -0500
+
 docbook-dsssl (1.77-1) unstable; urgency=low
 
   * new upstream version, closes: #154166

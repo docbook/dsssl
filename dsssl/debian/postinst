@@ -67,7 +67,7 @@ setit () {
     else
         ${verbose} && echo "did not find '$setting' in file '$file', adding" >&2
         sed -e "/^<style-specification-body>/a\\
-(define $setting $value) \;\; set by debconf;" ${file} > ${file}.new
+(define $setting $value) \;\; set by debconf" ${file} > ${file}.new
         cat ${file}.new > ${file}
         rm -f ${file}.new
     fi

@@ -1,9 +1,15 @@
-docbook-dsssl (1.77-cvs.2003.02.10) unstable; urgency=low
+docbook-dsssl (1.77-cvs.2003.02.12) unstable; urgency=low
 
   * more upstream fixes; a number of problems are either fixed in this
     release or otherwise unreproducable; closes: #176283, #75000
+  * postinst: if in siteconfig.dsl we see a setting has been commentted
+    out, leave it alone (e.g., don't re-enable and set it)
+  * debconf: print papertype now allows user to specify A4, A4landscape,
+    USletter, USlandscape, or to use 'paperconf' from libpaperg
+  * debconf: fix nasty error causing priorities to be wrong and questions
+    not to be asked
 
- -- Adam Di Carlo <aph@debian.org>  Mon, 10 Feb 2003 17:06:09 -0500
+ -- Adam Di Carlo <aph@debian.org>  Wed, 12 Feb 2003 12:16:18 -0500
 
 docbook-dsssl (1.77-cvs.2003.02.06) unstable; urgency=low
 

@@ -155,10 +155,30 @@
       (make sequence 
 	(literal "[") ($charseq$) (literal "]"))))
 
-(element citerefentry 
-  (if %refentry-xref-italic%
-      ($italic-seq$)
-      ($charseq$)))
+(element citerefentry
+  (if %citerefentry-link%
+      (make element gi: "A"
+	    attributes: (list (list "HREF" ($generate-citerefentry-link$)))
+	    (if %refentry-xref-italic%
+		($italic-seq$)
+		($charseq$)))
+      (if %refentry-xref-italic%
+	  ($italic-seq$)
+	  ($charseq$))))
+
+(define ($generate-citerefentry-link$)
+  (empty-sosofo))
+
+(define ($x-generate-citerefentry-link$)
+  (let* ((refentrytitle (select-elements (children (current-node))
+					 (normalize "refentrytitle")))
+	 (manvolnum (select-elements (children (current-node))
+				     (normalize "manvolnum"))))
+    (string-append "http://example.com/cgi-bin/man.cgi?"
+		   (data refentrytitle)
+		   "("
+		   (data manvolnum)
+		   ")")))
 
 (element citetitle ($italic-seq$))
 (element emphasis ($italic-seq$))

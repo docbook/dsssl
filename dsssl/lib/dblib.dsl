@@ -1793,20 +1793,28 @@
 ;; ======================================================================
 
 (define (parse-pi-attribute pivalues #!optional (skip #f))
-  (let* ((equalpos (string-index pivalues "="))
-	 (name     (substring pivalues 0 equalpos))
-	 (quotchar (substring pivalues (+ equalpos 1) (+ equalpos 2)))
-	 (rest     (substring pivalues 
-			      (+ equalpos 2) 
-			      (string-length pivalues)))
-	 (quotpos  (string-index rest quotchar))
-	 (value    (substring rest 0 quotpos))
-	 (morevals (strip (substring rest 
-				     (+ quotpos 1) 
-				     (string-length rest)))))
-    (if skip
-	morevals
-	(list name value))))
+  (let ((equalpos (string-index pivalues "=")))
+    (if (< equalpos 1)
+	(let ((debug (string-append "attribute not in form 'name=\"value\"': "
+				    pivalues)))
+	  #f)
+	(let* ((name	 (substring pivalues 0 equalpos))
+	       (rest	 (substring pivalues (+ equalpos 1) (string-length pivalues)))
+	       ;; location of the 2nd double quote
+	       (quotpos	 (string-index (substring rest 1 (string-length rest)) 
+				       "\""))
+	       (value	 (strip (substring rest 0 (if (> quotpos 0)
+						      quotpos
+						      (string-length rest)))
+				(list #\")))
+	       (morevals (if (> quotpos 0)
+			     (strip (substring rest
+					       (+ quotpos 1)
+					       (string-length rest)))
+			     #f)))
+	  (if skip
+	      morevals
+	      (list name value))))))
 
 (define (parse-skip-pi-attribute pivalues)
   (parse-pi-attribute pivalues #t))
@@ -1835,7 +1843,8 @@
 					   (+ spacepos 1)
 					   (string-length strippi)))))
 	  (let loop ((values pivalues) (result (list pitarget)))
-	    (if (string=? values "")
+	    (if (or (not values)
+		    (string=? values ""))
 		result
 		(loop (parse-skip-pi-attribute values)
 		      (append result (parse-pi-attribute values)))))))))

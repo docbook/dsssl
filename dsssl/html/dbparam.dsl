@@ -1168,7 +1168,9 @@
   ;; /DESC
   ;; AUTHOR N/A
   ;; /REFENTRY
-  #f)
+  (if %html40%
+      "-//W3C//DTD HTML 4.01 Transitional//EN"
+      #f))
 
 (define %root-filename%
   ;; REFENTRY root-filename
@@ -1394,8 +1396,8 @@
   ;; REFENTRY html40
   ;; PURP Generate HTML 4.0
   ;; DESC
-  ;; If '%html40%' is true then the output more-closely resembles HTML 4.0.
-  ;; In partucular, the HTML table module includes THEAD, TBODY, and TFOOT
+  ;; If '%html40%' is true then the output more closely resembles HTML 4.0.
+  ;; In particular, the HTML table module includes COL, THEAD, TBODY, and TFOOT
   ;; elements.
   ;; /DESC
   ;; AUTHOR N/A
@@ -1449,7 +1451,8 @@
   ;; DESC
   ;; Should extraneous "P" tags be output to force the correct vertical
   ;; spacing around things like tables.  This is ugly because different
-  ;; browsers do different things.
+  ;; browsers do different things.  Turning this one can also create
+  ;; illegal HTML.
   ;; /DESC
   ;; AUTHOR N/A
   ;; /REFENTRY

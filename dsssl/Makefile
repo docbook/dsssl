@@ -12,6 +12,7 @@ all:
 doc: all
 	$(MAKE) -C docsrc
 	$(MAKE) -C doc
+	$(MAKE) -C bin
 
 distrib: all doc
 	$(MAKE) -C images
@@ -78,3 +79,6 @@ clean:
 	$(MAKE) -C doc $@
 	$(MAKE) -C docsrc $@
 	$(MAKE) -C common $@
+	$(MAKE) -C html $@
+	$(MAKE) -C print $@
+	$(MAKE) -C bin $@

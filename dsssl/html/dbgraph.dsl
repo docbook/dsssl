@@ -53,7 +53,7 @@
 						  "content"
 						  (node-list-first meta))))))
 				 (loop (node-list-rest meta) attrlist))))
-		       (empty-node-list)))
+		       '()))
 	 (width    (if prop (attribute-string "width" prop) #f))
 	 (height   (if prop (attribute-string "height" prop) #f))
 	 (alttext  (if image

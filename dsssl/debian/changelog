@@ -1,4 +1,4 @@
-docbook-dsssl (1.77-cvs.2003.01.23) unstable; urgency=low
+docbook-dsssl (1.77-cvs.2003.02.06) unstable; urgency=low
 
   * more upstream fixes
   * /usr/share/sgml/docbook/stylesheet/dsssl/modular/README symlink to
@@ -10,8 +10,13 @@ docbook-dsssl (1.77-cvs.2003.01.23) unstable; urgency=low
   * also make make the following debconf questions low priority:
     use-id-as-filename, body-start-indent, title-font family; change some
     multiselects into select; closes: #179554
+  * debconf/postinst: I was doing this:
+      (define %title-font-family% "%body-font-family%")
+    rather than
+      (define %title-font-family% %body-font-family%)
+    closes: #178617
 
- -- Adam Di Carlo <aph@debian.org>  Mon,  3 Feb 2003 19:42:43 -0500
+ -- Adam Di Carlo <aph@debian.org>  Thu,  6 Feb 2003 18:38:59 -0500
 
 docbook-dsssl (1.77-cvs.2003.01.22) unstable; urgency=low
 

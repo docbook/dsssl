@@ -55,8 +55,8 @@ setit () {
     fi
     
     # quote value if we need to
-    if [ "$value" != "${value#[0-9]}" ]; then
-        : # it starts with a number, leave it alone
+    if [ "$value" != "${value#[0-9%]}" ]; then
+        : # it starts with a number or '%', leave it alone
     elif [ "$value" = true ]; then
         value='#t'
     elif [ "$value" = false ]; then

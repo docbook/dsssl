@@ -208,7 +208,7 @@
 		   (normalize "element"))))
 <![CDATA[
   (cond
-   ((equal? class (normalize "attribute")) ($charseq$))
+   ((equal? class (normalize "attribute")) ($mono-seq$))
    ((equal? class (normalize "attvalue")) ($mono-seq$))
    ((equal? class (normalize "element")) ($mono-seq$))
    ((equal? class (normalize "endtag")) ($mono-seq$ (make sequence 

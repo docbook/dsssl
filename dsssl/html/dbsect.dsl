@@ -18,6 +18,8 @@
 	  (string-append "H" (number->string (+ hlevel 1)))))
     (make element gi: helem
 	  attributes: '(("CLASS" "BRIDGEHEAD"))
+	  (make empty-element gi: "A"
+		attributes: (list (list "NAME" (element-id))))
 	  (process-children))))
 
 (define ($section-separator$) 

@@ -29,6 +29,78 @@
       (else (with-mode cs-java-mode
 	      (process-node-list (current-node)))))))
 
+(element methodsynopsis
+  (let ((language (if (attribute-string (normalize "language"))
+		      (attribute-string (normalize "language"))
+		      %default-classsynopsis-language%)))
+    (case language
+      (("java") (with-mode cs-java-mode
+		  (process-node-list (current-node))))
+      (("perl") (with-mode cs-perl-mode
+		  (process-node-list (current-node))))
+      (("idl") (with-mode cs-idl-mode
+		  (process-node-list (current-node))))
+      (("cpp") (with-mode cs-cpp-mode
+		  (process-node-list (current-node))))
+      (("python") (with-mode cs-python-mode
+		    (process-node-list (current-node))))
+      (else (with-mode cs-java-mode
+	      (process-node-list (current-node)))))))
+
+(element fieldsynopsis
+  (let ((language (if (attribute-string (normalize "language"))
+		      (attribute-string (normalize "language"))
+		      %default-classsynopsis-language%)))
+    (case language
+      (("java") (with-mode cs-java-mode
+		  (process-node-list (current-node))))
+      (("perl") (with-mode cs-perl-mode
+		  (process-node-list (current-node))))
+      (("idl") (with-mode cs-idl-mode
+		  (process-node-list (current-node))))
+      (("cpp") (with-mode cs-cpp-mode
+		  (process-node-list (current-node))))
+      (("python") (with-mode cs-python-mode
+		    (process-node-list (current-node))))
+      (else (with-mode cs-java-mode
+	      (process-node-list (current-node)))))))
+
+(element constructorsynopsis
+  (let ((language (if (attribute-string (normalize "language"))
+		      (attribute-string (normalize "language"))
+		      %default-classsynopsis-language%)))
+    (case language
+      (("java") (with-mode cs-java-mode
+		  (process-node-list (current-node))))
+      (("perl") (with-mode cs-perl-mode
+		  (process-node-list (current-node))))
+      (("idl") (with-mode cs-idl-mode
+		  (process-node-list (current-node))))
+      (("cpp") (with-mode cs-cpp-mode
+		  (process-node-list (current-node))))
+      (("python") (with-mode cs-python-mode
+		    (process-node-list (current-node))))
+      (else (with-mode cs-java-mode
+	      (process-node-list (current-node)))))))
+
+(element destructorsynopsis
+  (let ((language (if (attribute-string (normalize "language"))
+		      (attribute-string (normalize "language"))
+		      %default-classsynopsis-language%)))
+    (case language
+      (("java") (with-mode cs-java-mode
+		  (process-node-list (current-node))))
+      (("perl") (with-mode cs-perl-mode
+		  (process-node-list (current-node))))
+      (("idl") (with-mode cs-idl-mode
+		  (process-node-list (current-node))))
+      (("cpp") (with-mode cs-cpp-mode
+		  (process-node-list (current-node))))
+      (("python") (with-mode cs-python-mode
+		    (process-node-list (current-node))))
+      (else (with-mode cs-java-mode
+	      (process-node-list (current-node)))))))
+
 ;; ===== Java ========================================================
 
 (mode cs-java-mode

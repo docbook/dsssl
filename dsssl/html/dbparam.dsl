@@ -1487,7 +1487,7 @@
   ;; /DESC
   ;; AUTHOR N/A
   ;; /REFENTRY
-  '(#\. #\! #\?))
+  '(#\. #\! #\? #\:))
 
 (define %honorific-punctuation%
   ;; REFENTRY honorific-punctuation

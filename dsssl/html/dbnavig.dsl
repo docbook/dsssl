@@ -129,7 +129,8 @@
 	(make element gi: "A"
 	      attributes: (list
 			   (list "HREF" 
-				 (href-to home)))
+				 (href-to home))
+			   (list "ACCESSKEY" "H"))
 	      (if home-text
 		  (literal home-text)
 		  (gentext-nav-home home))))))
@@ -165,7 +166,8 @@
     (if href
 	(make element gi: "A"
 	      attributes: (list
-			   (list "HREF" href))
+			   (list "HREF" href)
+			   (list "ACCESSKEY" "U"))
 	      (nav-up-sosofo elemnode))
 	(nav-up-sosofo elemnode))))
 
@@ -688,9 +690,11 @@
 				    (make entity-ref name: "nbsp")
 				    (make element gi: "A"
 					  attributes: (list
-						       (list "HREF" 
-							     (href-to 
-							      prev)))
+						       (list "HREF"
+							     (href-to
+							      prev))
+						       (list "ACCESSKEY"
+							     "P"))
 					  (gentext-nav-prev prev))))
 			  (make element gi: "TD"
 				attributes: (list
@@ -701,8 +705,8 @@
 				    (make entity-ref name: "nbsp")
 				    (make element gi: "A"
 					  attributes: (list
-						       (list "HREF" 
-							     (href-to 
+						       (list "HREF"
+							     (href-to
 							      prevsib)))
 					  (gentext-nav-prev-sibling prevsib))))
 			  (make element gi: "TD"
@@ -735,7 +739,9 @@
 					  attributes: (list
 						       (list "HREF" 
 							     (href-to
-							      next)))
+							      next))
+						       (list "ACCESSKEY"
+							     "N"))
 					  (gentext-nav-next next)))))))
     (if (or r1? r2?)
 	(make element gi: "DIV"
@@ -778,7 +784,9 @@
 					  attributes: (list
 						       (list "HREF" 
 							     (href-to 
-							      prev)))
+							      prev))
+						       (list "ACCESSKEY"
+							     "P"))
 					  (gentext-nav-prev prev))))
 			  (make element gi: "TD"
 				attributes: (list
@@ -797,7 +805,9 @@
 					  attributes: (list
 						       (list "HREF" 
 							     (href-to
-							      next)))
+							      next))
+						       (list "ACCESSKEY"
+							     "N"))
 					  (gentext-nav-next next)))))))
     (if (or r1? r2?)
 	(make element gi: "DIV"
@@ -836,7 +846,8 @@
 		      (make sequence 
 			(make element gi: "A"
 			      attributes: (list
-					   (list "HREF" (href-to next)))
+					   (list "HREF" (href-to next))
+					   (list "ACCESSKEY" "N"))
 			      (gentext-nav-next next))))
 
 		  (if (node-list-empty? prev)
@@ -847,7 +858,8 @@
 			    (literal ", "))
 			(make element gi: "A"
 			      attributes: (list
-					   (list "HREF" (href-to prev)))
+					   (list "HREF" (href-to prev))
+					   (list "ACCESSKEY" "P"))
 			      (gentext-nav-prev prev))))
 		  
 		  (if (node-list-empty? nextsib)
@@ -919,7 +931,9 @@
 				   (make element gi: "A"
 					 attributes: (list
 						      (list "HREF" (href-to
-								    prev)))
+								    prev))
+						      (list "ACCESSKEY"
+							    "P"))
 					 (gentext-nav-prev prev))))
 			 (make element gi: "TD"
 			       attributes: (list
@@ -937,7 +951,9 @@
 				   (make element gi: "A"
 					 attributes: (list
 						      (list "HREF" (href-to
-								    next)))
+								    next))
+						      (list "ACCESSKEY"
+							    "N"))
 					 (gentext-nav-next next))))))
 	(r2-sosofo (make element gi: "TR"
 			 (make element gi: "TD"
@@ -1008,7 +1024,8 @@
 	    (make sequence
 	      (make element gi: "A"
 		    attributes: (list
-				 (list "HREF" (href-to prev)))
+				 (list "HREF" (href-to prev))
+				 (list "ACCESSKEY" "P"))
 		    (gentext-nav-prev prev))
 	      (literal ": " (element-title-string prev))
 	      (make empty-element gi: "BR")))
@@ -1018,7 +1035,8 @@
 	    (make sequence
 	      (make element gi: "A"
 		    attributes: (list
-				 (list "HREF" (href-to next)))
+				 (list "HREF" (href-to next))
+				 (list "ACCESSKEY" "N"))
 		    (gentext-nav-next next))
 	      (literal ": " (element-title-string next))
 	      (make empty-element gi: "BR")))))

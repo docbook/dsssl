@@ -5,4 +5,4 @@ collateindex.pl.1: collateindex.pl
 		--release="docbook-dsssl v$(shell cat ../VERSION)" $< > $@
 
 clean:
-	rm -f collateindex.pl.1
+	rm -f collateindex.pl.1 *~ *.bak .#*

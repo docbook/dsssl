@@ -83,3 +83,4 @@ clean:
 	$(MAKE) -C html $@
 	$(MAKE) -C print $@
 	$(MAKE) -C bin $@
+	rm -f WhatsNew ChangeLog *~ *.bak .#*

@@ -39,5 +39,5 @@ htmlpr/dbparam.sgm printpr/dbparam.sgm libref/dblib.sgm:
 
 clean:
 	rm -f *.html *.htm lib/*.html lib/*.htm print/*.html print/*.htm \
-		html/*.html html/*.htm
+		html/*.html html/*.htm *~ *.bak .#*
 

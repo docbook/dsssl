@@ -1304,7 +1304,7 @@
   ;; /REFENTRY
   "../images/")
 
-(define admon-graphic-default-extension
+(define %admon-graphics-extension%
   ;; REFENTRY admon-graphic-default-extension
   ;; PURP Admonition graphic file extension
   ;; DESC
@@ -1328,25 +1328,25 @@
   (cond ((equal? (gi nd) (normalize "tip"))
 	 (string-append %admon-graphics-path%
 			(string-append "tip"
-				       admon-graphic-default-extension)))
+				       %admon-graphics-extension%)))
 	((equal? (gi nd) (normalize "note"))
 	 (string-append %admon-graphics-path%
 			(string-append "note"
-				       admon-graphic-default-extension)))
+				       %admon-graphics-extension%)))
 
 	((equal? (gi nd) (normalize "important"))
 	 (string-append %admon-graphics-path%
 			(string-append "important"
-				       admon-graphic-default-extension)))
+				       %admon-graphics-extension%)))
 
 	((equal? (gi nd) (normalize "caution"))
 	 (string-append %admon-graphics-path%
 			(string-append "caution"
-				       admon-graphic-default-extension)))
+				       %admon-graphics-extension%)))
 	((equal? (gi nd) (normalize "warning"))
 	 (string-append %admon-graphics-path%
 			(string-append "warning"
-				       admon-graphic-default-extension)))
+				       %admon-graphics-extension%)))
 	(else (error (string-append (gi nd) " is not an admonition.")))))
 
 (define ($admon-graphic-width$ #!optional (nd (current-node)))

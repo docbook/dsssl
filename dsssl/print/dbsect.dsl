@@ -121,7 +121,7 @@
 	(element-title-sosofo (current-node)))
       (with-mode section-title-mode
 	(process-node-list subtitles))
-      ($section-info$ info))))
+      ($proc-section-info$ info))))
 
 (mode section-title-mode
   (element subtitle
@@ -154,7 +154,7 @@
 	(process-children))))
 )
 
-(define ($section-info$ info)
+(define ($proc-section-info$ info)
   (cond ((equal? (gi) (normalize "sect1"))
 	 ($sect1-info$ info))
 	((equal? (gi) (normalize "sect2"))
@@ -165,6 +165,8 @@
 	 ($sect4-info$ info))
 	((equal? (gi) (normalize "sect5"))
 	 ($sect5-info$ info))
+	((equal? (gi) (normalize "section"))
+	 ($section-info$ info))
 	((equal? (gi) (normalize "refsect1"))
 	 ($refsect1-info$ info))
 	((equal? (gi) (normalize "refsect2"))
@@ -178,6 +180,7 @@
 (define ($sect3-info$ info) (empty-sosofo))
 (define ($sect4-info$ info) (empty-sosofo))
 (define ($sect5-info$ info) (empty-sosofo))
+(define ($section-info$ info) (empty-sosofo))
 (define ($refsect1-info$ info) (empty-sosofo))
 (define ($refsect2-info$ info) (empty-sosofo))
 (define ($refsect3-info$ info) (empty-sosofo))

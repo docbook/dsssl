@@ -10,11 +10,13 @@ db_title "Modular DocBook DSSSL Stylesheets"
 # we don't care to group these, and all have the same priority
 questions=(show-comments set-papersize html-ext use-id-as-filename \
            body-start-indent visual-acuity title-font-family)
+priorities=(medium medium low medium \
+            medium medium medium)
 upbound=$((${#questions[*]} + 1))
 
 STATE=1
 while [ "$STATE" != 0 -a "$STATE" != $upbound ]; do
-    db_input medium docbook-dsssl/${questions[$STATE + 1]} || true
+    db_input ${priorities[$STATE + 1]:-medium} docbook-dsssl/${questions[$STATE + 1]} || true
 	
     if db_go; then
 	STATE=$(($STATE + 1))

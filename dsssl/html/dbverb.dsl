@@ -92,7 +92,10 @@
 	      (make element gi: "TR"
 		    (make element gi: "TD"
 			  content)))
-	content)))
+	(make sequence
+	  (para-check)
+	  content
+	  (para-check 'restart)))))
 
 (define ($verbatim-line-by-line$ indent line-numbers?)
   (make sequence

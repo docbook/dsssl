@@ -74,4 +74,6 @@ else
 endif
 
 clean:
-	$(MAKE) -C doc clean
+	$(MAKE) -C doc $@
+	$(MAKE) -C docsrc $@
+	$(MAKE) -C common $@

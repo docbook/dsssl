@@ -266,7 +266,7 @@
 			 1)))
     (string-append
      (if (and (> author-count 1)
-	      (last-sibling? author))
+	      (absolute-last-sibling? author))
 	 (string-append (gentext-and) " ")
 	 "")
 
@@ -280,7 +280,7 @@
 		 ""))
 	 "")
      (if (and (> author-count 1)
-	      (not (last-sibling? author)))
+	      (not (absolute-last-sibling? author)))
 	 " "
 	 ""))))
 

@@ -721,10 +721,19 @@
       (process-children)))
 
   (element othercredit
-    (make paragraph
-      use: set-titlepage-recto-style
-      quadding: %division-title-quadding%
-      (process-children)))
+    (let ((author-name  (author-string))
+	  (author-affil (select-elements (children (current-node)) 
+					 (normalize "affiliation"))))
+      (make sequence      
+	(make paragraph
+          use: set-titlepage-recto-style
+	  font-size: (HSIZE 3)
+	  line-spacing: (* (HSIZE 3) %line-spacing-factor%)
+	  space-before: (* (HSIZE 2) %head-before-factor%)
+	  quadding: %division-title-quadding%
+	  keep-with-next?: #t
+	  (literal author-name))
+	(process-node-list author-affil))))
 
   (element othername
     (make paragraph
@@ -1186,9 +1195,18 @@
       (process-children)))
 
   (element othercredit
-    (make paragraph
-      use: set-titlepage-verso-style
-      (process-children)))
+    ;; Print the author name.  Handle the case where there's no AUTHORGROUP
+    (let ((in-group (have-ancestor? (normalize "authorgroup") (current-node))))
+      (if (not in-group)
+	  (make paragraph
+	    ;; Hack to get the spacing right below the author name line...
+	    space-after: (* %bf-size% %line-spacing-factor%)
+	    (make sequence
+	      (literal (gentext-by))
+	      (literal "\no-break-space;")
+	      (literal (author-list-string))))
+	  (make sequence 
+	    (literal (author-list-string))))))  
 
   (element othername
     (make paragraph
@@ -2047,10 +2065,19 @@
       (process-children)))
 
   (element othercredit
-    (make paragraph
-      use: book-titlepage-recto-style
-      quadding: %division-title-quadding%
-      (process-children)))
+    (let ((author-name  (author-string))
+	  (author-affil (select-elements (children (current-node)) 
+					 (normalize "affiliation"))))
+      (make sequence      
+	(make paragraph
+	  use: book-titlepage-recto-style
+	  font-size: (HSIZE 3)
+	  line-spacing: (* (HSIZE 3) %line-spacing-factor%)
+	  space-before: (* (HSIZE 2) %head-before-factor%)
+	  quadding: %division-title-quadding%
+	  keep-with-next?: #t
+	  (literal author-name))
+	(process-node-list author-affil))))
 
   (element othername
     (make paragraph
@@ -2515,9 +2542,18 @@
       (process-children)))
 
   (element othercredit
-    (make paragraph
-      use: book-titlepage-verso-style
-      (process-children)))
+    ;; Print the author name.  Handle the case where there's no AUTHORGROUP
+    (let ((in-group (have-ancestor? (normalize "authorgroup") (current-node))))
+      (if (not in-group)
+	  (make paragraph
+	    ;; Hack to get the spacing right below the author name line...
+	    space-after: (* %bf-size% %line-spacing-factor%)
+	    (make sequence
+	      (literal (gentext-by))
+	      (literal "\no-break-space;")
+	      (literal (author-list-string))))
+	  (make sequence 
+	    (literal (author-list-string))))))  
 
   (element othername
     (make paragraph
@@ -3377,10 +3413,19 @@
       (process-children)))
 
   (element othercredit
-    (make paragraph
-      use: part-titlepage-recto-style
-      quadding: %division-title-quadding%
-      (process-children)))
+    (let ((author-name  (author-string))
+	  (author-affil (select-elements (children (current-node)) 
+					 (normalize "affiliation"))))
+      (make sequence      
+	(make paragraph
+          use: part-titlepage-recto-style
+	  font-size: (HSIZE 3)
+	  line-spacing: (* (HSIZE 3) %line-spacing-factor%)
+	  space-before: (* (HSIZE 2) %head-before-factor%)
+	  quadding: %division-title-quadding%
+	  keep-with-next?: #t
+	  (literal author-name))
+	(process-node-list author-affil))))
 
   (element othername
     (make paragraph
@@ -3847,9 +3892,18 @@
       (process-children)))
 
   (element othercredit
-    (make paragraph
-      use: part-titlepage-verso-style
-      (process-children)))
+    ;; Print the author name.  Handle the case where there's no AUTHORGROUP
+    (let ((in-group (have-ancestor? (normalize "authorgroup") (current-node))))
+      (if (not in-group)
+	  (make paragraph
+	    ;; Hack to get the spacing right below the author name line...
+	    space-after: (* %bf-size% %line-spacing-factor%)
+	    (make sequence
+	      (literal (gentext-by))
+	      (literal "\no-break-space;")
+	      (literal (author-list-string))))
+	  (make sequence 
+	    (literal (author-list-string))))))  
 
   (element othername
     (make paragraph
@@ -4678,10 +4732,19 @@
       (process-children)))
 
   (element othercredit
-    (make paragraph
-      use: article-titlepage-recto-style
-      quadding: %article-title-quadding%
-      (process-children)))
+    (let ((author-name  (author-string))
+	  (author-affil (select-elements (children (current-node)) 
+					 (normalize "affiliation"))))
+      (make sequence      
+	(make paragraph
+          use: article-titlepage-recto-style
+	  font-size: (HSIZE 3)
+	  line-spacing: (* (HSIZE 3) %line-spacing-factor%)
+	  space-before: (* (HSIZE 2) %head-before-factor%)
+	  quadding: %article-title-quadding%
+	  keep-with-next?: #t
+	  (literal author-name))
+	(process-node-list author-affil))))
 
   (element othername
     (make paragraph
@@ -5142,9 +5205,18 @@
       (process-children)))
 
   (element othercredit
-    (make paragraph
-      use: article-titlepage-verso-style
-      (process-children)))
+    ;; Print the author name.  Handle the case where there's no AUTHORGROUP
+    (let ((in-group (have-ancestor? (normalize "authorgroup") (current-node))))
+      (if (not in-group)
+	  (make paragraph
+	    ;; Hack to get the spacing right below the author name line...
+	    space-after: (* %bf-size% %line-spacing-factor%)
+	    (make sequence
+	      (literal (gentext-by))
+	      (literal "\no-break-space;")
+	      (literal (author-list-string))))
+	  (make sequence 
+	    (literal (author-list-string))))))  
 
   (element othername
     (make paragraph
@@ -6012,10 +6084,19 @@
       (process-children)))
 
   (element othercredit
-    (make paragraph
-      use: reference-titlepage-recto-style
-      quadding: %division-title-quadding%
-      (process-children)))
+    (let ((author-name  (author-string))
+	  (author-affil (select-elements (children (current-node)) 
+					 (normalize "affiliation"))))
+      (make sequence      
+	(make paragraph
+	  use: reference-titlepage-recto-style
+	  font-size: (HSIZE 3)
+	  line-spacing: (* (HSIZE 3) %line-spacing-factor%)
+	  space-before: (* (HSIZE 2) %head-before-factor%)
+	  quadding: %division-title-quadding%
+	  keep-with-next?: #t
+	  (literal author-name))
+	(process-node-list author-affil))))
 
   (element othername
     (make paragraph
@@ -6481,9 +6562,18 @@
       (process-children)))
 
   (element othercredit
-    (make paragraph
-      use: reference-titlepage-verso-style
-      (process-children)))
+    ;; Print the author name.  Handle the case where there's no AUTHORGROUP
+    (let ((in-group (have-ancestor? (normalize "authorgroup") (current-node))))
+      (if (not in-group)
+	  (make paragraph
+	    ;; Hack to get the spacing right below the author name line...
+	    space-after: (* %bf-size% %line-spacing-factor%)
+	    (make sequence
+	      (literal (gentext-by))
+	      (literal "\no-break-space;")
+	      (literal (author-list-string))))
+	  (make sequence 
+	    (literal (author-list-string))))))  
 
   (element othername
     (make paragraph

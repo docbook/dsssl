@@ -32,7 +32,7 @@
     (make element gi: "A"
 	  attributes: (list
 		       (list "HREF" href))
-	  ($footnote-literal$ (current-node)))))
+	  ($footnote-literal$ target))))
 
 (define (count-footnote? footnote)
   ;; don't count footnotes in comments (unless you're showing comments)
@@ -64,7 +64,7 @@
                      (list "CLASS" "footnote"))
         (literal
          (string-append
-          "[" ($footnote-number$ target) "]"))))
+          "[" ($footnote-number$ node) "]"))))
 
 (define ($table-footnote-number$ footnote)
   (let* ((chunk (ancestor (normalize "tgroup") footnote))

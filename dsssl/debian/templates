@@ -1,7 +1,7 @@
 Template: docbook-dsssl/show-comments
 Type: boolean
 Default: true
-Description: Show contents of comments?
+_Description: Show contents of comments?
  Should the contents of DocBook 'remark' and 'comment' elements be
  displayed in the HTML and print output that is produced?
 
@@ -9,9 +9,9 @@ Template: docbook-dsssl/set-papersize
 Type: select
 Choices: do not set, A4, A4landscape, USletter, USlandscape, LC_PAPER, paperconf
 Default: LC_PAPER
-Description: Print paper size
- Which papersize you would like to produce by default when
- producing print output?
+_Description: Print paper size
+ Which papersize you would like to produce by default when producing print
+ output?
  .
    do not set:   do not set paper size at all
    A4:           A4 paper
@@ -25,28 +25,28 @@ Template: docbook-dsssl/html-ext
 Type: select
 Choices: .html, .htm
 Default: .html
-Description: Choose default HTML suffix.
+_Description: Choose default HTML suffix.
  Choose the suffix for HTML files.
 
 Template: docbook-dsssl/use-id-as-filename
 Type: boolean
 Default: true
-Description: Use document ID as HTML filename?
- Should the ID of the SGML or XML document be used for figuring out a
- file name?  If not, file names will be chosen as a first letter then
- a sequence of numbers.
+_Description: Use document ID as HTML filename?
+ Should the ID of the SGML or XML document be used for figuring out a file
+ name?  If not, file names will be chosen as a first letter then a sequence
+ of numbers.
 
 Template: docbook-dsssl/body-start-indent
 Type: boolean
 Default: false
-Description: Indent the body of printed documents?
+_Description: Indent the body of printed documents?
  Should the textual body of a printed document be indented?
 
 Template: docbook-dsssl/visual-acuity
 Type: select
 Choices: tiny, normal, presbyopic, large-type
 Default: normal
-Description: Size of the text in printed documents.
+_Description: Size of the text in printed documents.
  Choose the default size of text in printed documents.  Several other
  values (body font size and margins) have default values that vary
  depending on this setting.
@@ -60,8 +60,7 @@ Template: docbook-dsssl/title-font-family
 Type: select
 Choices: Arial, Times New Roman, %body-font-family%
 Default: %body-font-family%
-Description: Title font for printed documents.
+_Description: Title font for printed documents.
  Choose the default font family for printed documents.  The
- '%body-font-family%' setting makes the title font family be the same
- as the font used for the textual content of the document.
-
+ '%body-font-family%' setting makes the title font family be the same as
+ the font used for the textual content of the document.

@@ -3,7 +3,7 @@ Section: text
 Priority: optional
 Maintainer: Adam Di Carlo <aph@debian.org>
 Standards-Version: 3.5.8
-Build-Depends-Indep: debhelper, sgml-data (>= 1.5.4), perl, m4
+Build-Depends-Indep: debhelper (>= 4.1.16), sgml-data (>= 1.5.4), perl, m4
 
 Package: docbook-dsssl
 Architecture: all

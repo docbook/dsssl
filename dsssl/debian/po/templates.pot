@@ -1,0 +1,129 @@
+#
+#    Translators, if you are not familiar with the PO format, gettext
+#    documentation is worth reading, especially sections dedicated to
+#    this format, e.g. by running:
+#         info -n '(gettext)PO Files'
+#         info -n '(gettext)Header Entry'
+#
+#    Some information specific to po-debconf are available at
+#            /usr/share/doc/po-debconf/README-trans
+#         or http://www.debian.org/intl/l10n/po-debconf/README-trans
+#
+#    Developers do not need to manually edit POT or PO files.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2003-03-20 22:41-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Description
+#: ../templates:4
+msgid "Show contents of comments?"
+msgstr ""
+
+#. Description
+#: ../templates:4
+msgid ""
+"Should the contents of DocBook 'remark' and 'comment' elements be displayed "
+"in the HTML and print output that is produced?"
+msgstr ""
+
+#. Description
+#: ../templates:12
+msgid "Print paper size"
+msgstr ""
+
+#. Description
+#: ../templates:12
+msgid ""
+"Which papersize you would like to produce by default when producing print "
+"output?"
+msgstr ""
+
+#. Description
+#: ../templates:12
+msgid ""
+"  do not set:   do not set paper size at all\n"
+"  A4:           A4 paper\n"
+"  A4landscape:  A4 paper, landscape mode\n"
+"  USletter:     US letter paper\n"
+"  USlandscape:  US letter paper, landscape mode\n"
+"  LC_PAPER:     use output from 'locale LC_PAPER'\n"
+"  paperconf:    use 'paperconf' from the libpaperg package"
+msgstr ""
+
+#. Description
+#: ../templates:28
+msgid "Choose default HTML suffix."
+msgstr ""
+
+#. Description
+#: ../templates:28
+msgid "Choose the suffix for HTML files."
+msgstr ""
+
+#. Description
+#: ../templates:34
+msgid "Use document ID as HTML filename?"
+msgstr ""
+
+#. Description
+#: ../templates:34
+msgid ""
+"Should the ID of the SGML or XML document be used for figuring out a file "
+"name?  If not, file names will be chosen as a first letter then a sequence "
+"of numbers."
+msgstr ""
+
+#. Description
+#: ../templates:42
+msgid "Indent the body of printed documents?"
+msgstr ""
+
+#. Description
+#: ../templates:42
+msgid "Should the textual body of a printed document be indented?"
+msgstr ""
+
+#. Description
+#: ../templates:49
+msgid "Size of the text in printed documents."
+msgstr ""
+
+#. Description
+#: ../templates:49
+msgid ""
+"Choose the default size of text in printed documents.  Several other values "
+"(body font size and margins) have default values that vary depending on this "
+"setting."
+msgstr ""
+
+#. Description
+#: ../templates:49
+msgid ""
+"  tiny:       very small font (8pt)\n"
+"  normal:     standard document size (10pt)\n"
+"  presbyopic: a slightly more generous size (12pt)\n"
+"  large-type: quite large (24pt)"
+msgstr ""
+
+#. Description
+#: ../templates:63
+msgid "Title font for printed documents."
+msgstr ""
+
+#. Description
+#: ../templates:63
+#, no-c-format
+msgid ""
+"Choose the default font family for printed documents.  The '%body-font-family"
+"%' setting makes the title font family be the same as the font used for the "
+"textual content of the document."
+msgstr ""

@@ -36,8 +36,12 @@ common/catalog:
 %/ChangeLog:
 	(cd $* && cvs2cl)
 
+debian/po/templates.pot: debian/templates
+	debconf-updatepo
+
 build:	bin/collateindex.pl.1 common/catalog \
-	common/ChangeLog lib/ChangeLog olink/ChangeLog html/ChangeLog print/ChangeLog
+	common/ChangeLog lib/ChangeLog olink/ChangeLog html/ChangeLog print/ChangeLog \
+	debian/po/templates.pot
 
 clean:
 	dh_testdir

@@ -267,18 +267,21 @@
 
 (element (table title) (empty-sosofo))
 
-(element comment
+;; remark and comment use the same rendering
+(define ($remark$)
   (if %show-comments%
-      (make element gi: "P"
-	    attributes: '(("CLASS" "COMMENT"))
-	    (process-children))
+      (let ((inpara (equal? (gi (parent (current-node))) (normalize "para"))))
+        (if inpara
+            (make element gi: "SPAN"
+                  attributes: '(("CLASS" "COMMENT"))
+                  (process-children))
+            (make element gi: "P"
+                  attributes: '(("CLASS" "COMMENT"))
+                  (process-children))))
       (empty-sosofo)))
 
+(element comment ($remark$))
+
 ;; In DocBook V4.0 comment became remark
-(element remark
-  (if %show-comments%
-      (make element gi: "P"
-	    attributes: '(("CLASS" "COMMENT"))
-	    (process-children))
-      (empty-sosofo)))
+(element remark ($remark$))
 

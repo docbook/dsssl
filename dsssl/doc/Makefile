@@ -34,5 +34,6 @@ lib/index.html: dblib.sgm libref/dblib.sgm
 	$(JADE) sgml ../docsrc/doc.dsl $< -V use-output-dir
 
 clean:
-	rm -f *.html *.htm lib/*.html print/*.html html/*.html
+	rm -f *.html *.htm lib/*.html lib/*.htm print/*.html print/*.htm \
+		html/*.html html/*.htm
 

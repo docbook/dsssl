@@ -1,3 +1,9 @@
+docbook-dsssl (1.78-2) unstable; urgency=low
+
+  * fix README
+
+ --
+
 docbook-dsssl (1.78-1) unstable; urgency=low
 
   * new upstream release; a number of problems are either fixed in this

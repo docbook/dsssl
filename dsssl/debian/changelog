@@ -4,8 +4,10 @@ docbook-dsssl (1.78-2) unstable; urgency=low
   * debconf: "Show contents of comments?" wording fixed;
     closes: #185124
   * i18n of debian/templates; closes: #184870
+  * fix synopsis according to best pactices; remove author link from
+    description
 
- -- Adam Di Carlo <aph@debian.org>  Thu, 20 Mar 2003 22:45:05 -0500
+ -- Adam Di Carlo <aph@debian.org>  Thu, 20 Mar 2003 23:43:03 -0500
 
 docbook-dsssl (1.78-1) unstable; urgency=low
 

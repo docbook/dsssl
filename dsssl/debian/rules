@@ -17,6 +17,8 @@ wwwdir		:= $(prefix)/var/www
 dsssldir	:= $(sgmldir)/stylesheet/dsssl/modular
 dssslcompatlnk	:= $(prefix)/usr/lib/sgml/stylesheet/dsssl/docbook/nwalsh
 dssslcompatlnkto:= ../../../../../share/sgml/docbook/stylesheet/dsssl/modular
+confdir		:= $(prefix)/etc/sgml/$(package)
+conftemplatedir	:= $(prefix)/usr/share/$(package)/conf-templates
 
 # build abstraction
 install_file	:= install -o root -g root -m 644 -p
@@ -45,8 +47,11 @@ clean:
 	rm -f debian/postinst
 	dh_clean
 
+debian/postinst: debian/postinst.m4 debian/rules
+	perl -p -e "s/M4package/$(package)/g; s|M4DTDDIR|$(subst $(prefix),,$(dsssldir))|g; s|M4CONFDIR|$(subst $(prefix),,$(confdir))|g; s|M4CONFTEMPLATEDIR|$(subst $(prefix),,$(conftemplatedir))|g; s|M4ORDCATS|catalog common/catalog|g; s|M4IMAGEDIR|$(subst $(prefix),,$(dsssldir))/images|g;" $< > $@
+
 # Build architecture-independent files here.
-binary-indep: build
+binary-indep: build debian/postinst
 	dh_testdir
 	dh_testroot
 	dh_clean -k
@@ -62,9 +67,15 @@ binary-indep: build
 		$(install_file) $$file $(dsssldir)/$$file; \
 	done
 
-#	 hack default file extension, try to avoid patching source
-	perl -pi -e 's/"\.htm"/".html"/' $(dsssldir)/html/dbparam.dsl
+##
+##	 site configuration
+##
+	$(make_directory) $(confdir)/html $(confdir)/print
+	$(make_directory) $(conftemplatedir)
+	$(install_file) debian/html-siteconfig.dsl debian/print-siteconfig.dsl $(conftemplatedir)
+
 #	 hack location of admonition graphics in print output
+#	 FIXME: move to debconf/postinst
 	perl -pi -e 's|"\.\./images/"\)|"$(subst $(prefix),,$(dsssldir))/images/"\)|;' \
 		$(dsssldir)/print/dbparam.dsl
 #	 same for location of admonition and callout graphics in html output, but
@@ -72,6 +83,7 @@ binary-indep: build
 	perl -pi -e 's|"\.\./images/"\)|"/$(package)/"\)|; \
 		     s|"\.\./images/callouts/"\)|"/$(package)/callouts/"\)|;' \
 		$(dsssldir)/html/dbparam.dsl
+
 	$(make_directory) $(wwwdir)
 	ln -s $(subst $(prefix),,$(dsssldir))/images $(wwwdir)/$(package)
 
@@ -97,6 +109,7 @@ binary-indep: build
 	$(install_file) print/ChangeLog $(docdir)/print/
 
 	dh_installchangelogs -p$(package) ChangeLog
+	dh_installdebconf -p$(package)
 
 #	 experimental frame support
 	$(install_file) `find frames -maxdepth 1 -type f` $(docdir)/frames/
@@ -112,11 +125,6 @@ binary-indep: build
 	$(install_file) bin/collateindex.pl.1 $(mandir)/man1
 
 	dh_compress -i
-
-#	 build the maintainer scripts
-	m4 --define=M4package=$(package) --define=M4DTDDIR=$(subst $(prefix),,$(dsssldir)) \
-	   --define=M4ORDCATS="catalog common/catalog" \
-	   debian/postinst.m4 > debian/postinst
 
 #	 check that maintainer scripts are good
 	sh -n debian/postinst
@@ -138,6 +146,8 @@ source diff:
 
 binary: binary-indep binary-arch
 .PHONY: clean binary-indep binary-arch binary
+
+.DELETE_ON_ERROR:
 
 #Local variables:
 #mode: makefile

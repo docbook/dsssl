@@ -7,10 +7,9 @@ Build-Depends-Indep: debhelper, sgml-data (>= 1.5.4), perl, m4
 
 Package: docbook-dsssl
 Architecture: all
-Depends: jade | openjade, docbook (>= 3.1), sgml-base (>= 1.09), sgml-data, ${perl:Depends}
+Depends: jade | openjade, docbook (>= 3.1), sgml-base (>= 1.09), sgml-data, ${perl:Depends}, ${misc:Depends}
 Suggests: jadetex, docbook-dsssl-doc, apache | httpd
 Conflicts: docbook-stylesheets
-Provides: docbook-stylesheets
 Replaces: docbook-stylesheets
 Description: Modular DocBook DSSSL stylesheets, for print and HTML
  This package provides DSSSL stylesheets which let you convert DocBook

@@ -916,6 +916,10 @@
       (with-mode title-mode
 	(process-children-trim))))
 
+  (element formalpara ($para-container$))
+  (element (formalpara title) ($runinhead$))
+  (element (formalpara para) (make sequence (process-children)))
+
   (element titleabbrev (empty-sosofo))
 
   (element volumenum
@@ -1345,6 +1349,10 @@
       font-weight: 'bold
       (with-mode title-mode
 	(process-children))))
+
+  (element formalpara ($para-container$))
+  (element (formalpara title) ($runinhead$))
+  (element (formalpara para) (make sequence (process-children)))
 
   (element titleabbrev (empty-sosofo))
 
@@ -2214,6 +2222,10 @@
       (with-mode title-mode
 	(process-children-trim))))
 
+  (element formalpara ($para-container$))
+  (element (formalpara title) ($runinhead$))
+  (element (formalpara para) (make sequence (process-children)))
+
   (element titleabbrev (empty-sosofo))
 
   (element volumenum
@@ -2646,6 +2658,10 @@
       font-weight: 'bold
       (with-mode title-mode
 	(process-children))))
+
+  (element formalpara ($para-container$))
+  (element (formalpara title) ($runinhead$))
+  (element (formalpara para) (make sequence (process-children)))
 
   (element titleabbrev (empty-sosofo))
 
@@ -3522,6 +3538,10 @@
 	(with-mode title-mode
 	  (process-children)))))
 
+  (element formalpara ($para-container$))
+  (element (formalpara title) ($runinhead$))
+  (element (formalpara para) (make sequence (process-children)))
+
   (element titleabbrev (empty-sosofo))
 
   (element volumenum
@@ -3956,6 +3976,10 @@
 		     (gentext-label-title-sep (gi division))))
 	(with-mode title-mode
 	  (process-children)))))
+
+  (element formalpara ($para-container$))
+  (element (formalpara title) ($runinhead$))
+  (element (formalpara para) (make sequence (process-children)))
 
   (element titleabbrev (empty-sosofo))
 
@@ -4786,6 +4810,10 @@
       (with-mode title-mode
 	(process-children-trim))))
 
+  (element formalpara ($para-container$))
+  (element (formalpara title) ($runinhead$))
+  (element (formalpara para) (make sequence (process-children)))
+
   (element titleabbrev (empty-sosofo))
 
   (element volumenum
@@ -5218,6 +5246,10 @@
       font-weight: 'bold
       (with-mode title-mode
 	(process-children))))
+
+  (element formalpara ($para-container$))
+  (element (formalpara title) ($runinhead$))
+  (element (formalpara para) (make sequence (process-children)))
 
   (element titleabbrev (empty-sosofo))
 
@@ -6098,6 +6130,10 @@
 	(with-mode title-mode
 	  (process-children)))))
 
+  (element formalpara ($para-container$))
+  (element (formalpara title) ($runinhead$))
+  (element (formalpara para) (make sequence (process-children)))
+
   (element titleabbrev (empty-sosofo))
 
   (element volumenum
@@ -6531,6 +6567,10 @@
 		 (gentext-label-title-sep (gi ref)))
 	(with-mode title-mode
 	  (process-children)))))
+
+  (element formalpara ($para-container$))
+  (element (formalpara title) ($runinhead$))
+  (element (formalpara para) (make sequence (process-children)))
 
   (element titleabbrev (empty-sosofo))
 

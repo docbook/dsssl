@@ -667,6 +667,8 @@
 		(empty-sosofo))
 	    (with-mode title-mode
 	      (process-children-trim)))))
+
+  (element (formalpara title) ($runinhead$))
 )
 
 (mode set-titlepage-verso-mode
@@ -844,6 +846,8 @@
 	  attributes: (list (list "CLASS" (gi)))
 	  (with-mode title-mode
 	    (process-children))))
+
+  (element (formalpara title) ($runinhead$))
 )
 
 ;; == Title pages for BOOKs =============================================
@@ -1574,6 +1578,8 @@
 	    (with-mode title-mode
 	      (process-children-trim)))))
 
+  (element (formalpara title) ($runinhead$))
+
   (element titleabbrev (empty-sosofo))
   
   (element volumenum
@@ -2009,6 +2015,8 @@
 	  attributes: (list (list "CLASS" (gi)))
 	  (with-mode title-mode
 	    (process-children))))
+
+  (element (formalpara title) ($runinhead$))
 
   (element titleabbrev (empty-sosofo))
   
@@ -2528,6 +2536,8 @@
 			 (gentext-label-title-sep (gi division))))
 	    (with-mode title-mode
 	      (process-children)))))
+
+  (element (formalpara title) ($runinhead$))
 )
 
 (mode part-titlepage-verso-mode
@@ -2705,6 +2715,8 @@
 	  attributes: (list (list "CLASS" (gi)))
 	  (with-mode title-mode
 	    (process-children))))
+
+  (element (formalpara title) ($runinhead$))
 )
 
 ;; == Title pages for ARTICLEs ==========================================
@@ -3428,6 +3440,8 @@
 	    (with-mode title-mode
 	      (process-children-trim)))))
 
+  (element (formalpara title) ($runinhead$))
+
   (element titleabbrev
     (make element gi: "SPAN"
 	  attributes: (list (list "CLASS" (gi)))
@@ -3867,6 +3881,8 @@
 	  attributes: (list (list "CLASS" (gi)))
 	  (with-mode title-mode
 	    (process-children))))
+
+  (element (formalpara title) ($runinhead$))
 
   (element titleabbrev
     (make element gi: "SPAN"
@@ -4387,6 +4403,8 @@
 		     (gentext-label-title-sep (gi ref)))
 	    (with-mode title-mode
 	      (process-children)))))
+
+  (element (formalpara title) ($runinhead$))
 )
 
 (mode reference-titlepage-verso-mode
@@ -4564,4 +4582,6 @@
 	  attributes: (list (list "CLASS" (gi)))
 	  (with-mode title-mode
 	    (process-children))))
+
+  (element (formalpara title) ($runinhead$))
 )

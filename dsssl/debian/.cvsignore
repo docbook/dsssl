@@ -1,5 +1,5 @@
+docbook-dsssl
 files
 postinst
-postrm.debhelper
+p*.debhelper
 substvars
-tmp

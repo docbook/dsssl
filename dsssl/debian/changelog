@@ -12,8 +12,9 @@ docbook-dsssl (1.78-3) unstable; urgency=low
     not recreated on upgrade; this allows the local system administrator
     to remove the symlink if they prefer; closes: #184962
   * rules: minor cleanups and redundancy removal
+  * debhelper 4 compatability mode
 
- -- Adam Di Carlo <aph@debian.org>  Sat, 22 Mar 2003 13:20:06 -0500
+ -- Adam Di Carlo <aph@debian.org>  Sat, 22 Mar 2003 13:30:32 -0500
 
 docbook-dsssl (1.78-2) unstable; urgency=low
 

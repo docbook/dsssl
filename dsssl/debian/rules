@@ -8,7 +8,7 @@
 package		:= docbook-dsssl
 
 # directory abstraction
-prefix		:= debian/tmp
+prefix		:= debian/$(package)
 bindir		:= $(prefix)/usr/bin
 docdir		:= $(prefix)/usr/share/doc/$(package)
 sgmldir		:= $(prefix)/usr/share/sgml/docbook
@@ -96,7 +96,7 @@ binary-indep: build debian/postinst test
 	$(make_directory) `dirname $(dssslcompatlnk)`
 	ln -sf $(dssslcompatlnkto) $(dssslcompatlnk)
 
-	dh_installdocs -p$(package) BUGS README TODO $(wildcard WhatsNew)
+	dh_installdocs -i BUGS README TODO $(wildcard WhatsNew)
 #	 dsssl source refers to ../README
 	ln -s ../../../../../doc/$(package)/README $(dsssldir)/README
 
@@ -111,8 +111,8 @@ binary-indep: build debian/postinst test
 	$(install_file) html/ChangeLog $(docdir)/html/
 	$(install_file) print/ChangeLog $(docdir)/print/
 
-	dh_installchangelogs -p$(package) ChangeLog
-	dh_installdebconf -p$(package)
+	dh_installchangelogs -i ChangeLog
+	dh_installdebconf -i
 
 #	 experimental frame support
 	$(install_file) `find frames -maxdepth 1 -type f` $(docdir)/frames/

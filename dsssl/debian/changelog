@@ -1,3 +1,10 @@
+docbook-dsssl (1.77-cvs.2003.02.10) unstable; urgency=low
+
+  * more upstream fixes; a number of problems are either fixed in this
+    release or otherwise unreproducable; closes: #176283, #75000
+
+ -- Adam Di Carlo <aph@debian.org>  Mon, 10 Feb 2003 17:06:09 -0500
+
 docbook-dsssl (1.77-cvs.2003.02.06) unstable; urgency=low
 
   * more upstream fixes

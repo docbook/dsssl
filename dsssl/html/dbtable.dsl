@@ -119,8 +119,10 @@
 					  (normalize "colspec")))
 	       (reltotal 0))
       (if (node-list-empty? colspecs)
-	  (string-append (number->string (round (* (/ relative reltotal) 100))) "%")
-	  (loop (node-list-rest colspecs) 
+	  (if (equal? reltotal 0)
+	      ""
+	      (string-append (number->string (round (* (/ relative reltotal) 100))) "%"))
+	  (loop (node-list-rest colspecs)
 		(+ reltotal (cals-relative-colwidth 
 			     (colspec-colwidth 
 			      (node-list-first colspecs)))))))))

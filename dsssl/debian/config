@@ -1,9 +1,9 @@
-#!/bin/bash -e										     
+#!/bin/bash -e
 
 . /usr/share/debconf/confmodule
 
 db_version 2.0
-db_capb backup multiselect
+db_capb backup
 
 db_title "Modular DocBook DSSSL Stylesheets"
 
@@ -12,11 +12,11 @@ questions=(show-comments set-papersize html-ext use-id-as-filename \
            body-start-indent visual-acuity title-font-family)
 priorities=(medium medium low low \
             low medium low)
-upbound=$((${#questions[*]} + 1))
+upbound=$((${#questions[*]}))
 
-STATE=1
-while [ "$STATE" != 0 -a "$STATE" != $upbound ]; do
-    db_input ${priorities[$STATE + 1]:-medium} docbook-dsssl/${questions[$STATE + 1]} || true
+STATE=0
+while [ "$STATE" != -1 -a "$STATE" != $upbound ]; do
+    db_input ${priorities[$STATE]:-medium} docbook-dsssl/${questions[$STATE]} || true
 	
     if db_go; then
 	STATE=$(($STATE + 1))

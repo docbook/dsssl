@@ -173,7 +173,9 @@
 	       (colcount 1)
 	       (res (empty-sosofo)))
       (if (node-list-empty? kl)
-	  res
+	  (sosofo-append res
+			 ($look-for-callout$ linecount colcount #t)
+			 (empty-sosofo))
 	  (loop
 	   (node-list-rest kl)
 	   (if (char=? (node-property 'char (node-list-first kl)
@@ -188,16 +190,17 @@
 		   colcount
 		   (+ colcount 1)))
 	   (let ((c (node-list-first kl)))
-	     (if (char=? (node-property 'char c default: #\U-0000) 
+	     (if (char=? (node-property 'char c default: #\U-0000)
 			 #\U-000D)
 		 (sosofo-append res
 				($look-for-callout$ linecount colcount #t)
 				(process-node-list c)
-				($line-start$ indent 
+				($line-start$ indent
 					      line-numbers?
 					      (+ linecount 1)))
-		 (sosofo-append res 
+		 (sosofo-append res
 				($look-for-callout$ linecount colcount)
 				(process-node-list c)))))))))
 
 ;; EOF dbcallout.dsl
+

@@ -171,7 +171,13 @@
 	      (make empty-element gi: "HR")
 	      (empty-sosofo))
 
-	  (process-children)
+          ;; reset the mode to make processing of elements within an
+          ;; informal object not subject to whatever mode they would
+          ;; be in on the top level; e.g.,
+          ;; bookinfo-legalnotice-productname distinguished from
+          ;; bookinfo-productname
+          (with-mode #f
+            (process-children))
 
 	  (if rule-after?
 	      (make empty-element gi: "HR")
@@ -211,7 +217,14 @@
 	 (title-sosofo (make element gi: "P"
 			     (make element gi: "B"
 				   title-inline-sosofo)))
-	 (object-sosofo (process-children)))
+
+         ;; reset the mode to make processing of elements within an
+         ;; formal object not subject to whatever mode they would be
+         ;; in on the top level; e.g.,
+         ;; bookinfo-legalnotice-productname distinguished from
+         ;; bookinfo-productname
+	 (object-sosofo (with-mode #f
+                          (process-children))))
     (make element gi: "DIV" 
 	  attributes: (list
 		       (list "CLASS" (gi)))

@@ -531,7 +531,7 @@ sub print_term {
     if (keys %{$idx->{'zone'}}) {
 	foreach $key (keys %{$idx->{'zone'}}) {
 	    $href{$key} = $idx->{'zone'}->{$key};
-	    $phref{$key} = $idx->{'zone'}->{$key};
+	    $phref{$key} = $key;
 	}
     } else {
 	$href{$idx->{'href'}} = $idx->{'title'};
@@ -554,6 +554,7 @@ sub print_term {
 
 	$role = $phref{$key};
 	$role = $1 if $role =~ /\#(.*)$/;
+	$role = $1 if $role =~ /(.*)\./;
 
 	print OUT $indent;
 	print OUT "<ulink url=\"$linkend\" role=\"$role\">";

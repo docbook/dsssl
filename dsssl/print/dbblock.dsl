@@ -409,6 +409,8 @@
     (if (= (child-number) 1)
 	(make paragraph
 	  font-size: (* %footnote-size-factor% %bf-size%)
+	  font-posture: 'upright
+	  quadding: %default-quadding%
 	  line-spacing: (* (* %footnote-size-factor% %bf-size%)
 			   %line-spacing-factor%)
 	  space-before: %para-sep%
@@ -422,6 +424,8 @@
 	  (process-children-trim))
 	(make paragraph
 	  font-size: (* %footnote-size-factor% %bf-size%)
+	  font-posture: 'upright
+	  quadding: %default-quadding%
 	  line-spacing: (* (* %footnote-size-factor% %bf-size%)
 			   %line-spacing-factor%)
 	  space-before: %para-sep%

@@ -20,7 +20,7 @@ SOURCES=dbl1af.ent \
 
 all: $(SOURCES) dbl10n.dsl catalog
 
-dbl10n.dsl: dbl10n.template
+dbl10n.dsl: dbl10n.template dbl10n.pl
 	perl dbl10n.pl
 
 dbl1ptbr.ent dbl1zhcn.ent dbl1zhtw.ent:
@@ -39,4 +39,6 @@ catalog:	$(wildcard *.dsl)
 	grep "^ *PUBLIC" *.dsl | sed -e 's|^\(dbl1[^.]*\).dsl: *\(.*\)$$|\2 "\1.ent"|;' >> $@
 
 clean:
-	rm -f *.ent catalog
+	rm -f catalog
+#	 why not remove also  dbl10n.dsl?
+	rm -f $(filter-out dbl10n.ent,$(wildcard *.ent))

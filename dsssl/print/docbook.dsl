@@ -154,7 +154,7 @@
 </style-specification-body>
 </style-specification>
 
-<external-specification id="param" document="dbparam.dsl">
+<external-specification id="dbparam" document="dbparam.dsl">
 <external-specification id="dblib" document="dblib.dsl">
 
 <external-specification id="af" document="dbl1af">

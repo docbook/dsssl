@@ -13,17 +13,22 @@ Conflicts: docbook-stylesheets
 Provides: docbook-stylesheets
 Replaces: docbook-stylesheets
 Description: Modular DocBook DSSSL stylesheets, for print and HTML
- This package enables the use of DSSSL styling (formatting for output)
- with DocBook SGML or XML files.
+ This package provides DSSSL stylesheets which let you convert DocBook
+ SGML or XML files to various formats.
  .
- This package contains two DocBook DSSSL stylesheets, one for
- "print" output and one for HTML.  The print stylesheet can be used in
- conjunction with the RTF and the TeX back-ends that Jade provides to
- produce output suitable for printing.  The HTML stylesheet can be
- used to convert DocBook documents into HTML.
+ This package contains two DocBook DSSSL stylesheets, one for "print"
+ output and one for HTML.  The print stylesheet can be used in
+ conjunction with the RTF and the TeX back-ends that (Open)Jade
+ provides to produce output suitable for printing.  The HTML
+ stylesheet can be used to convert DocBook documents into HTML.
  .
  The stylesheets are modular in design so that you can extend and
  customize them.
+ .
+ Note that you can also perform DocBook XML styling using the
+ "docbook-xsl" package, which provides the XSL stylesheets.  The XSL
+ stylesheets are more actively maintained and contain more new
+ features than these DSSSL stylesheets.
  .
   Author:   Norman Walsh <ndw@nwalsh.com>
   Homepage: http://docbook.sourceforge.net/

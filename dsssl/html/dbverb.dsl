@@ -98,28 +98,55 @@
 	  (para-check 'restart)))))
 
 (define ($verbatim-line-by-line$ indent line-numbers?)
-  (make sequence
-    ($line-start$ indent line-numbers? 1)
-    (let loop ((kl (children (current-node)))
-	       (linecount 1)
-	       (res (empty-sosofo)))
-      (if (node-list-empty? kl)
-	  res
-	  (loop
-	   (node-list-rest kl)
-	   (if (char=? (node-property 'char (node-list-first kl)
-				      default: #\U-0000) #\U-000D)
-	       (+ linecount 1)
-	       linecount)
-	   (let ((c (node-list-first kl)))
-	     (if (char=? (node-property 'char c default: #\U-0000) 
-			 #\U-000D)
-		 (sosofo-append res
-				(process-node-list c)
-				($line-start$ indent 
-					      line-numbers?
-					      (+ linecount 1)))
-		 (sosofo-append res (process-node-list c)))))))))
+  (let ((expanded-content
+	 ;; this is the content with
+	 ;; inlinemediaobject/imageobject[@format='linespecific']
+	 ;; expanded
+	 (let loop ((kl (children (current-node))) (rl (empty-node-list)))
+	   (if (node-list-empty? kl)
+	       rl
+	       (if (equal? (gi (node-list-first kl))
+			   (normalize "inlinemediaobject"))
+		   (let* ((imgobj (node-list-filter-by-gi
+				   (children (node-list-first kl))
+				   (list (normalize "imageobject"))))
+			  (datobj (node-list-filter-by-gi
+				   (children imgobj)
+				   (list (normalize "imagedata")))))
+		     (if (and (not (node-list-empty? imgobj))
+			      (not (node-list-empty? datobj))
+			      (equal? (attribute-string (normalize "format") datobj)
+				      (normalize "linespecific")))
+			 (loop (node-list-rest kl)
+			       (node-list rl (string->nodes (include-characters
+							     (if (attribute-string (normalize "fileref") datobj)
+								 (attribute-string (normalize "fileref") datobj)
+								 (entity-generated-system-id (attribute-string (normalize "entityref") datobj)))))))
+			 (loop (node-list-rest kl)
+			       (node-list rl (node-list-first kl)))))
+		   (loop (node-list-rest kl) (node-list rl (node-list-first kl))))))))
+    (make sequence
+      ($line-start$ indent line-numbers? 1)
+      (let loop ((kl expanded-content)
+		 (linecount 1)
+		 (res (empty-sosofo)))
+	(if (node-list-empty? kl)
+	    res
+	    (loop
+	     (node-list-rest kl)
+	     (if (char=? (node-property 'char (node-list-first kl)
+					default: #\U-0000) #\U-000D)
+		 (+ linecount 1)
+		 linecount)
+	     (let ((c (node-list-first kl)))
+	       (if (char=? (node-property 'char c default: #\U-0000) 
+			   #\U-000D)
+		   (sosofo-append res
+				  (process-node-list c)
+				  ($line-start$ indent 
+						line-numbers?
+						(+ linecount 1)))
+		   (sosofo-append res (process-node-list c))))))))))
 
 (define ($linespecific-display$ indent line-numbers?)
   (make element gi: "P"

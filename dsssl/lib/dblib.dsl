@@ -1668,6 +1668,19 @@
   ;; the file so that "the right thing" happens in asis environments.
   ;; /DESC
   ;; /REFENTRY
+  (literal (include-characters fileref)))
+
+;; ======================================================================
+
+(define (include-characters fileref)
+  ;; REFENTRY include-characters
+  ;; PURP Return the character content of fileref
+  ;; DESC
+  ;; Opens and loads fileref with (read-entity); returns the content
+  ;; of fileref as characters.  Trims the last trailing newline off
+  ;; the file so that "the right thing" happens in asis environments.
+  ;; /DESC
+  ;; /REFENTRY
   (let* ((newline #\U-000D)
 	 (file-content  (read-entity fileref))
 	 (file-length   (string-length file-content))
@@ -1676,7 +1689,7 @@
 							(- file-length 1)))
 			    (substring file-content 0 (- file-length 1))
 			    file-content)))
-    (literal content)))
+    content))
 
 ;; ======================================================================
 
@@ -1825,6 +1838,17 @@
 		result
 		(loop (parse-skip-pi-attribute values)
 		      (append result (parse-pi-attribute values)))))))))
+
+;; ======================================================================
+
+(define (string->nodes s)
+  ;; Escape XML characters...
+  (let* ((achars (string-replace s "&#38;" "&#38;#38;#38;"))
+	 (bchars (string-replace achars "&#60;" "&#38;#38;#60;"))
+	 (cchars (string-replace bchars "&#62;" "&#38;#38;#62;")))
+    (let ((doc (string-append "&#60;literal>&#60;!DOCTYPE doc [ &#60;!ELEMENT "
+			      "doc - - (#PCDATA)> ]>&#60;doc>" cchars ";&#60;/doc>")))
+      (children (node-property 'docelem (sgml-parse doc))))))
 
 ;; ======================================================================
 

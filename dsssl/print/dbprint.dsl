@@ -78,7 +78,7 @@
 	quadding: %default-quadding%
 	hyphenate?: %hyphenation%
 	language: (dsssl-language-code)
-	(process-children))
+	(process-children-trim))
       (make paragraph
 	first-line-start-indent: (if (is-first-para)
 				     %para-indent-firstpara%
@@ -89,7 +89,7 @@
 	hyphenate?: %hyphenation%
 	language: (dsssl-language-code)
 	country: (dsssl-country-code)
-	(process-children))))
+	(process-children-trim))))
 
 (define ($para-container$)
   (make paragraph

@@ -262,7 +262,7 @@
       (make element gi: "SUP"
 	    (literal "SM")))
      (else
-      (make entity-ref name: "trade")))))
+      (make entity-ref name: "#8482")))))
 
 (element wordasword ($italic-seq$))
 

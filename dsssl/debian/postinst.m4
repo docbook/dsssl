@@ -16,7 +16,7 @@ IMAGEDIR=M4IMAGEDIR
 
 set -e
 
-# whether to be verbose
+# whether to be verbose, only used for debugging
 verbose=false
 
 ME=`basename $0`
@@ -175,12 +175,13 @@ if [ "$1" = configure ]; then
         setit html %show-comments% "$RET"
     fi
     if db_get docbook-dsssl/set-papersize; then
+        debug "got papersize of $RET"
         if [ "$RET" = "do not set" ]; then
             :
         elif [ "$RET" = "LC_PAPER" ]; then
             setit print %page-height% `locale LC_PAPER | sed -n -e '1p'`mm
             setit print %page-width% `locale LC_PAPER | sed -n -e '2p'`mm
-        elif [ "$RET" = "papersize" ]; then
+        elif [ "$RET" = "paperconf" ]; then
             if which paperconf &>/dev/null; then
                 setit print %page-height% `paperconf -h -m`
                 setit print %page-width% `paperconf -w -m`

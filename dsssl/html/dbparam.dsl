@@ -1166,13 +1166,28 @@
   ;; REFENTRY html-pubid
   ;; PURP What public ID are you declaring your HTML compliant with?
   ;; DESC
-  ;; The public ID used in output HTML files.  If '#f', then no doctype
-  ;; declaration is produced.
+  ;; The public ID used in output HTML files.  If '#f', then no public ID
+  ;; is produced.  If both this and %html-sysid% are '#f', then no
+  ;; doctype declaration is produced.
   ;; /DESC
   ;; AUTHOR N/A
   ;; /REFENTRY
   (if %html40%
       "-//W3C//DTD HTML 4.01 Transitional//EN"
+      #f))
+
+(define %html-sysid%
+  ;; REFENTRY html-sysid
+  ;; PURP What system ID are you declaring your HTML compliant with?
+  ;; DESC
+  ;; The system ID used in output HTML files.  If '#f', then no system ID
+  ;; is produced.  If both this and %html-pubid% are '#f', then no
+  ;; doctype declaration is produced.
+  ;; /DESC
+  ;; AUTHOR N/A
+  ;; /REFENTRY
+  (if %html40%
+      "http://www.w3.org/TR/html4/loose.dtd"
       #f))
 
 (define %root-filename%
@@ -1401,7 +1416,7 @@
   ;; DESC
   ;; If '%html40%' is true then the output more closely resembles HTML 4.0.
   ;; In particular, the HTML table module includes COL, THEAD, TBODY, and TFOOT
-  ;; elements.
+  ;; elements, and the output documents have a proper doctype declaration.
   ;; /DESC
   ;; AUTHOR N/A
   ;; /REFENTRY

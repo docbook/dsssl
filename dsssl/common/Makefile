@@ -9,16 +9,18 @@ XMLDCL=../dtds/decls/xml.dcl
 # even if there's a doctype declaration' option on OpenJade, then maybe
 # that would work.
 
-SOURCES=dbl1ca.ent dbl1cs.ent dbl1da.ent dbl1de.ent dbl1el.ent \
+SOURCES=dbl1af.ent \
+        dbl1ca.ent dbl1cs.ent dbl1da.ent dbl1de.ent dbl1el.ent \
         dbl1en.ent dbl1es.ent dbl1et.ent dbl1fi.ent dbl1fr.ent \
         dbl1hu.ent dbl1id.ent dbl1it.ent dbl1ja.ent dbl1ko.ent \
         dbl1nl.ent dbl1no.ent dbl1pl.ent dbl1pt.ent dbl1ptbr.ent \
         dbl1ro.ent dbl1ru.ent dbl1sk.ent dbl1sl.ent dbl1sr.ent \
-        dbl1sv.ent \
+        dbl1sv.ent dbl1tr.ent \
         dbl1zhcn.ent dbl1zhtw.ent
 
 all: $(SOURCES)
 
+dbl1af.ent: ../../gentext/locale/af.xml
 dbl1ca.ent: ../../gentext/locale/ca.xml
 dbl1cs.ent: ../../gentext/locale/cs.xml
 dbl1da.ent: ../../gentext/locale/da.xml
@@ -45,6 +47,7 @@ dbl1sk.ent: ../../gentext/locale/sk.xml
 dbl1sl.ent: ../../gentext/locale/sl.xml
 dbl1sr.ent: ../../gentext/locale/sr.xml
 dbl1sv.ent: ../../gentext/locale/sv.xml
+dbl1tr.ent: ../../gentext/locale/tr.xml
 dbl1zhcn.ent: ../../gentext/locale/zh_cn.xml
 dbl1zhtw.ent: ../../gentext/locale/zh_tw.xml
 

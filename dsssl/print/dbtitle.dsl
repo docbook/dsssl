@@ -13,7 +13,7 @@
 ;; So we can pass different sosofo's to this routine and get identical
 ;; treatment (see REFNAME in dbrfntry.dsl)
 ;;
-(define ($lowtitlewithsosofo$ tlevel sosofo)
+(define ($lowtitlewithsosofo$ tlevel hlevel sosofo)
   (let ((hs (HSIZE (- 3 tlevel))))
     (make paragraph
 	  font-family-name: %title-font-family%
@@ -25,11 +25,11 @@
 	  start-indent: %body-start-indent%
 	  quadding: 'start
 	  keep-with-next?: #t
-	  heading-level: (if %generate-heading-level% (+ tlevel 2) 0)
+	  heading-level: (if %generate-heading-level% hlevel 0)
 	  sosofo)))
 
-(define ($lowtitle$ tlevel)
-  ($lowtitlewithsosofo$ tlevel (process-children)))
+(define ($lowtitle$ tlevel hlevel)
+  ($lowtitlewithsosofo$ tlevel hlevel (process-children)))
 
 (define ($runinhead$)
   (let* ((title    (data (current-node)))
@@ -43,7 +43,7 @@
       (process-children)
       (literal punct " "))))
 
-(element title ($lowtitle$ 2))         ;; the default TITLE format
+(element title ($lowtitle$ 2 4))         ;; the default TITLE format
 (element titleabbrev (empty-sosofo))
 (element subtitle (empty-sosofo))
 

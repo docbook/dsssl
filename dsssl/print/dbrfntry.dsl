@@ -166,8 +166,8 @@
 (element refname
   (make sequence
     (if (and %refentry-generate-name% (first-sibling? (current-node)))
- 	($lowtitlewithsosofo$ 1 (literal (gentext-element-name 
-					  (current-node))))
+ 	($lowtitlewithsosofo$ 1 3 (literal (gentext-element-name 
+					    (current-node))))
  	(empty-sosofo))
     (make sequence
 	  font-weight: 'medium

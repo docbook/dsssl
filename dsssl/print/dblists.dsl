@@ -459,7 +459,7 @@
 	  (process-children)))))
 
 (element segmentedlist (process-children))
-(element (segmentedlist title) ($lowtitle$ 2))
+(element (segmentedlist title) ($lowtitle$ 2 4))
 
 (element segtitle (empty-sosofo))
 (mode seglist-in-seg
@@ -490,7 +490,7 @@
 	(process-children)))))
 
 (element calloutlist ($list$))
-(element (calloutlist title) ($lowtitle$ 2))
+(element (calloutlist title) ($lowtitle$ 2 4))
 
 (element callout
   (let* ((calloutcontent (children (current-node)))

@@ -16,7 +16,8 @@
 (element glossentry  (process-children))
 
 ;; a glossentry glossterm
-(element (glossentry glossterm) ($lowtitle$ 3))
+(element (glossentry glossterm) ($lowtitle$ 3 2))
+(element (glossdiv glossentry glossterm) ($lowtitle$ 3 3))
 (element (glossentry acronym) (empty-sosofo))
 (element (glossentry abbrev) (empty-sosofo))
 (element glossdef ($indent-para-container$))

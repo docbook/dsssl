@@ -1,0 +1,29 @@
+<!DOCTYPE MEMO [
+<!ELEMENT MEMO    - - (HEAD, BODY, END)>
+<!ELEMENT HEAD    - - (DATE, TO, SUBJECT)>
+<!ELEMENT DATE    - - (#PCDATA)>
+<!ELEMENT TO      - - (#PCDATA)>
+<!ELEMENT SUBJECT - - (#PCDATA)>
+<!ELEMENT BODY    - - (PARA+)>
+<!ELEMENT PARA    - - (#PCDATA)>
+<!ELEMENT END     - - (CLOSING, SENDER)>
+<!ELEMENT CLOSING - - (#PCDATA)>
+<!ELEMENT SENDER  - - (#PCDATA)>
+]>
+<memo>
+<head>
+<date>Feb 29, 1997</date>
+<to>John Doe</to>
+<subject>Test Document</subject>
+</head>
+<body>
+<para>This is the first paragraph.</para>
+<para>This is the second.</para>
+<para>This is the last.</para>
+</body>
+<end>
+<closing>Sincerely,</closing>
+<sender>Jane Doe</sender>
+</end>
+</memo>
+

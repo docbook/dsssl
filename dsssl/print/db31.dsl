@@ -116,7 +116,9 @@
   (process-children))
 
 (element imagedata
-  ($img$))
+  (if (have-ancestor? (normalize "mediaobject"))
+      ($img$ (current-node) #t)
+      ($img$ (current-node) #f)))
 
 (element textobject
   (make display-group

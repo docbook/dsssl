@@ -4054,11 +4054,15 @@
 ;;
 
 (define (article-titlepage-recto-elements)
-  (list (normalize "title") 
-	(normalize "subtitle") 
-	(normalize "corpauthor") 
-	(normalize "authorgroup") 
-	(normalize "author") 
+  (list (normalize "title")
+	(normalize "subtitle")
+	(normalize "corpauthor")
+	(normalize "authorgroup")
+	(normalize "author")
+	(normalize "releaseinfo")
+	(normalize "copyright")
+	(normalize "pubdate")
+	(normalize "revhistory")
 	(normalize "abstract")))
 
 (define (article-titlepage-verso-elements)

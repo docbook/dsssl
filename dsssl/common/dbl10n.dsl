@@ -91,12 +91,6 @@
 			language)))
     (case-fold-down fixed-lang)))
 
-;; bmno - Norwegian (Norsk Bokmal) ???
-;; dege - German
-;; dk   - Danish
-;; svse - Swedish
-;; usen - English
-
 (define (author-string #!optional (author (current-node)))
   (let ((lang   (if (string? author) ($lang$) ($lang$ author))))
     (case lang

@@ -2267,12 +2267,15 @@
       (process-children)))
 
   (element authorgroup
-    (make paragraph
-      space-after: (* %bf-size% %line-spacing-factor%)
-      (make sequence
-	(literal (gentext-by))
-	(literal "\no-break-space;")
-	(process-children-trim))))
+    (let* ((editors (select-elements (children (current-node)) (normalize "editor"))))
+      (make paragraph
+	space-after: (* %bf-size% %line-spacing-factor%)
+	(make sequence
+	  (if (node-list-empty? editors)
+	      (literal (gentext-by))
+	      (literal (gentext-edited-by)))
+	  (literal "\no-break-space;")
+	  (process-children-trim)))))
 
   (element authorinitials
     (make paragraph
@@ -2356,7 +2359,7 @@
   (element editor
     ;; Print the editor name.
     (let ((in-group (have-ancestor? (normalize "authorgroup") (current-node))))
-      (if (or #t (not in-group)) ; nevermind, always put out the Edited by
+      (if (or #f (not in-group)) ; nevermind, always put out the Edited by
 	  (make paragraph
 	    ;; Hack to get the spacing right below the author name line...
 	    space-after: (* %bf-size% %line-spacing-factor%)
@@ -2364,8 +2367,8 @@
 	      (literal (gentext-edited-by))
 	      (literal "\no-break-space;")
 	      (literal (author-string))))
-	  (make sequence 
-	    (literal (author-string))))))
+	  (make sequence
+	    (literal (author-list-string))))))
 
   (element firstname
     (make paragraph

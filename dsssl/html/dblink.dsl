@@ -397,13 +397,3 @@
 
 ;; ======================================================================
 
-(define (element-page-number-sosofo target)
-  (with-mode pageno-mode
-	(process-node-list target)))
-
-(mode pageno-mode
-  (default
-    (current-node-page-number-sosofo)))
-
-;; ======================================================================
-

@@ -13,7 +13,7 @@ Description: Set paper size using LC_PAPER?
  own; the default papersize is US Letter.
 
 Template: docbook-dsssl/html-ext
-Type: multiselect
+Type: select
 Choices: .html, .htm
 Default: .html
 Description: Choose default HTML suffix.
@@ -34,7 +34,7 @@ Description: Indent the body of printed documents?
  Should the textual body of a printed document be indented?
 
 Template: docbook-dsssl/visual-acuity
-Type: multiselect
+Type: select
 Choices: tiny, normal, presbyopic, large-type
 Default: normal
 Description: Size of the text in printed documents.
@@ -48,7 +48,7 @@ Description: Size of the text in printed documents.
    large-type: quite large (24pt)
 
 Template: docbook-dsssl/title-font-family
-Type: multiselect
+Type: select
 Choices: Arial, Times New Roman, %body-font-family%
 Default: %body-font-family%
 Description: Title font for printed documents.

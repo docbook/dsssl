@@ -7,8 +7,11 @@ docbook-dsssl (1.77-cvs.2003.01.23) unstable; urgency=low
   * debconf: question about HTML extension made low priority, since
     ".html" is definately the standard; in fact, I only offer ".htm" since
     that's the upstream default; closes: #178003
+  * also make make the following debconf questions low priority:
+    use-id-as-filename, body-start-indent, title-font family; change some
+    multiselects into select; closes: #179554
 
- -- Adam Di Carlo <aph@debian.org>  Thu, 23 Jan 2003 11:13:49 -0500
+ -- Adam Di Carlo <aph@debian.org>  Mon,  3 Feb 2003 19:42:43 -0500
 
 docbook-dsssl (1.77-cvs.2003.01.22) unstable; urgency=low
 

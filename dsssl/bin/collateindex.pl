@@ -447,16 +447,6 @@ sub print_term {
 	return;
     }
 
-    if ($idx->{'seealso'}) {
-	# it'd be nice to make this a link...
-	if ($lastout) {
-	    print OUT "\n  </$lastout>\n";
-	    $lastout = "";
-	}
-	print OUT $indent, "<seealsoie>", &escape($idx->{'seealso'}), "</seealsoie>\n";
-	return;
-    }
-
     if (keys %{$idx->{'zone'}}) {
 	foreach $key (keys %{$idx->{'zone'}}) {
 	    $href{$key} = $idx->{'zone'}->{$key};
@@ -490,6 +480,15 @@ sub print_term {
 	print OUT &escape($href{$key});
 	print OUT "</emphasis>" if ($idx->{'significance'} eq 'PREFERRED');
 	print OUT "</ulink>";
+    }
+
+    if ($idx->{'seealso'}) {
+	# it'd be nice to make this a link...
+	if ($lastout) {
+	    print OUT "\n  </$lastout>\n";
+	    $lastout = "";
+	}
+	print OUT $indent, "<seealsoie>", &escape($idx->{'seealso'}), "</seealsoie>\n";
     }
 }
 

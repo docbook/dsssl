@@ -63,50 +63,50 @@
 
 (define (cs-xref-strings)
   (list (list (normalize "appendix")    (if %chapter-autolabel%
-					    "&Appendix; %n"
-					    "&appendix; nazvan\U-00E1; %t"))
+					    "%n"
+					    "%n \U-2013; \U-201E;%t\U-201C;"))
 	(list (normalize "article")     (string-append %gentext-cs-start-quote%
 						       "%t"
 						       %gentext-cs-end-quote%))
 	(list (normalize "bibliography") "%t")
 	(list (normalize "book")        "%t")
 	(list (normalize "chapter")     (if %chapter-autolabel%
-					    "&Chapter; %n"
-					    "&chapter; nazvan\U-00E1; %t"))
-	(list (normalize "equation")    "&Equation; %n")
-	(list (normalize "example")     "&Example; %n")
-	(list (normalize "figure")      "&Figure; %n")
+					    "%n"
+					    "%n \U-2013; \U-201E;%t\U-201C;"))
+	(list (normalize "equation")    "%n")
+	(list (normalize "example")     "%n")
+	(list (normalize "figure")      "%n")
 	(list (normalize "glossary")    "%t")
 	(list (normalize "index")       "%t")
 	(list (normalize "listitem")    "%n")
-	(list (normalize "part")        "&Part; %n")
+	(list (normalize "part")        "%n \U-2013; \U-201E;%t\U-201C;")
 	(list (normalize "preface")     "%t")
-	(list (normalize "procedure")   "&Procedure; %n, %t")
-	(list (normalize "reference")   "&Reference; %n, %t")
+	(list (normalize "procedure")   "%n \U-2013; \U-201E;%t\U-201C;")
+	(list (normalize "reference")   "%t")
 	(list (normalize "section")     (if %section-autolabel%
-					    "&Section; %n"
-					    "&section; nazvan\U-00E1; %t"))
+					    "%n"
+					    "\U-201E;%t\U-201C;"))
 	(list (normalize "sect1")       (if %section-autolabel%
-					    "&Section; %n"
-					    "&section; nazvan\U-00E1; %t"))
+					    "%n"
+					    "\U-201E;%t\U-201C;"))
 	(list (normalize "sect2")       (if %section-autolabel%
-					    "&Section; %n"
-					    "&section; nazvan\U-00E1; %t"))
+					    "%n"
+					    "\U-201E;%t\U-201C;"))
 	(list (normalize "sect3")       (if %section-autolabel%
-					    "&Section; %n"
-					    "&section; nazvan\U-00E1; %t"))
+					    "%n"
+					    "\U-201E;%t\U-201C;"))
 	(list (normalize "sect4")       (if %section-autolabel%
-					    "&Section; %n"
-					    "&section; nazvan\U-00E1; %t"))
+					    "%n"
+					    "\U-201E;%t\U-201C;"))
 	(list (normalize "sect5")       (if %section-autolabel%
-					    "&Section; %n"
-					    "&section; nazvan\U-00E1; %t"))
+					    "%n"
+					    "\U-201E;%t\U-201C;"))
 	(list (normalize "simplesect")  (if %section-autolabel%
-					    "&Section; %n"
-					    "&section; nazvan\U-00E1; %t"))
-	(list (normalize "sidebar")     "&sidebar; %t")
-	(list (normalize "step")        "&step; %n")
-	(list (normalize "table")       "&Table; %n")))
+					    "%n"
+					    "\U-201E;%t\U-201C;"))
+	(list (normalize "sidebar")     "%t")
+	(list (normalize "step")        "%n")
+	(list (normalize "table")       "%n")))
 
 (define (gentext-cs-xref-strings gind)
   (let* ((giname (if (string? gind) gind (gi gind)))

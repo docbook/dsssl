@@ -89,12 +89,7 @@
 	(if fileref
 	    (include-file fileref)
 	    (include-file (entity-generated-system-id entityref)))
-	(make element gi: "IMG"
-	      attributes: (append
-			   (list (list "SRC" filename))
-			   (if alttext
-			       (list (list "ALT" alttext))
-			       '()))))))
+	($img$ (current-node) alttext))))
 
 (element textobject
   (make element gi: "DIV"

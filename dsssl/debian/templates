@@ -7,7 +7,7 @@ _Description: Show contents of comments?
 
 Template: docbook-dsssl/set-papersize
 Type: select
-Choices: do not set, A4, A4landscape, USletter, USlandscape, LC_PAPER, paperconf
+_Choices: do not set, A4, A4landscape, USletter, USlandscape, LC_PAPER, paperconf
 Default: LC_PAPER
 _Description: Print paper size
  Which papersize you would like to produce by default when producing print
@@ -44,7 +44,7 @@ _Description: Indent the body of printed documents?
 
 Template: docbook-dsssl/visual-acuity
 Type: select
-Choices: tiny, normal, presbyopic, large-type
+_Choices: tiny, normal, presbyopic, large-type
 Default: normal
 _Description: Size of the text in printed documents.
  Choose the default size of text in printed documents.  Several other

@@ -226,8 +226,8 @@
 (define (gentext-tr-element-name-space giname)
   (string-with-space (gentext-element-name giname)))
 
-;; gentext-intra-label-sep returns the seperator to be inserted
-;; between multiple occurances of a label (or parts of a label)
+;; gentext-intra-label-sep returns the separator to be inserted
+;; between multiple occurrences of a label (or parts of a label)
 ;; for the specified element.  Most of these are for enumerated
 ;; labels like "Figure 2-4", but this function is used elsewhere
 ;; (e.g. REFNAME) with a little abuse.
@@ -265,12 +265,15 @@
 (define (gentext-tr-intra-label-sep gind)
   (let* ((giname (if (string? gind) gind (gi gind)))
 	 (name   (normalize giname))
+	 (lsep   (assoc name (local-tr-intra-label-sep)))
 	 (sep    (assoc name (tr-intra-label-sep))))
-    (if sep
-	(car (cdr sep))
-	"")))
+    (if lsep
+	(car (cdr lsep))
+	(if sep
+	    (car (cdr sep))
+	    ""))))
 
-;; gentext-label-title-sep returns the seperator to be inserted
+;; gentext-label-title-sep returns the separator to be inserted
 ;; between a label and the text following the label for the
 ;; specified element.  Most of these are for use between
 ;; enumerated labels and titles like "1. Chapter One Title", but

@@ -7,7 +7,7 @@
 <title>Other Documentation</title>
 <para>This needs better organizing...</para>
 <itemizedlist>
-<listitem><para><ulink url="http://docbook.org/faq.html">The DocBook FAQ</ulink></para>
+<listitem><para><ulink url="http://docbook.org/faq/">The DocBook FAQ</ulink></para>
 </listitem>
 <listitem><para><olink targetdocent="olink.indexing" linkmode="title.modespec" type="href"></olink></para>
 </listitem>

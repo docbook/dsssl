@@ -89,6 +89,7 @@
 	    (process-node-list shortcut)
 	    (literal ")"))))))
 
+(element methodname ($mono-seq$))
 (element shortcut ($bold-seq$))
 (element mousebutton ($charseq$))
 (element option ($mono-seq$))

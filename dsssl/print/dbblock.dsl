@@ -264,7 +264,7 @@
     (let* ((object (parent (current-node)))
 	   (nsep   (gentext-label-title-sep (gi object))))
       (make paragraph
-	font-weight: 'bold
+	font-weight: %formal-object-title-font-weight%
 	space-before: (if (object-title-after (parent (current-node)))
 			  %para-sep%
 			  0pt)
@@ -336,7 +336,7 @@
 	 (rule-before? %table-rules%)
 	 (rule-after? %table-rules%)
 	 (title-sosofo (make paragraph
-			 font-weight: 'bold
+			 font-weight: %table-title-font-weight%
 			 space-before: (if (object-title-after)
 					   %para-sep%
 					   0pt)

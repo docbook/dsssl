@@ -561,6 +561,28 @@
   ;; /REFENTRY
   0.9)
 
+(define %formal-object-title-font-weight%
+  ;; REFENTRY formal-object-title-font-weight
+  ;; PURP Formal object title font weight
+  ;; DESC
+  ;; Specifies the title font weight (i.e., 'bold or 'medium) of
+  ;; formal objects (e.g., figures).
+  ;; /DESC
+  ;; AUTHOR N/A
+  ;; /REFENTRY
+  'bold)
+
+(define %table-title-font-weight%
+  ;; REFENTRY table-title-font-weight
+  ;; PURP Table title font weight
+  ;; DESC
+  ;; Specifies the title font weight (i.e., 'bold or 'medium) of the
+  ;; formal tables.
+  ;; /DESC
+  ;; AUTHOR N/A
+  ;; /REFENTRY
+  'bold)
+
 ;; REFERENCE Backends
 
 (define tex-backend 
@@ -1574,7 +1596,7 @@
   ;; /DESC
   ;; AUTHOR N/A
   ;; /REFENTRY
-  '("eps" "epsf" "gif" "tif" "tiff" "jpg" "jpeg" "png"))
+  '("eps" "epsf" "gif" "tif" "tiff" "jpg" "jpeg" "png" "pdf"))
 
 (define image-library
   ;; REFENTRY image-library

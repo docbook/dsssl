@@ -3508,6 +3508,7 @@
 	space-before: (* (HSIZE 5) %head-before-factor%)
 	quadding: %division-title-quadding%
 	keep-with-next?: #t
+	heading-level: (if %generate-heading-level% 1 0)
 	(if (string=? (element-label division) "")
 	    (empty-sosofo)
 	    (literal (element-label division) 
@@ -6085,6 +6086,7 @@
 	space-before: (* (HSIZE 5) %head-before-factor%)
 	quadding: %division-title-quadding%
 	keep-with-next?: #t
+	heading-level: (if %generate-heading-level% 1 0)
 	(literal (element-label ref)
 		 (gentext-label-title-sep (gi ref)))
 	(with-mode title-mode

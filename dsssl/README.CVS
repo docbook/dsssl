@@ -20,10 +20,16 @@ print/	contains the print stylesheet
 Installation
 ------------
 
-*** NOTE: The CVS tree *IS NOT COMPLETE*. In order to run the
+*** NOTE: The CVS tree *IS NOT STAND-ALONE*. In order to run the
 stylesheets directly from the CVS tree, you must checkout several
-additional trees and run some build scripts. This README will be
-updated to describe how sometime real soon now.
+additional CVS modules:
+
+../cvstools     contains scripts for running jade, saxon, etc.
+../gentext      contains data for common i18n materials
+
+Note that the release process generally uses these steps:
+
+  make distrib; make newversion; make ZIPVER=xxx zip
 
 Copyright
 ---------

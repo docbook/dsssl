@@ -891,8 +891,8 @@
 	 ;; In articles in books, number blocks from book not from article.
 	 ;; Otherwise you get 1, 1, 1, 1, etc. for the first figure in each
 	 ;; article.
-	 (artinbook (and (ancestor (normalize "article") nd)
-			 (ancestor (normalize "book") nd)))
+	 (artinbook (and (not (node-list-empty? (ancestor (normalize "article") nd)))
+			 (not (node-list-empty? (ancestor (normalize "book") nd)))))
 
 	 (bkn    (if artinbook
 		     (format-number (component-child-number

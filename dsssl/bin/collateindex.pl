@@ -476,9 +476,13 @@ sub same {
 	     && ($a->{'href'} eq $b->{'href'}));
 
     # If we're linking to points, they're only the same if they link
-    # to exactly the same spot.  (surely this is redundant?)
+    # to exactly the same spot.
     $same = $same && ($a->{'hrefpoint'} eq $b->{'hrefpoint'})
 	if $linkpoints;
+
+    if ($same) {
+       warn "duplicated index entry found, $aP $aS $aT\n";
+    }
 
     $same;
 }

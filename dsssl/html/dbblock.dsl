@@ -288,13 +288,14 @@
 ;; remark and comment use the same rendering
 (define ($remark$)
   (if %show-comments%
-      (let ((inpara (equal? (gi (parent (current-node))) (normalize "para"))))
+      (let ((inpara (equal? (gi (parent (current-node))) (normalize "para")))
+            (attrib '(("CLASS" "COMMENT"))))
         (if inpara
             (make element gi: "SPAN"
-                  attributes: '(("CLASS" "COMMENT"))
+                  attributes: attrib
                   (process-children))
             (make element gi: "P"
-                  attributes: '(("CLASS" "COMMENT"))
+                  attributes: attrib
                   (process-children))))
       (empty-sosofo)))
 

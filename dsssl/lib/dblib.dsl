@@ -1816,7 +1816,7 @@
   ;; PURP Parses a structured PI and returns a list of values
   ;; DESC
   ;; It has become common practice to give PIs structured values.  The
-  ;; resultis a PI that looks a lot like a start tag with attributes:
+  ;; result is a PI that looks a lot like a start tag with attributes:
   ;;
   ;; &#60;?pitarget name1="value1" name2='value2' name3="value '3'">
   ;; 

@@ -456,6 +456,8 @@
   ;; vary depending on the setting of '%visual-acuity%'. There
   ;; are three legal values: 'normal', 
   ;; the normal, standard document size (10pt body text);
+  ;; 'tiny',
+  ;; a small text size (8pt body text);
   ;; 'presbyopic', 
   ;; a slightly more generous size (12pt body text); and
   ;; 'large-type',
@@ -463,6 +465,7 @@
   ;; /DESC
   ;; AUTHOR N/A
   ;; /REFENTRY
+  ;; "tiny"
   ;; "presbyopic"
   ;; "large-type"
   "normal")
@@ -955,9 +958,9 @@
   ;; 'A4' or 'USletter'. Setting the paper type is an
   ;; easy shortcut for setting the correct paper height and width.
   ;; 
-  ;; As distributed, only 'A4' and 'USletter' are supported.  You can add
-  ;; additional paper types by updating 'page-width' and 'page-height'.
-  ;; If you do, please pass along your updates. 
+  ;; See %page-width% and %page-height concerning what other page size
+  ;; are available.  Some common examples are 'A4', 'USletter',
+  ;; 'A4landscape', 'USlandscape'.
   ;; /DESC
   ;; AUTHOR N/A
   ;; /REFENTRY

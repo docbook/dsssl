@@ -476,12 +476,11 @@
   ;; Note: this can only get called if the backend is 'tex
   ;; If the backend is anything else, footnote never calls process
   ;; children except in endnote-mode, so this doesn't get called.
-  (let ((fnnum  (footnote-number (parent (current-node)))))
+  (let ((fnnum	(footnote-number (parent (current-node)))))
     (if (= (child-number) 1)
 	(make paragraph
- 	  font-family-name: %body-font-family%
+	  use: default-text-style
 	  font-size: (* %footnote-size-factor% %bf-size%)
-	  font-posture: 'upright
 	  quadding: %default-quadding%
 	  line-spacing: (* (* %footnote-size-factor% %bf-size%)
 			   %line-spacing-factor%)
@@ -489,21 +488,22 @@
 	  space-after: %para-sep%
 	  start-indent: %footnote-field-width%
 	  first-line-start-indent: (- %footnote-field-width%)
+	  lines: 'wrap			; doesn't seem to work
 	  (make line-field
 	    field-width: %footnote-field-width%
 	    (literal fnnum 
 		     (gentext-label-title-sep (normalize "footnote"))))
 	  (process-children-trim))
 	(make paragraph
- 	  font-family-name: %body-font-family%
+	  use: default-text-style
 	  font-size: (* %footnote-size-factor% %bf-size%)
-	  font-posture: 'upright
 	  quadding: %default-quadding%
 	  line-spacing: (* (* %footnote-size-factor% %bf-size%)
 			   %line-spacing-factor%)
 	  space-before: %para-sep%
 	  space-after: %para-sep%
 	  start-indent: %footnote-field-width%
+	  lines: 'wrap			; doesn't seem to work
 	  (process-children-trim)))))
 
 (define (non-table-footnotes footnotenl)

@@ -24,8 +24,8 @@
 	line-spacing: (* %bf-size% %line-spacing-factor%
 			 %smaller-size-factor%)
 	space-before: %para-sep%
-	start-indent: (+ (inherited-start-indent) 1em)
-	end-indent: 1em
+        start-indent: (+ (inherited-start-indent) %blockquote-start-indent%)
+        end-indent: %blockquote-end-indent%
 	(process-node-list paras))
       (if (node-list-empty? attrib)
 	  (empty-sosofo)
@@ -52,8 +52,8 @@
 	line-spacing: (* %bf-size% %line-spacing-factor%
 			 %smaller-size-factor%)
 	space-before: %para-sep%
-	start-indent: (+ (inherited-start-indent) 1em)
-	end-indent: 1em
+        start-indent: (+ (inherited-start-indent) %blockquote-start-indent%)
+        end-indent: %blockquote-end-indent%
 	(process-node-list paras))
       (if (node-list-empty? attrib)
 	  (empty-sosofo)
@@ -78,7 +78,7 @@
       ($paragraph$)))
 
 (element epigraph
-  (let* ((addln-indent (* %text-width% 0.55))
+  (let* ((addln-indent %epigraph-start-indent%)
 	 (attrib       (select-elements (children (current-node))
 					(normalize "attribution")))
 	 (paras        (node-list-filter-by-not-gi
@@ -86,6 +86,7 @@
 			(list (normalize "attribution")))))
     (make display-group
       start-indent: (+ %body-start-indent% addln-indent)
+      end-indent: %epigraph-end-indent%
       font-posture: 'italic
       (process-node-list paras)
       (if (node-list-empty? attrib)

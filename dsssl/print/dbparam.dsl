@@ -1138,6 +1138,24 @@
   ;; /REFENTRY
   (- %page-width% (+ %left-margin% %right-margin%)))
 
+(define %epigraph-start-indent%
+  ;; REFENTRY epigraph-start-indent
+  ;; PURP Specifies the left indent of epigraphs.
+  ;; DESC
+  ;; The indent of a epigraph. Default 55% of the text width.
+  ;; /DESC
+  ;; /REFENTRY
+  (* %text-width% 0.55))
+
+(define %epigraph-end-indent%
+  ;; REFENTRY epigraph-end-indent
+  ;; PURP Specified the right indent of epigraphs.
+  ;; DESC
+  ;; The right indent of a epigraph. Default none.
+  ;; /DESC
+  ;; /REFENTRY
+  0pt)
+
 (define %body-width% 
   ;; REFENTRY body-width
   ;; PURP Specifies the width of the text in the body column
@@ -1703,6 +1721,24 @@
   ;; AUTHOR N/A
   ;; /REFENTRY
   4pi)
+
+(define %blockquote-start-indent%
+  ;; PURP Default indent of blockquoted text
+  ;; DESC
+  ;; The default start (usually left) indent of blockquoted text.
+  ;; /DESC
+  ;; AUTHOR Ola Lundqvist
+  ;; /REFENTRY
+  1em)
+
+(define %blockquote-end-indent%
+  ;; PURP Default indent of blockquoted text
+  ;; DESC
+  ;; The default end (usually right) indent of blockquoted text.
+  ;; /DESC
+  ;; AUTHOR Ola Lundqvist
+  ;; /REFENTRY
+  1em)
 
 (define %para-sep% 
   ;; REFENTRY para-sep

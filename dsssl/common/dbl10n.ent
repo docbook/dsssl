@@ -1,4 +1,5 @@
 <!ENTITY % l10n-af "INCLUDE">
+<!ENTITY % l10n-bg "INCLUDE">
 <!ENTITY % l10n-bs "INCLUDE">
 <!ENTITY % l10n-ca "INCLUDE">
 <!ENTITY % l10n-cs "INCLUDE">
@@ -40,6 +41,15 @@
          "../common/dbl1af.dsl" CDATA DSSSL>
 ]]>
 <!ENTITY dbl1af
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Null Localization//EN"
+          "../common/dbl1null.dsl" CDATA DSSSL>
+
+<![%l10n-bg;[
+<!ENTITY dbl1bg
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Localization//BG"
+         "../common/dbl1bg.dsl" CDATA DSSSL>
+]]>
+<!ENTITY dbl1bg
   PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Null Localization//EN"
           "../common/dbl1null.dsl" CDATA DSSSL>
 

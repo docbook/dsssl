@@ -9,7 +9,7 @@ XMLDCL=../dtds/decls/xml.dcl
 # even if there's a doctype declaration' option on OpenJade, then maybe
 # that would work.
 
-SOURCES=dbl1af.ent dbl1bs.ent \
+SOURCES=dbl1af.ent dbl1bg.ent dbl1bs.ent \
         dbl1ca.ent dbl1cs.ent dbl1da.ent dbl1de.ent dbl1el.ent \
         dbl1en.ent dbl1es.ent dbl1et.ent dbl1eu.ent dbl1fi.ent dbl1fr.ent \
         dbl1hu.ent dbl1id.ent dbl1it.ent dbl1ja.ent dbl1ko.ent \

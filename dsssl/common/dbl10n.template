@@ -19,6 +19,7 @@
 ;; The following language codes from ISO 639 are recognized:
 ;; %%LANGUAGES%%
 ;; af - Afrikaans                           1.71
+;; bg - Bulgarian
 ;; bs - Bosnian
 ;; ca - Catalan
 ;; cs - Czech

@@ -18,6 +18,7 @@
 
 ;; The following language codes from ISO 639 are recognized:
 ;; af - Afrikaans                           1.71
+;; bg - Bulgarian
 ;; bs - Bosnian
 ;; ca - Catalan
 ;; cs - Czech
@@ -97,6 +98,7 @@
     (case lang
       ;; ISO 639/ISO 3166/RFC 1766
       <![%l10n-af[   (("af")    (af-author-string author)) ]]>
+      <![%l10n-bg[   (("bg")    (bg-author-string author)) ]]>
       <![%l10n-bs[   (("bs")    (bs-author-string author)) ]]>
       <![%l10n-ca[   (("ca")    (ca-author-string author)) ]]>
       <![%l10n-cs[   (("cs")    (cs-author-string author)) ]]>
@@ -144,6 +146,7 @@
 	(lang   (if (string? target) ($lang$) ($lang$ target))))
     (case lang
       <![%l10n-af[ (("af") (gentext-af-xref-strings giname)) ]]>
+      <![%l10n-bg[ (("bg") (gentext-bg-xref-strings giname)) ]]>
       <![%l10n-bs[ (("bs") (gentext-bs-xref-strings giname)) ]]>
       <![%l10n-ca[ (("ca") (gentext-ca-xref-strings giname)) ]]>
       <![%l10n-cs[ (("cs") (gentext-cs-xref-strings giname)) ]]>
@@ -189,6 +192,7 @@
 (define (auto-xref-indirect-connector before) 
   (case ($lang$)
     <![%l10n-af[ (("af") (af-auto-xref-indirect-connector before)) ]]>
+    <![%l10n-bg[ (("bg") (bg-auto-xref-indirect-connector before)) ]]>
     <![%l10n-bs[ (("bs") (bs-auto-xref-indirect-connector before)) ]]>
     <![%l10n-ca[ (("ca") (ca-auto-xref-indirect-connector before)) ]]>
     <![%l10n-cs[ (("cs") (cs-auto-xref-indirect-connector before)) ]]>
@@ -233,6 +237,7 @@
 (define (generate-toc-in-front)
   (case ($lang$)
     <![%l10n-af[ (("af") %generate-af-toc-in-front%) ]]>
+    <![%l10n-bg[ (("bg") %generate-bg-toc-in-front%) ]]>
     <![%l10n-bs[ (("bs") %generate-bs-toc-in-front%) ]]>
     <![%l10n-ca[ (("ca") %generate-ca-toc-in-front%) ]]>
     <![%l10n-cs[ (("cs") %generate-cs-toc-in-front%) ]]>
@@ -279,6 +284,7 @@
 	(lang   (if (string? target) ($lang$) ($lang$ target #t))))
     (case lang
       <![%l10n-af[ (("af") (gentext-af-element-name giname)) ]]>
+      <![%l10n-bg[ (("bg") (gentext-bg-element-name giname)) ]]>
       <![%l10n-bs[ (("bs") (gentext-bs-element-name giname)) ]]>
       <![%l10n-ca[ (("ca") (gentext-ca-element-name giname)) ]]>
       <![%l10n-cs[ (("cs") (gentext-cs-element-name giname)) ]]>
@@ -329,6 +335,7 @@
 	(lang   (if (string? target) ($lang$) ($lang$ target))))
     (case lang
       <![%l10n-af[ (("af") (gentext-af-element-name-space giname)) ]]>
+      <![%l10n-bg[ (("bg") (gentext-bg-element-name-space giname)) ]]>
       <![%l10n-bs[ (("bs") (gentext-bs-element-name-space giname)) ]]>
       <![%l10n-ca[ (("ca") (gentext-ca-element-name-space giname)) ]]>
       <![%l10n-cs[ (("cs") (gentext-cs-element-name-space giname)) ]]>
@@ -375,6 +382,7 @@
 	(lang   (if (string? target) ($lang$) ($lang$ target))))
     (case lang
       <![%l10n-af[ (("af") (gentext-af-intra-label-sep giname)) ]]>
+      <![%l10n-bg[ (("bg") (gentext-bg-intra-label-sep giname)) ]]>
       <![%l10n-bs[ (("bs") (gentext-bs-intra-label-sep giname)) ]]>
       <![%l10n-ca[ (("ca") (gentext-ca-intra-label-sep giname)) ]]>
       <![%l10n-cs[ (("cs") (gentext-cs-intra-label-sep giname)) ]]>
@@ -421,6 +429,7 @@
 	(lang   (if (string? target) ($lang$) ($lang$ target))))
     (case lang
       <![%l10n-af[ (("af") (gentext-af-label-title-sep giname)) ]]>
+      <![%l10n-bg[ (("bg") (gentext-bg-label-title-sep giname)) ]]>
       <![%l10n-bs[ (("bs") (gentext-bs-label-title-sep giname)) ]]>
       <![%l10n-ca[ (("ca") (gentext-ca-label-title-sep giname)) ]]>
       <![%l10n-cs[ (("cs") (gentext-cs-label-title-sep giname)) ]]>
@@ -467,6 +476,7 @@
 	(lang   (if (string? target) ($lang$) ($lang$ target))))
     (case lang
       <![%l10n-af[ (("af") (af-label-number-format target)) ]]>
+      <![%l10n-bg[ (("bg") (bg-label-number-format target)) ]]>
       <![%l10n-bs[ (("bs") (bs-label-number-format target)) ]]>
       <![%l10n-ca[ (("ca") (ca-label-number-format target)) ]]>
       <![%l10n-cs[ (("cs") (cs-label-number-format target)) ]]>
@@ -511,6 +521,7 @@
 (define ($lot-title$ lotgi)
   (case ($lang$)
     <![%l10n-af[ (("af") ($lot-title-af$ lotgi)) ]]>
+    <![%l10n-bg[ (("bg") ($lot-title-bg$ lotgi)) ]]>
     <![%l10n-bs[ (("bs") ($lot-title-bs$ lotgi)) ]]>
     <![%l10n-ca[ (("ca") ($lot-title-ca$ lotgi)) ]]>
     <![%l10n-cs[ (("cs") ($lot-title-cs$ lotgi)) ]]>
@@ -555,6 +566,7 @@
 (define (gentext-start-quote)
   (case ($lang$)
     <![%l10n-af[ (("af") %gentext-af-start-quote%) ]]>
+    <![%l10n-bg[ (("bg") %gentext-bg-start-quote%) ]]>
     <![%l10n-bs[ (("bs") %gentext-bs-start-quote%) ]]>
     <![%l10n-ca[ (("ca") %gentext-ca-start-quote%) ]]>
     <![%l10n-cs[ (("cs") %gentext-cs-start-quote%) ]]>
@@ -599,6 +611,7 @@
 (define (gentext-end-quote)
   (case ($lang$)
     <![%l10n-af[ (("af") %gentext-af-end-quote%) ]]>
+    <![%l10n-bg[ (("bg") %gentext-bg-end-quote%) ]]>
     <![%l10n-bs[ (("bs") %gentext-bs-end-quote%) ]]>
     <![%l10n-ca[ (("ca") %gentext-ca-end-quote%) ]]>
     <![%l10n-cs[ (("cs") %gentext-cs-end-quote%) ]]>
@@ -643,6 +656,7 @@
 (define (gentext-start-nested-quote)
   (case ($lang$)
     <![%l10n-af[ (("af") %gentext-af-start-nested-quote%) ]]>
+    <![%l10n-bg[ (("bg") %gentext-bg-start-nested-quote%) ]]>
     <![%l10n-bs[ (("bs") %gentext-bs-start-nested-quote%) ]]>
     <![%l10n-ca[ (("ca") %gentext-ca-start-nested-quote%) ]]>
     <![%l10n-cs[ (("cs") %gentext-cs-start-nested-quote%) ]]>
@@ -687,6 +701,7 @@
 (define (gentext-end-nested-quote)
   (case ($lang$)
     <![%l10n-af[ (("af") %gentext-af-end-nested-quote%) ]]>
+    <![%l10n-bg[ (("bg") %gentext-bg-end-nested-quote%) ]]>
     <![%l10n-bs[ (("bs") %gentext-bs-end-nested-quote%) ]]>
     <![%l10n-ca[ (("ca") %gentext-ca-end-nested-quote%) ]]>
     <![%l10n-cs[ (("cs") %gentext-cs-end-nested-quote%) ]]>
@@ -731,6 +746,7 @@
 (define (gentext-by)
   (case ($lang$)
     <![%l10n-af[ (("af") %gentext-af-by%) ]]>
+    <![%l10n-bg[ (("bg") %gentext-bg-by%) ]]>
     <![%l10n-bs[ (("bs") %gentext-bs-by%) ]]>
     <![%l10n-ca[ (("ca") %gentext-ca-by%) ]]>
     <![%l10n-cs[ (("cs") %gentext-cs-by%) ]]>
@@ -775,6 +791,7 @@
 (define (gentext-edited-by)
   (case ($lang$)
     <![%l10n-af[ (("af") %gentext-af-edited-by%) ]]>
+    <![%l10n-bg[ (("bg") %gentext-bg-edited-by%) ]]>
     <![%l10n-bs[ (("bs") %gentext-bs-edited-by%) ]]>
     <![%l10n-ca[ (("ca") %gentext-ca-edited-by%) ]]>
     <![%l10n-cs[ (("cs") %gentext-cs-edited-by%) ]]>
@@ -819,6 +836,7 @@
 (define (gentext-revised-by)
   (case ($lang$)
     <![%l10n-af[ (("af") %gentext-af-revised-by%) ]]>
+    <![%l10n-bg[ (("bg") %gentext-bg-revised-by%) ]]>
     <![%l10n-bs[ (("bs") %gentext-bs-revised-by%) ]]>
     <![%l10n-ca[ (("ca") %gentext-ca-revised-by%) ]]>
     <![%l10n-cs[ (("cs") %gentext-cs-revised-by%) ]]>
@@ -863,6 +881,7 @@
 (define (gentext-page)
   (case ($lang$)
     <![%l10n-af[ (("af") %gentext-af-page%) ]]>
+    <![%l10n-bg[ (("bg") %gentext-bg-page%) ]]>
     <![%l10n-bs[ (("bs") %gentext-bs-page%) ]]>
     <![%l10n-ca[ (("ca") %gentext-ca-page%) ]]>
     <![%l10n-cs[ (("cs") %gentext-cs-page%) ]]>
@@ -907,6 +926,7 @@
 (define (gentext-and)
   (case ($lang$)
     <![%l10n-af[ (("af") %gentext-af-and%) ]]>
+    <![%l10n-bg[ (("bg") %gentext-bg-and%) ]]>
     <![%l10n-bs[ (("bs") %gentext-bs-and%) ]]>
     <![%l10n-ca[ (("ca") %gentext-ca-and%) ]]>
     <![%l10n-cs[ (("cs") %gentext-cs-and%) ]]>
@@ -951,6 +971,7 @@
 (define (gentext-listcomma)
   (case ($lang$)
     <![%l10n-af[ (("af") %gentext-af-listcomma%) ]]>
+    <![%l10n-bg[ (("bg") %gentext-bg-listcomma%) ]]>
     <![%l10n-bs[ (("bs") %gentext-bs-listcomma%) ]]>
     <![%l10n-ca[ (("ca") %gentext-ca-listcomma%) ]]>
     <![%l10n-cs[ (("cs") %gentext-cs-listcomma%) ]]>
@@ -995,6 +1016,7 @@
 (define (gentext-lastlistcomma)
   (case ($lang$)
     <![%l10n-af[ (("af") %gentext-af-lastlistcomma%) ]]>
+    <![%l10n-bg[ (("bg") %gentext-bg-lastlistcomma%) ]]>
     <![%l10n-bs[ (("bs") %gentext-bs-lastlistcomma%) ]]>
     <![%l10n-ca[ (("ca") %gentext-ca-lastlistcomma%) ]]>
     <![%l10n-cs[ (("cs") %gentext-cs-lastlistcomma%) ]]>
@@ -1039,6 +1061,7 @@
 (define (gentext-bibl-pages)
   (case ($lang$)
     <![%l10n-af[ (("af") %gentext-af-bibl-pages%) ]]>
+    <![%l10n-bg[ (("bg") %gentext-bg-bibl-pages%) ]]>
     <![%l10n-bs[ (("bs") %gentext-bs-bibl-pages%) ]]>
     <![%l10n-ca[ (("ca") %gentext-ca-bibl-pages%) ]]>
     <![%l10n-cs[ (("cs") %gentext-cs-bibl-pages%) ]]>
@@ -1083,6 +1106,7 @@
 (define (gentext-endnotes)
   (case ($lang$)
     <![%l10n-af[ (("af") %gentext-af-endnotes%) ]]>
+    <![%l10n-bg[ (("bg") %gentext-bg-endnotes%) ]]>
     <![%l10n-bs[ (("bs") %gentext-bs-endnotes%) ]]>
     <![%l10n-ca[ (("ca") %gentext-ca-endnotes%) ]]>
     <![%l10n-cs[ (("cs") %gentext-cs-endnotes%) ]]>
@@ -1127,6 +1151,7 @@
 (define (gentext-table-endnotes)
   (case ($lang$)
     <![%l10n-af[ (("af") %gentext-af-table-endnotes%) ]]>
+    <![%l10n-bg[ (("bg") %gentext-bg-table-endnotes%) ]]>
     <![%l10n-bs[ (("bs") %gentext-bs-table-endnotes%) ]]>
     <![%l10n-ca[ (("ca") %gentext-ca-table-endnotes%) ]]>
     <![%l10n-cs[ (("cs") %gentext-cs-table-endnotes%) ]]>
@@ -1171,6 +1196,7 @@
 (define (gentext-index-see)
   (case ($lang$)
     <![%l10n-af[ (("af") %gentext-af-index-see%) ]]>
+    <![%l10n-bg[ (("bg") %gentext-bg-index-see%) ]]>
     <![%l10n-bs[ (("bs") %gentext-bs-index-see%) ]]>
     <![%l10n-ca[ (("ca") %gentext-ca-index-see%) ]]>
     <![%l10n-cs[ (("cs") %gentext-cs-index-see%) ]]>
@@ -1215,6 +1241,7 @@
 (define (gentext-index-seealso)
   (case ($lang$)
     <![%l10n-af[ (("af") %gentext-af-index-seealso%) ]]>
+    <![%l10n-bg[ (("bg") %gentext-bg-index-seealso%) ]]>
     <![%l10n-bs[ (("bs") %gentext-bs-index-seealso%) ]]>
     <![%l10n-ca[ (("ca") %gentext-ca-index-seealso%) ]]>
     <![%l10n-cs[ (("cs") %gentext-cs-index-seealso%) ]]>
@@ -1259,6 +1286,7 @@
 (define (gentext-nav-prev prev) 
   (case ($lang$)
     <![%l10n-af[ (("af") (gentext-af-nav-prev prev)) ]]>
+    <![%l10n-bg[ (("bg") (gentext-bg-nav-prev prev)) ]]>
     <![%l10n-bs[ (("bs") (gentext-bs-nav-prev prev)) ]]>
     <![%l10n-ca[ (("ca") (gentext-ca-nav-prev prev)) ]]>
     <![%l10n-cs[ (("cs") (gentext-cs-nav-prev prev)) ]]>
@@ -1303,6 +1331,7 @@
 (define (gentext-nav-prev-sibling prevsib) 
   (case ($lang$)
     <![%l10n-af[ (("af") (gentext-af-nav-prev-sibling prevsib)) ]]>
+    <![%l10n-bg[ (("bg") (gentext-bg-nav-prev-sibling prevsib)) ]]>
     <![%l10n-bs[ (("bs") (gentext-bs-nav-prev-sibling prevsib)) ]]>
     <![%l10n-ca[ (("ca") (gentext-ca-nav-prev-sibling prevsib)) ]]>
     <![%l10n-cs[ (("cs") (gentext-cs-nav-prev-sibling prevsib)) ]]>
@@ -1347,6 +1376,7 @@
 (define (gentext-nav-next-sibling nextsib)
   (case ($lang$)
     <![%l10n-af[ (("af") (gentext-af-nav-next-sibling nextsib)) ]]>
+    <![%l10n-bg[ (("bg") (gentext-bg-nav-next-sibling nextsib)) ]]>
     <![%l10n-bs[ (("bs") (gentext-bs-nav-next-sibling nextsib)) ]]>
     <![%l10n-ca[ (("ca") (gentext-ca-nav-next-sibling nextsib)) ]]>
     <![%l10n-cs[ (("cs") (gentext-cs-nav-next-sibling nextsib)) ]]>
@@ -1391,6 +1421,7 @@
 (define (gentext-nav-next next)
   (case ($lang$)
     <![%l10n-af[ (("af") (gentext-af-nav-next next)) ]]>
+    <![%l10n-bg[ (("bg") (gentext-bg-nav-next next)) ]]>
     <![%l10n-bs[ (("bs") (gentext-bs-nav-next next)) ]]>
     <![%l10n-ca[ (("ca") (gentext-ca-nav-next next)) ]]>
     <![%l10n-cs[ (("cs") (gentext-cs-nav-next next)) ]]>
@@ -1435,6 +1466,7 @@
 (define (gentext-nav-up up)
   (case ($lang$)
     <![%l10n-af[ (("af") (gentext-af-nav-up up)) ]]>
+    <![%l10n-bg[ (("bg") (gentext-bg-nav-up up)) ]]>
     <![%l10n-bs[ (("bs") (gentext-bs-nav-up up)) ]]>
     <![%l10n-ca[ (("ca") (gentext-ca-nav-up up)) ]]>
     <![%l10n-cs[ (("cs") (gentext-cs-nav-up up)) ]]>
@@ -1479,6 +1511,7 @@
 (define (gentext-nav-home home)
   (case ($lang$)
     <![%l10n-af[ (("af") (gentext-af-nav-home home)) ]]>
+    <![%l10n-bg[ (("bg") (gentext-bg-nav-home home)) ]]>
     <![%l10n-bs[ (("bs") (gentext-bs-nav-home home)) ]]>
     <![%l10n-ca[ (("ca") (gentext-ca-nav-home home)) ]]>
     <![%l10n-cs[ (("cs") (gentext-cs-nav-home home)) ]]>

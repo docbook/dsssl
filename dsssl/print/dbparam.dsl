@@ -1306,16 +1306,21 @@
   "../images/")
 
 (define %admon-graphics-extension%
-  ;; REFENTRY admon-graphic-default-extension
+  ;; REFENTRY admon-graphic-extension
   ;; PURP Admonition graphic file extension
   ;; DESC
-  ;; Identifies the default extension for admonition graphics. This allows
+  ;; Identifies the extension for admonition graphics. This allows
   ;; backends to select different images (e.g., EPS for print, PNG for
   ;; PDF, etc.)
+  ;;
+  ;; The older parameter, admon-graphic-default-extension, will be
+  ;; used if it is set, for backwards compatability.
   ;; /DESC
   ;; AUTHOR N/A
   ;; /REFENTRY
-  ".eps")
+  (if admon-graphic-default-extension
+      admon-graphic-default-extension
+      ".eps"))
 
 (define ($admon-graphic$ #!optional (nd (current-node)))
   ;; REFENTRY admon-graphic

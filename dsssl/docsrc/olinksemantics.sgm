@@ -6,7 +6,7 @@
 ]>
 <?Pub Inc>
 <article>
-<?dbhtml filename='olinksemantics.html' chunk='no' output-dir='../doc'>
+<?dbhtml filename="olinksemantics.html" chunk='no' output-dir="../doc">
 <artheader>
 <title>OLink Semantics in the DocBook DSSSL Stylesheets</title>
 <author><firstname>Norman</firstname><surname>Walsh</surname></author><pubdate>

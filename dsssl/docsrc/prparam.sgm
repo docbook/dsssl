@@ -5,7 +5,7 @@
 <!ENTITY pr.docinfo SYSTEM "printpr/docinfo.sgm">
 ]>
 <book>
-<?dbhtml filename='index.html' output-dir='../doc/print'>
+<?dbhtml filename="index.html" output-dir="../doc/print">
 <title>Print Parameter Reference</title>
 <bookinfo>
 &pr.docinfo;

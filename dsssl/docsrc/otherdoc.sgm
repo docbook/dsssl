@@ -1,5 +1,5 @@
 <chapter id="otherdoc">
-<?dbhtml filename='otherdoc.html'>
+<?dbhtml filename="otherdoc.html">
 <docinfo>
 <pubdate role=rcs>$Date$</pubdate>
 <modespec id="title.modespec" xreflabel="%t"></modespec>

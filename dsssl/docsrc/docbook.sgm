@@ -12,7 +12,7 @@
 <!ENTITY olink.collateindex SYSTEM "collateindex.sgm" CDATA sgml>
 ]>
 <book>
-<?dbhtml filename='index.html' output-dir='../doc'>
+<?dbhtml filename="index.html" output-dir="../doc">
 <title>The Modular DocBook Stylesheets</title>
 <bookinfo>
 <author><firstname>Norman</firstname><surname>Walsh</surname></author>

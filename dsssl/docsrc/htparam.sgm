@@ -5,7 +5,7 @@
 <!ENTITY ht.docinfo SYSTEM "htmlpr/docinfo.sgm">
 ]>
 <book>
-<?dbhtml filename='index.html' output-dir='../doc/html'>
+<?dbhtml filename="index.html" output-dir="../doc/html">
 <title>HTML Parameter Reference</title>
 <bookinfo>
 &ht.docinfo;

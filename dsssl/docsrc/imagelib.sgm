@@ -1,6 +1,6 @@
 <!DOCTYPE ARTICLE PUBLIC "-//OASIS//DTD DocBook V3.1//EN">
 <!--ArborText, Inc., 1988-1998, v.4002-->
-<article><?dbhtml filename='imagelib.html' chunk='no' output-dir='../doc'>
+<article><?dbhtml filename="imagelib.html" chunk='no' output-dir="../doc">
 <artheader>
 <title>Image Library Files</title>
 <author><firstname>Norman</firstname><surname>Walsh</surname></author><pubdate>

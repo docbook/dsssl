@@ -1,6 +1,6 @@
 <!DOCTYPE ARTICLE PUBLIC "-//OASIS//DTD DocBook V3.1//EN">
 <!--ArborText, Inc., 1988-1998, v.4002-->
-<article><?dbhtml filename='indexing.html' chunk='no' output-dir='../doc'>
+<article><?dbhtml filename="indexing.html" chunk='no' output-dir="../doc">
 <artheader>
 <title>Automatic Indexing with the DocBook DSSSL Stylesheets</title>
 <author><firstname>Norman</firstname><surname>Walsh</surname></author><pubdate>

@@ -48,6 +48,8 @@ dbl1zhtw.ent: ../../gentext/locale/zh_tw.xml
 
 %.ent:
 	$(XSLT) $< ../../gentext/xsl/dsssl.xsl $@
+	perl -i.bak cs-hack.pl $@
+	rm -f $@.bak
 
 clean:
 	rm -f *.ent

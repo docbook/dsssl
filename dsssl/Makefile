@@ -43,7 +43,6 @@ else
 	find . -print  | grep /CVS/ | cut -c3- >> /tmp/tar.exclude
 	find . -print  | grep /doc/ | cut -c3- >> /tmp/tar.exclude
 	find . -print  | grep /docsrc/ | cut -c3- >> /tmp/tar.exclude
-	find . -print  | grep /debian$$ | cut -c3- >> /tmp/tar.exclude
 	find . -type f -name "*~"  | cut -c3- >> /tmp/tar.exclude
 	find . -type f -name ".*~"  | cut -c3- >> /tmp/tar.exclude
 	find . -type f -name "#*"  | cut -c3- >> /tmp/tar.exclude

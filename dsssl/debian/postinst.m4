@@ -28,30 +28,57 @@ debug () {
     fi
 }
 
+sitefile () {
+    local which=$1; shift
+
+    if [ "$which" = print ]; then
+        echo ${PRINTCONF}
+    elif [ "$which" = html ]; then
+        echo ${HTMLCONF}
+    else
+        echo "setit first arg must be 'print' or 'html'" >&2
+        exit 1
+    fi
+    if [ ! -f ${file} ]; then
+        echo "configuration file '$file' doesn't exist" >&2
+        exit 1
+    fi
+}
+
+
+# e.g.: unsetit print %visual-acuity%
+unsetit () {
+    local which=$1; shift
+    local setting=$1; shift
+    local file=`sitefile $which`
+
+    # sanity
+    if [ -z "$setting" ]; then
+        echo "setting '$setting' is empty, skipping" >&2
+        return
+    fi
+    
+    if grep -q "^(define $setting.*set by debconf" ${file}; then
+        debug "found setting '$setting' in file '$file', removing"
+        sed -e "/^(define $setting .*).*$/d" ${file} > ${file}.new
+        cat ${file}.new > ${file}
+        rm -f ${file}.new
+    else
+        debug "setting '$setting' in file '$file' not there or already disabled"
+    fi
+}
+
 # e.g.: setit print %visual-acuity% normal
 setit () {
     local which=$1; shift
     local setting=$1; shift
     local value=$1; shift
-    local file
+    local file=`sitefile $which`
 
+    # sanity
     if [ -z "$setting" -o -z "$value" ]; then
         echo "setting '$setting' or value '$value' is empty, skipping" >&2
         return
-    fi
-
-    if [ "$which" = print ]; then
-        file=${PRINTCONF}
-    elif [ "$which" = html ]; then
-        file=${HTMLCONF}
-    else
-        echo "setit first arg must be 'print' or 'html'" >&2
-        exit 1
-    fi
-
-    if [ ! -f ${file} ]; then
-        echo "configuration file '$file' doesn't exist" >&2
-        exit 1
     fi
     
     # quote value if we need to
@@ -68,15 +95,17 @@ setit () {
     
     if grep -q "^(define $setting $value)" ${file}; then
         debug "setting '$setting' already set to $value in file '$file'"
+    elif grep -q "^.*;.*(define $setting" ${file}; then
+        debug "setting '$setting' already set to $value in file '$file', commented out -- leaving alone"
     elif grep -q "^(define $setting .*)" ${file}; then
         debug "found setting '$setting' in file '$file', updating"
-        sed -e "s/^(define $setting .*).*$/(define $setting $value) ;; set by debconf/;" ${file} > ${file}.new
+        sed -e "s/^(define $setting .*).*$/(define $setting $value) ;; set by debconf/" ${file} > ${file}.new
         cat ${file}.new > ${file}
         rm -f ${file}.new
     else
         debug "did not find setting '$setting' in file '$file', adding" >&2
         sed -e "/^<style-specification-body>/a\\
-(define $setting $value) \;\; set by debconf;" ${file} > ${file}.new
+(define $setting $value) \;\; set by debconf" ${file} > ${file}.new
         cat ${file}.new > ${file}
         rm -f ${file}.new
     fi
@@ -145,9 +174,24 @@ if [ "$1" = configure ]; then
         setit print %show-comments% "$RET"
         setit html %show-comments% "$RET"
     fi
-    if db_get docbook-dsssl/set-papersize && $RET; then
-        setit print %page-height% `locale LC_PAPER | sed -n -e '1p'`mm
-        setit print %page-width% `locale LC_PAPER | sed -n -e '2p'`mm
+    if db_get docbook-dsssl/set-papersize; then
+        if [ "$RET" = "do not set" ]; then
+            :
+        elif [ "$RET" = "LC_PAPER" ]; then
+            setit print %page-height% `locale LC_PAPER | sed -n -e '1p'`mm
+            setit print %page-width% `locale LC_PAPER | sed -n -e '2p'`mm
+        elif [ "$RET" = "papersize" ]; then
+            if which paperconf &>/dev/null; then
+                setit print %page-height% `paperconf -h -m`
+                setit print %page-width% `paperconf -w -m`
+            else
+                echo "no /etc/papersize found, oh well, skipping" >&2
+            fi
+        else
+            unsetit print %page-height%
+            unsetit print %page-width% 
+            setit print %paper-type% "$RET"
+        fi
     fi
     if db_get docbook-dsssl/html-ext; then
         setit html %html-ext% "$RET"

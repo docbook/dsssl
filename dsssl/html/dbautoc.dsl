@@ -36,7 +36,9 @@
 	  (if (and %annotate-toc% 
 		   (equal? (gi tocentry) (normalize "refentry")))
 	      (make sequence
-		(literal " \em-dash; ")
+		(dingbat-sosofo "nbsp");
+		(dingbat-sosofo "em-dash");
+		(dingbat-sosofo "nbsp");
 		(toc-annotation tocentry))
 	      (empty-sosofo)))))
 

@@ -21,7 +21,7 @@
 ;; Norman Walsh, ndw@nwalsh.com
 
 ;; Contributor:
-;;               Park Yong Joo (yongjoo@kldp.org)
+;;               Park Yong Joo (yongjoo@kldp.org) 2001/01/06
 ;;
 
 (define (ko-author-string #!optional (author (current-node)))
@@ -139,13 +139,13 @@
   ;; one up with the (cond) so it stands as an example.
   (cond 
    ((equal? (gi before) (normalize "book"))
-    (literal " - "))
+    (literal "\U-C758; "))
    ((equal? (gi before) (normalize "chapter"))
-    (literal "&in; "))
+    (literal "\U-C758; "))
    ((equal? (gi before) (normalize "sect1"))
-    (literal "&in; "))
+    (literal "\U-C758; "))
    (else
-    (literal " - "))))
+    (literal "\U-C758; "))))
 
 ;; Should the TOC come first or last?
 ;;
@@ -179,7 +179,7 @@
    (list (normalize "index")		"&Index;")
    (list (normalize "colophon")		"&Colophon;")
    (list (normalize "setindex")		"&SetIndex;")
-   (list (normalize "isbn")		"&isbn;")
+   (list (normalize "isbn")		"&ISBN;")
    (list (normalize "legalnotice")	"&LegalNotice;")
    (list (normalize "msgaud")		"&MsgAud;")
    (list (normalize "msglevel")		"&MsgLevel;")
@@ -299,7 +299,7 @@
    (list (normalize "answer")		" ")
    (list (normalize "appendix")		". ")
    (list (normalize "caution")		"")
-   (list (normalize "chapter")		"\U-C7A5;. ")
+   (list (normalize "chapter")		". ")
    (list (normalize "equation")		". ")
    (list (normalize "example")		". ")
    (list (normalize "figure")		". ")
@@ -318,12 +318,12 @@
    (list (normalize "refsect1")		". ")
    (list (normalize "refsect2")		". ")
    (list (normalize "refsect3")		". ")
-   (list (normalize "sect1")		"\U-C808;. ")
-   (list (normalize "sect2")		"\U-C808;. ")
-   (list (normalize "sect3")		"\U-C808;. ")
-   (list (normalize "sect4")		"\U-C808;. ")
-   (list (normalize "sect5")		"\U-C808;. ")
-   (list (normalize "section")		"\U-C808;. ")
+   (list (normalize "sect1")		". ")
+   (list (normalize "sect2")		". ")
+   (list (normalize "sect3")		". ")
+   (list (normalize "sect4")		". ")
+   (list (normalize "sect5")		". ")
+   (list (normalize "section")		". ")
    (list (normalize "simplesect")	". ")
    (list (normalize "seeie")		" ")
    (list (normalize "seealsoie")	" ")

@@ -17,11 +17,11 @@
 (define preferred-mediaobject-extensions
   (list "jpeg" "jpg" "png" "avi" "mpg" "mpeg" "qt"))
 
-(define acceptable-mediaobject-extensions
-  (list "gif" "bmp"))
-
 (define acceptable-mediaobject-notations
-  (list "GIF" "GIF87a" "GIF89a" "BMP"))
+  (list "GIF" "GIF87a" "GIF89a" "BMP" "WMF"))
+
+(define acceptable-mediaobject-extensions
+  (list "gif" "bmp" "wmf"))
 
 (define (data-filename dataobj)
   (let* ((entityref (attribute-string (normalize "entityref") dataobj))

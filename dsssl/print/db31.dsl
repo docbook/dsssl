@@ -237,32 +237,35 @@
 (element question
   (let* ((chlist   (children (current-node)))
          (firstch  (node-list-first chlist))
-         (restch   (node-list-rest chlist)))
+         (restch   (node-list-rest chlist))
+	 (label    (question-answer-label (current-node))))
     (make sequence
       (make paragraph
 	space-after: (/ %para-sep% 2)
 	keep-with-next?: #t
         (make sequence
           font-weight: 'bold
-          (literal (question-answer-label (current-node)) " "))
+	  (if (string=? label "")
+	      (empty-sosofo)
+	      (literal label " "))
         (process-node-list (children firstch)))
-      (process-node-list restch))))
+      (process-node-list restch)))))
 
 (element answer
-  (let* ((inhlabel (inherited-attribute-string (normalize "defaultlabel")))
-	 (deflabel (if inhlabel inhlabel (qanda-defaultlabel)))
-	 (label    (attribute-string (normalize "label")))
-	 (chlist   (children (current-node)))
+  (let* ((chlist   (children (current-node)))
 	 (firstch  (node-list-first chlist))
-	 (restch   (node-list-rest chlist)))
+	 (restch   (node-list-rest chlist))
+	 (label    (question-answer-label (current-node))))
     (make display-group
       space-after: %block-sep%
       (make paragraph
 	(make sequence
 	  font-weight: 'bold
-	  (literal (question-answer-label (current-node)) " "))
+	  (if (string=? label "")
+	      (empty-sosofo)
+	      (literal label " "))
 	(process-node-list (children firstch)))
-      (process-node-list restch))))
+      (process-node-list restch)))))
 
 ;; ======================================================================
 ;; constant

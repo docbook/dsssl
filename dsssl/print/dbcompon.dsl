@@ -63,16 +63,12 @@
       (literal 
        (gentext-page)
        (if %page-number-restart%
-	   (cond
-	    ((equal? (gi component) (normalize "appendix") ) 
-	     (string-append
-	      (element-label component #t)
-	      (gentext-intra-label-sep "_pagenumber")))
-	    ((equal? (gi component) (normalize "chapter"))
-	     (string-append
-	      (element-label component #t)
-	      (gentext-intra-label-sep "_pagenumber")))
-	    (else ""))
+	   (if (or (equal? (gi component) (normalize "chapter"))
+		   (equal? (gi component) (normalize "appendix")))
+	       (string-append
+		(element-label component #t)
+		(gentext-intra-label-sep "_pagenumber"))
+	       "")
 	   ""))
       (page-number-sosofo))))
 
@@ -209,7 +205,6 @@
   (make simple-page-sequence
     page-n-columns: %page-n-columns%
     page-number-restart?: (or %page-number-restart% 
-			      (book-start?) 
 			      (first-chapter?))
     page-number-format: ($page-number-format$)
     use: default-text-style
@@ -437,6 +432,7 @@
 	       (generate-toc-in-front))
 	  (make simple-page-sequence
 	    page-n-columns: %page-n-columns%
+            ;; FIXME: page restarting here and below is ill-considered
 	    page-number-restart?: %article-page-number-restart%
 	    page-number-format: ($page-number-format$ (normalize "toc"))
 	    left-header:   ($left-header$ (normalize "toc"))

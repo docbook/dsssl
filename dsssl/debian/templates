@@ -6,11 +6,11 @@ Description: Show comments?
 
 Template: docbook-dsssl/set-papersize
 Type: select
-Choices: do not set,A4,A4landscape,USletter,USlandscape,LC_PAPER,paperconf
+Choices: do not set, A4, A4landscape, USletter, USlandscape, LC_PAPER, paperconf
 Default: LC_PAPER
 Description: Print paper size
- Select which papersize you would like to produce by default when
- production print output.
+ Which papersize you would like to produce by default when
+ producing print output?
  .
    do not set:   do not set paper size at all
    A4:           A4 paper

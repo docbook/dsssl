@@ -805,7 +805,9 @@
 	  (revauthor (select-elements (descendants (current-node))
 				      (normalize "authorinitials")))
 	  (revremark (select-elements (descendants (current-node))
-				      (normalize "revremark"))))
+				      (normalize "revremark")))
+	  (revdescription (select-elements (descendants (current-node))
+				      (normalize "revdescription"))))
       (make sequence
 	(make table-row
 	  (make table-cell
@@ -859,21 +861,28 @@
 	    n-columns-spanned: 3
 	    n-rows-spanned: 1
 	    start-indent: 0pt
-	    (if (not (node-list-empty? revremark))
-		(make paragraph
-		  use: set-titlepage-recto-style
-		  font-size: %bf-size%
-		  font-weight: 'medium
-		  space-after: (if (last-sibling?) 
-				   0pt
-				   (/ %block-sep% 2))
-		  (process-node-list revremark))
-		(empty-sosofo)))))))
+	    (cond ((not (node-list-empty? revremark))
+		   (make paragraph
+		     use: set-titlepage-recto-style
+		     font-size: %bf-size%
+		     font-weight: 'medium
+		     space-after: (if (last-sibling?) 
+				      0pt
+				      (/ %block-sep% 2))
+		     (process-node-list revremark)))
+		  ((not (node-list-empty? revdescription))
+		   (make sequence
+		     use: set-titlepage-recto-style
+		     font-size: %bf-size%
+		     font-weight: 'medium
+		     (process-node-list revdescription)))
+		(else (empty-sosofo))))))))
   
   (element (revision revnumber) (process-children-trim))
   (element (revision date) (process-children-trim))
   (element (revision authorinitials) (process-children-trim))
   (element (revision revremark) (process-children-trim))
+  (element (revision revdescription) (process-children))
 
   (element seriesvolnums
     (make paragraph
@@ -1250,7 +1259,9 @@
 	  (revauthor (select-elements (descendants (current-node))
 				      (normalize "authorinitials")))
 	  (revremark (select-elements (descendants (current-node))
-				      (normalize "revremark"))))
+				      (normalize "revremark")))
+	  (revdescription (select-elements (descendants (current-node))
+				      (normalize "revdescription"))))
       (make sequence
 	(make table-row
 	  (make table-cell
@@ -1304,21 +1315,29 @@
 	    n-columns-spanned: 3
 	    n-rows-spanned: 1
 	    start-indent: 0pt
-	    (if (not (node-list-empty? revremark))
-		(make paragraph
-		  use: set-titlepage-verso-style
-		  font-size: %bf-size%
-		  font-weight: 'medium
-		  space-after: (if (last-sibling?) 
-				   0pt
-				   (/ %block-sep% 2))
-		  (process-node-list revremark))
-		(empty-sosofo)))))))
+	    (cond ((not (node-list-empty? revremark))
+		   (make paragraph
+		     use: set-titlepage-verso-style
+		     font-size: %bf-size%
+		     font-weight: 'medium
+		     space-after: (if (last-sibling?) 
+				      0pt
+				      (/ %block-sep% 2))
+		     ;(process-node-list revremark)))
+		     (empty-sosofo)))
+		  ((not (node-list-empty? revdescription))
+		   (make sequence
+		     use: set-titlepage-verso-style
+		     font-size: %bf-size%
+		     font-weight: 'medium
+		     (process-node-list revdescription)))
+		(else (empty-sosofo))))))))
   
   (element (revision revnumber) (process-children-trim))
   (element (revision date) (process-children-trim))
   (element (revision authorinitials) (process-children-trim))
   (element (revision revremark) (process-children-trim))
+  (element (revision revdescription) (process-children))
 
   (element seriesvolnums
     (make paragraph
@@ -2112,7 +2131,9 @@
 	  (revauthor (select-elements (descendants (current-node))
 				      (normalize "authorinitials")))
 	  (revremark (select-elements (descendants (current-node))
-				      (normalize "revremark"))))
+				      (normalize "revremark")))
+	  (revdescription (select-elements (descendants (current-node))
+				      (normalize "revdescription"))))
       (make sequence
 	(make table-row
 	  (make table-cell
@@ -2166,21 +2187,28 @@
 	    n-columns-spanned: 3
 	    n-rows-spanned: 1
 	    start-indent: 0pt
-	    (if (not (node-list-empty? revremark))
-		(make paragraph
-		  use: book-titlepage-recto-style
-		  font-size: %bf-size%
-		  font-weight: 'medium
-		  space-after: (if (last-sibling?) 
-				   0pt
-				   (/ %block-sep% 2))
-		  (process-node-list revremark))
-		(empty-sosofo)))))))
+	    (cond ((not (node-list-empty? revremark))
+		   (make paragraph
+		     use: book-titlepage-recto-style
+		     font-size: %bf-size%
+		     font-weight: 'medium
+		     space-after: (if (last-sibling?) 
+				      0pt
+				      (/ %block-sep% 2))
+		     (process-node-list revremark)))
+		  ((not (node-list-empty? revdescription))
+		   (make sequence
+		     use: book-titlepage-recto-style
+		     font-size: %bf-size%
+		     font-weight: 'medium
+		     (process-node-list revremark)))
+		  (else (empty-sosofo))))))))
   
   (element (revision revnumber) (process-children-trim))
   (element (revision date) (process-children-trim))
   (element (revision authorinitials) (process-children-trim))
   (element (revision revremark) (process-children-trim))
+  (element (revision revdescription) (process-children))
 
   (element seriesvolnums
     (make paragraph
@@ -2560,7 +2588,9 @@
 	  (revauthor (select-elements (descendants (current-node))
 				      (normalize "authorinitials")))
 	  (revremark (select-elements (descendants (current-node))
-				      (normalize "revremark"))))
+				      (normalize "revremark")))
+	  (revdescription (select-elements (descendants (current-node))
+				      (normalize "revdescription"))))
       (make sequence
 	(make table-row
 	  (make table-cell
@@ -2614,21 +2644,28 @@
 	    n-columns-spanned: 3
 	    n-rows-spanned: 1
 	    start-indent: 0pt
-	    (if (not (node-list-empty? revremark))
-		(make paragraph
-		  use: book-titlepage-verso-style
-		  font-size: %bf-size%
-		  font-weight: 'medium
-		  space-after: (if (last-sibling?) 
-				   0pt
-				   (/ %block-sep% 2))
-		  (process-node-list revremark))
-		(empty-sosofo))))))) 
+	    (cond ((not (node-list-empty? revremark))
+		   (make paragraph
+		     use: book-titlepage-verso-style
+		     font-size: %bf-size%
+		     font-weight: 'medium
+		     space-after: (if (last-sibling?) 
+				      0pt
+				      (/ %block-sep% 2))
+		     (process-node-list revremark)))
+		  ((not (node-list-empty? revdescription))
+		   (make sequence
+		     use: book-titlepage-verso-style
+		     font-size: %bf-size%
+		     font-weight: 'medium
+		     (process-node-list revdescription)))
+		(else (empty-sosofo)))))))) 
   
   (element (revision revnumber) (process-children-trim))
   (element (revision date) (process-children-trim))
   (element (revision authorinitials) (process-children-trim))
   (element (revision revremark) (process-children-trim))
+  (element (revision revdescription) (process-children))
 
   (element seriesvolnums
     (make paragraph
@@ -3424,7 +3461,9 @@
 	  (revauthor (select-elements (descendants (current-node))
 				      (normalize "authorinitials")))
 	  (revremark (select-elements (descendants (current-node))
-				      (normalize "revremark"))))
+				      (normalize "revremark")))
+	  (revdescription (select-elements (descendants (current-node))
+				      (normalize "revdescription"))))
       (make sequence
 	(make table-row
 	  (make table-cell
@@ -3478,21 +3517,28 @@
 	    n-columns-spanned: 3
 	    n-rows-spanned: 1
 	    start-indent: 0pt
-	    (if (not (node-list-empty? revremark))
-		(make paragraph
-		  use: part-titlepage-recto-style
-		  font-size: %bf-size%
-		  font-weight: 'medium
-		  space-after: (if (last-sibling?) 
-				   0pt
-				   (/ %block-sep% 2))
-		  (process-node-list revremark))
-		(empty-sosofo))))))) 
+	    (cond ((not (node-list-empty? revremark))
+		   (make paragraph
+		     use: part-titlepage-recto-style
+		     font-size: %bf-size%
+		     font-weight: 'medium
+		     space-after: (if (last-sibling?) 
+				      0pt
+				      (/ %block-sep% 2))
+		     (process-node-list revremark)))
+		  ((not (node-list-empty? revdescription))
+		   (make sequence
+		     use: part-titlepage-recto-style
+		     font-size: %bf-size%
+		     font-weight: 'medium
+		     (process-node-list revdescription)))
+		  (else (empty-sosofo)))))))) 
   
   (element (revision revnumber) (process-children-trim))
   (element (revision date) (process-children-trim))
   (element (revision authorinitials) (process-children-trim))
   (element (revision revremark) (process-children-trim))
+  (element (revision revdescription) (process-children))
 
   (element seriesvolnums
     (make paragraph
@@ -3874,7 +3920,9 @@
 	  (revauthor (select-elements (descendants (current-node))
 				      (normalize "authorinitials")))
 	  (revremark (select-elements (descendants (current-node))
-				      (normalize "revremark"))))
+				      (normalize "revremark")))
+	  (revdescription (select-elements (descendants (current-node))
+				      (normalize "revdescription"))))
       (make sequence
 	(make table-row
 	  (make table-cell
@@ -3928,21 +3976,28 @@
 	    n-columns-spanned: 3
 	    n-rows-spanned: 1
 	    start-indent: 0pt
-	    (if (not (node-list-empty? revremark))
-		(make paragraph
-		  use: part-titlepage-verso-style
-		  font-size: %bf-size%
-		  font-weight: 'medium
-		  space-after: (if (last-sibling?) 
-				   0pt
-				   (/ %block-sep% 2))
-		  (process-node-list revremark))
-		(empty-sosofo))))))) 
+	    (cond ((not (node-list-empty? revremark))
+		   (make paragraph
+		     use: part-titlepage-verso-style
+		     font-size: %bf-size%
+		     font-weight: 'medium
+		     space-after: (if (last-sibling?) 
+				      0pt
+				      (/ %block-sep% 2))
+		     (process-node-list revremark)))
+		  ((not (node-list-empty? revdescription))
+		   (make sequence
+		     use: part-titlepage-verso-style
+		     font-size: %bf-size%
+		     font-weight: 'medium
+		     (process-node-list revremark)))
+		  (else (empty-sosofo)))))))) 
   
   (element (revision revnumber) (process-children-trim))
   (element (revision date) (process-children-trim))
   (element (revision authorinitials) (process-children-trim))
   (element (revision revremark) (process-children-trim))
+  (element (revision revdescription) (process-children))
 
   (element seriesvolnums
     (make paragraph
@@ -4703,7 +4758,9 @@
 	  (revauthor (select-elements (descendants (current-node))
 				      (normalize "authorinitials")))
 	  (revremark (select-elements (descendants (current-node))
-				      (normalize "revremark"))))
+				      (normalize "revremark")))
+	  (revdescription (select-elements (descendants (current-node))
+				      (normalize "revdescription"))))
       (make sequence
 	(make table-row
 	  (make table-cell
@@ -4757,21 +4814,28 @@
 	    n-columns-spanned: 3
 	    n-rows-spanned: 1
 	    start-indent: 0pt
-	    (if (not (node-list-empty? revremark))
-		(make paragraph
-		  use: article-titlepage-recto-style
-		  font-size: %bf-size%
-		  font-weight: 'medium
-		  space-after: (if (last-sibling?) 
-				   0pt
-				   (/ %block-sep% 2))
-		  (process-node-list revremark))
-		(empty-sosofo)))))))
+	    (cond ((not (node-list-empty? revremark))
+		   (make paragraph
+		     use: article-titlepage-recto-style
+		     font-size: %bf-size%
+		     font-weight: 'medium
+		     space-after: (if (last-sibling?) 
+				      0pt
+				      (/ %block-sep% 2))
+		     (process-node-list revremark)))
+		  ((not (node-list-empty? revdescription))
+		   (make sequence
+		     use: article-titlepage-recto-style
+		     font-size: %bf-size%
+		     font-weight: 'medium
+		     (process-node-list revdescription)))
+		  (else (empty-sosofo))))))))
   
   (element (revision revnumber) (process-children-trim))
   (element (revision date) (process-children-trim))
   (element (revision authorinitials) (process-children-trim))
   (element (revision revremark) (process-children-trim))
+  (element (revision revdescription) (process-children))
 
   (element seriesvolnums
     (make paragraph
@@ -5149,7 +5213,9 @@
 	  (revauthor (select-elements (descendants (current-node))
 				      (normalize "authorinitials")))
 	  (revremark (select-elements (descendants (current-node))
-				      (normalize "revremark"))))
+				      (normalize "revremark")))
+	  (revdescription (select-elements (descendants (current-node))
+				      (normalize "revdescription"))))
       (make sequence
 	(make table-row
 	  cell-after-row-border: #f
@@ -5204,21 +5270,28 @@
 	    n-columns-spanned: 3
 	    n-rows-spanned: 1
 	    start-indent: 0pt
-	    (if (not (node-list-empty? revremark))
-		(make paragraph
-		  use: article-titlepage-verso-style
-		  font-size: %bf-size%
-		  font-weight: 'medium
-		  space-after: (if (last-sibling?) 
-				   0pt
-				   (/ %block-sep% 2))
-		  (process-node-list revremark))
-		(empty-sosofo))))))) 
+	    (cond ((not (node-list-empty? revremark))
+		   (make paragraph
+		     use: article-titlepage-verso-style
+		     font-size: %bf-size%
+		     font-weight: 'medium
+		     space-after: (if (last-sibling?) 
+				      0pt
+				      (/ %block-sep% 2))
+		     (process-node-list revremark)))
+		  ((not (node-list-empty? revdescription))
+		   (make sequence
+		     use: article-titlepage-verso-style
+		     font-size: %bf-size%
+		     font-weight: 'medium
+		     (process-node-list revdescription)))
+		  (else (empty-sosofo)))))))) 
   
   (element (revision revnumber) (process-children-trim))
   (element (revision date) (process-children-trim))
   (element (revision authorinitials) (process-children-trim))
   (element (revision revremark) (process-children-trim))
+  (element (revision revdescription) (process-children))
 
   (element seriesvolnums
     (make paragraph
@@ -6019,7 +6092,9 @@
 	  (revauthor (select-elements (descendants (current-node))
 				      (normalize "authorinitials")))
 	  (revremark (select-elements (descendants (current-node))
-				      (normalize "revremark"))))
+				      (normalize "revremark")))
+	  (revdescription (select-elements (descendants (current-node))
+				      (normalize "revdescription"))))
       (make sequence
 	(make table-row
 	  (make table-cell
@@ -6073,21 +6148,28 @@
 	    n-columns-spanned: 3
 	    n-rows-spanned: 1
 	    start-indent: 0pt
-	    (if (not (node-list-empty? revremark))
-		(make paragraph
-		  use: reference-titlepage-recto-style
-		  font-size: %bf-size%
-		  font-weight: 'medium
-		  space-after: (if (last-sibling?) 
-				   0pt
-				   (/ %block-sep% 2))
-		  (process-node-list revremark))
-		(empty-sosofo))))))) 
+	    (cond ((not (node-list-empty? revremark))
+		   (make paragraph
+		     use: reference-titlepage-recto-style
+		     font-size: %bf-size%
+		     font-weight: 'medium
+		     space-after: (if (last-sibling?) 
+				      0pt
+				      (/ %block-sep% 2))
+		     (process-node-list revremark)))
+		  ((not (node-list-empty? revdescription))
+		   (make sequence
+		     use: reference-titlepage-recto-style
+		     font-size: %bf-size%
+		     font-weight: 'medium
+		     (process-node-list revdescription)))
+		(else (empty-sosofo)))))))) 
   
   (element (revision revnumber) (process-children-trim))
   (element (revision date) (process-children-trim))
   (element (revision authorinitials) (process-children-trim))
   (element (revision revremark) (process-children-trim))
+  (element (revision revdescription) (process-children))
 
   (element seriesvolnums
     (make paragraph
@@ -6468,7 +6550,9 @@
 	  (revauthor (select-elements (descendants (current-node))
 				      (normalize "authorinitials")))
 	  (revremark (select-elements (descendants (current-node))
-				      (normalize "revremark"))))
+				      (normalize "revremark")))
+	  (revdescription (select-elements (descendants (current-node))
+				      (normalize "revdescription"))))
       (make sequence
 	(make table-row
 	  (make table-cell
@@ -6522,21 +6606,28 @@
 	    n-columns-spanned: 3
 	    n-rows-spanned: 1
 	    start-indent: 0pt
-	    (if (not (node-list-empty? revremark))
-		(make paragraph
-		  use: reference-titlepage-verso-style
-		  font-size: %bf-size%
-		  font-weight: 'medium
-		  space-after: (if (last-sibling?) 
-				   0pt
-				   (/ %block-sep% 2))
-		  (process-node-list revremark))
-		(empty-sosofo))))))) 
+	    (cond ((not (node-list-empty? revremark))
+		   (make paragraph
+		     use: reference-titlepage-verso-style
+		     font-size: %bf-size%
+		     font-weight: 'medium
+		     space-after: (if (last-sibling?) 
+				      0pt
+				      (/ %block-sep% 2))
+		     (process-node-list revremark)))
+		  ((not (node-list-empty? revdescription))
+		   (make sequence
+		     use: reference-titlepage-verso-style
+		     font-size: %bf-size%
+		     font-weight: 'medium
+		     (process-node-list revdescription)))
+		(else (empty-sosofo)))))))) 
   
   (element (revision revnumber) (process-children-trim))
   (element (revision date) (process-children-trim))
   (element (revision authorinitials) (process-children-trim))
   (element (revision revremark) (process-children-trim))
+  (element (revision revdescription) (process-children))
 
   (element seriesvolnums
     (make paragraph

@@ -408,6 +408,10 @@
 
 (define %gentext-zhcn-and% "&and;")
 
+(define %gentext-zhcn-listcomma% "&listcomma;")
+
+(define %gentext-zhcn-lastlistcomma% "&lastlistcomma;")
+
 (define %gentext-zhcn-bibl-pages% "&Pgs;")
 
 (define %gentext-zhcn-endnotes% "&Notes;")

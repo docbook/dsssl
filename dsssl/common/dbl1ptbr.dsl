@@ -395,6 +395,10 @@
 
 (define %gentext-ptbr-and% "&and;")
 
+(define %gentext-ptbr-listcomma% "&listcomma;")
+
+(define %gentext-ptbr-lastlistcomma% "&lastlistcomma;")
+
 (define %gentext-ptbr-bibl-pages% "&Pgs;")
 
 (define %gentext-ptbr-endnotes% "&Notes;")

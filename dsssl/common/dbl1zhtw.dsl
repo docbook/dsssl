@@ -408,6 +408,10 @@
 
 (define %gentext-zhtw-and% "&and;")
 
+(define %gentext-zhtw-listcomma% "&listcomma;")
+
+(define %gentext-zhtw-lastlistcomma% "&lastlistcomma;")
+
 (define %gentext-zhtw-bibl-pages% "&Pgs;")
 
 (define %gentext-zhtw-endnotes% "&Notes;")

@@ -403,6 +403,10 @@
 
 (define %gentext-sk-and% "&and;")
 
+(define %gentext-sk-listcomma% "&listcomma;")
+
+(define %gentext-sk-lastlistcomma% "&lastlistcomma;")
+
 (define %gentext-sk-bibl-pages% "&Pgs;")
 
 (define %gentext-sk-endnotes% "&Notes;")

@@ -825,6 +825,82 @@
     <![%l10n-sv[ (("svse") %gentext-sv-and%) ]]>
     (else (error "L10N ERROR: gentext-and"))))
 
+(define (gentext-listcomma)
+  (case ($lang$)
+    <![%l10n-ca[ (("ca") %gentext-ca-listcomma%) ]]>
+    <![%l10n-cs[ (("cs") %gentext-cs-listcomma%) ]]>
+    <![%l10n-da[ (("da") %gentext-da-listcomma%) ]]>
+    <![%l10n-de[ (("de") %gentext-de-listcomma%) ]]>
+    <![%l10n-el[ (("el") %gentext-el-listcomma%) ]]>
+    <![%l10n-en[ (("en") %gentext-en-listcomma%) ]]>
+    <![%l10n-es[ (("es") %gentext-es-listcomma%) ]]>
+    <![%l10n-et[ (("et") %gentext-et-listcomma%) ]]>
+    <![%l10n-fi[ (("fi") %gentext-fi-listcomma%) ]]>
+    <![%l10n-fr[ (("fr") %gentext-fr-listcomma%) ]]>
+    <![%l10n-hu[ (("hu") %gentext-hu-listcomma%) ]]>
+    <![%l10n-id[ (("id") %gentext-id-listcomma%) ]]>
+    <![%l10n-it[ (("it") %gentext-it-listcomma%) ]]>
+    <![%l10n-ja[ (("ja") %gentext-ja-listcomma%) ]]>
+    <![%l10n-ko[ (("ko") %gentext-ko-listcomma%) ]]>
+    <![%l10n-nl[ (("nl") %gentext-nl-listcomma%) ]]>
+    <![%l10n-no[ (("no") %gentext-no-listcomma%) ]]>
+    <![%l10n-pl[ (("pl") %gentext-pl-listcomma%) ]]>
+    <![%l10n-pt[ (("pt") %gentext-pt-listcomma%) ]]>
+    <![%l10n-ptbr[ (("pt_br") %gentext-ptbr-listcomma%) ]]>
+    <![%l10n-ro[ (("ro") %gentext-ro-listcomma%) ]]>
+    <![%l10n-ru[ (("ru") %gentext-ru-listcomma%) ]]>
+    <![%l10n-sk[ (("sk") %gentext-sk-listcomma%) ]]>
+    <![%l10n-sl[ (("sl") %gentext-sl-listcomma%) ]]>
+    <![%l10n-sr[ (("sr") %gentext-sr-listcomma%) ]]>
+    <![%l10n-sv[ (("sv") %gentext-sv-listcomma%) ]]>
+    <![%l10n-zhcn[ (("zh_cn") %gentext-zhcn-listcomma%) ]]>
+    <![%l10n-zhtw[ (("zh_tw") %gentext-zhtw-listcomma%) ]]>
+
+    <![%l10n-da[ (("dk")   %gentext-da-listcomma%) ]]>
+    <![%l10n-de[ (("dege") %gentext-de-listcomma%) ]]>
+    <![%l10n-en[ (("usen") %gentext-en-listcomma%) ]]>
+    <![%l10n-no[ (("bmno") %gentext-no-listcomma%) ]]>
+    <![%l10n-sv[ (("svse") %gentext-sv-listcomma%) ]]>
+    (else (error "L10N ERROR: gentext-listcomma"))))
+
+(define (gentext-lastlistcomma)
+  (case ($lang$)
+    <![%l10n-ca[ (("ca") %gentext-ca-lastlistcomma%) ]]>
+    <![%l10n-cs[ (("cs") %gentext-cs-lastlistcomma%) ]]>
+    <![%l10n-da[ (("da") %gentext-da-lastlistcomma%) ]]>
+    <![%l10n-de[ (("de") %gentext-de-lastlistcomma%) ]]>
+    <![%l10n-el[ (("el") %gentext-el-lastlistcomma%) ]]>
+    <![%l10n-en[ (("en") %gentext-en-lastlistcomma%) ]]>
+    <![%l10n-es[ (("es") %gentext-es-lastlistcomma%) ]]>
+    <![%l10n-et[ (("et") %gentext-et-lastlistcomma%) ]]>
+    <![%l10n-fi[ (("fi") %gentext-fi-lastlistcomma%) ]]>
+    <![%l10n-fr[ (("fr") %gentext-fr-lastlistcomma%) ]]>
+    <![%l10n-hu[ (("hu") %gentext-hu-lastlistcomma%) ]]>
+    <![%l10n-id[ (("id") %gentext-id-lastlistcomma%) ]]>
+    <![%l10n-it[ (("it") %gentext-it-lastlistcomma%) ]]>
+    <![%l10n-ja[ (("ja") %gentext-ja-lastlistcomma%) ]]>
+    <![%l10n-ko[ (("ko") %gentext-ko-lastlistcomma%) ]]>
+    <![%l10n-nl[ (("nl") %gentext-nl-lastlistcomma%) ]]>
+    <![%l10n-no[ (("no") %gentext-no-lastlistcomma%) ]]>
+    <![%l10n-pl[ (("pl") %gentext-pl-lastlistcomma%) ]]>
+    <![%l10n-pt[ (("pt") %gentext-pt-lastlistcomma%) ]]>
+    <![%l10n-ptbr[ (("pt_br") %gentext-ptbr-lastlistcomma%) ]]>
+    <![%l10n-ro[ (("ro") %gentext-ro-lastlistcomma%) ]]>
+    <![%l10n-ru[ (("ru") %gentext-ru-lastlistcomma%) ]]>
+    <![%l10n-sk[ (("sk") %gentext-sk-lastlistcomma%) ]]>
+    <![%l10n-sl[ (("sl") %gentext-sl-lastlistcomma%) ]]>
+    <![%l10n-sr[ (("sr") %gentext-sr-lastlistcomma%) ]]>
+    <![%l10n-sv[ (("sv") %gentext-sv-lastlistcomma%) ]]>
+    <![%l10n-zhcn[ (("zh_cn") %gentext-zhcn-lastlistcomma%) ]]>
+    <![%l10n-zhtw[ (("zh_tw") %gentext-zhtw-lastlistcomma%) ]]>
+
+    <![%l10n-da[ (("dk")   %gentext-da-lastlistcomma%) ]]>
+    <![%l10n-de[ (("dege") %gentext-de-lastlistcomma%) ]]>
+    <![%l10n-en[ (("usen") %gentext-en-lastlistcomma%) ]]>
+    <![%l10n-no[ (("bmno") %gentext-no-lastlistcomma%) ]]>
+    <![%l10n-sv[ (("svse") %gentext-sv-lastlistcomma%) ]]>
+    (else (error "L10N ERROR: gentext-lastlistcomma"))))
+
 (define (gentext-bibl-pages)
   (case ($lang$)
     <![%l10n-ca[ (("ca") %gentext-ca-bibl-pages%) ]]>

@@ -405,6 +405,10 @@
 
 (define %gentext-ja-and% "&and;")
 
+(define %gentext-ja-listcomma% "&listcomma;")
+
+(define %gentext-ja-lastlistcomma% "&lastlistcomma;")
+
 (define %gentext-ja-bibl-pages% "&Pgs;")
 
 (define %gentext-ja-endnotes% "&Notes;")

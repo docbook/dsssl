@@ -260,20 +260,29 @@
 			      (node-list-length corpauthor-node-list)
 			      (node-list-length othercredit-node-list)
 			      (node-list-length editor-node-list))
-			   1)))
+			   1))
+	 (this-count (if (have-ancestor? (normalize "authorgroup") author)
+			 (+ (node-list-length (preced author)) 1)
+			 1)))
     (string-append
      (if (and (> author-count 1)
 	      (last-sibling? author))
 	 (string-append (gentext-and) " ")
 	 "")
+
      (author-string author)
-     (if (and (> author-count 2)
+
+     (if (> author-count 2)
+	 (if (> (- author-count this-count) 1)
+	     (gentext-listcomma)
+	     (if (= (- author-count this-count) 1)
+		 (gentext-lastlistcomma)
+		 ""))
+	 "")
+     (if (and (> author-count 1)
 	      (not (last-sibling? author)))
-	 ", "
-	 (if (and (> author-count 1)
-		  (not (last-sibling? author)))		  
-	     " "
-	     "")))))
+	 " "
+	 ""))))
 
 ;; === procedures =======================================================
 

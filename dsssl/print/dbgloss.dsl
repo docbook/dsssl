@@ -7,6 +7,7 @@
 ;; ========================= GLOSSARY ELEMENTS ==========================
 
 (element glossary ($component$))
+(element (article glossary) ($section$)) ;; this is a special case
 (element (glossary title) (empty-sosofo))
 
 (element glossdiv ($section$))

@@ -45,6 +45,9 @@
       (process-children))
     (make-endnotes)))
 
+;; this is a special case. this prevents the index from causing an error but
+;; will make the index a single column. c'est la vie.
+(element (article index) ($section$))
 
 (element (index title) (empty-sosofo))
 

@@ -11,7 +11,7 @@ Depends: jade | openjade, docbook (>= 3.1), sgml-base (>= 1.09), sgml-data, ${pe
 Suggests: jadetex, docbook-dsssl-doc, apache | httpd
 Conflicts: docbook-stylesheets
 Replaces: docbook-stylesheets
-Description: Modular DocBook DSSSL stylesheets, for print and HTML
+Description: modular DocBook DSSSL stylesheets, for print and HTML
  This package provides DSSSL stylesheets which let you convert DocBook
  SGML or XML files to various formats.
  .
@@ -29,6 +29,5 @@ Description: Modular DocBook DSSSL stylesheets, for print and HTML
  stylesheets are more actively maintained and contain more new
  features than these DSSSL stylesheets.
  .
-  Author:   Norman Walsh <ndw@nwalsh.com>
-  Homepage: http://docbook.sourceforge.net/
+ Author: Norman Walsh <ndw@nwalsh.com>
 

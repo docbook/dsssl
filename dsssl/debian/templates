@@ -5,12 +5,20 @@ Description: Show comments?
  Would you to show remark and comments in HTML and print output?
 
 Template: docbook-dsssl/set-papersize
-Type: boolean
-Default: true
-Description: Set paper size using LC_PAPER?
- The value from 'locale LC_PAPER' can be used to set your default
- papersize.  Alternatively, you can set your default papersize on your
- own; the default papersize is US Letter.
+Type: select
+Choices: do not set,A4,A4landscape,USletter,USlandscape,LC_PAPER,paperconf
+Default: LC_PAPER
+Description: Print paper size
+ Select which papersize you would like to produce by default when
+ production print output.
+ .
+   do not set:   do not set paper size at all
+   A4:           A4 paper
+   A4landscape:  A4 paper, landscape mode
+   USletter:     US letter paper
+   USlandscape:  US letter paper, landscape mode
+   LC_PAPER:     use output from 'locale LC_PAPER'
+   paperconf:    use 'paperconf' from the libpaperg package
 
 Template: docbook-dsssl/html-ext
 Type: select
@@ -55,3 +63,4 @@ Description: Title font for printed documents.
  Choose the default font family for printed documents.  The
  '%body-font-family%' setting makes the title font family be the same
  as the font used for the textual content of the document.
+

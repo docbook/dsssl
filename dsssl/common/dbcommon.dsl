@@ -1781,13 +1781,14 @@
 	(string-append filename "." %graphic-default-extension%))))
 
 (define (normalized-member string string-list)
-  (let loop ((sl string-list))
-    (if (null? sl)
-	#f
-	(if (string=? (normalize string) (normalize (car sl)))
-	    #t
-	    (loop (cdr sl))))))
-
+  (if (string? string)
+      (let loop ((sl string-list))
+	(if (null? sl)
+	    #f
+	    (if (string=? (normalize string) (normalize (car sl)))
+		#t
+		(loop (cdr sl)))))
+      #f))
 
 (define (find-displayable-object objlist notlist extlist)
   (let loop ((nl objlist))

@@ -1,0 +1,89 @@
+docbook-dsssl -- DocBook Modular DSSSL Stylesheets for Debian
+--------------------------------------------------------------
+
+Usage for tex:
+
+ jade -t tex \
+      -d /usr/lib/sgml/stylesheet/dsssl/docbook/nwalsh/print/docbook.dsl \
+      <sgml-file>
+
+Usage for html:
+
+ jade -t sgml \
+      -d /usr/lib/sgml/stylesheet/dsssl/docbook/nwalsh/html/docbook.dsl \
+      <sgml-file>
+
+Usage for rtf:
+
+ jade -t rtf \
+      -d /usr/lib/sgml/stylesheet/dsssl/docbook/nwalsh/print/docbook.dsl \
+      <sgml-file>
+
+The stylesheets themselves are in the 'docbook-dsssl' package.  The
+documentation for the stylesheets can be found in the
+'docbook-dsssl-doc' package documentation
+(/usr/share/doc/docbook-dsssl-doc/index.html).  It offers an overview
+of how to use the stylesheets as well as information explaining how to
+extend or customize them.
+
+The following parameter changes have been made, diverging from the way
+the upstream source comes by default:
+
+ - The html extension has been changed from ".htm" to ".html".
+
+ - The directories for admonition graphics has been fixed based on the
+   location where materials are installed.  For HTML output, we
+   provide a symlink in /var/www/docbook-dsssl to the images
+   directory.  This means that if you have %admon-graphics% turned on
+   (it's off by default), and ship HTML output from this program to
+   another web server, it will be looking in "/docbook-dsssl/"
+   for files such as note.gif, etc.  So, you'll have to copy those
+   files over, or have docbook-stylesheets installed on the web
+   server.
+
+ - Pretty much the same deal for callout graphics, although that is
+   only operative in HTML output.
+
+A basic template for a user stylesheet can be found in
+/usr/share/doc/docbook-dsssl/examples/basic.dsl .  Other interesting
+examples can be found there as well.
+
+The SGML catalog used for Debian SGML integration can be found in
+/usr/lib/sgml/stylesheet/dsssl/docbook/nwalsh/sgml.catalog .  A
+different SGML catalog is shipped from upstream, and can be found in
+/usr/doc/docbook-dsssl/catalog; it is meant to provide defaults,
+etc., for docbook SGML processing, but it is not required.
+
+Here are some URLs you might be interested in:
+
+  http://nwalsh.com/docbook/
+                -- where this software came from, and some other stuff
+  http://www.oasis-open.org/docbook/
+                -- Home page for the DocBook DTD
+  http://www.docbook.org/
+                -- Another home page for the DocBook DTD, by Norm Walsh, who
+                   wrote these stylesheets
+  http://www.mulberrytech.com/dsssl/
+                -- list archive for the dsssl-list; DSSSL documentation project
+  http://www.oasis-open.org/cover/dsssl.html
+                -- Robin Cover's SGML/XML web pages, DSSSL area
+
+Here are some other packages you might be interested in:
+
+  jade		-- required; this package interprets and formats SGML with the
+		   stylesheets contained in this package
+  openjade      -- fork of Jade; an alternative to jade package above
+  sp		-- jade infrastructure; nsgmls is good for validating SGML
+  opensp        -- fork of SP; an alternative to sp package above
+  docbook	-- required DTDs; you need version 3.0 or better of the DTDs
+  docbook-doc	-- how to use the DTDs
+  docbook-xml   -- XML version of the DocBook DTD
+  docbook-xsl-stylesheets -- DocBook XSL stylesheets
+  task-sgml     -- a metapackage containing dependencies which constitute
+                   a complete SGML development environment
+
+--
+
+maintainer:          Adam Di Carlo <aph@debian.org>
+previous maintainer: Christian Leutloff <leutloff@debian.org>
+

@@ -1,0 +1,171 @@
+#!/usr/bin/make -f
+# Sample debian/rules that uses debhelper. GNU copyright 1997 by Joey Hess.
+# This version is for packages that are architecure independant.
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+package		:= docbook-dsssl
+
+# directory abstraction
+prefix		:= debian/tmp
+bindir		:= $(prefix)/usr/bin
+docdir		:= $(prefix)/usr/share/doc/$(package)
+sgmldir		:= $(prefix)/usr/share/sgml/docbook
+mandir		:= $(prefix)/usr/share/man
+wwwdir		:= $(prefix)/var/www
+dsssldir	:= $(sgmldir)/stylesheet/dsssl/modular
+dssslcompatlnk	:= $(prefix)/usr/lib/sgml/stylesheet/dsssl/docbook/nwalsh
+dssslcompatlnkto:= ../../../../../share/sgml/docbook/stylesheet/dsssl/modular
+
+# build abstraction
+install_file	:= install -o root -g root -m 644 -p
+install_script	:= install -o root -g root -m 755 -p
+install_program	:= install -o root -g root -m 755 -p --strip
+make_directory	:= install -d -o root -g root -m 755
+
+test:
+#	 test our environment
+#	nsgmls -sv doc/testdata/test.sgm
+
+#	rm -f doc/testdata/jtest.rtf
+#	jade -t rtf -d doc/testdata/jtest.dsl doc/testdata/jtest.sgm
+#	[ -f doc/testdata/jtest.rtf ]
+#	rm -f doc/testdata/jtest.rtf
+
+#	rm -f doc/testdata/test.rtf
+#	jade -t rtf -d print/docbook.dsl doc/testdata/test.sgm
+#	[ -f doc/testdata/test.rtf ]
+#	rm -f doc/testdata/test.rtf
+
+#	 puts it in ./c1.html
+#	rm -f doc/testdata/c01.htm*
+#	jade -t sgml -d html/docbook.dsl doc/testdata/test.sgm
+#	[ -f doc/testdata/c01.htm -o -f doc/testdata/c01.htm ]
+#	rm -f doc/testdata/c01.htm*
+
+#	 build documentation
+#	 but this fails with:
+#		jade:E: cannot find "n:\share\dsssl\docbook\print\ChangeLog";
+#	jade -c catalog -d docsrc/doc.dsl -t sgml docsrc/docbook.sgm
+
+
+bin/collateindex.pl.1: bin/collateindex.pl
+	pod2man --section=1 --center="DocBook DSSSL" \
+		--release="docbook-dsssl v$(cat VERSION)" $< > $@
+
+common/catalog:
+	$(MAKE) -C common
+
+%/ChangeLog:
+	(cd $* && cvs2cl)
+
+build:	bin/collateindex.pl.1 common/catalog \
+	common/ChangeLog lib/ChangeLog olink/ChangeLog html/ChangeLog print/ChangeLog
+
+clean:
+	dh_testdir
+#	 created in build target
+	rm -f bin/collateindex.pl.1
+#	 created in binary-indep target
+	rm -f debian/postinst
+	dh_clean
+	$(MAKE) -C common clean
+
+# Build architecture-independent files here.
+binary-indep: build
+	dh_testdir
+	dh_testroot
+	dh_clean -k
+
+#	 install things that go under dsssldir
+	set -e; \
+	for file in VERSION catalog \
+		    `find images -name \*.\*` \
+		    `find dtds -name \*.dtd -o -name dbhtml.dcl` \
+		    `find common lib html print olink -name \*.dsl -o -name \*.ent -o -name catalog`; \
+	do \
+		$(make_directory) $(dsssldir)/`dirname $$file`; \
+		$(install_file) $$file $(dsssldir)/$$file; \
+	done
+
+#	 hack default file extension, try to avoid patching source
+	perl -pi -e 's/"\.htm"/".html"/' $(dsssldir)/html/dbparam.dsl
+#	 hack location of admonition graphics in print output
+	perl -pi -e 's|"\.\./images/"\)|"$(subst $(prefix),,$(dsssldir))/images/"\)|;' \
+		$(dsssldir)/print/dbparam.dsl
+#	 same for location of admonition and callout graphics in html output, but
+#        we have to provide a /var/www symlink
+	perl -pi -e 's|"\.\./images/"\)|"/$(package)/"\)|; \
+		     s|"\.\./images/callouts/"\)|"/$(package)/callouts/"\)|;' \
+		$(dsssldir)/html/dbparam.dsl
+	$(make_directory) $(wwwdir)
+	ln -s $(subst $(prefix),,$(dsssldir))/images $(wwwdir)/$(package)
+
+#	 compatability symlink for older versions
+	$(make_directory) `dirname $(dssslcompatlnk)`
+	ln -sf $(dssslcompatlnkto) $(dssslcompatlnk)
+
+#	 create all the extended links as specified in the Debian SGML Guidelines
+	/usr/share/sgml-data/sgml-catalog-check.pl -l -v 0 -d $(prefix)/usr/share/sgml $(dsssldir)/catalog
+	/usr/share/sgml-data/sgml-catalog-check.pl -l -v 0 -e -d $(prefix)/usr/share/sgml $(dsssldir)/common/catalog
+
+	dh_installdocs -p$(package) BUGS README TODO $(wildcard WhatsNew)
+
+	$(make_directory) \
+		$(docdir)/common $(docdir)/lib				\
+		$(docdir)/olink	$(docdir)/html $(docdir)/print		\
+		$(docdir)/frames $(docdir)/examples
+
+	$(install_file) common/ChangeLog $(docdir)/common/
+	$(install_file) lib/ChangeLog $(docdir)/lib/
+	$(install_file) olink/ChangeLog $(docdir)/olink/
+	$(install_file) html/ChangeLog $(docdir)/html/
+	$(install_file) print/ChangeLog $(docdir)/print/
+
+	dh_installchangelogs -p$(package) ChangeLog
+
+#	 experimental frame support
+	$(install_file) `find frames -maxdepth 1 -type f` $(docdir)/frames/
+
+#	 example DSSSL file
+	$(install_file) debian/*.dsl $(docdir)/examples
+
+#	 collateindex file
+	$(make_directory) $(bindir)
+	$(install_script) bin/collateindex.pl $(bindir)/
+# 	 dh_installman thinks .pl is the section, silly DWIM
+	$(make_directory) $(mandir)/man1
+	$(install_file) bin/collateindex.pl.1 $(mandir)/man1
+
+	dh_compress -i
+
+#	 build the maintainer scripts
+	m4 --define=M4package=$(package) --define=M4DTDDIR=$(subst $(prefix),,$(dsssldir)) \
+	   --define=M4ORDCATS="catalog common/catalog" \
+	   debian/postinst.m4 > debian/postinst
+
+#	 check that maintainer scripts are good
+	sh -n debian/postinst
+	sh -n debian/prerm
+
+	dh_installdeb -i
+#	 perl depends policy
+	dh_perl
+	dh_gencontrol -i
+	dh_md5sums -i
+	dh_builddeb -i
+
+# Build architecture-dependent files here.
+binary-arch: build
+# We have nothing to do by default.
+
+source diff:
+	@echo >&2 'source and diff are obsolete - use dpkg-source -b'; false
+
+binary: binary-indep binary-arch
+.PHONY: clean binary-indep binary-arch binary
+
+#Local variables:
+#mode: makefile
+#End:

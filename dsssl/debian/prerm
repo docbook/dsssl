@@ -1,0 +1,20 @@
+#!/bin/sh
+
+PACKAGE=docbook-dsssl
+CENTRALCAT=/etc/sgml/${PACKAGE}.cat
+
+set -e
+
+if [ "$1" = remove ]; then
+    update-catalog --quiet --remove --super ${CENTRALCAT}
+elif [ "$1" = purge ]; then
+    rm -f ${CENTRALCAT} ${CENTRALCAT}.old
+elif [ "$1" = upgrade ]; then
+    :
+    # downgrade handling?
+fi
+
+# automatically generated debhelper commands
+#DEBHELPER#
+
+exit 0

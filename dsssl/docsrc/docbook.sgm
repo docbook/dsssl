@@ -19,7 +19,7 @@
 <copyright><year>1997</year><year>1998</year><year>1999</year>
 <year>2000</year>
 <holder role="mailto:ndw@nwalsh.com">Norman Walsh</holder></copyright>
-<legalnotice><title>Copyright</title>
+<legalnotice id="legalnotice"><title>Copyright</title>
 <para>This software may be distributed under the same terms as <application>
 Jade</application>:</para>
 <para>Permission is hereby granted, free of charge, to any person obtaining
@@ -39,7 +39,7 @@ will be identified with a different name and the version strings in any derived
 Software will be changed so that no possibility of confusion between the derived
 package and this Software will exist.</para>
 </legalnotice>
-<legalnotice>
+<legalnotice id="warranty">
 <title>Warranty</title>
 <para>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
 OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,

@@ -1,14 +1,18 @@
 <!DOCTYPE style-sheet PUBLIC "-//James Clark//DTD DSSSL Style Sheet//EN" [
 <!-- HTML by default -->
-<!ENTITY % print "IGNORE">
-<![%print;[
-<!ENTITY % html "IGNORE">
-<!ENTITY docbook.dsl PUBLIC "-//Norman Walsh//DOCUMENT DocBook Print Stylesheet//EN" CDATA dsssl>
-]]>
 <!ENTITY % html "INCLUDE">
+<!ENTITY % print "IGNORE">
+
 <![%html;[
-<!ENTITY docbook.dsl PUBLIC "-//Norman Walsh//DOCUMENT DocBook HTML Stylesheet//EN" CDATA dsssl>
+  <!ENTITY % print "IGNORE">
+  <!ENTITY docbook.dsl PUBLIC "-//Norman Walsh//DOCUMENT DocBook HTML Stylesheet//EN" CDATA dsssl>
 ]]>
+
+<![%print;[
+  <!ENTITY % html "IGNORE">
+  <!ENTITY docbook.dsl PUBLIC "-//Norman Walsh//DOCUMENT DocBook Print Stylesheet//EN" CDATA dsssl>
+]]>
+
 ]>
 
 <style-sheet>

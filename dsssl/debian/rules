@@ -49,6 +49,7 @@ clean:
 
 debian/postinst: debian/postinst.m4 debian/rules
 	perl -p -e "s/M4package$$/$(package)/g; s|M4DTDDIR|$(subst $(prefix),,$(dsssldir))|g; s|M4CONFDIR|$(subst $(prefix),,$(confdir))|g; s|M4CONFTEMPLATEDIR|$(subst $(prefix),,$(conftemplatedir))|g; s|M4ORDCATS|catalog common/catalog|g; s|M4IMAGEDIR|$(subst $(prefix),,$(dsssldir))/images|g;" $< > $@
+	chmod 0555 $@
 
 # Build architecture-independent files here.
 binary-indep: build debian/postinst

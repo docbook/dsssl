@@ -14,16 +14,29 @@
 	(preamble (node-list-filter-by-not-gi (children (current-node))
 					      (list (normalize "step"))))
 	(steps (node-list-filter-by-gi (children (current-node))
-				       (list (normalize "step")))))
+				       (list (normalize "step"))))
+	(id (attribute-string (normalize "id"))))
     (make element gi: "DIV"
 	  attributes: (list
 		       (list "CLASS" (gi)))
 	  (if (not (node-list-empty? titles))
 	      (make element gi: "P"
 		    (make element gi: "B"
-			  (with-mode title-mode
-			    (process-node-list titles))))
-	      (empty-sosofo))
+			  (make sequence
+			    (if id
+				(make element gi: "A"
+				      attributes: (list
+						   (list "NAME" id))
+				      (empty-sosofo))
+				(empty-sosofo))
+			    (with-mode title-mode
+			      (process-node-list titles)))))
+	      (if id
+		  (make element gi: "A"
+			attributes: (list
+				     (list "NAME" id))
+			(empty-sosofo))
+		  (empty-sosofo)))
 	  (process-node-list preamble)
 	  (make element gi: "OL"
 		attributes: (list

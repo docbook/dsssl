@@ -1,4 +1,4 @@
-docbook-dsssl (1.77-cvs.2003.01.21) unstable; urgency=low
+docbook-dsssl (1.77-cvs.2003.01.22) unstable; urgency=low
 
   * CVS snapshot with post 1.77 fixes, the following bugs are fixed either
     in this version or earlier: 
@@ -14,8 +14,9 @@ docbook-dsssl (1.77-cvs.2003.01.21) unstable; urgency=low
   * define local configuration files where debconf and user configuration
     go, /etc/sgml/docbook-dsssl/{print,html}/siteconfig.dsl
   * purge registered catalog cruft properly
+  * remove /etc/sgml/M4package.cat on install if it exists, pure cruft
 
- -- Adam Di Carlo <aph@debian.org>  Tue, 21 Jan 2003 18:27:07 -0500
+ -- Adam Di Carlo <aph@debian.org>  Wed, 22 Jan 2003 11:33:36 -0500
 
 docbook-dsssl (1.77-2) unstable; urgency=medium
 

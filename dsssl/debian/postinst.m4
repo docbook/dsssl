@@ -19,6 +19,15 @@ set -e
 # whether to be verbose
 verbose=false
 
+ME=`basename $0`
+
+# 
+debug () {
+    if ${verbose}; then
+        echo $ME: $* >&2
+    fi
+}
+
 # e.g.: setit print %visual-acuity% normal
 setit () {
     local which=$1; shift
@@ -58,14 +67,14 @@ setit () {
     fi
     
     if grep -q "^(define $setting $value)" ${file}; then
-        ${verbose} && echo "setting '$setting' already set to $value in file '$file'" >&2
+        debug "setting '$setting' already set to $value in file '$file'"
     elif grep -q "^(define $setting .*)" ${file}; then
-        ${verbose} && echo "found setting '$setting' in file '$file', updating" >&2
+        debug "found setting '$setting' in file '$file', updating"
         sed -e "s/^(define $setting .*).*$/(define $setting $value) ;; set by debconf/;" ${file} > ${file}.new
         cat ${file}.new > ${file}
         rm -f ${file}.new
     else
-        ${verbose} && echo "did not find setting '$setting' in file '$file', adding" >&2
+        debug "did not find setting '$setting' in file '$file', adding" >&2
         sed -e "/^<style-specification-body>/a\\
 (define $setting $value) \;\; set by debconf;" ${file} > ${file}.new
         cat ${file}.new > ${file}
@@ -75,30 +84,36 @@ setit () {
 
 
 if [ "$1" = configure ]; then
+    if ! ${verbose}; then
+        quiet="--quiet"
+    fi
+
     ##
     ## catalog handling
     ##
     # remove old entries from transitional.cat
-    install-sgmlcatalog --quiet --remove docbook-stylesheets
+    install-sgmlcatalog ${quiet} --remove docbook-stylesheets
 
     # make the central catalog a clean slate (in case some catalogs
     # were removed or moved)
     rm -f ${CENTRALCAT}
 
+    debug "registering $ORDCATS in $CENTRALCAT"
+
     # install the new delegated catalogs into a central catalog
     for ordcat in ${ORDCATS}; do
-        update-catalog --quiet --add ${CENTRALCAT} ${DTDDIR}/${ordcat}
+        update-catalog ${quiet} --add ${CENTRALCAT} ${DTDDIR}/${ordcat}
     done
 
     # install that central catalog into the super catalog
-    update-catalog --quiet --add --super ${CENTRALCAT}
+    update-catalog ${quiet} --add --super ${CENTRALCAT}
 
     ##
     ## cruft removal
     ##
     # old dhelp cruft
     [ ! -d /usr/doc/$PACKAGE/doc ] || rmdir --ignore-fail-on-non-empty /usr/doc/$PACKAGE/doc || true
-    # M4 didn't work
+    # postinst substitution broke
     rm -f /etc/sgml/M4package.cat*
     # for some reason the compatability link keeps turning into a directory
     if [ ! -h ${COMPATLNK} -a -d ${COMPATLNK} ] && rmdir ${COMPATLNK} 2>/dev/null; then
@@ -107,11 +122,11 @@ if [ "$1" = configure ]; then
 
     ## create conffiles if they aren't there
     if [ ! -f $HTMLCONF ]; then
-        $verbose && echo "creating new ${HTMLCONF}" >&2
+        debug "creating new ${HTMLCONF}"
         install -o root -g root -m 644 -p $CONFTEMPLATEDIR/html-siteconfig.dsl ${HTMLCONF}
     fi
     if [ ! -f $PRINTCONF ]; then
-        $verbose && echo "creating new ${PRINTCONF}" >&2
+        debug "creating new ${PRINTCONF}"
         install -o root -g root -m 644 -p $CONFTEMPLATEDIR/print-siteconfig.dsl ${PRINTCONF}
     fi
 
@@ -125,7 +140,7 @@ if [ "$1" = configure ]; then
     ##
     ## debconf jazz
     ##
-    $verbose && echo "using debconf setting to do local site configuration" >&2
+    debug "using debconf setting to do local site configuration"
     if db_get docbook-dsssl/show-comments; then
         setit print %show-comments% "$RET"
         setit html %show-comments% "$RET"

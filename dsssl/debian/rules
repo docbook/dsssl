@@ -48,7 +48,7 @@ clean:
 	dh_clean
 
 debian/postinst: debian/postinst.m4 debian/rules
-	perl -p -e "s/M4package/$(package)/g; s|M4DTDDIR|$(subst $(prefix),,$(dsssldir))|g; s|M4CONFDIR|$(subst $(prefix),,$(confdir))|g; s|M4CONFTEMPLATEDIR|$(subst $(prefix),,$(conftemplatedir))|g; s|M4ORDCATS|catalog common/catalog|g; s|M4IMAGEDIR|$(subst $(prefix),,$(dsssldir))/images|g;" $< > $@
+	perl -p -e "s/M4package$$/$(package)/g; s|M4DTDDIR|$(subst $(prefix),,$(dsssldir))|g; s|M4CONFDIR|$(subst $(prefix),,$(confdir))|g; s|M4CONFTEMPLATEDIR|$(subst $(prefix),,$(conftemplatedir))|g; s|M4ORDCATS|catalog common/catalog|g; s|M4IMAGEDIR|$(subst $(prefix),,$(dsssldir))/images|g;" $< > $@
 
 # Build architecture-independent files here.
 binary-indep: build debian/postinst
@@ -127,6 +127,7 @@ binary-indep: build debian/postinst
 #	 check that maintainer scripts are good
 	sh -n debian/postinst
 	sh -n debian/prerm
+	sh -n debian/postrm
 
 	dh_installdeb -i
 #	 perl depends policy

@@ -1165,7 +1165,18 @@
   (book-titlepage-element node side))
 
 (mode titlepage-address-mode
-  (default (process-children)))
+  (default (process-children))
+
+  (element email
+    ($mono-seq$
+     (make sequence
+       (literal "&#60;")
+       (make element gi: "A"
+	     attributes: (list (list "HREF"
+				     (string-append "mailto:"
+						    (data (current-node)))))
+	     (process-children))
+       (literal "&#62;")))))
 
 (mode book-titlepage-recto-mode
   (element abbrev

@@ -226,6 +226,9 @@
 		  (xref-answer target))
 		 ((equal? (gi target) (normalize "refentry"))
 		  (xref-refentry target))
+		 ((equal? (gi target) (normalize "refnamediv"))
+		  ;; and refnamedivs
+		  (xref-refnamediv target))
 		 ((equal? (gi target) (normalize "glossentry"))
 		  ;; as are glossentrys
 		  (xref-glossentry target))
@@ -285,6 +288,21 @@
 	       (not (node-list-empty? manvolnum)))
 	  (process-node-list manvolnum)
 	  (empty-sosofo))))))
+
+(define (xref-refnamediv target)
+  (let* ((refname    (select-elements (children target)
+				      (normalize "refname")))
+
+	 (title      (node-list-first refname)))
+    (make link
+      destination: (node-list-address target)
+
+      (make sequence
+	font-posture: (if %refentry-xref-italic%
+			  'italic
+			  (inherited-font-posture))
+
+	(process-node-list (children title))))))
 
 (define (xref-glossentry target)
   (let ((glossterms (select-elements (children target)

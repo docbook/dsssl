@@ -94,9 +94,10 @@
 
 ;; === Some additional units ============================================
 
-(define-unit pi (/ 1in 6))
-(define-unit pt (/ 1in 72))
-(define-unit px (/ 1in 96))
+(define-unit pi (/ 1in 6))              ;pica
+(define-unit pc (/ 1in 6))              ;pica, another name
+(define-unit pt (/ 1in 72))             ;point
+(define-unit px (/ 1in 96))             ;pixel
 
 ;; REFERENCE ISO/IEC 10179
 

@@ -10,8 +10,8 @@ db_title "Modular DocBook DSSSL Stylesheets"
 # we don't care to group these, and all have the same priority
 questions=(show-comments set-papersize html-ext use-id-as-filename \
            body-start-indent visual-acuity title-font-family)
-priorities=(medium medium low low \
-            low medium low)
+priorities=(low medium low low \
+            low low low)
 upbound=$((${#questions[*]}))
 
 STATE=0

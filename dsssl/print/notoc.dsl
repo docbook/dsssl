@@ -15,7 +15,11 @@
 ;; sheet.  Definitions inserted in this file take precedence over 
 ;; definitions in the 'use'd stylesheet(s).
 
-(define %generate-toc% #f)
+(define %generate-set-toc% #f)
+(define %generate-book-toc% #f)
+(define %generate-part-toc% #f)
+(define %generate-reference-toc% #f)
+(define %generate-article-toc% #f)
 
 </style-specification-body>
 </style-specification>

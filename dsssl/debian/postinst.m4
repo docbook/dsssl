@@ -93,7 +93,7 @@ setit () {
     if grep -q "^(define $setting $value)" ${file}; then
         debug "setting '$setting' already set to $value in file '$file'"
     elif grep -q "^.*;.*(define $setting" ${file}; then
-        debug "setting '$setting' already set to $value in file '$file', commented out -- leaving alone"
+        debug "setting '$setting' commented out in file '$file' -- leaving alone"
     elif grep -q "^(define $setting .*)" ${file}; then
         debug "found setting '$setting' in file '$file', updating"
         sed -e "s/^(define $setting .*).*$/(define $setting $value) ;; set by debconf/" ${file} > ${file}.new

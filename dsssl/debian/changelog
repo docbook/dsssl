@@ -1,3 +1,10 @@
+docbook-dsssl (1.78+-0.1) unstable; urgency=low
+
+  * unofficial new upstream
+  * postinst: minor message change
+
+ -- Adam Di Carlo <aph@debian.org>  Sat,  5 Apr 2003 14:43:35 -0500
+
 docbook-dsssl (1.78-3) unstable; urgency=low
 
   * debian/templates: more translatable choices; closes: #185880

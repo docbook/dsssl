@@ -18,51 +18,25 @@ SOURCES=dbl1af.ent \
         dbl1sv.ent dbl1th.ent dbl1tr.ent dbl1uk.ent dbl1xh.ent \
         dbl1zhcn.ent dbl1zhtw.ent
 
-all: $(SOURCES) dbl10n.dsl
+all: $(SOURCES) dbl10n.dsl catalog
 
 dbl10n.dsl: dbl10n.template
 	perl dbl10n.pl
 
-dbl1af.ent: ../../gentext/locale/af.xml
-dbl1ca.ent: ../../gentext/locale/ca.xml
-dbl1cs.ent: ../../gentext/locale/cs.xml
-dbl1da.ent: ../../gentext/locale/da.xml
-dbl1de.ent: ../../gentext/locale/de.xml
-dbl1el.ent: ../../gentext/locale/el.xml
-dbl1en.ent: ../../gentext/locale/en.xml
-dbl1es.ent: ../../gentext/locale/es.xml
-dbl1et.ent: ../../gentext/locale/et.xml
-dbl1eu.ent: ../../gentext/locale/eu.xml
-dbl1fi.ent: ../../gentext/locale/fi.xml
-dbl1fr.ent: ../../gentext/locale/fr.xml
-dbl1hu.ent: ../../gentext/locale/hu.xml
-dbl1id.ent: ../../gentext/locale/id.xml
-dbl1it.ent: ../../gentext/locale/it.xml
-dbl1ja.ent: ../../gentext/locale/ja.xml
-dbl1ko.ent: ../../gentext/locale/ko.xml
-dbl1nl.ent: ../../gentext/locale/nl.xml
-dbl1nn.ent: ../../gentext/locale/nn.xml
-dbl1no.ent: ../../gentext/locale/no.xml
-dbl1pl.ent: ../../gentext/locale/pl.xml
-dbl1pt.ent: ../../gentext/locale/pt.xml
-dbl1ptbr.ent: ../../gentext/locale/pt_br.xml
-dbl1ro.ent: ../../gentext/locale/ro.xml
-dbl1ru.ent: ../../gentext/locale/ru.xml
-dbl1sk.ent: ../../gentext/locale/sk.xml
-dbl1sl.ent: ../../gentext/locale/sl.xml
-dbl1sr.ent: ../../gentext/locale/sr.xml
-dbl1sv.ent: ../../gentext/locale/sv.xml
-dbl1th.ent: ../../gentext/locale/th.xml
-dbl1tr.ent: ../../gentext/locale/tr.xml
-dbl1uk.ent: ../../gentext/locale/uk.xml
-dbl1xh.ent: ../../gentext/locale/xh.xml
-dbl1zhcn.ent: ../../gentext/locale/zh_cn.xml
-dbl1zhtw.ent: ../../gentext/locale/zh_tw.xml
+dbl1ptbr.ent dbl1zhcn.ent dbl1zhtw.ent:
+	$(XSLT) $(shell echo $@ | sed -e 's|dbl1\(..\)\(..\).ent|../../gentext/locale/\1_\2.xml|;') ../../gentext/xsl/dsssl.xsl $@
+	perl -i.bak cs-hack.pl $@
+	rm -f $@.bak
 
-%.ent:
+dbl1%.ent: ../../gentext/locale/%.xml
 	$(XSLT) $< ../../gentext/xsl/dsssl.xsl $@
 	perl -i.bak cs-hack.pl $@
 	rm -f $@.bak
 
+catalog:	$(wildcard *.dsl)
+	: > $@
+	echo "OVERRIDE YES" >> $@
+	grep "^ *PUBLIC" *.dsl | sed -e 's|^\(dbl1[^.]*\).dsl: *\(.*\)$$|\2 "\1.ent"|;' >> $@
+
 clean:
-	rm -f *.ent
+	rm -f *.ent catalog

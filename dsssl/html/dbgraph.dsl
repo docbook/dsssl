@@ -31,32 +31,36 @@
 	 (prop     (if image
 		       (select-elements (children image) "properties")
 		       #f))
-	 (metas    (if prop 
+	 (metas    (if prop
 		       (select-elements (children prop) "meta")
 		       #f))
-	 (attrs    (let loop ((meta metas) (attrlist '()))
-		     (if (node-list-empty? meta)
-			 attrlist
-			 (if (equal? (attribute-string 
-				      "imgattr"
-				      (node-list-first meta))
-				     "yes")
-			     (loop (node-list-rest meta)
-				   (append attrlist
-					   (list 
-					    (list 
-					     (attribute-string 
-					      "name"
-					      (node-list-first meta))
-					     (attribute-string
-					      "content"
-					      (node-list-first meta))))))
-			     (loop (node-list-rest meta) attrlist)))))
-	 (width    (attribute-string "width" prop))
-	 (height   (attribute-string "height" prop))
-	 (alttext  (select-elements (children image) "alttext"))
-	 (alt      (if instance-alt 
-		       instance-alt 
+	 (attrs    (if metas
+		       (let loop ((meta metas) (attrlist '()))
+			 (if (node-list-empty? meta)
+			     attrlist
+			     (if (equal? (attribute-string 
+					  "imgattr"
+					  (node-list-first meta))
+					 "yes")
+				 (loop (node-list-rest meta)
+				       (append attrlist
+					       (list 
+						(list 
+						 (attribute-string 
+						  "name"
+						  (node-list-first meta))
+						 (attribute-string
+						  "content"
+						  (node-list-first meta))))))
+				 (loop (node-list-rest meta) attrlist))))
+		       (empty-node-list)))
+	 (width    (if prop (attribute-string "width" prop) #f))
+	 (height   (if prop (attribute-string "height" prop) #f))
+	 (alttext  (if image
+		       (select-elements (children image) "alttext")
+		       (empty-node-list)))
+	 (alt      (if instance-alt
+		       instance-alt
 		       (if (node-list-empty? alttext)
 			   #f
 			   (data alttext)))))
@@ -65,7 +69,7 @@
 	 attrs
 	 (if width   (list (list "WIDTH" width)) '())
 	 (if height  (list (list "HEIGHT" height)) '())
-	 (if alttext (list (list "ALT" alt)) '()))
+	 (if (not (node-list-empty? alttext)) (list (list "ALT" alt)) '()))
 	'())))
 
 (define ($graphic$ fileref

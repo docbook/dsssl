@@ -1,0 +1,70 @@
+<!DOCTYPE BOOK PUBLIC "-//OASIS//DTD DocBook V3.1//EN" [
+<!ENTITY otherdoc SYSTEM "otherdoc.sgm">
+<!ENTITY dsssl.install SYSTEM "install.sgm">
+<!ENTITY dsssl.custom SYSTEM "custom.sgm">
+<!ENTITY dsssl.print SYSTEM "print.sgm">
+<!ENTITY dsssl.html SYSTEM "html.sgm">
+<!ENTITY dsssl.common SYSTEM "common.sgm">
+<!ENTITY dsssl.lib SYSTEM "lib.sgm">
+<!ENTITY olink.indexing SYSTEM "indexing.sgm" CDATA sgml>
+<!ENTITY olink.imagelib SYSTEM "imagelib.sgm" CDATA sgml>
+<!ENTITY olink.olinksemantics SYSTEM "olinksemantics.sgm" CDATA sgml>
+<!ENTITY olink.collateindex SYSTEM "collateindex.sgm" CDATA sgml>
+]>
+<book>
+<?dbhtml filename='index.html' output-dir='../doc'>
+<title>The Modular DocBook Stylesheets</title>
+<bookinfo>
+<author><firstname>Norman</firstname><surname>Walsh</surname></author>
+<copyright><year>1997</year><year>1998</year><year>1999</year>
+<year>2000</year>
+<holder role="mailto:ndw@nwalsh.com">Norman Walsh</holder></copyright>
+<legalnotice><title>Copyright</title>
+<para>This software may be distributed under the same terms as <application>
+Jade</application>:</para>
+<para>Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the ``Software''),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+sell copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:</para>
+<para>The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.</para>
+<para>Except as contained in this notice, the names of individuals credited
+with contribution to this software shall not be used in advertising or otherwise
+to promote the sale, use or other dealings in this Software without prior
+written authorization from the individuals in question.</para>
+<para>Any stylesheet derived from this Software that is publically distributed
+will be identified with a different name and the version strings in any derived
+Software will be changed so that no possibility of confusion between the derived
+package and this Software will exist.</para>
+</legalnotice>
+<legalnotice>
+<title>Warranty</title>
+<para>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL NORMAN
+WALSH OR ANY OTHER CONTRIBUTOR BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF
+OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
+</para>
+</legalnotice>
+<pubdate role="rcs">$Date$</pubdate>
+<releaseinfo>DSSSL stylesheets for DocBook</releaseinfo>
+<abstract><title>Questions and Comments</title>
+<para>
+Please direct all questions, bug reports, or suggestions for changes
+to Norman Walsh, &lt;<literal>ndw@nwalsh.com</literal>&gt;.
+</para>
+<para>
+See <ulink url="http://nwalsh.com/docbook/dsssl/">http://nwalsh.com/docbook/dsssl/</ulink> for more information.</para>
+</abstract>
+</bookinfo>&otherdoc;
+&dsssl.install;
+&dsssl.custom;
+&dsssl.print;
+&dsssl.html;
+&dsssl.common;
+&dsssl.lib;
+</book>
+

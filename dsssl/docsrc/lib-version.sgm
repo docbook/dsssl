@@ -1,0 +1,16 @@
+<chapter id="libchanges">
+<?html-filename libversion.html>
+<docinfo>
+<title>Change Log: DSSSL Library</title>
+<subtitle>Changes to the DSSSL Library</subtitle>
+<pubdate role=rcs>$Date$</pubdate>
+</docinfo>
+<title>Change Log: DSSSL Library</title>
+<para>
+Note that I've switched to GNU ChangeLogs.
+</para>
+<programlisting>
+<ulink role="embed" url="/share/dsssl/docbook/lib/ChangeLog"></ulink>
+</programlisting>
+</chapter>
+

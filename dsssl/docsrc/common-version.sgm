@@ -1,0 +1,14 @@
+<chapter id="cmnchanges">
+<?html-filename cmnchanges.html>
+<docinfo>
+<pubdate role=rcs>$Date$</pubdate>
+<subtitle>Changes to the Modular DocBook Stylesheet</subtitle>
+</docinfo>
+<title>Change Log: Common Functions</title>
+<para>
+Note that I've switched to GNU ChangeLogs.
+</para>
+<programlisting>
+<ulink role="embed" url="/share/dsssl/docbook/common/ChangeLog"></ulink>
+</programlisting>
+</chapter>

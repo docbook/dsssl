@@ -1,0 +1,109 @@
+<!DOCTYPE ARTICLE PUBLIC "-//OASIS//DTD DocBook V3.1//EN">
+<!--ArborText, Inc., 1988-1998, v.4002-->
+<article><?dbhtml filename='indexing.html' chunk='no' output-dir='../doc'>
+<artheader>
+<title>Automatic Indexing with the DocBook DSSSL Stylesheets</title>
+<author><firstname>Norman</firstname><surname>Walsh</surname></author><pubdate>
+17 Nov 1998</pubdate>
+<abstract>
+<para>Automatic indexing is an often requested feature. This article describes
+how it is implemented in the DocBook DSSSL Stylesheets.</para>
+</abstract>
+</artheader>
+<sect1>
+<title>Authoring for Indexing</title>
+<para>There are two parts to building an index automatically, creating the
+index terms and incorporating the generated index into your document.</para>
+<sect2>
+<title>Creating Index Terms</title>
+<para>The generated index is constructed from <sgmltag>IndexTerm</sgmltag>s
+in your document. DocBook <sgmltag>IndexTerm</sgmltag>s are not part of the
+flow.</para>
+<screen>&lt;para>
+This paragraph contains an interesting thing&lt;indexterm id="thing">
+&lt;primary>thing&lt;/primary>&lt;secondary>interesting&lt;/secondary>&lt;/indexterm> that
+will appear in the index.
+&lt;/para></screen>
+<para>It is not absolutely necessary to provide an ID for each index term,
+but the performance of the print backends may degrade significantly if you
+have a large number of index terms that do not have IDs.</para>
+</sect2>
+<sect2>
+<title>Incorporating the Index</title>
+<para>The index will be generated as a separate file. You must arrage to have
+this file incorporated into your document. The easiest way to do this is by
+file entity reference. At the top of your document, add an internal subset
+that defines the index file entity:</para>
+<screen>&lt;!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook V3.1//EN" [
+&lt;!ENTITY genindex.sgm SYSTEM "genindex.sgm">
+]>
+&lt;book>
+...
+&amp;genindex.sgm; &lt;!-- Put this after the end tag of the last chapter or appendix, or     -->
+               &lt;!-- wherever you want the index to appear. It must be a valid location -->
+               &lt;!-- for an index. -->
+&lt;/book></screen>
+<para>Before you can process this document, you must make sure that <filename>
+genindex.sgm</filename> exists. This is a chicken and egg problem, but it
+can be solved with the <command>collateindex.pl</command> command:</para>
+<screen>perl collateindex.pl -N -o genindex.sgm</screen>
+<para>The <option>-N</option> option creates a new index; <option>-o</option>
+indentifies the name of the output file. This name must be the same as the
+name you specified in the internal subset.</para>
+</sect2>
+</sect1>
+<sect1>
+<title>Creating an Index</title>
+<para>Creating an index is a multi-step, two-pass process:</para>
+<procedure>
+<step><para>In order to create an index, you must first generate the raw index
+data. This is done with the HTML Stylesheet (<emphasis>even if you want print
+output</emphasis>).</para>
+<para>Process your document with <command>jade</command> using the HTML Stylesheet
+with the <option>-V html-index</option> option:</para>
+<screen>jade -t sgml -d <replaceable>html/docbook.dsl</replaceable> -V html-index <replaceable>
+yourdocument.sgm</replaceable></screen>
+<para>This will produce a file called <filename>HTML.index</filename> that
+contains raw index data.</para>
+
+<para>If you're planning to generate your final document as a single HTML
+file using the <option>nochunks</option> option, make sure you generate
+the <filename>HTML.index</filename> file with that option as well:</para>
+
+<screen>jade -t sgml -d <replaceable>html/docbook.dsl</replaceable> -V html-index -V nochunks <replaceable>yourdocument.sgm</replaceable></screen>
+
+</step>
+<step><para>Generate an index document with <command>collateindex.pl</command>:
+</para>
+<screen>perl collateindex.pl -o genindex.sgm HTML.index</screen>
+<para>There are a multitude of options to <command>collateindex.pl</command>;
+see <ulink url="collateindex.html">the reference page</ulink><?Pub Caret1>
+for more information.</para>
+</step>
+<step><para>Process your original document again, using whichever stylesheet
+is appropriate. The new document will contain the generated index.</para>
+</step>
+</procedure>
+</sect1>
+<sect1>
+<title>Drawbacks</title>
+<para>Any generated index is perhaps better than none, but there are still
+a few things that <emphasis>cannot</emphasis> be accomplished:</para>
+<orderedlist>
+<listitem><para>Duplicate page numbers are not suppressed in the index. If
+the document contains three indexing hits on page 4, the generated index will
+contain &ldquo;4, 4, 4&rdquo;.</para>
+</listitem>
+<listitem><para>Ranges are not automatically constructed. If the document
+contains indexing hits on pages 4, 5, 6, and 7, the generated index will contain
+&ldquo;4, 5, 6, 7&rdquo; instead of &ldquo;4&ndash;7&rdquo;.</para>
+</listitem>
+</orderedlist>
+<para>It is possible that the TeX backend could be made smart enough to do
+these things automatically. (Sebastian will probably kill me for suggesting
+that). For the RTF backend, at least in MS Word, it's probably possible to
+write a WordBasic macro that would automatically fix the index. (If someone
+does, please pass it along).</para>
+</sect1>
+</article>
+<?Pub *0000004918 0>

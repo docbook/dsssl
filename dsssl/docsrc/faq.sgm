@@ -1,0 +1,37 @@
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook V3.1//EN">
+<article>
+<artheader>
+<title>Modular DocBook Stylesheet FAQ</title>
+</artheader>
+
+<qandaset defaultlabel=qanda>
+<title>Frequently Asked Questions</title>
+<qandadiv><title>Questions about the FAQ</title>
+<qandaentry>
+<question>
+<para>What version of the FAQ is this?</para>
+</question>
+<answer>
+<para>This is $Revision$ from $Date$.</para>
+</answer>
+</qandaentry>
+</qandadiv>
+<qandadiv><title>General Questions about the Stylesheets</title>
+<qandaentry>
+<question>
+<para>How can I use <filename>.gif</> or <filename>.jpg</> images
+for HTML and <filename>.eps</> images for print?</para>
+</question>
+<answer>
+<para></para>
+</answer>
+</qandaentry>
+</qandadiv>
+</qandaset>
+
+<para>
+To contribute a question to the FAQ, send mail to
+<ulink url="mailto:docbookfaq@docbook.org">docbookfaq@docbook.org</ulink>.
+</para>
+
+</article>

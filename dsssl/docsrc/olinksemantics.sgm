@@ -1,0 +1,331 @@
+<!DOCTYPE ARTICLE PUBLIC "-//OASIS//DTD DocBook V3.1//EN" [
+<!--ArborText, Inc., 1988-1998, v.4002-->
+<!ENTITY olinktarget PUBLIC "-//Norman Walsh//DOCUMENT OLink Test Document V1.0//EN" "olinktarget.sgm" CDATA sgml>
+<!ENTITY modespecs SYSTEM "olinksemantics.modespecs">
+<!ENTITY modespecs.include SYSTEM "olinksemantics.modespecs" CDATA sgml>
+]>
+<?Pub Inc>
+<article>
+<?dbhtml filename='olinksemantics.html' chunk='no' output-dir='../doc'>
+<artheader>
+<title>OLink Semantics in the DocBook DSSSL Stylesheets</title>
+<author><firstname>Norman</firstname><surname>Walsh</surname></author><pubdate>
+10 Sep 1998</pubdate>
+<abstract>
+<para><sgmltag>OLink</sgmltag> allows you to construct cross-document links
+in SGML. This document describes the <sgmltag>OLink</sgmltag> semantics supported
+by the DocBook stylesheets.</para>
+</abstract>
+</artheader>
+<sect1 id="olink-understanding">
+<title>Understanding OLink</title>
+<para>The semantics of <sgmltag>OLink</sgmltag> are effected by both the <sgmltag>
+OLink</sgmltag> tag and the <sgmltag>ModeSpec</sgmltag> tag.</para>
+<sect2>
+<title><sgmltag>OLink</sgmltag></title>
+<para><sgmltag>OLink</sgmltag> is a wrapper around the text which forms the
+head of the link. It has four relevant attributes:</para>
+<variablelist>
+<varlistentry><term><sgmltag class="attribute">TargetDocEnt</sgmltag></term>
+<listitem>
+<para>This <literal>ENTITY</literal> attribute points to the document which
+is or contains the link target.</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><sgmltag class="attribute">LocalInfo</sgmltag></term>
+<listitem>
+<para>Contains the ID of the target in the document specified by <sgmltag
+class="attribute">TargetDocEnt</sgmltag>. <sgmltag class="attribute">LocalInfo
+</sgmltag> is the equivalent of <sgmltag class="attribute">LinkEnd</sgmltag>
+on the other linking elements.</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><sgmltag class="attribute">LinkMode</sgmltag></term>
+<listitem>
+<para>Points to a <sgmltag>ModeSpec</sgmltag> element which further modifies
+the semantics of the link.</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><sgmltag class="attribute">Type</sgmltag></term>
+<listitem>
+<para>Identifies the link type. The DocBook stylesheets include special processing
+for <sgmltag class="attribute">Type</sgmltag>=<literal>href</literal>.</para>
+<para>If the link type is &ldquo;href&rdquo;, then the HREF attribute from
+the <link linkend="olink-general">summary document</link> is used directly,
+without redirection through a CGI script.<?Pub Caret></para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect2>
+<sect2>
+<title><sgmltag>ModeSpec</sgmltag></title>
+<para>An <sgmltag>OLink</sgmltag> element can refer to a <sgmltag>ModeSpec
+</sgmltag> element to further modify the semantics of the link. Two aspects
+of the <sgmltag>ModeSpec</sgmltag> element are relevant:</para>
+<variablelist>
+<varlistentry><term><sgmltag class="attribute">XRefLabel</sgmltag></term>
+<listitem>
+<para>If the content of <sgmltag>OLink</sgmltag> is empty, it is possible
+to use <sgmltag class="attribute">XRefLabel</sgmltag> to control the format
+of generated text.</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><sgmltag>ModeSpec</sgmltag> Content</term>
+<listitem>
+<para>If the content of the <sgmltag>ModeSpec</sgmltag> element is not empty,
+it is used by the HTML stylesheet in the contruction of the HTML link &ldquo;href&rdquo;.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect2>
+</sect1>
+<sect1 id="olink-html">
+<title>OLinking in HTML</title>
+<para>Constructing cross-document links with entities in the authoring system
+is all well and good, but how does it work on the web? The heart of the matter
+is mapping from the SGML/XML entity in the <sgmltag class="attribute">TargetDocEnt
+</sgmltag> to the base URL on the web, and there are two options: early binding
+and late binding.</para>
+<sect2>
+<title>Early Binding</title>
+<para>To use early binding, you must know the mapping from entities to URLs
+in advance. The base URL is supplied in the content of the <sgmltag>ModeSpec
+</sgmltag> element and that is what the processor uses to construct the HTML
+&ldquo;href&rdquo;. For example, given the document in <xref linkend="exam1">,
+the stylesheet would generate something like this for the link:</para>
+<screen>&lt;A CLASS="OLINK" HREF="http://nwalsh.com/otherdocs/myotherdoc.htm#idval">This
+is an OLink&lt;/a></screen>
+<para>Note that the <sgmltag class="attribute">LocalInfo</sgmltag> is used
+as the fragment identifier.</para>
+<example id="exam1">
+<title>An Early Binding Sample Document</title>
+<screen>&lt;!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook V3.1//EN" [
+&lt;!ENTITY otherdoc PUBLIC "-//Norman Walsh//DOCUMENT My Other Document V1.0//EN">
+]>
+&lt;chapter>
+&lt;docinfo>
+&lt;modespec id=otherms>http://nwalsh.com/otherdocs/myotherdoc.htm&lt;/modespec>
+&lt;/docinfo>
+&lt;title>Test Document&lt;/title>
+&lt;para>
+&lt;olink targetdocent=otherdoc linkmode="otherms" localinfo="idval">This is
+an OLink&lt;/olink>.
+&lt;/para>
+&lt;/chapter></screen>
+</example>
+</sect2>
+<sect2>
+<title>Late Binding</title>
+<para>Late binding delays the resolution of entity to URL mapping until the
+link is followed. It does this by requiring that a web server process resolve
+the link. &ldquo;Out of the box,&rdquo; the DocBook stylesheets assume that
+a cgi-bin script on the server called <filename>/cgi-bin/olink</filename>
+is responsible for the resolution.</para>
+<para>Given the document in <xref linkend="exam2">, late binding would produce
+a link something like this:</para>
+<screen>&lt;A CLASS="OLINK" HREF="/cgi-bin/olink?pubid=-//Norman%20Walsh
+     //DOCUMENT%20My%20Other%20Document%20V1.0//EN&amp;fragid=idval">
+This is an OLink&lt;/a></screen>
+<para>(without the line break in the middle of the public identifier, of course).
+</para>
+<para>Again, note that the <sgmltag class="attribute">LocalInfo</sgmltag>
+is used as the fragment identifier.</para>
+<example id="exam2">
+<title>A Sample Document</title>
+<screen>&lt;!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook V3.1//EN" [
+&lt;!ENTITY otherdoc PUBLIC "-//Norman Walsh//DOCUMENT My Other Document V1.0//EN">
+]>
+&lt;chapter>
+&lt;docinfo>
+&lt;/docinfo>
+&lt;title>Test Document&lt;/title>
+&lt;para>
+&lt;olink targetdocent=otherdoc localinfo="idval">This is an OLink&lt;/olink>.
+&lt;/para>
+&lt;/chapter></screen>
+</example>
+<para>If a public identifier is used to declare the entity, then it is passed
+to the link resolution script; otherwise the system identifier is passed.
+</para>
+</sect2>
+</sect1>
+<sect1>
+<title>OLink Generated Text</title>
+<para>Even when links span across documents, it's useful to have the stylesheet
+generate appropriate cross-reference text. This greatly reduces the &ldquo;fragility&rdquo;
+of the links at the expense of some complexity in the <sgmltag>OLink</sgmltag>
+processing system.</para>
+<para>If you supply content in an <sgmltag>OLink</sgmltag>, that content is
+always used and generated text processing does not apply.</para>
+<para>The format of generated text is controlled by the <sgmltag class="attribute">
+XRefLabel</sgmltag> attribute on the <sgmltag>ModeSpec</sgmltag> pointed to
+by the <sgmltag>OLink</sgmltag>. The text of the <sgmltag class="attribute">
+XRefLabel</sgmltag> attribute is used for the generated text, with the following
+substitutions:</para>
+<variablelist>
+<varlistentry><term><literal>%g</literal></term>
+<listitem>
+<para>Is replaced by the &ldquo;name&rdquo; of the link target. This is generally
+the &ldquo;human readable&rdquo; name of the target element. For example,
+if the target is a <sgmltag>Figure</sgmltag>, <literal>%g</literal> would
+be &ldquo;Figure&rdquo;; if the target is a <sgmltag>Sect3</sgmltag>, <literal>
+%g</literal> would be &ldquo;Section&rdquo;.</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><literal>%n</literal></term>
+<listitem>
+<para>Is replaced by the label (number) of the link target.</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><literal>%t</literal></term>
+<listitem>
+<para>Is replaced by the title of the link target.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+<para>Suppose, for example, that the link target is the second section in
+the first chapter of a book and that it has the title &ldquo;My Test Title&rdquo;.
+If the <sgmltag class="attribute">XRefLabel</sgmltag> attribute contains the
+text &ldquo;<literal>see %g %n, %t</literal>&rdquo;, then the generated content
+would be &ldquo;see Section 1.3, <emphasis>My Test Title</emphasis>&rdquo;.
+</para>
+</sect1>
+<sect1>
+<title>Really Simple OLinks</title>
+<para>If the author provides content in the <literal>OLink</literal> element,
+that's the content that is used and no extra processing is required. The sections
+that follow each deal with variations in the level of processing required
+for generated text in <sgmltag>OLink</sgmltag>s.</para>
+</sect1>
+<sect1 id="olink-simple">
+<title>Simple OLinks</title>
+<para>Simple <sgmltag>OLink</sgmltag>s avoid some of the gory machinery required
+to handle <link linkend="olink-general">general</link> <sgmltag>OLink</sgmltag>s
+at the expense of most semantic variation.</para>
+<para>The simple semantics come into play when an <sgmltag>OLink</sgmltag>
+has the following form:</para>
+<synopsis>&lt;olink targetdocent="entity">&lt;/olink></synopsis>
+<para>In particular, note that there is no <sgmltag class="attribute">LinkMode
+</sgmltag>. The generated text in this case is derived entirely from the public
+and system identifiers by the <function>(olink-resource-title)</function>
+function. By default, this is simply the title of the document derived from
+the description field in the public identifier. The first and last &ldquo;words&rdquo;
+of the public identifier description field are trimmed off, leaving what is
+presumably just the document title. For example, given &ldquo;<literal>-//Norman
+Walsh//DOCUMENT My Document Title V1.0//EN</literal>&rdquo;, the derived title
+would be &ldquo;<emphasis>My Document Title</emphasis>&rdquo;.</para>
+</sect1>
+<sect1 id="olink-general">
+<title>General OLinks</title>
+<para>The generated text for general <sgmltag>OLink</sgmltag>s comes from
+the <sgmltag class="attribute">XRefLabel</sgmltag> attribute on the relevant <sgmltag>
+ModeSpec</sgmltag>. The hard part is locating the appropriate replacement
+text: the name, label, and title of the element pointed to by the combination
+of the <sgmltag class="attribute">TargetDocEnt</sgmltag> and <sgmltag class="attribute">
+LocalInfo</sgmltag>.</para>
+<para>One way to do this would be to load the <sgmltag class="attribute">
+TargetDocEnt</sgmltag>, find the element with the ID mentioned in <sgmltag
+class="attribute">LocalInfo</sgmltag> and extract the data directly. I chose
+something else because I see two significant problems with this approach:
+</para>
+<orderedlist>
+<listitem><para>Loading and parsing potentially large documents potentially
+many times appears to have the potential for significant performance problems.
+</para>
+</listitem>
+<listitem><para>It would not be possible to form <sgmltag>OLink</sgmltag>
+references to documents written in DTDs other than DocBook.</para>
+</listitem>
+</orderedlist>
+<para>Instead of loading the actual target document, the stylesheets load
+a summary of that document's content. For DocBook documents, this summary
+can be generated by another DSSSL stylesheet, <filename>olink.dsl</filename>,
+supplied with the DocBook Stylesheet distribution. The first few lines of
+the summary for this document is shown in looks like this:<xref linkend="exam3">.
+</para>
+<example id="exam3">
+<title>OLink Summary Document</title>
+<programlisting>&lt;!DOCTYPE div PUBLIC "-//Norman Walsh//DTD DocBook OLink Summary V1.0//EN">
+&lt;div type="article" name="Article">
+  &lt;ttl>OLink Semantics in the DocBook DSSSL Stylesheets&lt;/ttl>
+  &lt;div type="sect1" name="Section" id="OLINK-UDERSTANDING" label="1">
+    &lt;ttl>Understanding OLink&lt;/ttl>
+    &lt;div type="sect2" name="Section" label="1.1">
+      &lt;ttl>OLink&lt;/ttl>
+    &lt;/div>
+...</programlisting>
+</example>
+<para>The basic organization of the summary document is a nested series of <sgmltag>
+div</sgmltag>s and <sgmltag>obj</sgmltag>s with titles (<sgmltag>ttl</sgmltag>s).
+Attributes on these elements provide the IDs, labels, and names of the elements.
+The GI of the element is also provided. (If you find objects that you think
+are missing from the summary, please let me know).</para>
+<para>The stylesheets locate this document by resolving the system identifier
+of the target document and replacing the SGML or XML extension with <literal>
+%olink-outline-ext%</literal> (<literal>.olink</literal>, by default).</para>
+</sect1>
+<sect1>
+<title>Intra-document OLinks</title>
+<para>If the <sgmltag class="attribute">TargetDocEnt</sgmltag> attribute is
+missing, it seems reasonable to assume that the link refers to the current
+document. This actually offers a feature, you can customize the generated
+cross reference text for a particular reference.</para>
+<para>When the <sgmltag>OLink</sgmltag> is an intra-document link, it is possible
+to use additional %-substitutions in the cross reference template. See <function>
+(auto-xref)</function> in <sgmltag>dbcommon.dsl</sgmltag> for more details.
+</para>
+</sect1>
+<sect1>
+<sect1info>&modespecs;
+</sect1info>
+<title>Examples</title>
+<para>The examples that follow are all links into the document shown in <xref
+linkend="fig1">.</para>
+<figure id="fig1">
+<title>Example Target Document</title>
+<programlisting><inlinegraphic entityref="olinktarget" format="linespecific"></inlinegraphic></programlisting>
+</figure>
+<para> The <sgmltag>ModeSpec</sgmltag>s in this document are shown in <xref
+linkend="fig2">.</para>
+<figure id="fig2">
+<title>Example Target Document</title>
+<programlisting><inlinegraphic entityref="modespecs.include" format="linespecific"></inlinegraphic></programlisting>
+</figure>
+<example>
+<title>An OLink with Content</title>
+<para>Source: <literal>&lt;olink targetdocent=olinktarget>some text&lt;/olink>
+</literal></para>
+<para>Result: <olink targetdocent="olinktarget">some text</olink></para>
+</example>
+<example>
+<title>A Simple OLink</title>
+<para>Source: <literal>&lt;olink targetdocent=olinktarget>&lt;/olink></literal></para>
+<para>Result: <olink targetdocent="olinktarget"></olink></para>
+</example>
+<example>
+<title>An OLink to a Document</title>
+<para>Source: <literal>&lt;olink targetdocent=olinktarget linkmode=ms1>&lt;/olink>
+</literal></para>
+<para>Result: <olink targetdocent="olinktarget" linkmode="ms1"></olink></para>
+</example>
+<example>
+<title>An OLink to a Section</title>
+<para>Source: <literal>&lt;olink targetdocent=olinktarget linkmode=ms2 localinfo=a1s2>&lt;/olink>
+</literal></para>
+<para>Result: <olink targetdocent="olinktarget" linkmode="ms2" localinfo="a1s2"></olink></para>
+</example>
+<example>
+<title>An Intra-Document OLink</title>
+<para>Source: <literal>&lt;olink linkmode=ms1 localinfo="olink-understanding">&lt;/olink>
+</literal></para>
+<para>Result: <olink linkmode="ms1" localinfo="olink-understanding"></olink></para>
+</example>
+<example>
+<title>An XRef</title>
+<para>Source: <literal>&lt;xref linkend="olink-understanding"></literal></para>
+<para>Result: <xref linkend="olink-understanding"></para>
+</example>
+</sect1>
+</article>
+<?Pub *0000015350 0>

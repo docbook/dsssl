@@ -1,0 +1,28 @@
+<chapter id="lib">
+<?html-filename lib.html>
+<docinfo>
+<pubdate role=rcs>$Date$</pubdate>
+</docinfo>
+<title>The Library Module</title>
+<para>The library module contains functions that are DTD-independent.
+</para>
+<sect1>
+<title>Documentation</title>
+<para>Writing better documentation for these stylesheets is a background task.
+If you have any questions that aren't answered here, please feel free to <ulink
+url="http://nwalsh.com/~ndw/contact.html">contact me</ulink>.</para>
+<variablelist>
+<varlistentry>
+<term><ulink url="dblib.htm">Library Functions</ulink></term><listitem><para>
+Reference pages for the library functions in <filename>dblib.dsl</filename>.
+(FYI: this is programmer's documentation, not user documentation.)</para>
+</listitem></varlistentry>
+</variablelist>
+</sect1>
+<sect1><title>Change Log</title>
+<programlisting>
+<inlinegraphic format=linespecific fileref="/share/dsssl/docbook/lib/ChangeLog"></inlinegraphic>
+</programlisting>
+</sect1>
+</chapter>
+

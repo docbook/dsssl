@@ -1,0 +1,2 @@
+<modespec id=ms1 xreflabel="Name: '%g', Label: '%n', Title: '%t'"></modespec>
+<modespec id=ms2 xreflabel="%g %n, %t"></modespec>

@@ -36,35 +36,37 @@
 	(literal (attribute-string (normalize "url")))
 	(make sequence
 	  ($charseq$)
-	  (if %footnote-ulinks%
-	      (if (and (equal? (print-backend) 'tex) bop-footnotes)
-		  (make sequence
-		    ($ss-seq$ + (literal (footnote-number (current-node))))
-		    (make page-footnote
-		      (make paragraph
-			font-size: (* %footnote-size-factor% %bf-size%)
-			font-posture: 'upright
-			quadding: %default-quadding%
-			line-spacing: (* (* %footnote-size-factor% %bf-size%)
-					 %line-spacing-factor%)
-			space-before: %para-sep%
-			space-after: %para-sep%
-			start-indent: %footnote-field-width%
-			first-line-start-indent: (- %footnote-field-width%)
-			(make line-field
-			  field-width: %footnote-field-width%
-			  (literal (footnote-number (current-node))
-				   (gentext-label-title-sep (normalize "footnote"))))
-			(literal (attribute-string (normalize "url"))))))
-		  ($ss-seq$ + (literal (footnote-number (current-node)))))
-	      (if (and %show-ulinks% 
-		       (not (equal? (attribute-string (normalize "url"))
-				    (data-of (current-node)))))
-		  (make sequence
-		    (literal " (")
-		    (literal (attribute-string (normalize "url")))
-		    (literal ")"))
-		  (empty-sosofo)))))))
+ 	  (if (not (equal? (attribute-string (normalize "url"))
+ 			   (data-of (current-node))))
+ 	      (if %footnote-ulinks%
+ 		  (if (and (equal? (print-backend) 'tex) bop-footnotes)
+ 		      (make sequence
+ 			($ss-seq$ + (literal (footnote-number (current-node))))
+ 			(make page-footnote
+ 			  (make paragraph
+ 			    font-family-name: %body-font-family%
+ 			    font-size: (* %footnote-size-factor% %bf-size%)
+ 			    font-posture: 'upright
+ 			    quadding: %default-quadding%
+ 			    line-spacing: (* (* %footnote-size-factor% %bf-size%)
+ 					     %line-spacing-factor%)
+ 			    space-before: %para-sep%
+ 			    space-after: %para-sep%
+ 			    start-indent: %footnote-field-width%
+ 			    first-line-start-indent: (- %footnote-field-width%)
+ 			    (make line-field
+ 			      field-width: %footnote-field-width%
+ 			      (literal (footnote-number (current-node))
+ 				       (gentext-label-title-sep (normalize "footnote"))))
+ 			    (literal (attribute-string (normalize "url"))))))
+ 		      ($ss-seq$ + (literal (footnote-number (current-node)))))
+ 		  (if %show-ulinks%
+ 		      (make sequence
+ 			(literal " (")
+ 			(literal (attribute-string (normalize "url")))
+ 			(literal ")"))
+ 		      (empty-sosofo)))
+ 	      (empty-sosofo))))))
 
 (element footnoteref 
   (process-element-with-id (attribute-string (normalize "linkend"))))

@@ -1,4 +1,4 @@
-<!-- $FreeBSD: doc/share/sgml/freebsd.dsl,v 1.59 2001/10/13 01:07:24 murray Exp $ -->
+<!-- $FreeBSD: doc/share/sgml/freebsd.dsl,v 1.68 2002/11/20 19:41:10 ceri Exp $ -->
 
 <!DOCTYPE style-sheet PUBLIC "-//James Clark//DTD DSSSL Style Sheet//EN" [
 <!ENTITY % output.html		"IGNORE">
@@ -121,17 +121,11 @@
           #f)
 
         ; Empty function to quiet warnings
-        (define ($create-refentry-xref-link$ refentrytitle manvolnum)
+        (define ($create-refentry-xref-link$)
           (literal ""))
 
         (element citerefentry
-          (let* ((refentrytitle (select-elements (children (current-node))
-                                                 (normalize "refentrytitle")))
-		 (manvolnum     (select-elements (children (current-node))
-						 (normalize "manvolnum")))
-		 (href          ($create-refentry-xref-link$
-                                                 (data refentrytitle)
-                                                 (data manvolnum))))
+          (let ((href          ($create-refentry-xref-link$)))
             (if %refentry-xref-link%
               (create-link (list (list "HREF" href))
                 (if %refentry-xref-italic%
@@ -141,13 +135,23 @@
                 ($italic-seq$)
                 ($charseq$)))))
 
-	(element port
-	  (let* ((urlurl	"http://www.FreeBSD.org/cgi/url.cgi")
-		 (href		(string-append urlurl "?ports/"
+	(element filename
+	  (let*	((class		(attribute-string (normalize "role"))))
+	    (cond
+	     ((equal? class "package")
+	      (let* ((urlurl	"http://www.FreeBSD.org/cgi/url.cgi")
+		     (href	(string-append urlurl "?ports/"
 					       (data (current-node))
 					       "/pkg-descr")))
-	    (create-link (list (list "HREF" href))
-			 ($mono-seq$))))
+		(create-link (list (list "HREF" href)) ($mono-seq$))))
+	     (else ($mono-seq$)))))
+
+	;; Ensure that we start with no preferred mediaobject notations,
+	;; so that in the text-only case we don't choose any of the
+	;; possible images, and fallback to the most appropriate
+	;; textobject
+        (define preferred-mediaobject-notations
+	  '())
       ]]>
 
       <!-- HTML with images  ............................................ -->
@@ -160,9 +164,8 @@
 ; displaying the image.
 
         (element mediaobject
-          (if (node-list-empty? (select-elements (children (current-node)) (normalize "imageobject")))
-            (process-children)
-            (process-node-list (select-elements (children (current-node)) (normalize "imageobject")))))
+          (make element gi: "P"
+            ($mediaobject$)))
 
         (define %graphic-default-extension%
           "png")
@@ -394,9 +397,6 @@
 ;            (urlwrap)
 ;            (literal ">")))
 
-        (element port
-	    (pathwrap))
-          
         (element filename
 	    (pathwrap))
 
@@ -427,18 +427,54 @@
         (element (tertiaryie ulink)
           (indexentry-link (current-node)))
 
+	;; Override the count-footnote? definition from dbblock.dsl
+	;; to fix a bug.  Basically, the original procedure would count
+	;; all ulink elements when doing %footnote-ulinks%.  It's
+	;; actually harder than that, because ulink elements with no
+	;; content shouldn't generate footnotes (the ulink element
+	;; definition just inserts the url attribute in-line, thus there
+	;; is no need for a footnote with the url).  So, when we figure
+	;; out which footnotes to count for the purpose of determining
+	;; footnote numbers, we only count the ulink elements containing
+	;; content.
+	(define (count-footnote? footnote)
+	  ;; don't count footnotes in comments (unless you're showing comments)
+	  ;; or footnotes in tables which are handled locally in the table
+	  (if (or (and (has-ancestor-member? footnote (list (normalize "comment")))
+		       (not %show-comments%))
+		  (has-ancestor-member? footnote (list (normalize "tgroup")))
+		  (and (has-ancestor-member? footnote (list (normalize "ulink")))
+		       (node-list-empty? (children footnote))))
+	      #f
+	      #t))
+
         (element ulink 
           (make sequence
             (if (node-list-empty? (children (current-node)))
-              (make formatting-instruction data:
-		   (string-append "\\url{"
-			(fix-url (attribute-string
-			(normalize "url")))
-			"}"))
+   	      (literal (fix-url (attribute-string (normalize "url"))))
   	      (make sequence
 	        ($charseq$)
 	        (if %footnote-ulinks%
-	            ($ss-seq$ + (literal (footnote-number (current-node))))
+		    (if (and (equal? (print-backend) 'tex) bop-footnotes)
+		      (make sequence
+			    ($ss-seq$ + (literal (footnote-number (current-node))))
+			    (make page-footnote
+			          (make paragraph
+			font-size: (* %footnote-size-factor% %bf-size%)
+			font-posture: 'upright
+			quadding: %default-quadding%
+			line-spacing: (* (* %footnote-size-factor% %bf-size%)
+					 %line-spacing-factor%)
+			space-before: %para-sep%
+			space-after: %para-sep%
+			start-indent: %footnote-field-width%
+			first-line-start-indent: (- %footnote-field-width%)
+			(make line-field
+			  field-width: %footnote-field-width%
+			  (literal (footnote-number (current-node))
+				   (gentext-label-title-sep (normalize "footnote"))))
+			(literal (fix-url (attribute-string (normalize "url")))))))
+		      ($ss-seq$ + (literal (footnote-number (current-node)))))
 	            (if (and %show-ulinks% 
 		             (not (equal? (fix-url (attribute-string (normalize "url")))
 				          (data-of (current-node)))))
@@ -619,7 +655,7 @@
            </chapterinfo>
 
            Would show up as "Contributed by Bob Jones and Sarah Lee".  Each
-           authorgroup shows up as a seperate sentence. -->
+           authorgroup shows up as a separate sentence. -->
   
 
       (element chapterinfo 

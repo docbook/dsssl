@@ -380,7 +380,7 @@
                                                                    ; nbsp;
 (define %gentext-fr-start-quote%  (string-append (dingbat "laquo") "\U-00A0;"))
 
-(define %gentext-fr-end-quote%  (string-append (dingbat "raquo") "\U-00A0;"))
+(define %gentext-fr-end-quote%  (string-append "\U-00A0;" (dingbat "raquo")))
 
 (define %gentext-fr-start-nested-quote%  (string-append (dingbat "lsaquo") "\U-00A0;"))
 

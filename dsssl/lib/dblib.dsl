@@ -438,7 +438,8 @@
 			 (if (member (string-ref tailstr count) stripchars)
 			     (loop (- count 1))
 			     count)))))
-    (if (equal? endpos 0)
+    (if (or (< endpos 0)
+	    (string=? tailstr ""))
 	""
 	(substring tailstr 0 (+ endpos 1)))))
 

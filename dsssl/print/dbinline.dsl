@@ -147,7 +147,13 @@
       ($italic-seq$)
       ($charseq$)))
 
-(element citetitle ($italic-seq$))
+(element citetitle
+  (if (equal? (attribute-string (normalize "pubwork")) "article")
+      (make sequence
+	(literal (gentext-start-quote))
+	(process-children)
+	(literal (gentext-end-quote)))
+      ($italic-seq$)))
 
 (element emphasis
   (if (and (attribute-string (normalize "role"))

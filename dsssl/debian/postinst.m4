@@ -81,9 +81,6 @@ if [ "$1" = configure ]; then
     # remove old entries from transitional.cat
     install-sgmlcatalog --quiet --remove docbook-stylesheets
 
-    # some old cruft which is lying around -- probably dhelp cruft
-    [ ! -d /usr/doc/$PACKAGE/doc ] || rmdir --ignore-fail-on-non-empty /usr/doc/$PACKAGE/doc || true
-
     # make the central catalog a clean slate (in case some catalogs
     # were removed or moved)
     rm -f ${CENTRALCAT}
@@ -96,6 +93,13 @@ if [ "$1" = configure ]; then
     # install that central catalog into the super catalog
     update-catalog --quiet --add --super ${CENTRALCAT}
 
+    ##
+    ## cruft removal
+    ##
+    # old dhelp cruft
+    [ ! -d /usr/doc/$PACKAGE/doc ] || rmdir --ignore-fail-on-non-empty /usr/doc/$PACKAGE/doc || true
+    # M4 didn't work
+    rm -f /etc/sgml/M4package.cat*
     # for some reason the compatability link keeps turning into a directory
     if [ ! -h ${COMPATLNK} -a -d ${COMPATLNK} ] && rmdir ${COMPATLNK} 2>/dev/null; then
         ln -sf ${COMPATLNKTO} ${COMPATLNK}

@@ -226,7 +226,7 @@
 			(+ %block-start-indent% (inherited-start-indent)))
       space-before: (if (INLIST?) %para-sep% %block-sep%)
       space-after:  (if (INLIST?) %para-sep% %block-sep%)
-  
+
       (if (and (or (and termlength (not too-long?))
 		   %always-format-variablelist-as-table%)
 	       (or %may-format-variablelist-as-table%
@@ -261,7 +261,7 @@
 			    0pt)
 	  keep-with-next?: #t
 	  first-line-start-indent: 0pt
-	  start-indent: 0pt
+	  start-indent: (inherited-start-indent)
 	  (process-children)))
 
 (element (varlistentry listitem)

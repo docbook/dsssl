@@ -145,7 +145,7 @@ that can format with either the print or HTML backends.</para>
 &lt;/style-sheet></screen>
 <para>If this is <filename>both.dsl</filename>, I can format my document using
 the print stylesheet by running<screen>jade -t rtf -d both.dsl#print file.sgm
-</screen>and using the HTML stylesheet by running<screen>jade -t sgml -ihtml both.dsl#html file.sgm
+</screen>and using the HTML stylesheet by running<screen>jade -t sgml -i html -d both.dsl#html file.sgm
 </screen>which is kindof neat. (I've built some additional machinery on top
 of this to make the selection automatic from within <ulink url="http://www.arbortext.com/">
 ADEPT</ulink> and a shell script that I use.)</para>

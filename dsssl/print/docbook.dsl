@@ -1,4 +1,5 @@
 <!DOCTYPE style-sheet PUBLIC "-//James Clark//DTD DSSSL Style Sheet//EN" [
+<!ENTITY % l10n-af "INCLUDE">
 <!ENTITY % l10n-ca "INCLUDE">
 <!ENTITY % l10n-cs "INCLUDE">
 <!ENTITY % l10n-da "INCLUDE">
@@ -25,8 +26,18 @@
 <!ENTITY % l10n-sl "INCLUDE">
 <!ENTITY % l10n-sr "INCLUDE">
 <!ENTITY % l10n-sv "INCLUDE">
+<!ENTITY % l10n-tr "INCLUDE">
 <!ENTITY % l10n-zhcn "INCLUDE">
 <!ENTITY % l10n-zhtw "INCLUDE">
+
+<![%l10n-af;[
+<!ENTITY dbl1af
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Localization//AF"
+         "../common/dbl1af.dsl" CDATA DSSSL>
+]]>
+<!ENTITY dbl1af
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Null Localization//EN"
+          "../common/dbl1null.dsl" CDATA DSSSL>
 
 <![%l10n-ca;[
 <!ENTITY dbl1ca
@@ -262,6 +273,15 @@
   PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Null Localization//EN"
          "../common/dbl1null.dsl" CDATA DSSSL>
 
+<![%l10n-tr;[
+<!ENTITY dbl1tr
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Localization//TR"
+         "../common/dbl1tr.dsl" CDATA DSSSL>
+]]>
+<!ENTITY dbl1tr
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Null Localization//EN"
+         "../common/dbl1null.dsl" CDATA DSSSL>
+
 <![%l10n-zhcn;[
 <!ENTITY dbl1zhcn
   PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Localization//ZHCN"
@@ -328,7 +348,7 @@
 
 <style-sheet>
 <style-specification id="docbook"
-   use="ca cs da de el en es et fi fr hu id it ja ko nl no pl pt ptbr ro ru sk sl sr sv zhcn zhtw param dblib">
+   use="af ca cs da de el en es et fi fr hu id it ja ko nl no pl pt ptbr ro ru sk sl sr sv tr zhcn zhtw param dblib">
 
 <style-specification-body>
 
@@ -429,6 +449,7 @@
 <external-specification id="param" document="dbparam.dsl">
 <external-specification id="dblib" document="dblib.dsl">
 
+<external-specification id="af" document="dbl1af">
 <external-specification id="ca" document="dbl1ca">
 <external-specification id="cs" document="dbl1cs">
 <external-specification id="da" document="dbl1da">
@@ -455,6 +476,7 @@
 <external-specification id="sl" document="dbl1sl">
 <external-specification id="sr" document="dbl1sr">
 <external-specification id="sv" document="dbl1sv">
+<external-specification id="tr" document="dbl1tr">
 <external-specification id="zhcn" document="dbl1zhcn">
 <external-specification id="zhtw" document="dbl1zhtw">
 

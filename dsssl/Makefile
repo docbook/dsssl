@@ -7,6 +7,7 @@ DIFFVER=
 ZIPVER=
 SFRELID=
 FMGO=-N
+BROWSER=w3m
 
 all:
 	$(MAKE) -C common
@@ -22,7 +23,10 @@ RELEASE-NOTES.html: RELEASE-NOTES.xml
 	$(XJPARSE) $<
 	$(XSLT) $< ../xsl/docsrc/doc-link-docbook.xsl $@
 
-distrib: all doc RELEASE-NOTES.html
+RELEASE-NOTES.txt: RELEASE-NOTES.html
+	$(BROWSER) -dump $< > $@
+
+distrib: all doc RELEASE-NOTES.html RELEASE-NOTES.txt
 	$(MAKE) -C images
 	$(MAKE) -C html XREF
 	$(MAKE) -C print XREF
@@ -100,4 +104,4 @@ clean:
 	$(MAKE) -C html $@
 	$(MAKE) -C print $@
 	$(MAKE) -C bin $@
-	rm -f WhatsNew ChangeLog *~ *.bak .#*
+	rm -f WhatsNew ChangeLog RELEASE-NOTES.html RELEASE-NOTES.txt *~ *.bak .#*

@@ -35,7 +35,7 @@ setit () {
     local value=$1; shift
     local file
 
-    if [ -z $setting -o -z $value ]; then
+    if [ -z "$setting" -o -z "$value" ]; then
         echo "setting '$setting' or value '$value' is empty, skipping" >&2
         return
     fi
@@ -55,11 +55,11 @@ setit () {
     fi
     
     # quote value if we need to
-    if [ ${value} != ${value#[0-9]} ]; then
+    if [ "$value" != "${value#[0-9]}" ]; then
         : # it starts with a number, leave it alone
-    elif [ ${value} = true ]; then
+    elif [ "$value" = true ]; then
         value='#t'
-    elif [ ${value} = false ]; then
+    elif [ "$value" = false ]; then
         value='#f'
     else
         # assume it's a string

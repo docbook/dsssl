@@ -74,7 +74,9 @@
 				     %para-indent-firstpara%
 				     %para-indent%)
 	space-before: %para-sep%
-	space-after: %para-sep%
+	space-after: (if (INLIST?)
+			 0pt
+			 %para-sep%)
 	quadding: %default-quadding%
 	hyphenate?: %hyphenation%
 	language: (dsssl-language-code)
@@ -84,7 +86,9 @@
 				     %para-indent-firstpara%
 				     %para-indent%)
 	space-before: %para-sep%
-	space-after: %para-sep%
+	space-after: (if (INLIST?)
+			 0pt
+			 %para-sep%)
 	quadding: %default-quadding%
 	hyphenate?: %hyphenation%
 	language: (dsssl-language-code)

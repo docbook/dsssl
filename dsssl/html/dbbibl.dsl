@@ -714,33 +714,38 @@
 (define (nontable-bibliomixed 
 	 xreflabel leading-abbrev inline-children)
   (let* ((has-leading-abbrev? (not (node-list-empty? leading-abbrev))))
-    (make element gi: "P"
+    (make element gi: "DIV"
 	  attributes: (list (list "CLASS" (gi)))
+	  (make element gi: "A"
+		attributes: (list (list "NAME" (element-id)))
+		(empty-sosofo))
+	  (make element gi: "P"
+		attributes: (list (list "CLASS" (gi)))
 
-	  (if (or biblio-number xreflabel has-leading-abbrev?)
-	      (make sequence
-		(literal "[")
+		(if (or biblio-number xreflabel has-leading-abbrev?)
+		    (make sequence
+		      (literal "[")
 
-		(if biblio-number 
-		    (literal (number->string (bibentry-number 
-					      (current-node))))
-		    (empty-sosofo))
+		      (if biblio-number 
+			  (literal (number->string (bibentry-number 
+						    (current-node))))
+			  (empty-sosofo))
+		      
+		      (if xreflabel
+			  (literal xreflabel)
+			  (empty-sosofo))
 	  
-		(if xreflabel
-		    (literal xreflabel)
-		    (empty-sosofo))
-	  
-		(if has-leading-abbrev?
-		    (with-mode biblioentry-inline-mode 
-		      (process-node-list leading-abbrev))
-		    (empty-sosofo))
+		      (if has-leading-abbrev?
+			  (with-mode biblioentry-inline-mode 
+			    (process-node-list leading-abbrev))
+			  (empty-sosofo))
 
-		(literal "]")
-		(make entity-ref name: "nbsp"))
-	      (empty-sosofo))
+		      (literal "]")
+		      (make entity-ref name: "nbsp"))
+		    (empty-sosofo))
 	
-	  (with-mode biblioentry-inline-mode
-	    (process-node-list inline-children)))))
+		(with-mode biblioentry-inline-mode
+		  (process-node-list inline-children))))))
 
 (define (table-bibliomixed 
 	 xreflabel leading-abbrev inline-children)
@@ -750,6 +755,9 @@
 		attributes: '(("ALIGN" "LEFT")
 			      ("VALIGN" "TOP")
 			      ("WIDTH" "10%"))
+		(make element gi: "A"
+		      attributes: (list (list "NAME" (element-id)))
+		      (empty-sosofo))
 
 		(if (or biblio-number xreflabel has-leading-abbrev?)
 		    (make sequence

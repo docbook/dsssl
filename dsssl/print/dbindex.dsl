@@ -130,6 +130,7 @@
 		       2em)
 		      (else 3em))))
     (make paragraph
+      font-size: (* (inherited-font-size) %smaller-size-factor%)
       start-indent: (+ (inherited-start-indent) indent)
       (literal "(" (gentext-index-see) " ")
       (process-children)
@@ -148,6 +149,7 @@
 		       2em)
 		      (else 3em))))
     (make paragraph
+      font-size: (* (inherited-font-size) %smaller-size-factor%)
       start-indent: (+ (inherited-start-indent) indent)
       (literal "(" (gentext-index-seealso) " ")
       (process-children)

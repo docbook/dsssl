@@ -9,28 +9,73 @@
 (element highlights ($block-container$))
 
 (element (para blockquote)
-  (make paragraph
-    first-line-start-indent: 0pt ;; workaround a bug/feature?
-    ;; W/o the preceding line, the first-line-start-indent of the enclosing
-    ;; paragraph will apply to the paragraphs in this blockquote which is
-    ;; probably not wanted..
-    font-size: (* %bf-size% %smaller-size-factor%)
-    line-spacing: (* %bf-size% %line-spacing-factor%
-		     %smaller-size-factor%)
-    space-before: %para-sep%
-    start-indent: (+ (inherited-start-indent) 1em)
-    end-indent: 1em
-    (process-children)))
+  (let* ((attrib       (select-elements (children (current-node))
+					(normalize "attribution")))
+	 (paras        (node-list-filter-by-not-gi
+			(children (current-node))
+			(list (normalize "attribution")))))
+    (make sequence
+      (make paragraph
+	first-line-start-indent: 0pt ;; workaround a bug/feature?
+	;; W/o the preceding line, the first-line-start-indent of the enclosing
+	;; paragraph will apply to the paragraphs in this blockquote which is
+	;; probably not wanted..
+	font-size: (* %bf-size% %smaller-size-factor%)
+	line-spacing: (* %bf-size% %line-spacing-factor%
+			 %smaller-size-factor%)
+	space-before: %para-sep%
+	start-indent: (+ (inherited-start-indent) 1em)
+	end-indent: 1em
+	(process-node-list paras))
+      (if (node-list-empty? attrib)
+	  (empty-sosofo)
+	  (make paragraph
+	    font-size: (* %bf-size% %smaller-size-factor%)
+	    line-spacing: (* %bf-size% %line-spacing-factor%
+			   %smaller-size-factor%)
+	    space-before: 0pt
+	    end-indent: 1em
+	    quadding: 'end
+	    (make sequence
+	      (literal "\em-dash;")
+	      (process-node-list attrib)))))))
 
 (element blockquote
-  (make paragraph
-    font-size: (* %bf-size% %smaller-size-factor%)
-    line-spacing: (* %bf-size% %line-spacing-factor%
-		     %smaller-size-factor%)
-    space-before: %para-sep%
-    start-indent: (+ (inherited-start-indent) 1em)
-    end-indent: 1em
-    (process-children)))
+  (let* ((attrib       (select-elements (children (current-node))
+					(normalize "attribution")))
+	 (paras        (node-list-filter-by-not-gi
+			(children (current-node))
+			(list (normalize "attribution")))))
+    (make sequence
+      (make paragraph
+	font-size: (* %bf-size% %smaller-size-factor%)
+	line-spacing: (* %bf-size% %line-spacing-factor%
+			 %smaller-size-factor%)
+	space-before: %para-sep%
+	start-indent: (+ (inherited-start-indent) 1em)
+	end-indent: 1em
+	(process-node-list paras))
+      (if (node-list-empty? attrib)
+	  (empty-sosofo)
+	  (make paragraph
+	    font-size: (* %bf-size% %smaller-size-factor%)
+	    line-spacing: (* %bf-size% %line-spacing-factor%
+			     %smaller-size-factor%)
+	    space-before: 0pt
+	    end-indent: 1em
+	    quadding: 'end
+	    (make sequence
+	      (literal "\em-dash;")
+	      (process-node-list attrib)))))))
+
+(element (blockquote para)
+  (if (absolute-last-sibling? (current-node))
+      (make paragraph
+	space-before: %para-sep%
+	space-after: 0pt
+ 	quadding: %default-quadding%
+	(process-children-trim))
+      ($paragraph$)))
 
 (element epigraph
   (let* ((addln-indent (* %text-width% 0.55))

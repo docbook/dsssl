@@ -23,66 +23,6 @@
 (define acceptable-mediaobject-extensions
   (list "gif" "bmp" "wmf"))
 
-(define (data-filename dataobj)
-  (let* ((entityref (attribute-string (normalize "entityref") dataobj))
-	 (fileref   (attribute-string (normalize "fileref") dataobj))
-	 (filename  (if fileref
-			fileref
-			(system-id-filename entityref)))
-	 (ext       (file-extension filename)))
-    (if (or (not filename)
-	    (not %graphic-default-extension%)
-	    (member ext %graphic-extensions%))
-	filename
-	(string-append filename "." %graphic-default-extension%))))
-
-(define (find-displayable-object objlist notlist extlist)
-  (let loop ((nl objlist))
-    (if (node-list-empty? nl)
-	(empty-node-list)
-	(let* ((objdata  (node-list-filter-by-gi
-			  (children (node-list-first nl))
-			  (list (normalize "videodata")
-				(normalize "audiodata")
-				(normalize "imagedata"))))
-	       (filename  (data-filename objdata))
-	       (extension (file-extension filename))
-	       (notation  (attribute-string (normalize "format") objdata)))
-	  (if (or (member notation notlist)
-		  (member extension extlist))
-	      (node-list-first nl)
-	      (loop (node-list-rest nl)))))))
-
-(define (select-displayable-object objlist)
-  (let ((pref (find-displayable-object objlist 
-				       preferred-mediaobject-notations
-				       preferred-mediaobject-extensions))
-	(ok   (find-displayable-object objlist
-				       acceptable-mediaobject-notations
-				       acceptable-mediaobject-extensions)))
-    (if (node-list-empty? pref)
-	ok
-	pref)))
-
-(define ($mediaobject$)
-  (let* ((objects (node-list-filter-by-gi
-		   (children (current-node))
-		   (list (normalize "videoobject")
-			 (normalize "imageobject")
-			 (normalize "audioobject"))))
-	 (dobject (select-displayable-object objects))
-	 (textobj (select-elements (children (current-node)) 
-				   (normalize "textobject")))
-	 (caption (select-elements (children (current-node))
-				   (normalize "caption"))))
-    (make sequence
-      (if (node-list-empty? dobject)
-	  (if (node-list-empty? textobj)
-	      (empty-sosofo)
-	      (process-node-list (node-list-first textobj)))
-	  (process-node-list dobject))
-      (process-node-list caption))))
-  
 (element mediaobject
   (make element gi: "DIV"
 	attributes: (list (list "CLASS" (gi)))

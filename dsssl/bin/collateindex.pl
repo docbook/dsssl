@@ -8,7 +8,7 @@ $usage = "Usage: $0 <opts> file
 Where <opts> are:
        -p        Link to points in the document.  The default is to link
                  to the closest containing section.
-       -g        Group terms with IndexDiv based on the first letter 
+       -g        Group terms with IndexDiv based on the first letter
                  of the term (or its sortas attribute).
                  (This probably doesn't handle i10n particularly well)
        -s name   Name the IndexDiv that contains symbols.  The default
@@ -81,7 +81,7 @@ $termcount = 0;
 
 print STDERR "Processing $dat...\n";
 
-# Read the index file, creating an array of objects.  Each object 
+# Read the index file, creating an array of objects.  Each object
 # represents and indexterm and has fields for the content of the
 # indexterm
 
@@ -268,7 +268,7 @@ foreach $idx (@term) {
     # If primary changes, output a whole new index term, otherwise just
     # output another secondary or tertiary, as appropriate.  We know from
     # sorting that the terms will always be in the right order.
-    if (!&tsame($last, $idx, 'primary')) { 
+    if (!&tsame($last, $idx, 'primary')) {
 	print "DIFF PRIM\n" if $debug;
 	&end_entry() if not $first;
 
@@ -277,7 +277,7 @@ foreach $idx (@term) {
 	    $letter = $idx->{'psortas'};
 	    $letter = $idx->{'primary'} if !$letter;
 	    $letter = uc(substr($letter, 0, 1));
-	    
+
 	    # symbols are a special case
 	    if (($letter lt 'A') || ($letter gt 'Z')) {
 		if (($group eq '')
@@ -334,7 +334,7 @@ foreach $idx (@term) {
     }
 
     &print_term($idx);
-    
+
     $last = $idx;
 }
 
@@ -354,13 +354,13 @@ sub same {
     my($a) = shift;
     my($b) = shift;
 
-    my($aP) = $a->{'psortas'} || $a->{'primary'};   
-    my($aS) = $a->{'ssortas'} || $a->{'secondary'}; 
-    my($aT) = $a->{'tsortas'} || $a->{'tertiary'};  
-	                                            
-    my($bP) = $b->{'psortas'} || $b->{'primary'};   
-    my($bS) = $b->{'ssortas'} || $b->{'secondary'}; 
-    my($bT) = $b->{'tsortas'} || $b->{'tertiary'};  
+    my($aP) = $a->{'psortas'} || $a->{'primary'};
+    my($aS) = $a->{'ssortas'} || $a->{'secondary'};
+    my($aT) = $a->{'tsortas'} || $a->{'tertiary'};
+
+    my($bP) = $b->{'psortas'} || $b->{'primary'};
+    my($bS) = $b->{'ssortas'} || $b->{'secondary'};
+    my($bT) = $b->{'tsortas'} || $b->{'tertiary'};
 
     my($same);
 
@@ -493,14 +493,14 @@ sub print_term {
 }
 
 sub termsort {
-    my($aP) = $a->{'psortas'} || $a->{'primary'};   
-    my($aS) = $a->{'ssortas'} || $a->{'secondary'}; 
-    my($aT) = $a->{'tsortas'} || $a->{'tertiary'};  
+    my($aP) = $a->{'psortas'} || $a->{'primary'};
+    my($aS) = $a->{'ssortas'} || $a->{'secondary'};
+    my($aT) = $a->{'tsortas'} || $a->{'tertiary'};
     my($ap) = $a->{'count'};
-	                                            
-    my($bP) = $b->{'psortas'} || $b->{'primary'};   
-    my($bS) = $b->{'ssortas'} || $b->{'secondary'}; 
-    my($bT) = $b->{'tsortas'} || $b->{'tertiary'};  
+
+    my($bP) = $b->{'psortas'} || $b->{'primary'};
+    my($bS) = $b->{'ssortas'} || $b->{'secondary'};
+    my($bT) = $b->{'tsortas'} || $b->{'tertiary'};
     my($bp) = $b->{'count'};
 
     $aP =~ s/^\s*//; $aP =~ s/\s*$//; $aP = uc($aP);
@@ -567,12 +567,12 @@ sub safe_open {
 		    $handedit = 0;
 		    last;
 		}
-	    } 
+	    }
 	    close (OUT);
 	} else {
 	    $handedit = 0;
 	}
-	
+
 	if ($handedit) {
 	    print "\n$outfile appears to have been edited by hand; use -f or\n";
 	    print "      change the output file.\n";
@@ -582,7 +582,7 @@ sub safe_open {
 
     open (OUT, ">$outfile") || die "$usage\nCannot write to $outfile.\n";
 
-    if ($preamble) { 
+    if ($preamble) {
 	# Copy the preamble
 	if (open(F, $preamble)) {
 	    while (<F>) {

@@ -661,12 +661,10 @@
   (element title 
     (make element gi: "H1"
 	  attributes: (list (list "CLASS" (gi)))
-	  (make sequence
-	    (make element gi: "A"
+	  (make element gi: "A"
 		attributes: (list (list "NAME" (element-id)))
-		(empty-sosofo))
-	    (with-mode title-mode
-	      (process-children-trim)))))
+		(with-mode title-mode
+		  (process-children-trim)))))
 
   (element (formalpara title) ($runinhead$))
 )
@@ -1582,12 +1580,10 @@
   (element title 
     (make element gi: "H1"
 	  attributes: (list (list "CLASS" (gi)))
-	  (make sequence
-	    (make element gi: "A"
-		  attributes: (list (list "NAME" (element-id)))
-		  (empty-sosofo))
-	    (with-mode title-mode
-	      (process-children-trim)))))
+	  (make element gi: "A"
+		attributes: (list (list "NAME" (element-id)))
+		(with-mode title-mode
+		  (process-children-trim)))))
 
   (element (formalpara title) ($runinhead$))
 
@@ -3444,12 +3440,10 @@
   (element title 
     (make element gi: "H1"
 	  attributes: (list (list "CLASS" (gi)))
-	  (make sequence
-	    (make element gi: "A"
-		  attributes: (list (list "NAME" (element-id)))
-		  (empty-sosofo))
-	    (with-mode title-mode
-	      (process-children-trim)))))
+	  (make element gi: "A"
+		attributes: (list (list "NAME" (element-id)))
+		(with-mode title-mode
+		  (process-children-trim)))))
 
   (element (formalpara title) ($runinhead$))
 

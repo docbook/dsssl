@@ -371,6 +371,11 @@
 	   ((equal? (gi sect) (normalize "refsect1")) 2)
 	   ((equal? (gi sect) (normalize "refsynopsisdiv")) 2)
 	   ((equal? (gi sect) (normalize "reference")) 1)
+	   ((equal? (gi sect) (normalize "bibliography")) 1)
+	   ((equal? (gi sect) (normalize "bibliodiv")) 2)
+	   ((equal? (gi sect) (normalize "index")) 1)
+	   ((equal? (gi sect) (normalize "setindex")) 1)
+	   ((equal? (gi sect) (normalize "indexdiv")) 2)
 	   (else 1)))))
   
 ;; === synopsis =========================================================

@@ -135,7 +135,10 @@
 		      (make sequence
 			(if (and %generate-legalnotice-link%
 				 (not nochunks)
-				 (first-sibling? (node-list-first nl)))
+				 (first-sibling? (node-list-first nl))
+				 ;; Hack: only book legal notices are diverted
+				 (have-ancestor? (normalize "bookinfo")
+						 (node-list-first nl)))
 			    (make sequence
 			      (make formatting-instruction
 				data: ($legalnotice-link-file$ (node-list-first nl)))

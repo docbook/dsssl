@@ -23,8 +23,10 @@
 <!ENTITY % l10n-ru "INCLUDE">
 <!ENTITY % l10n-sk "INCLUDE">
 <!ENTITY % l10n-sl "INCLUDE">
+<!ENTITY % l10n-sr "INCLUDE">
 <!ENTITY % l10n-sv "INCLUDE">
 <!ENTITY % l10n-zhcn "INCLUDE">
+<!ENTITY % l10n-zhtw "INCLUDE">
 
 <![%l10n-ca;[
 <!ENTITY dbl1ca
@@ -242,6 +244,15 @@
   PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Null Localization//EN"
          "../common/dbl1null.dsl" CDATA DSSSL>
 
+<![%l10n-sr;[
+<!ENTITY dbl1sr
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Localization//SR"
+         "../common/dbl1sr.dsl" CDATA DSSSL>
+]]>
+<!ENTITY dbl1sr
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Null Localization//EN"
+         "../common/dbl1null.dsl" CDATA DSSSL>
+
 <![%l10n-sv;[
 <!ENTITY dbl1sv
   PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Localization//SV"
@@ -257,6 +268,15 @@
          "../common/dbl1zhcn.dsl" CDATA DSSSL>
 ]]>
 <!ENTITY dbl1zhcn
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Null Localization//EN"
+         "../common/dbl1null.dsl" CDATA DSSSL>
+
+<![%l10n-zhtw;[
+<!ENTITY dbl1zhtw
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Localization//ZHTW"
+         "../common/dbl1zhtw.dsl" CDATA DSSSL>
+]]>
+<!ENTITY dbl1zhtw
   PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Null Localization//EN"
          "../common/dbl1null.dsl" CDATA DSSSL>
 
@@ -310,7 +330,7 @@
 
 <style-sheet>
 <style-specification id="docbook" 
-    use="ca cs da de el en es et fi fr hu id it ja ko nl no pl pt ptbr ro ru sk sl sv zhcn dbparam dblib">
+    use="ca cs da de el en es et fi fr hu id it ja ko nl no pl pt ptbr ro ru sk sl sr sv zhcn zhtw dbparam dblib">
 
 <style-specification-body>
 
@@ -480,8 +500,10 @@
 <external-specification id="ru" document="dbl1ru">
 <external-specification id="sk" document="dbl1sk">
 <external-specification id="sl" document="dbl1sl">
+<external-specification id="sr" document="dbl1sr">
 <external-specification id="sv" document="dbl1sv">
 <external-specification id="zhcn" document="dbl1zhcn">
+<external-specification id="zhtw" document="dbl1zhtw">
 
 </style-sheet>
 

@@ -24,7 +24,6 @@
       (if %generate-set-toc%
 	  (make simple-page-sequence
 	    page-n-columns: %page-n-columns%
-	    page-number-restart?: #t
 	    page-number-format: ($page-number-format$ (normalize "toc"))
 	    use: default-text-style
 	    left-header:   ($left-header$ (normalize "toc"))
@@ -69,7 +68,6 @@
       (if %generate-book-toc%
 	  (make simple-page-sequence
 	    page-n-columns: %page-n-columns%
-	    page-number-restart?: #t
 	    page-number-format: ($page-number-format$ (normalize "toc"))
 	    use: default-text-style
 	    left-header:   ($left-header$ (normalize "toc"))
@@ -137,7 +135,6 @@
 	       (not %generate-part-toc-on-titlepage%))
 	  (make simple-page-sequence
 	    page-n-columns: %page-n-columns%
-	    page-number-restart?: #t
 	    page-number-format: ($page-number-format$ (normalize "toc"))
 	    use: default-text-style
 	    left-header:   ($left-header$ (normalize "toc"))

@@ -24,32 +24,6 @@ install_script	:= install -o root -g root -m 755 -p
 install_program	:= install -o root -g root -m 755 -p --strip
 make_directory	:= install -d -o root -g root -m 755
 
-test:
-#	 test our environment
-#	nsgmls -sv doc/testdata/test.sgm
-
-#	rm -f doc/testdata/jtest.rtf
-#	jade -t rtf -d doc/testdata/jtest.dsl doc/testdata/jtest.sgm
-#	[ -f doc/testdata/jtest.rtf ]
-#	rm -f doc/testdata/jtest.rtf
-
-#	rm -f doc/testdata/test.rtf
-#	jade -t rtf -d print/docbook.dsl doc/testdata/test.sgm
-#	[ -f doc/testdata/test.rtf ]
-#	rm -f doc/testdata/test.rtf
-
-#	 puts it in ./c1.html
-#	rm -f doc/testdata/c01.htm*
-#	jade -t sgml -d html/docbook.dsl doc/testdata/test.sgm
-#	[ -f doc/testdata/c01.htm -o -f doc/testdata/c01.htm ]
-#	rm -f doc/testdata/c01.htm*
-
-#	 build documentation
-#	 but this fails with:
-#		jade:E: cannot find "n:\share\dsssl\docbook\print\ChangeLog";
-#	jade -c catalog -d docsrc/doc.dsl -t sgml docsrc/docbook.sgm
-
-
 bin/collateindex.pl.1: bin/collateindex.pl
 	pod2man --section=1 --center="DocBook DSSSL" \
 		--release="docbook-dsssl v$(cat VERSION)" $< > $@
@@ -70,7 +44,6 @@ clean:
 #	 created in binary-indep target
 	rm -f debian/postinst
 	dh_clean
-	$(MAKE) -C common clean
 
 # Build architecture-independent files here.
 binary-indep: build

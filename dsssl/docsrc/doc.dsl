@@ -3,11 +3,12 @@
 <!ENTITY % print "IGNORE">
 <![%print;[
 <!ENTITY % html "IGNORE">
-<!ENTITY docbook.dsl PUBLIC "-//Norman Walsh//DOCUMENT DocBook Print Stylesheet//EN" CDATA dsssl>
+<![%print;[
+<!ENTITY docbook.dsl SYSTEM "../print/docbook.dsl" CDATA dsssl>
 ]]>
 <!ENTITY % html "INCLUDE">
 <![%html;[
-<!ENTITY docbook.dsl PUBLIC "-//Norman Walsh//DOCUMENT DocBook HTML Stylesheet//EN" CDATA dsssl>
+<!ENTITY docbook.dsl SYSTEM "../html/docbook.dsl" CDATA dsssl>
 ]]>
 ]>
 

@@ -888,16 +888,27 @@
 	 ;; root element to be in the list of components if it isn't already
 	 ;; a component.
 	 (incomp (member (gi (sgml-root-element)) (component-element-list)))
-	 (bkn    (if incomp
+	 ;; In articles in books, number blocks from book not from article.
+	 ;; Otherwise you get 1, 1, 1, 1, etc. for the first figure in each
+	 ;; article.
+	 (artinbook (and (ancestor (normalize "article") nd)
+			 (ancestor (normalize "book") nd)))
+
+	 (bkn    (if artinbook
 		     (format-number (component-child-number
 				     nd
-				     (component-element-list))
+				     (list (normalize "book")))
 				    (label-number-format nd))
-		     (format-number (component-child-number
-				     nd
-				     (append (component-element-list)
-					     (list (gi (sgml-root-element)))))
-				    (label-number-format nd)))))
+		     (if incomp
+			 (format-number (component-child-number
+					 nd
+					 (component-element-list))
+					(label-number-format nd))
+			 (format-number (component-child-number
+					 nd
+					 (append (component-element-list)
+						 (list (gi (sgml-root-element)))))
+					(label-number-format nd))))))
     (if (equal? chn "")
 	(if (equal? apn "")
 	    (if (equal? rfn "")

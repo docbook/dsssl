@@ -245,12 +245,13 @@
       (make paragraph
 	space-after: (/ %para-sep% 2)
 	keep-with-next?: #t
-        (make sequence
-          font-weight: 'bold
-	  (if (string=? label "")
-	      (empty-sosofo)
-	      (literal label " "))
-        (process-node-list (children firstch)))
+	(make sequence
+	  (make sequence
+	    font-weight: 'bold
+	    (if (string=? label "")
+		(empty-sosofo)
+		(literal label " ")))
+	  (process-node-list (children firstch)))
       (process-node-list restch)))))
 
 (element answer
@@ -262,12 +263,13 @@
       space-after: %block-sep%
       (make paragraph
 	(make sequence
-	  font-weight: 'bold
-	  (if (string=? label "")
-	      (empty-sosofo)
-	      (literal label " "))
-	(process-node-list (children firstch)))
-      (process-node-list restch)))))
+	  (make sequence
+	    font-weight: 'bold
+	    (if (string=? label "")
+		(empty-sosofo)
+		(literal label " ")))
+	  (process-node-list (children firstch))))
+      (process-node-list restch))))
 
 ;; ======================================================================
 ;; constant

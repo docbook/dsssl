@@ -156,22 +156,35 @@
   (if (equal? (attribute-string "class") (normalize "monospaced"))
       ($verbatim-display$
        %indent-literallayout-lines%
-       %number-literallayout-lines%)
+       (or %number-literallayout-lines%
+	   (equal? (attribute-string (normalize "linenumbering"))
+		   (normalize "numbered"))))
       ($linespecific-display$
        %indent-literallayout-lines%
-       %number-literallayout-lines%)))
+       (or %number-literallayout-lines%
+	   (equal? (attribute-string (normalize "linenumbering"))
+		   (normalize "numbered"))))))
 
-(element address        ($linespecific-display$
-			 %indent-address-lines%
-			 %number-address-lines%))
+(element address
+  ($linespecific-display$
+   %indent-address-lines%
+   (or %number-address-lines%
+       (equal? (attribute-string (normalize "linenumbering"))
+	       (normalize "numbered")))))
 
-(element programlisting ($verbatim-display$
-			 %indent-programlisting-lines%
-			 %number-programlisting-lines%))
+(element programlisting
+  ($verbatim-display$
+   %indent-programlisting-lines%
+   (or %number-programlisting-lines%
+       (equal? (attribute-string (normalize "linenumbering"))
+	       (normalize "numbered")))))
 
-(element screen         ($verbatim-display$
-			 %indent-screen-lines%
-			 %number-screen-lines%))
+(element screen
+  ($verbatim-display$
+   %indent-screen-lines%
+   (or %number-screen-lines%
+       (equal? (attribute-string (normalize "linenumbering"))
+	       (normalize "numbered")))))
 
 (element screenshot (process-children))
 (element screeninfo (empty-sosofo))

@@ -99,8 +99,9 @@
     (make sequence
       (make element gi: titlegi
 	    (make sequence
-	      (make empty-element gi: "A"
-		  attributes: (list (list "NAME" (element-id))))
+	      (make element gi: "A"
+		  attributes: (list (list "NAME" (element-id)))
+		  (empty-sosofo))
 	      (if (and %chapter-autolabel%
 		       (or (equal? (gi) (normalize "chapter"))
 			   (equal? (gi) (normalize "appendix"))))

@@ -84,9 +84,10 @@
   (make element gi: "LI"
 	attributes: cssstyle
 	(if (attribute-string (normalize "id"))
-	    (make empty-element gi: "A"
+	    (make element gi: "A"
 		  attributes: (list
-			       (list "NAME" (attribute-string (normalize "id")))))
+			       (list "NAME" (attribute-string (normalize "id"))))
+		  (empty-sosofo))
 	    (empty-sosofo))
 	(process-children))))
 
@@ -158,9 +159,10 @@
       (make element gi: "DT"
 	    (if (attribute-string (normalize "id"))
 		(make sequence
-		  (make empty-element gi: "A"
+		  (make element gi: "A"
 			attributes: (list
-				     (list "NAME" (attribute-string (normalize "id")))))
+				     (list "NAME" (attribute-string (normalize "id"))))
+			(empty-sosofo))
 		  (process-node-list terms))
 		(process-node-list terms)))
       (process-node-list listitem))))
@@ -205,9 +207,10 @@
 			attributes: '(("ALIGN" "LEFT")
 				      ("VALIGN" "TOP")
 				      ("COLSPAN" "3"))
-			(make empty-element gi: "A"
+			(make element gi: "A"
 			      attributes: (list
-					   (list "NAME" (element-id))))
+					   (list "NAME" (element-id)))
+			      (empty-sosofo))
 			(process-node-list terms)))
 	    (make element gi: "TR"
 		  (make element gi: "TD"
@@ -230,9 +233,10 @@
 		(make element gi: "TD"
 		      attributes: '(("ALIGN" "LEFT")
 				    ("VALIGN" "TOP"))
-		      (make empty-element gi: "A"
+		      (make element gi: "A"
 			    attributes: (list
-					 (list "NAME" (element-id))))
+					 (list "NAME" (element-id)))
+			    (empty-sosofo))
 		      (process-node-list terms))
 		(make element gi: "TD"
 		      attributes: '(("ALIGN" "LEFT")
@@ -382,8 +386,9 @@
 		    (make element gi: "B"
 			  (if id
 			      (make sequence
-				(make empty-element gi: "A"
-				      attributes: (list (list "NAME" id)))
+				(make element gi: "A"
+				      attributes: (list (list "NAME" id))
+				      (empty-sosofo))
 				titlesosofo)
 			      titlesosofo))))
 	  (make element gi: "DL"

@@ -355,21 +355,23 @@
     (make sequence
       (if (node-list-empty? (preced entry))
 	  (if (attribute-string (normalize "id") (parent entry))
-	      (make empty-element gi: "A"
+	      (make element gi: "A"
 		    attributes: (list
 				 (list
 				  "NAME"
 				  (attribute-string (normalize "id")
-						    (parent entry)))))
+						    (parent entry))))
+		    (empty-sosofo))
 	      (empty-sosofo))
 	  (empty-sosofo))
 
       (if (attribute-string (normalize "id") entry)
-	  (make empty-element gi: "A"
+	  (make element gi: "A"
 		attributes: (list
 			     (list
 			      "NAME"
-			      (attribute-string (normalize "id") entry))))
+			      (attribute-string (normalize "id") entry)))
+		(empty-sosofo))
 	  (empty-sosofo))
 
       ;; This is a little bit complicated.  We want to output empty cells

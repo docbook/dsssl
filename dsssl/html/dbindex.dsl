@@ -11,8 +11,9 @@
       (let* ((id (if (attribute-string (normalize "id"))
 		     (attribute-string (normalize "id"))
 		     (generate-anchor))))
-	(make empty-element gi: "A"
-	      attributes: (list (list "NAME" id))))
+	(make element gi: "A"
+	      attributes: (list (list "NAME" id))
+	      (empty-sosofo)))
       (empty-sosofo)))
 
 (element primary (empty-sosofo))
@@ -160,8 +161,9 @@
     (make sequence
       (make element gi: "DT"
 	    (if id
-		(make empty-element gi: "A"
-		      attributes: (list (list "NAME" id)))
+		(make element gi: "A"
+		      attributes: (list (list "NAME" id))
+		      (empty-sosofo))
 		(empty-sosofo))
 	    (process-node-list node))
       (if (node-list-empty? seenl)

@@ -73,9 +73,10 @@
     (make element gi: "DT"
 	  (if id
 	      (make sequence
-		(make empty-element gi: "A"
+		(make element gi: "A"
 		      attributes: (list
-				   (list "NAME" id)))
+				   (list "NAME" id))
+		      (empty-sosofo))
 		    (make element gi: "B"
 			  (process-children)))
 	      (make element gi: "B"

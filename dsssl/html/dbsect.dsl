@@ -24,8 +24,9 @@
 	  (string-append "H" (number->string hlevel))))
     (make element gi: helem
 	  attributes: '(("CLASS" "BRIDGEHEAD"))
-	  (make empty-element gi: "A"
-		attributes: (list (list "NAME" (element-id))))
+	  (make element gi: "A"
+		attributes: (list (list "NAME" (element-id)))
+		(empty-sosofo))
 	  (process-children))))
 
 (define ($section-separator$) 
@@ -92,8 +93,9 @@
       (make element gi: h1elem
 	    attributes: (list (list "CLASS" (gi sect)))
 	    (make sequence
-	      (make empty-element gi: "A"
-		    attributes: (list (list "NAME" name)))
+	      (make element gi: "A"
+		    attributes: (list (list "NAME" name))
+		    (empty-sosofo))
 	      (if (string=? (element-label (current-node)) "")
 		  (empty-sosofo)
 		  (literal (element-label (current-node)) nsep))

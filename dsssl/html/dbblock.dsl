@@ -17,8 +17,9 @@
 		 (list (normalize "attribution")))))
     (make sequence
       (if id
-	  (make empty-element gi: "A"
-		attributes: (list (list "NAME" id)))
+	  (make element gi: "A"
+		attributes: (list (list "NAME" id))
+		(empty-sosofo))
 	  (empty-sosofo))
 
       (if (node-list-empty? attrib) 
@@ -107,11 +108,12 @@
 		     (list "CLASS" (gi)))
 	(make element gi: "P"
 	      (if (attribute-string (normalize "id"))
-		  (make empty-element gi: "A"
+		  (make element gi: "A"
 			attributes: (list
 				     (list "NAME"
 					   (attribute-string
-					    (normalize "id")))))
+					    (normalize "id"))))
+			(empty-sosofo))
 		  (empty-sosofo))
 	      (process-children))))
 
@@ -153,8 +155,9 @@
 	  attributes: (list
 		       (list "CLASS" (gi)))
 	  (if id
-	      (make empty-element gi: "A"
-		    attributes: (list (list "NAME" id)))
+	      (make element gi: "A"
+		    attributes: (list (list "NAME" id))
+		    (empty-sosofo))
 	      (empty-sosofo))
 
 	  (if %spacing-paras%
@@ -215,9 +218,10 @@
 	      (empty-sosofo))
 
 	  (if id
-	      (make empty-element gi: "A"
+	      (make element gi: "A"
 		    attributes: (list 
-				 (list "NAME" id)))
+				 (list "NAME" id))
+		    (empty-sosofo))
 	      (empty-sosofo))
 	  
 	  (if (object-title-after)

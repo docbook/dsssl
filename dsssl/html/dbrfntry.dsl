@@ -26,9 +26,10 @@
        (make element gi: "DIV"
 	     attributes: (list (list "CLASS" (gi)))
 
-	     (make empty-element gi: "A"
-		   attributes: (list (list "NAME" (element-id))))
-	     
+	     (make element gi: "A"
+		   attributes: (list (list "NAME" (element-id)))
+		   (empty-sosofo))
+
 	     (if %generate-reference-titlepage%
 		 (make sequence
 		   (reference-titlepage nl 'recto)
@@ -88,8 +89,9 @@
     (make sequence 
       (make element gi: "H1"
 	    (make sequence
-	      (make empty-element gi: "A"
-		    attributes: (list (list "NAME" id)))
+	      (make element gi: "A"
+		    attributes: (list (list "NAME" id))
+		    (empty-sosofo))
 	      (element-title-sosofo (current-node))))
       (process-children))))
 
@@ -149,8 +151,9 @@
 (element refsynopsisdiv
   (make element gi: "DIV"
 	attributes: (list (list "CLASS" (gi)))
-	(make empty-element gi: "A"
-	      attributes: (list (list "NAME" (element-id))))
+	(make element gi: "A"
+	      attributes: (list (list "NAME" (element-id)))
+	      (empty-sosofo))
 	(make element gi: "H2"
 	      (element-title-sosofo (current-node)))
 	(process-children)))

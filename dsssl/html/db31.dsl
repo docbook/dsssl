@@ -187,9 +187,10 @@
 	 (htmlgi  (string-append "H" (number->string 
 				      (+ (qandadiv-section-level) 1)))))
     (make element gi: htmlgi
-	  (make empty-element gi: "A"
+	  (make element gi: "A"
 		attributes: (list (list "NAME" (element-id 
-						(parent (current-node))))))
+						(parent (current-node)))))
+		(empty-sosofo))
 	  (literal number ". ")
 	  (process-children))))
 
@@ -205,8 +206,9 @@
     (make element gi: "DIV"
 	  attributes: (list (list "CLASS" (gi)))
 	  (make element gi: "P"
-		(make empty-element gi: "A"
-		      attributes: (list (list "NAME" (element-id))))
+		(make element gi: "A"
+		      attributes: (list (list "NAME" (element-id)))
+		      (empty-sosofo))
 		(make element gi: "B"
 		      (literal (question-answer-label (current-node)) " "))
 		(process-node-list (children firstch)))

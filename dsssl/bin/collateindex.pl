@@ -18,10 +18,13 @@ B<collateindex.pl> creates index data for DocBook XML or SGML files.
 
 =cut
 
+use File::Basename;
 use Getopt::Std;
 
+$me = basename($0);
+
 $usage = "Usage: $0 [options] file
-Try \"perldoc $0\" for documentation.\n";
+Try \"perldoc $me\" for documentation.\n";
 
 ( $version = '$Revision$' ) =~ s/^\$[R]evision:\s*([^ ]*)\s*\$$/$1/;
 
@@ -143,14 +146,14 @@ if ($newindex) {
 }
 
 $dat = shift @ARGV || die $usage;
-die "$0: file \"$dat\" does not exist\n" if ! -f $dat;
+die "$me: file \"$dat\" does not exist\n" if ! -f $dat;
 
 %legal_scopes = ('ALL' => 1, 'LOCAL' => 1, 'GLOBAL' => 1);
 if ($scope && !$legal_scopes{$scope}) {
-    die "$0: invalid scope: $scope\n";
+    die "$me: invalid scope: $scope\n";
 }
 if ($impliedscope && !$legal_scopes{$impliedscope}) {
-    die "$0: invalid implied scope: $impliedscope\n";
+    die "$me: invalid implied scope: $impliedscope\n";
 }
 
 @term = ();
@@ -267,12 +270,12 @@ while (<F>) {
 	my($href) = $1;
 	$_ = scalar(<F>);
 	chop;
-	die "$0: invalid zone: $_\n" if !/^title (.*)$/i;
+	die "$me: invalid zone: $_\n" if !/^title (.*)$/i;
 	$idx->{'zone'}->{$href} = $1;
 	next;
     }
 
-    die "$0: unrecognized tag in input: $_\n";
+    die "$me: unrecognized tag in input: $_\n";
 }
 close (F);
 
@@ -492,7 +495,7 @@ sub same {
 	if $linkpoints;
 
     if ($same) {
-       warn "$0: duplicated index entry found: $aP $aS $aT\n";
+       warn "$me: duplicated index entry found: $aP $aS $aT\n";
     }
 
     $same;
@@ -673,13 +676,13 @@ sub safe_open {
 	}
 
 	if ($handedit) {
-	    print STDERR "$0: file \"$outfile\" appears to have been edited by hand\n";
+	    print STDERR "$me: file \"$outfile\" appears to have been edited by hand\n";
 	    print STDERR "Use the -f option or specify a different output file name.\n";
 	    exit 1;
 	}
     }
 
-    open (OUT, ">$outfile") || die "$0: could not open file \"$outfile\": $!\n";
+    open (OUT, ">$outfile") || die "$me: could not open file \"$outfile\": $!\n";
 
     if ($preamble) {
 	# Copy the preamble
@@ -689,7 +692,7 @@ sub safe_open {
 	    }
 	    close(F);
 	} else {
-	    warn "$0: could not open preamble file \"$preamble\": $!\n";
+	    warn "$me: could not open preamble file \"$preamble\": $!\n";
 	}
     }
 }

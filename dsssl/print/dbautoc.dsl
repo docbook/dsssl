@@ -67,6 +67,7 @@
     font-weight: (if (= level 1) 'bold 'medium)
     space-before: (if (= level 1) (* %toc-spacing-factor% 6pt) 0pt)
     space-after: (if (= level 1) (* %toc-spacing-factor% 6pt) 0pt)
+    keep-with-next?: (if (= level 1) #t #f)
     quadding: 'start
     (make link
       destination: (node-list-address tocentry)

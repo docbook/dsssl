@@ -12,6 +12,8 @@
   (let ((id     (element-id))
 	(attrib (select-elements (children (current-node))
 				 (normalize "attribution")))
+        (startc (list (list "WIDTH" %blockquote-start-col%)))
+        (endc   (list (list "WIDTH" %blockquote-end-col%)))
 	(paras  (node-list-filter-by-not-gi
 		 (children (current-node))
 		 (list (normalize "attribution")))))
@@ -34,16 +36,15 @@
 			      ("CLASS" "BLOCKQUOTE"))
 		(make element gi: "TR"
 		      (make element gi: "TD"
-			    attributes: '(("WIDTH" "10%")
-					  ("VALIGN" "TOP"))
+			    attributes: (append startc
+                                                '(("VALIGN" "TOP")))
 			    (make entity-ref name: "nbsp"))
 		      (make element gi: "TD"
-			    attributes: '(("WIDTH" "80%")
-					  ("VALIGN" "TOP"))
+			    attributes: '(("VALIGN" "TOP"))
 			    (process-node-list paras))
 		      (make element gi: "TD"
-			    attributes: '(("WIDTH" "10%")
-					  ("VALIGN" "TOP"))
+			    attributes: (append endc
+                                                '(("VALIGN" "TOP")))
 			    (make entity-ref name: "nbsp")))
 		(make element gi: "TR"
 		      (make element gi: "TD"
@@ -54,12 +55,14 @@
 			      (literal "--")
 			      (process-node-list attrib)))
 		      (make element gi: "TD"
-			    attributes: '(("WIDTH" "10%"))
+			    attributes: endc
 			    (make entity-ref name: "nbsp"))))))))
 	
 (element epigraph
   (let* ((attrib       (select-elements (children (current-node))
 					(normalize "attribution")))
+         (startcol     (list (list "WIDTH" %epigraph-start-col%)))
+         (contentcol   (list (list "WIDTH" %epigraph-content-col%)))
 	 (paras        (node-list-filter-by-not-gi
 			(children (current-node))
 			(list (normalize "attribution")))))
@@ -71,24 +74,24 @@
 		      ("CLASS" "EPIGRAPH"))
 	(make element gi: "TR"
 	      (make element gi: "TD"
-		    attributes: '(("WIDTH" "45%"))
+		    attributes: startcol
 		    (make entity-ref name: "nbsp"))
 	      (make element gi: "TD"
-		    attributes: '(("WIDTH" "45%")
-				  ("ALIGN" "LEFT")
-				  ("VALIGN" "TOP"))
+		    attributes: (append contentcol
+                                        '(("ALIGN" "LEFT")
+                                          ("VALIGN" "TOP")))
 		    (make element gi: "I"
 			  (process-node-list paras))))
 	(if (node-list-empty? attrib)
 	    (empty-sosofo)
 	    (make element gi: "TR"
 		  (make element gi: "TD"
-			attributes: '(("WIDTH" "45%"))
+			attributes: startcol
 			(make entity-ref name: "nbsp"))
 		  (make element gi: "TD"
-			attributes: '(("WIDTH" "45%")
-				      ("ALIGN" "RIGHT")
-				      ("VALIGN" "TOP"))
+			attributes: (append contentcol
+                                            '(("ALIGN" "RIGHT")
+                                              ("VALIGN" "TOP")))
 			(make element gi: "I"
 			      (process-node-list attrib))))))))
 

@@ -865,6 +865,47 @@
   ;; /REFENTRY
   #f)
 
+(define %epigraph-start-col%
+  ;; REFENTRY epigraph-start-col
+  ;; PURP Size of start indent for epigraphs.
+  ;; DESC
+  ;; Width of the table column which provides a starting indent for
+  ;; epigraphs, expressed as a percentage.
+  ;; AUTHOR Ola Lundqvist
+  ;; /REFENTRY
+  "45%")
+
+(define %epigraph-content-col%
+  ;; REFENTRY epigraph-content-col
+  ;; PURP Size of epigraph text column.
+  ;; DESC
+  ;; Width of the table column which contains the contents of
+  ;; epigraphs, expressed as a percentage.
+  ;; AUTHOR Ola Lundqvist
+  ;; /REFENTRY
+  "45%")
+
+(define %blockquote-start-col%
+  ;; REFENTRY blockquote-start-col
+  ;; PURP Size of start indent for blockquoted text.
+  ;; DESC
+  ;; Width of the table column which provides a starting indent for
+  ;; blockquoted text, expressed as a percentage.
+  ;; AUTHOR Ola Lundqvist
+  ;; /REFENTRY
+  "10%")
+
+(define %blockquote-end-col%
+  ;; REFENTRY blockquote-end-col
+  ;; PURP Size of end indent for blockquoted text.
+  ;; DESC
+  ;; Width of the table column which provides and end indent after
+  ;; blockquoted text, expressed as a percentage.
+  ;; AUTHOR Ola Lundqvist
+  ;; /REFENTRY
+  "10%")
+
+
 ;; REFERENCE Bibliographies
 
 (define biblio-citation-check

@@ -1,0 +1,14 @@
+<!DOCTYPE BOOK PUBLIC "-//OASIS//DTD DocBook V3.1//EN" [
+<!ENTITY % pr.refentry.ent SYSTEM "printpr/refentry.ent">
+%pr.refentry.ent;
+<!ENTITY pr.refentry SYSTEM "printpr/refentry.sgm">
+<!ENTITY pr.docinfo SYSTEM "printpr/docinfo.sgm">
+]>
+<book>
+<?dbhtml filename='index.html' output-dir='../doc/print'>
+<title>Print Parameter Reference</title>
+<bookinfo>
+&pr.docinfo;
+</bookinfo>
+&pr.refentry;
+</book>

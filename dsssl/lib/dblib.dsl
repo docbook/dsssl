@@ -330,7 +330,7 @@
 			  ((glyph-subst-table? x)
 			   (list 'glyph-subst-table x))
 			  (else x)))))
-    x))
+    return-value))
 
 ;; REFERENCE Miscellaneous
 
@@ -844,7 +844,7 @@
   ;; REFENTRY ancestor-member
   ;; PURP Returns the first ancestor in a list of GIs
   ;; DESC
-  ;; Returns the first ancestor of 'nd' whose GI that is a member of 'gilist'.
+  ;; Returns the first ancestor of 'nd' whose GI is a member of 'gilist'.
   ;; /DESC
   ;; /REFENTRY
   (if (node-list-empty? nd)

@@ -260,11 +260,13 @@
 						  (normalize "bibliomisc")
 						  (normalize "biblioset")))))
 	 (parent-titles (select-elements (children (current-node)) (normalize "title")))
-	 (info-titles   (select-elements exp-children (normalize "title")))
-	 (titles        (if (node-list-empty? parent-titles)
-			    info-titles
+	 (titles	(if (node-list-empty? parent-titles)
+			    (select-elements exp-children (normalize "title"))
 			    parent-titles))
-	 (subtitles     (select-elements exp-children (normalize "subtitle"))))
+	 (parent-subttl (select-elements (children (current-node)) (normalize "subtitle")))	    
+	 (subtitles	(if (node-list-empty? parent-subttl)
+			    (select-elements exp-children (normalize "subtitle"))
+			    parent-subttl)))
     (make sequence
       (make paragraph
 	font-family-name: %title-font-family%

@@ -1,9 +1,9 @@
 docbook-dsssl (1.78+-0.1) unstable; urgency=low
 
-  * unofficial new upstream; closes: #187569
+  * unofficial new upstream; closes: #187569, #187429
   * postinst: minor message change
 
- -- Adam Di Carlo <aph@debian.org>  Sat, 12 Apr 2003 13:30:13 -0400
+ -- Adam Di Carlo <aph@debian.org>  Sat, 26 Apr 2003 01:21:13 -0400
 
 docbook-dsssl (1.78-3) unstable; urgency=low
 

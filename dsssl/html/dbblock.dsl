@@ -107,6 +107,13 @@
 	attributes: (list
 		     (list "CLASS" (gi)))
 	(make element gi: "P"
+	      (if (attribute-string (normalize "id"))
+		  (make empty-element gi: "A"
+			attributes: (list
+				     (list "name"
+					   (attribute-string
+					    (normalize "id")))))
+		  (empty-sosofo))
 	      (process-children))))
 
 (element (formalpara title) ($runinhead$))

@@ -478,6 +478,7 @@
   (let ((fnnum  (footnote-number (parent (current-node)))))
     (if (= (child-number) 1)
 	(make paragraph
+ 	  font-family-name: %body-font-family%
 	  font-size: (* %footnote-size-factor% %bf-size%)
 	  font-posture: 'upright
 	  quadding: %default-quadding%
@@ -493,6 +494,7 @@
 		     (gentext-label-title-sep (normalize "footnote"))))
 	  (process-children-trim))
 	(make paragraph
+ 	  font-family-name: %body-font-family%
 	  font-size: (* %footnote-size-factor% %bf-size%)
 	  font-posture: 'upright
 	  quadding: %default-quadding%

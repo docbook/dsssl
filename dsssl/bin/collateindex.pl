@@ -337,6 +337,7 @@ $last = {};     # the last indexterm we processed
 $first = 1;     # this is the first one
 $group = "";    # we're not in a group yet
 $lastout = "";  # we've not put anything out yet
+@seealsos = (); # See also stack.
 
 foreach $idx (@term) {
     next if $idx->{'startref'}; # no way to represent spans...
@@ -396,6 +397,12 @@ foreach $idx (@term) {
 
 	print OUT "\n  </$lastout>\n" if $lastout;
 
+	foreach (@seealsos) {
+	    # it'd be nice to make this a link...
+	    print OUT $indent, "  <seealsoie>", &escape($_), "</seealsoie>\n";
+	}
+	@seealsos = ();
+
 	print OUT "  <secondaryie>", $idx->{'secondary'};
 	$lastout = "secondaryie";
 	if ($idx->{'tertiary'}) {
@@ -407,6 +414,12 @@ foreach $idx (@term) {
 	print "DIFF TERT\n" if $debug;
 
 	print OUT "\n  </$lastout>\n" if $lastout;
+
+	foreach (@seealsos) {
+	    # it'd be nice to make this a link...
+	    print OUT $indent, "  <seealsoie>", &escape($_), "</seealsoie>\n";
+	}
+	@seealsos = ();
 
 	if ($idx->{'tertiary'}) {
 	    print OUT "  <tertiaryie>", $idx->{'tertiary'};
@@ -507,6 +520,13 @@ sub tsame {
 sub end_entry {
     # End any open elements...
     print OUT "\n  </$lastout>\n" if $lastout;
+
+    foreach (@seealsos) {
+	# it'd be nice to make this a link...
+	print OUT $indent, "  <seealsoie>", &escape($_), "</seealsoie>\n";
+    }
+    @seealsos = ();
+
     print OUT "</indexentry>\n\n";
     $lastout = "";
 }
@@ -569,12 +589,7 @@ sub print_term {
     }
 
     if ($idx->{'seealso'}) {
-	# it'd be nice to make this a link...
-	if ($lastout) {
-	    print OUT "\n  </$lastout>\n";
-	    $lastout = "";
-	}
-	print OUT $indent, "<seealsoie>", &escape($idx->{'seealso'}), "</seealsoie>\n";
+	push @seealsos, $idx->{'seealso'};
     }
 }
 

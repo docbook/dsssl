@@ -336,7 +336,48 @@
 
 ;; === sections =========================================================
 
-(define (SECTLEVEL #!optional (sect (current-node)))
+(define (section-level-by-gi chunked? gi)
+  ;; Figure out the heading level of an element by its name.  We need
+  ;; to distinguish between the chunked processing mode (for HTML) and
+  ;; the non-chunked (print or HTML).  It is important that no heading
+  ;; level is skipped in a document structure (e.g., sect1 = 2, sect2
+  ;; = 4); this results in broken PDF bookmarks.
+  (if chunked?
+      (cond
+       ((equal? gi (normalize "sect5")) 5)
+       ((equal? gi (normalize "sect4")) 4)
+       ((equal? gi (normalize "sect3")) 3)
+       ((equal? gi (normalize "sect2")) 2)
+       ((equal? gi (normalize "sect1")) 1)
+       ((equal? gi (normalize "refsect3")) 4)
+       ((equal? gi (normalize "refsect2")) 3)
+       ((equal? gi (normalize "refsect1")) 2)
+       ((equal? gi (normalize "refsynopsisdiv")) 2)
+       ((equal? gi (normalize "bibliography")) 1)
+       ((equal? gi (normalize "bibliodiv")) 2)
+       ((equal? gi (normalize "index")) 1)
+       ((equal? gi (normalize "setindex")) 1)
+       ((equal? gi (normalize "indexdiv")) 2)
+       (else 1))
+      (cond
+       ((equal? gi (normalize "sect5")) 6)
+       ((equal? gi (normalize "sect4")) 5)
+       ((equal? gi (normalize "sect3")) 4)
+       ((equal? gi (normalize "sect2")) 3)
+       ((equal? gi (normalize "sect1")) 2)
+       ;; The next four are not used by the HTML stylesheets.
+       ((equal? gi (normalize "refsect3")) 5)
+       ((equal? gi (normalize "refsect2")) 4)
+       ((equal? gi (normalize "refsect1")) 3)
+       ((equal? gi (normalize "refsynopsisdiv")) 3)
+       ((equal? gi (normalize "bibliography")) 1)
+       ((equal? gi (normalize "bibliodiv")) 2)
+       ((equal? gi (normalize "index")) 1)
+       ((equal? gi (normalize "setindex")) 1)
+       ((equal? gi (normalize "indexdiv")) 2)
+       (else 1))))
+
+(define (section-level-by-node chunked? sect)
   (if (equal? (gi sect) (normalize "section"))
       ;; Section is special, it is recursive.
       (let ((depth (length (hierarchical-number-recursive 
@@ -349,34 +390,26 @@
 	  ;; the level of the numbered section that contains it.  If it is
 	  ;; the *first* sectioning element in a chapter, make it 
 	  ;; %default-simplesect-level%
-	  (cond
-	   ((have-ancestor? (normalize "sect5")) 6)
-	   ((have-ancestor? (normalize "sect4")) 5)
-	   ((have-ancestor? (normalize "sect3")) 4)
-	   ((have-ancestor? (normalize "sect2")) 3)
-	   ((have-ancestor? (normalize "sect1")) 2)
-	   ((have-ancestor? (normalize "refsect3")) 5)
-	   ((have-ancestor? (normalize "refsect2")) 4)
-	   ((have-ancestor? (normalize "refsect1")) 3)
-	   (else %default-simplesect-level%))
+          (cond
+           ((have-ancestor? (normalize "sect5"))
+	    (+ 1 (section-level-by-gi chunked? (normalize "sect5"))))
+           ((have-ancestor? (normalize "sect4"))
+	    (+ 1 (section-level-by-gi chunked? (normalize "sect4"))))
+           ((have-ancestor? (normalize "sect3"))
+	    (+ 1 (section-level-by-gi chunked? (normalize "sect3"))))
+           ((have-ancestor? (normalize "sect2"))
+	    (+ 1 (section-level-by-gi chunked? (normalize "sect2"))))
+           ((have-ancestor? (normalize "sect1"))
+	    (+ 1 (section-level-by-gi chunked? (normalize "sect1"))))
+           ((have-ancestor? (normalize "refsect3"))
+	    (+ 1 (section-level-by-gi chunked? (normalize "refsect3"))))
+           ((have-ancestor? (normalize "refsect2"))
+	    (+ 1 (section-level-by-gi chunked? (normalize "refsect2"))))
+           ((have-ancestor? (normalize "refsect1"))
+	    (+ 1 (section-level-by-gi chunked? (normalize "refsect1"))))
+           (else %default-simplesect-level%))
 	  ;; the rest of the section elements can be identified by name
-	  (cond
-	   ((equal? (gi sect) (normalize "sect5")) 5)
-	   ((equal? (gi sect) (normalize "sect4")) 4)
-	   ((equal? (gi sect) (normalize "sect3")) 3)
-	   ((equal? (gi sect) (normalize "sect2")) 2)
-	   ((equal? (gi sect) (normalize "sect1")) 1)
-	   ((equal? (gi sect) (normalize "refsect3")) 4)
-	   ((equal? (gi sect) (normalize "refsect2")) 3)
-	   ((equal? (gi sect) (normalize "refsect1")) 2)
-	   ((equal? (gi sect) (normalize "refsynopsisdiv")) 2)
-	   ((equal? (gi sect) (normalize "reference")) 1)
-	   ((equal? (gi sect) (normalize "bibliography")) 1)
-	   ((equal? (gi sect) (normalize "bibliodiv")) 2)
-	   ((equal? (gi sect) (normalize "index")) 1)
-	   ((equal? (gi sect) (normalize "setindex")) 1)
-	   ((equal? (gi sect) (normalize "indexdiv")) 2)
-	   (else 1)))))
+	  (section-level-by-gi chunked? (gi sect)))))
   
 ;; === synopsis =========================================================
 

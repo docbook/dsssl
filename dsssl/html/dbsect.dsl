@@ -6,16 +6,22 @@
 
 ;; ============================== SECTIONS ==============================
 
+(define (SECTLEVEL #!optional (sect (current-node)))
+  (section-level-by-node (not nochunks) sect))
+
 ;; BRIDGEHEAD isn't a proper section, but appears to be a section title
 (element bridgehead
   (let* ((renderas (attribute-string "renderas"))
-	 (hlevel                          ;; the apparent section level;
-	  (if renderas                    ;; if not real section level,
-	      (string->number             ;;   then get the apparent level
-	       (substring renderas 4 5))  ;;   from "renderas",
-	      (SECTLEVEL)))               ;; else use the real level
+	 ;; the apparent section level
+	 (hlevel
+	  ;; if not real section level, then get the apparent level
+	  ;; from "renderas"
+	  (if renderas
+	      (section-level-by-gi (not nochunks) (normalize renderas))
+	      ;; else use the real level
+	      (SECTLEVEL)))
 	 (helem
-	  (string-append "H" (number->string (+ hlevel 1)))))
+	  (string-append "H" (number->string hlevel))))
     (make element gi: helem
 	  attributes: '(("CLASS" "BRIDGEHEAD"))
 	  (make empty-element gi: "A"
@@ -67,11 +73,14 @@
 	 (info (info-element))
 	 (subtitles (select-elements (children info) (normalize "subtitle")))
 	 (renderas (inherited-attribute-string (normalize "renderas") sect))
-	 (hlevel                          ;; the apparent section level;
-	  (if renderas                    ;; if not real section level,
-	      (string->number             ;;   then get the apparent level
-	       (substring renderas 4 5))  ;;   from "renderas",
-	      (SECTLEVEL)))               ;; else use the real level
+	 ;; the apparent section level
+	 (hlevel
+	  ;; if not real section level, then get the apparent level
+	  ;; from "renderas"
+	  (if renderas
+	      (section-level-by-gi (not nochunks) (normalize renderas))
+	      ;; else use the real level
+	      (SECTLEVEL)))
 	 (h1elem
 	  (string-append "H" (number->string hlevel)))
 	 (h2elem

@@ -6,15 +6,21 @@
 
 ;; ============================== SECTIONS ==============================
 
+(define (SECTLEVEL #!optional (sect (current-node)))
+  (section-level-by-node #f sect))
+
 ;; BRIDGEHEAD isn't a proper section, but appears to be a section title
 (element bridgehead
   (let* ((renderas (attribute-string "renderas"))
-	 (hlevel                          ;; the apparent section level;
-	  (if renderas                    ;; if not real section level,
-	      (string->number             ;;   then get the apparent level
-	       (substring renderas 4 5))  ;;   from "renderas",
-	      (SECTLEVEL)))               ;; else use the real level
-	 (hs (HSIZE (- 4 hlevel))))
+	 ;; the apparent section level
+	 (hlevel
+	  ;; if not real section level, then get the apparent level
+	  ;; from "renderas"
+	  (if renderas
+	      (section-level-by-gi #f (normalize renderas))
+	      ;; else use the real level
+	      (SECTLEVEL)))
+	 (hs (HSIZE (- 4 hlevel))))	
     (make paragraph
       font-family-name: %title-font-family%
       font-weight:  (if (< hlevel 5) 'bold 'medium)
@@ -76,11 +82,14 @@
 			    parent-titles))
 	 (subtitles     (select-elements exp-children (normalize "subtitle")))
 	 (renderas (inherited-attribute-string (normalize "renderas") sect))
-	 (hlevel                          ;; the apparent section level;
-	  (if renderas                    ;; if not real section level,
-	      (string->number             ;;   then get the apparent level
-	       (substring renderas 4 5))  ;;   from "renderas",
-	      (SECTLEVEL)))               ;; else use the real level
+	 ;; the apparent section level
+	 (hlevel
+	  ;; if not real section level, then get the apparent level
+	  ;; from "renderas"
+	  (if renderas
+	      (section-level-by-gi #f (normalize renderas))
+	      ;; else use the real level
+	      (SECTLEVEL)))
 	 (hs (HSIZE (- 4 hlevel))))
     (make sequence
       (make paragraph
@@ -103,7 +112,7 @@
 	first-line-start-indent: 0pt
 	quadding: %section-title-quadding%
 	keep-with-next?: #t
-	heading-level: (if %generate-heading-level% (+ hlevel 1) 0)
+	heading-level: (if %generate-heading-level% hlevel 0)
 	;; SimpleSects are never AUTO numbered...they aren't hierarchical
 	(if (string=? (element-label (current-node)) "")
 	    (empty-sosofo)
@@ -118,11 +127,14 @@
   (element subtitle
     (let* ((sect (parent (parent (current-node)))) ;; parent=>sect*info
 	   (renderas (inherited-attribute-string "renderas" sect))
-	   (hlevel                          ;; the apparent section level;
-	    (if renderas                    ;; if not real section level,
-		(string->number             ;;   then get the apparent level
-		 (substring renderas 4 5))  ;;   from "renderas",
-		(SECTLEVEL sect)))          ;; else use the real level
+	   ;; the apparent section level
+	   (hlevel
+	    ;; if not real section level, then get the apparent level
+	    ;; from "renderas"
+	    (if renderas
+		(section-level-by-gi #f (normalize renderas))
+		;; else use the real level
+		(SECTLEVEL)))
 	   (hs (HSIZE (- 3 hlevel))))       ;; one smaller than the title...
       (make paragraph
 	font-family-name: %title-font-family%

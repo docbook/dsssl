@@ -1,9 +1,14 @@
 docbook-dsssl (1.77-cvs.2003.01.23) unstable; urgency=low
 
+  * more upstream fixes
   * /usr/share/sgml/docbook/stylesheet/dsssl/modular/README symlink to
     README in the docs; closes: #149880
+  * postinst: fix a quoting problem; closes: #178020
+  * debconf: question about HTML extension made low priority, since
+    ".html" is definately the standard; in fact, I only offer ".htm" since
+    that's the upstream default; closes: #178003
 
- -- Adam Di Carlo <aph@debian.org>  Wed, 22 Jan 2003 12:32:42 -0500
+ -- Adam Di Carlo <aph@debian.org>  Thu, 23 Jan 2003 11:13:49 -0500
 
 docbook-dsssl (1.77-cvs.2003.01.22) unstable; urgency=low
 

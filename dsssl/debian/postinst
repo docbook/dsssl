@@ -17,7 +17,7 @@ IMAGEDIR=/usr/share/sgml/docbook/stylesheet/dsssl/modular/images
 set -e
 
 # whether to be verbose
-verbose=false
+verbose=true
 
 # e.g.: setit print %visual-acuity% normal
 setit () {
@@ -58,16 +58,16 @@ setit () {
     fi
     
     if grep -q "^(define $setting $value)" ${file}; then
-        ${verbose} && echo "'$setting' already set to $value in file '$file'" >&2
+        ${verbose} && echo "setting '$setting' already set to $value in file '$file'" >&2
     elif grep -q "^(define $setting .*)" ${file}; then
-        ${verbose} && echo "found '$setting' in file '$file', updating" >&2
+        ${verbose} && echo "found setting '$setting' in file '$file', updating" >&2
         sed -e "s/^(define $setting .*).*$/(define $setting $value) ;; set by debconf/;" ${file} > ${file}.new
         cat ${file}.new > ${file}
         rm -f ${file}.new
     else
-        ${verbose} && echo "did not find '$setting' in file '$file', adding" >&2
+        ${verbose} && echo "did not find setting '$setting' in file '$file', adding" >&2
         sed -e "/^<style-specification-body>/a\\
-(define $setting $value) \;\; set by debconf" ${file} > ${file}.new
+(define $setting $value) \;\; set by debconf;" ${file} > ${file}.new
         cat ${file}.new > ${file}
         rm -f ${file}.new
     fi

@@ -185,7 +185,7 @@
 	  
 	  (make element gi: "DIV"
 		attributes: '(("CLASS" "BIBLIOENTRYBLOCK")
-			      ("STYLE" "margin-left=0.5in"))
+			      ("STYLE" "margin-left: 0.5in"))
 		(let loop ((nl block-children))
 		  (if (node-list-empty? nl)
 		      (empty-sosofo)

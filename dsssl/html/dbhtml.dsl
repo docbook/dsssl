@@ -362,7 +362,51 @@
 	      sosofo)))
 
 (define ($mono-seq$ #!optional (sosofo (process-children)))
+  ;; please avoid using this, TT is presentational
   (make element gi: "TT"
+	attributes: (list
+		     (list "CLASS" (gi)))
+	sosofo))
+
+(define ($code-seq$ #!optional (sosofo (process-children)))
+  ;; fragments of computer code
+  (make element gi: "CODE"
+	attributes: (list
+		     (list "CLASS" (gi)))
+	sosofo))
+
+(define ($samp-seq$ #!optional (sosofo (process-children)))
+  ;; sample output from programs, scripts, etc
+  (make element gi: "SAMP"
+	attributes: (list
+		     (list "CLASS" (gi)))
+	sosofo))
+
+(define ($kbd-seq$ #!optional (sosofo (process-children)))
+  ;; text to be entered by the user
+  (make element gi: "KBD"
+	attributes: (list
+		     (list "CLASS" (gi)))
+	sosofo))
+
+(define ($abbr-seq$ #!optional (sosofo (process-children)))
+  ;; abbreviated form
+  ;; FIXME: html4 only
+  (make element gi: "ABBR"
+	attributes: (list
+		     (list "CLASS" (gi)))
+	sosofo))
+
+(define ($acronym-seq$ #!optional (sosofo (process-children)))
+  ;; FIXME: html4 only
+  (make element gi: "ACRONYM"
+	attributes: (list
+		     (list "CLASS" (gi)))
+	sosofo))
+
+(define ($var-seq$ #!optional (sosofo (process-children)))
+  ;; variable or program argument
+  (make element gi: "VAR"
 	attributes: (list
 		     (list "CLASS" (gi)))
 	sosofo))

@@ -1166,7 +1166,7 @@
   (default (process-children))
 
   (element email
-    ($mono-seq$
+    ($code-seq$
      (make sequence
        (literal "&#60;")
        (make element gi: "A"

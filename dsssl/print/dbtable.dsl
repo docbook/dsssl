@@ -106,14 +106,7 @@
 (define %cals-cell-before-row-margin% 3pt)
 (define %cals-cell-after-row-margin% 3pt)
 
-;; seems to be a bug in JadeTeX -- we get a wierd indent on table
-;;   cells for the first line only.  This is a workaround.
-;; Adam Di Carlo, adam@onshore.com
-(define %cals-cell-before-column-margin% 
-  (cond ((equal? (print-backend) 'tex)
-	 0pt)
-	(else
-	 3pt)))
+(define %cals-cell-before-column-margin% 3pt)
 
 (define %cals-cell-after-column-margin% 3pt)
 

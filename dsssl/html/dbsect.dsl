@@ -91,12 +91,13 @@
     (make sequence
       (make element gi: h1elem
 	    attributes: (list (list "CLASS" (gi sect)))
-	    (make element gi: "A"
-		  attributes: (list (list "NAME" name))
-		  (if (string=? (element-label (current-node)) "")
-		      (empty-sosofo)
-		      (literal (element-label (current-node)) nsep))
-		  (element-title-sosofo sect)))
+	    (make sequence
+	      (make empty-element gi: "A"
+		    attributes: (list (list "NAME" name)))
+	      (if (string=? (element-label (current-node)) "")
+		  (empty-sosofo)
+		  (literal (element-label (current-node)) nsep))
+	      (element-title-sosofo sect)))
       (if (node-list-empty? subtitles) 
 	  (empty-sosofo)
 	  (with-mode subtitle-mode

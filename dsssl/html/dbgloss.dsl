@@ -72,9 +72,10 @@
   (let ((id (attribute-string (normalize "id") (parent (current-node)))))
     (make element gi: "DT"
 	  (if id
-	      (make element gi: "A"
-		    attributes: (list
-				 (list "NAME" id))
+	      (make sequence
+		(make empty-element gi: "A"
+		      attributes: (list
+				   (list "NAME" id)))
 		    (make element gi: "B"
 			  (process-children)))
 	      (make element gi: "B"

@@ -40,10 +40,9 @@
 			  (process-children))))
     (make element gi: "DIV"
 	  attributes: (list (list "CLASS" (gi adm)))
-	  (if id 
-	      (make element gi: "A"
-		    attributes: (list (list "NAME" id))
-		    (empty-sosofo))
+	  (if id
+	      (make empty-element gi: "A"
+		    attributes: (list (list "NAME" id)))
 	      (empty-sosofo))
 	  (if %spacing-paras%
 	      (make element gi: "P" (empty-sosofo))
@@ -78,9 +77,8 @@
 		    attributes: (list
 				 (list "CLASS" (gi)))
 		    (if id
-			(make element gi: "A"
-			      attributes: (list (list "NAME" id))
-			      (empty-sosofo))
+			(make empty-element gi: "A"
+			      attributes: (list (list "NAME" id)))
 			(empty-sosofo))
 		    (process-children))))))
 
@@ -154,9 +152,8 @@
 					     (list "ALIGN" "CENTER"))
 				(make element gi: "B"
 				      (if id
-					  (make element gi: "A"
-						attributes: (list (list "NAME" id))
-						(empty-sosofo))
+					  (make empty-element gi: "A"
+						attributes: (list (list "NAME" id)))
 					  (empty-sosofo))
 				      adm-title)))
 		    (make element gi: "TR"

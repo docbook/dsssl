@@ -98,19 +98,20 @@
 	 (subtitles     (select-elements exp-children (normalize "subtitle"))))
     (make sequence
       (make element gi: titlegi
-	    (make element gi: "A"
-		  attributes: (list (list "NAME" (element-id)))
-		  (if (and %chapter-autolabel%
-			   (or (equal? (gi) (normalize "chapter"))
-			       (equal? (gi) (normalize "appendix"))))
-		      (literal (gentext-element-name-space (gi))
-			       (element-label (current-node))
-			       (gentext-label-title-sep (gi)))
-		      (empty-sosofo))
-		  (if (node-list-empty? titles)
-		      (element-title-sosofo) ;; get a default!
-		      (with-mode title-mode
-			(process-node-list titles)))))
+	    (make sequence
+	      (make empty-element gi: "A"
+		  attributes: (list (list "NAME" (element-id))))
+	      (if (and %chapter-autolabel%
+		       (or (equal? (gi) (normalize "chapter"))
+			   (equal? (gi) (normalize "appendix"))))
+		  (literal (gentext-element-name-space (gi))
+			   (element-label (current-node))
+			   (gentext-label-title-sep (gi)))
+		  (empty-sosofo))
+	      (if (node-list-empty? titles)
+		  (element-title-sosofo) ;; get a default!
+		  (with-mode title-mode
+		    (process-node-list titles)))))
       (if (node-list-empty? subtitles) 
 	  (empty-sosofo)
 	  (with-mode subtitle-mode

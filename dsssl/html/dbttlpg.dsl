@@ -468,9 +468,10 @@
       (make sequence
 	(make element gi: "H3"
 	      attributes: (list (list "CLASS" (gi)))
-	      (make element gi: "A"
-		    attributes: (list (list "NAME" (element-id)))
-		    (literal author-name)))
+	      (make sequence
+		(make empty-element gi: "A"
+		      attributes: (list (list "NAME" (element-id))))
+		(literal author-name)))
 	(process-node-list author-affil))))
 
   (element authorblurb
@@ -481,10 +482,10 @@
   (element authorgroup
     (make element gi: "DIV"
 	  attributes: (list (list "CLASS" (gi)))
-	  (make element gi: "A"
-		attributes: (list (list "NAME" (element-id)))
-		(empty-sosofo))
-	  (process-children)))
+	  (make sequence
+	    (make empty-element gi: "A"
+		attributes: (list (list "NAME" (element-id))))
+	    (process-children))))
 
   (element copyright
     (titlepage-recto-copyright))
@@ -658,10 +659,11 @@
   (element title 
     (make element gi: "H1"
 	  attributes: (list (list "CLASS" (gi)))
-	  (make element gi: "A"
-		attributes: (list (list "NAME" (element-id)))
-		(with-mode title-mode
-		  (process-children-trim)))))
+	  (make sequence
+	    (make empty-element gi: "A"
+		attributes: (list (list "NAME" (element-id))))
+	    (with-mode title-mode
+	      (process-children-trim)))))
 )
 
 (mode set-titlepage-verso-mode
@@ -682,12 +684,14 @@
 		attributes: (list (list "CLASS" (gi)))
 		(literal (gentext-by))
 		(make entity-ref name: "nbsp")
-		(make element gi: "A"
-		      attributes: (list (list "NAME" (element-id)))
-		      (literal (author-list-string))))
-	  (make element gi: "A"
-		attributes: (list (list "NAME" (element-id)))
-		(literal (author-list-string))))))
+		(make sequence
+		  (make empty-element gi: "A"
+			attributes: (list (list "NAME" (element-id))))
+		  (literal (author-list-string))))
+	  (make sequence
+	    (make empty-element gi: "A"
+		  attributes: (list (list "NAME" (element-id))))
+	    (literal (author-list-string))))))
 
   (element authorgroup
     (make element gi: "P"
@@ -1191,9 +1195,10 @@
       (make sequence      
 	(make element gi: "H3"
 	      attributes: (list (list "CLASS" (gi)))
-	      (make element gi: "A"
-		    attributes: (list (list "NAME" (element-id)))
-		    (literal author-name)))
+	      (make sequence
+		(make empty-element gi: "A"
+		      attributes: (list (list "NAME" (element-id))))
+		(literal author-name)))
 	(process-node-list author-affil))))
 
   (element authorblurb
@@ -1397,9 +1402,10 @@
       (make sequence
 	(make element gi: "H3"
 	      attributes: (list (list "CLASS" (gi)))
-	      (make element gi: "A"
-		    attributes: (list (list "NAME" (element-id)))
-		    (literal author-name)))
+	      (make sequence
+		(make empty-element gi: "A"
+		      attributes: (list (list "NAME" (element-id))))
+		(literal author-name)))
 	(process-node-list author-affil))))
 
   (element othername
@@ -1554,10 +1560,11 @@
   (element title 
     (make element gi: "H1"
 	  attributes: (list (list "CLASS" (gi)))
-	  (make element gi: "A"
-		attributes: (list (list "NAME" (element-id)))
-		(with-mode title-mode
-		  (process-children-trim)))))
+	  (make sequence
+	    (make empty-element gi: "A"
+		  attributes: (list (list "NAME" (element-id))))
+	    (with-mode title-mode
+	      (process-children-trim)))))
 
   (element titleabbrev (empty-sosofo))
   
@@ -1606,12 +1613,14 @@
 		attributes: (list (list "CLASS" (gi)))
 		(literal (gentext-by))
 		(make entity-ref name: "nbsp")
-		(make element gi: "A"
-		      attributes: (list (list "NAME" (element-id)))
-		      (literal (author-list-string))))
-	  (make element gi: "A"
-		attributes: (list (list "NAME" (element-id)))
-		(literal (author-list-string))))))
+		(make sequence
+		  (make empty-element gi: "A"
+			attributes: (list (list "NAME" (element-id))))
+		  (literal (author-list-string))))
+	  (make sequence
+	    (make empty-element gi: "A"
+		  attributes: (list (list "NAME" (element-id))))
+	    (literal (author-list-string))))))
 
   (element authorblurb
     (make element gi: "DIV"
@@ -1829,9 +1838,10 @@
       (make sequence
 	(make element gi: "H3"
 	      attributes: (list (list "CLASS" (gi)))
-	      (make element gi: "A"
-		    attributes: (list (list "NAME" (element-id)))
-		    (literal author-name)))
+	      (make sequence
+		(make empty-element gi: "A"
+		      attributes: (list (list "NAME" (element-id))))
+		(literal author-name)))
 	(process-node-list author-affil))))
 
   (element othername
@@ -2342,9 +2352,10 @@
       (make sequence      
 	(make element gi: "H3"
 	      attributes: (list (list "CLASS" (gi)))
-	      (make element gi: "A"
-		    attributes: (list (list "NAME" (element-id)))
-		    (literal author-name)))
+	      (make sequence
+		(make empty-element gi: "A"
+		      attributes: (list (list "NAME" (element-id))))
+		(literal author-name)))
 	(process-node-list author-affil))))
 
   (element authorblurb
@@ -2525,12 +2536,14 @@
 		attributes: (list (list "CLASS" (gi)))
 		(literal (gentext-by))
 		(make entity-ref name: "nbsp")
-		(make element gi: "A"
-		      attributes: (list (list "NAME" (element-id)))
-		      (literal (author-list-string))))
-	  (make element gi: "A"
-		attributes: (list (list "NAME" (element-id)))
-		(literal (author-list-string))))))
+		(make sequence
+		  (make empty-element gi: "A"
+			attributes: (list (list "NAME" (element-id))))
+		  (literal (author-list-string))))
+	  (make sequence
+	    (make empty-element gi: "A"
+		  attributes: (list (list "NAME" (element-id))))
+	    (literal (author-list-string))))))
 
   (element authorgroup
     (make element gi: "P"
@@ -3037,9 +3050,8 @@
   (element authorgroup
     (make element gi: "DIV"
 	  attributes: (list (list "CLASS" (gi)))
-	  (make element gi: "A"
-		attributes: (list (list "NAME" (element-id)))
-		(empty-sosofo))
+	  (make empty-element gi: "A"
+		attributes: (list (list "NAME" (element-id))))
 	  (process-children)))
 
   (element authorinitials
@@ -3235,9 +3247,10 @@
       (make sequence
 	(make element gi: "H3"
 	      attributes: (list (list "CLASS" (gi)))
-	      (make element gi: "A"
-		    attributes: (list (list "NAME" (element-id)))
-		    (literal author-name)))
+	      (make sequence
+		(make empty-element gi: "A"
+		      attributes: (list (list "NAME" (element-id))))
+		(literal author-name)))
 	(process-node-list author-affil))))
 
   (element othername
@@ -3392,10 +3405,11 @@
   (element title 
     (make element gi: "H1"
 	  attributes: (list (list "CLASS" (gi)))
-	  (make element gi: "A"
-		attributes: (list (list "NAME" (element-id)))
-		(with-mode title-mode
-		  (process-children-trim)))))
+	  (make sequence
+	    (make empty-element gi: "A"
+		  attributes: (list (list "NAME" (element-id))))
+	    (with-mode title-mode
+	      (process-children-trim)))))
 
   (element titleabbrev
     (make element gi: "SPAN"
@@ -3448,12 +3462,14 @@
 		attributes: (list (list "CLASS" (gi)))
 		(literal (gentext-by))
 		(make entity-ref name: "nbsp")
-		(make element gi: "A"
-		      attributes: (list (list "NAME" (element-id)))
-		      (literal (author-list-string))))
-	  (make element gi: "A"
-		    attributes: (list (list "NAME" (element-id)))
-		    (literal (author-list-string))))))
+		(make sequence
+		  (make empty-element gi: "A"
+			attributes: (list (list "NAME" (element-id))))
+		  (literal (author-list-string))))
+	  (make sequence
+	    (make empty-element gi: "A"
+		  attributes: (list (list "NAME" (element-id))))
+	    (literal (author-list-string))))))
 
   (element authorblurb
     (make element gi: "DIV"
@@ -3671,9 +3687,10 @@
       (make sequence
 	(make element gi: "H3"
 	      attributes: (list (list "CLASS" (gi)))
-	      (make element gi: "A"
-		    attributes: (list (list "NAME" (element-id)))
-		    (literal author-name)))
+	      (make sequence
+		(make empty-element gi: "A"
+		      attributes: (list (list "NAME" (element-id))))
+		(literal author-name)))
 	(process-node-list author-affil))))
 
   (element othername
@@ -4186,9 +4203,10 @@
       (make sequence      
 	(make element gi: "H3"
 	      attributes: (list (list "CLASS" (gi)))
-	      (make element gi: "A"
-		    attributes: (list (list "NAME" (element-id)))
-		    (literal author-name)))
+	      (make sequence
+		(make empty-element gi: "A"
+		      attributes: (list (list "NAME" (element-id))))
+		(literal author-name)))
 	(process-node-list author-affil))))
 
   (element authorblurb
@@ -4368,12 +4386,14 @@
 		attributes: (list (list "CLASS" (gi)))
 		(literal (gentext-by))
 		(make entity-ref name: "nbsp")
-		(make element gi: "A"
-		      attributes: (list (list "NAME" (element-id)))
-		      (literal (author-list-string))))
-	  (make element gi: "A"
-		attributes: (list (list "NAME" (element-id)))
-		(literal (author-list-string))))))
+		(make sequence
+		  (make empty-element gi: "A"
+			attributes: (list (list "NAME" (element-id))))
+		  (literal (author-list-string))))
+	  (make sequence
+	    (make empty-element gi: "A"
+		  attributes: (list (list "NAME" (element-id))))
+	    (literal (author-list-string))))))
 
   (element authorgroup
     (make element gi: "P"

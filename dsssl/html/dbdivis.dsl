@@ -20,9 +20,8 @@
      (make element gi: "DIV"
 	   attributes: '(("CLASS" "SET"))
 
-	   (make element gi: "A"
-		 attributes: (list (list "NAME" (element-id)))
-		 (empty-sosofo))
+	   (make empty-element gi: "A"
+		 attributes: (list (list "NAME" (element-id))))
 
 	   (if %generate-set-titlepage%
 	       (make sequence
@@ -60,9 +59,8 @@
      (make element gi: "DIV"
 	   attributes: '(("CLASS" "BOOK"))
 
-	   (make element gi: "A"
-		 attributes: (list (list "NAME" (element-id)))
-		 (empty-sosofo))
+	   (make empty-element gi: "A"
+		 attributes: (list (list "NAME" (element-id))))
 
 	   (if %generate-book-titlepage%
 	       (make sequence
@@ -123,9 +121,8 @@
      (make element gi: "DIV"
 	   attributes: '(("CLASS" "PART"))
 
-	   (make element gi: "A"
-		 attributes: (list (list "NAME" (element-id)))
-		 (empty-sosofo))
+	   (make empty-element gi: "A"
+		 attributes: (list (list "NAME" (element-id))))
 
 	   (if %generate-part-titlepage%
 	       (make sequence
@@ -168,9 +165,8 @@
   (make element gi: "DIV"
 	attributes: (list (list "CLASS" "PARTINTRO"))
 
-	(make element gi: "A"
-	      attributes: (list (list "NAME" (element-id partintro)))
-	      (empty-sosofo))
+	(make empty-element gi: "A"
+	      attributes: (list (list "NAME" (element-id partintro))))
 
 	(process-node-list (children partintro))
 	(make-endnotes partintro)))

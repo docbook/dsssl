@@ -84,10 +84,9 @@
   (make element gi: "LI"
 	attributes: cssstyle
 	(if (attribute-string (normalize "id"))
-	    (make element gi: "A"
+	    (make empty-element gi: "A"
 		  attributes: (list
-			       (list "NAME" (attribute-string (normalize "id"))))
-		  (empty-sosofo))
+			       (list "NAME" (attribute-string (normalize "id")))))
 	    (empty-sosofo))
 	(process-children))))
 
@@ -158,10 +157,11 @@
     (make sequence
       (make element gi: "DT"
 	    (if (attribute-string (normalize "id"))
-		(make element gi: "A"
-		      attributes: (list
-				   (list "NAME" (attribute-string (normalize "id"))))
-		      (process-node-list terms))
+		(make sequence
+		  (make empty-element gi: "A"
+			attributes: (list
+				     (list "NAME" (attribute-string (normalize "id")))))
+		  (process-node-list terms))
 		(process-node-list terms)))
       (process-node-list listitem))))
   
@@ -205,10 +205,9 @@
 			attributes: '(("ALIGN" "LEFT")
 				      ("VALIGN" "TOP")
 				      ("COLSPAN" "3"))
-			(make element gi: "A"
+			(make empty-element gi: "A"
 			      attributes: (list
-					   (list "NAME" (element-id)))
-			      (empty-sosofo))
+					   (list "NAME" (element-id))))
 			(process-node-list terms)))
 	    (make element gi: "TR"
 		  (make element gi: "TD"
@@ -231,10 +230,9 @@
 		(make element gi: "TD"
 		      attributes: '(("ALIGN" "LEFT")
 				    ("VALIGN" "TOP"))
-		      (make element gi: "A"
+		      (make empty-element gi: "A"
 			    attributes: (list
-					 (list "NAME" (element-id)))
-			    (empty-sosofo))
+					 (list "NAME" (element-id))))
 		      (process-node-list terms))
 		(make element gi: "TD"
 		      attributes: '(("ALIGN" "LEFT")
@@ -383,9 +381,10 @@
 	      (make element gi: "P"
 		    (make element gi: "B"
 			  (if id
-			      (make element gi: "A"
-				    attributes: (list (list "NAME" id))
-				    titlesosofo)
+			      (make sequence
+				(make empty-element gi: "A"
+				      attributes: (list (list "NAME" id)))
+				titlesosofo)
 			      titlesosofo))))
 	  (make element gi: "DL"
 		attributes: '(("COMPACT" "COMPACT"))

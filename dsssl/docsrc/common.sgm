@@ -11,7 +11,7 @@ DTD to function properly.
 </para>
 <sect1><title>Change Log</title>
 <programlisting>
-<inlinegraphic format=linespecific fileref="/share/dsssl/docbook/common/ChangeLog"></inlinegraphic>
+<inlinegraphic format=linespecific fileref="../common/ChangeLog"></inlinegraphic>
 </programlisting>
 </sect1>
 </chapter>

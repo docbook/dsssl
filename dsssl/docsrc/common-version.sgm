@@ -9,6 +9,6 @@
 Note that I've switched to GNU ChangeLogs.
 </para>
 <programlisting>
-<ulink role="embed" url="/share/dsssl/docbook/common/ChangeLog"></ulink>
+<ulink role="embed" url="../common/ChangeLog"></ulink>
 </programlisting>
 </chapter>

@@ -24,7 +24,7 @@ Reference pages for the library functions in <filename>dblib.dsl</filename>.
 </sect1>
 <sect1><title>Change Log</title>
 <programlisting>
-<inlinegraphic format=linespecific fileref="/share/dsssl/docbook/print/ChangeLog"></inlinegraphic>
+<inlinegraphic format=linespecific fileref="../print/ChangeLog"></inlinegraphic>
 </programlisting>
 </sect1>
 </chapter>

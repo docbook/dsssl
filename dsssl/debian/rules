@@ -73,11 +73,14 @@ binary-indep: build debian/postinst
 	$(make_directory) $(confdir)/html $(confdir)/print
 	$(make_directory) $(conftemplatedir)
 	$(install_file) debian/html-siteconfig.dsl debian/print-siteconfig.dsl $(conftemplatedir)/
-#	 hack location of admonition graphics in print output
-#	 FIXME: move to debconf/postinst
-	perl -pi -e 's|"\.\./images/"\)|"$(subst $(prefix),,$(dsssldir))/images/"\)|;' \
-		$(dsssldir)/print/dbparam.dsl
-#	 same for location of admonition and callout graphics in html output, but
+#	 hacking on docbook.dsl to include appropriate siteconfig.dsl
+	sed -f debian/print-docbook-hacker.sed $(dsssldir)/print/docbook.dsl > $(dsssldir)/print/docbook.dsl.new
+	cat $(dsssldir)/print/docbook.dsl.new > $(dsssldir)/print/docbook.dsl
+	rm -f $(dsssldir)/print/docbook.dsl.new
+	sed -f debian/html-docbook-hacker.sed $(dsssldir)/html/docbook.dsl > $(dsssldir)/html/docbook.dsl.new
+	cat $(dsssldir)/html/docbook.dsl.new > $(dsssldir)/html/docbook.dsl
+	rm -f $(dsssldir)/html/docbook.dsl.new
+
 #        /var/www symlink to html image location
 	$(make_directory) $(wwwdir)
 	ln -s $(subst $(prefix),,$(dsssldir))/images $(wwwdir)/$(package)

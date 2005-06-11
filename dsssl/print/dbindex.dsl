@@ -43,7 +43,15 @@
     (make sequence
       ($component-title$)
       (process-children))
-    (make-endnotes)))
+    ;; If %footnote-ulinks% is on and bop-footnotes is off, you'd get
+    ;; spurious footnotes in the index because of the hacky way we
+    ;; build our index.  Since footnotes in an index are quite unusual
+    ;; anyway, we just skip them in that case.
+    (if (not (and %footnote-ulinks%
+		  (not (and (equal? (print-backend) 'tex)
+			    bop-footnotes))))
+	(make-endnotes)
+	(empty-sosofo))))
 
 ;; this is a special case. this prevents the index from causing an error but
 ;; will make the index a single column. c'est la vie.

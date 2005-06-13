@@ -72,7 +72,15 @@
 (define ($section-title$)
   (let* ((sect (current-node))
 	 (info (info-element))
-	 (subtitles (select-elements (children info) (normalize "subtitle")))
+         ;; Select subtitles as in the function `section-title' in
+         ;; `common/dbcommon.dsl'.
+         (csubtitles (select-elements (children sect)
+                                      (normalize "subtitle")))
+         (isubtitles (select-elements (children info)
+                                      (normalize "subtitle")))
+         (subtitles (if (node-list-empty? csubtitles)
+                        isubtitles
+                        csubtitles))
 	 (renderas (inherited-attribute-string (normalize "renderas") sect))
 	 ;; the apparent section level
 	 (hlevel
@@ -138,7 +146,13 @@
 (define ($refsect3-info$ info) (empty-sosofo))
 
 (element section ($section$))
+
+;; These elements are processed by `$section-title$', so there are no
+;; separate style specifications for them.
 (element (section title) (empty-sosofo))
+(element (section subtitle) (empty-sosofo))
+(element (sectioninfo title) (empty-sosofo))
+(element (sectioninfo subtitle) (empty-sosofo))
 
 (element sect1 ($section$))
 (element (sect1 title) (empty-sosofo))

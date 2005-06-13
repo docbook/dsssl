@@ -80,7 +80,13 @@
 	 (titles        (if (node-list-empty? parent-titles)
 			    info-titles
 			    parent-titles))
-	 (subtitles     (select-elements exp-children (normalize "subtitle")))
+         (parent-subtitles (select-elements (children sect)
+                                            (normalize "subtitle")))
+	 (info-subtitles (select-elements exp-children 
+                                          (normalize "subtitle")))
+	 (subtitles (if (node-list-empty? parent-subtitles)
+                        info-subtitles
+                        parent-subtitles))
 	 (renderas (inherited-attribute-string (normalize "renderas") sect))
 	 ;; the apparent section level
 	 (hlevel
@@ -125,7 +131,15 @@
 
 (mode section-title-mode
   (element subtitle
-    (let* ((sect (parent (parent (current-node)))) ;; parent=>sect*info
+    (let* ((sect (if (member (gi (parent (current-node)))
+                             (map normalize (list "sectioninfo"
+                                                  "sect1info"
+                                                  "sect2info"
+                                                  "sect3info"
+                                                  "sect4info"
+                                                  "sect5info")))
+                     (parent (parent (current-node))) ;parent=>sect*info
+                     (parent (current-node)))) ;parent=>sect*
 	   (renderas (inherited-attribute-string "renderas" sect))
 	   ;; the apparent section level
 	   (hlevel
@@ -134,8 +148,8 @@
 	    (if renderas
 		(section-level-by-gi #f (normalize renderas))
 		;; else use the real level
-		(SECTLEVEL)))
-	   (hs (HSIZE (- 4 hlevel))))       ;; one smaller than the title...
+		(SECTLEVEL sect)))
+	   (hs (HSIZE (- 4 hlevel))))   ;one smaller than the title...
       (make paragraph
 	font-family-name: %title-font-family%
 	font-weight:  (if (< hlevel 5) 'bold 'medium)
@@ -186,7 +200,13 @@
 (define ($refsect3-info$ info) (empty-sosofo))
 
 (element section ($section$))
+
+;; These elements are processed by `$section-title$', so there are no
+;; separate style specifications for them.
 (element (section title) (empty-sosofo))
+(element (section subtitle) (empty-sosofo))
+(element (sectioninfo title) (empty-sosofo))
+(element (sectioninfo subtitle) (empty-sosofo))
 
 (element sect1 ($section$))
 (element (sect1 title) (empty-sosofo))

@@ -80,28 +80,46 @@
 ;;      (empty-sosofo)))
 
 (element refentry 
-  (make display-group
-    keep: %refentry-keep%
-    (if (or %refentry-new-page%
-	    (node-list=? (current-node) (sgml-root-element)))
-	(make simple-page-sequence
-	  page-n-columns: %page-n-columns%
-	  page-number-format: ($page-number-format$)
-	  use: default-text-style
-	  left-header:   ($left-header$)
-	  center-header: ($center-header$)
-	  right-header:  ($right-header$)
-	  left-footer:   ($left-footer$)
-	  center-footer: ($center-footer$)
-	  right-footer:  ($right-footer$)
-	  input-whitespace-treatment: 'collapse
-	  quadding: %default-quadding%
-	  ($refentry-title$)
-	  (process-children))
-	(make sequence
-	  ($refentry-title$)
-	  ($block-container$)))
-    (make-endnotes)))
+  (if (node-list=? (current-node) (sgml-root-element))
+      (make simple-page-sequence
+	page-n-columns: %page-n-columns%
+	page-number-format: ($page-number-format$)
+	use: default-text-style
+	left-header:   ($left-header$)
+	center-header: ($center-header$)
+	right-header:  ($right-header$)
+	left-footer:   ($left-footer$)
+	center-footer: ($center-footer$)
+	right-footer:  ($right-footer$)
+	input-whitespace-treatment: 'collapse
+	quadding: %default-quadding%
+	($refentry-title$)
+	(process-children)
+	(make-endnotes))
+      (if %refentry-new-page%
+	  (make display-group
+	    keep: %refentry-keep%
+	    (make simple-page-sequence
+	      page-n-columns: %page-n-columns%
+	      page-number-format: ($page-number-format$)
+	      use: default-text-style
+	      left-header:   ($left-header$)
+	      center-header: ($center-header$)
+	      right-header:  ($right-header$)
+	      left-footer:   ($left-footer$)
+	      center-footer: ($center-footer$)
+	      right-footer:  ($right-footer$)
+	      input-whitespace-treatment: 'collapse
+	      quadding: %default-quadding%
+	      ($refentry-title$)
+	      (process-children))
+	    (make-endnotes))
+	  (make display-group
+	    keep: %refentry-keep%
+	    (make sequence
+	      ($refentry-title$)
+	      ($block-container$))
+	    (make-endnotes)))))
 
 (define ($refentry-title$)
   (let* ((refmeta       (select-elements (children (current-node))

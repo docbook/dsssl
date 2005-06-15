@@ -18,6 +18,7 @@ B<collateindex.pl> creates index data for DocBook XML or SGML files.
 
 =cut
 
+use locale;
 use File::Basename;
 use Getopt::Std;
 
@@ -40,7 +41,7 @@ edited by hand.
 =item B<-g>
 
 Group terms with IndexDiv based on the first letter of the term (or
-its SortAs attribute).  (This might not handle all language environments.)
+its SortAs attribute).
 
 =item B<-i> I<id>
 
@@ -362,9 +363,9 @@ foreach $idx (@term) {
 	    $letter = uc(substr($letter, 0, 1));
 
 	    # symbols are a special case
-	    if (($letter lt 'A') || ($letter gt 'Z')) {
+	    if ($letter !~ /^[[:alpha:]]+$/) {
 		if (($group eq '')
-		    || (($group ge 'A') && ($group le 'Z'))) {
+		    || ($group =~ /^[[:alpha:]]+$/)) {
 		    print OUT "</indexdiv>\n" if !$first;
 		    print OUT "<indexdiv><title>$symbolsname</title>\n\n";
 		    $group = $letter;
@@ -640,14 +641,14 @@ sub sortsymbols {
     my($letter);
     my($idx);
 
-    # Move the non-letter things to the front.  Should digits be thier
+    # Move the non-letter things to the front.  Should digits be their
     # own group?  Maybe...
     foreach $idx (@term) {
 	$letter = $idx->{'psortas'};
 	$letter = $idx->{'primary'} if !$letter;
 	$letter = uc(substr($letter, 0, 1));
 
-	if (($letter lt 'A') || ($letter gt 'Z')) {
+	if ($letter !~ /^[[:alpha:]]+$/) {
 	    push (@sym, $idx);
 	} else {
 	    push (@new, $idx);

@@ -99,7 +99,10 @@
 	       (process-children)
 	       (empty-sosofo))))))
 
+;; These elements are processed by the construction rule for `book',
+;; so there are no separate style specifications for them.
 (element (book title) (empty-sosofo))
+(element (book subtitle) (empty-sosofo)) ;As in `print/dbtitle.dsl'.
 
 (element part
   (let* ((partinfo (select-elements (children (current-node))
@@ -153,7 +156,10 @@
 	       (process-children)
 	       (empty-sosofo))))))
 
+;; These elements are processed by the construction rule for `part',
+;; so there are no separate style specifications for them.
 (element (part title) (empty-sosofo))
+(element (part subtitle) (empty-sosofo)) ;As in `print/dbtitle.dsl'.
 
 (element partintro (empty-sosofo))
 

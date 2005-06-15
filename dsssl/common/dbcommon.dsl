@@ -1312,7 +1312,10 @@
     (process-children-trim))
 
   (element refentrytitle
-    (process-children-trim)))
+    (process-children-trim))
+
+  (element footnote
+    (empty-sosofo)))
 
 ;; Returns the title of the element as a sosofo.
 ;;

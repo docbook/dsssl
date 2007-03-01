@@ -1,4 +1,4 @@
-DSLXREF=../../cvstools/dslxref
+DSLXREF=../../buildtools/dslxref
 
 all:
 

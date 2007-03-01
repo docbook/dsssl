@@ -24,7 +24,7 @@ Installation
 stylesheets directly from the CVS tree, you must checkout several
 additional CVS modules:
 
-../cvstools     contains scripts for running jade, saxon, etc.
+../buildtools     contains scripts for running jade, saxon, etc.
 ../gentext      contains data for common i18n materials
 ../xmlcharent   contains definitions of XML character entities
 

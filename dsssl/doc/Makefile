@@ -1,7 +1,7 @@
 VPATH=../docsrc
 HDSSSL=../html/docbook.dsl
 
-JADE=../../cvstools/runjade
+JADE=../../buildtools/runjade
 
 all: index.html collateindex.html imagelib.html olinksemantics.html \
      indexing.html html/index.html print/index.html lib/index.html

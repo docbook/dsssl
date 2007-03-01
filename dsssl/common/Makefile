@@ -1,5 +1,5 @@
-XSLT=../../cvstools/saxon
-XJPARSE=../../cvstools/xjparse
+XSLT=../../buildtools/saxon
+XJPARSE=../../buildtools/xjparse
 JADE=jade
 CATALOG=/share/doctypes/catalog
 XMLDCL=../dtds/decls/xml.dcl

@@ -1,8 +1,8 @@
-include ../cvstools/Makefile.incl
+include ../buildtools/Makefile.incl
 
-CVS2LOG=../cvstools/cvs2log
-MERGELOGS=../cvstools/mergechangelogs
-NEXTVER=../cvstools/nextversion
+CVS2LOG=../buildtools/cvs2log
+MERGELOGS=../buildtools/mergechangelogs
+NEXTVER=../buildtools/nextversion
 DIFFVER=
 ZIPVER=
 SFRELID=

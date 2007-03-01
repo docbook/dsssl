@@ -1,6 +1,6 @@
 VPATH=../docsrc
-DSL2MAN=../../cvstools/dsl2man
-JADE=../../cvstools/runjade
+DSL2MAN=../../buildtools/dsl2man
+JADE=../../buildtools/runjade
 
 all: htmlpr/dbparam.sgm printpr/dbparam.sgm libref/dblib.sgm \
      collateindex.olink imagelib.olink olinksemantics.olink \

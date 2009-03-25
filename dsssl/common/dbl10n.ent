@@ -235,11 +235,11 @@
          "../common/dbl1null.dsl" CDATA DSSSL>
 
 <![%l10n-no;[
-<!ENTITY dbl1no
+<!ENTITY dbl1nb
   PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Localization//NO"
-         "../common/dbl1no.dsl" CDATA DSSSL>
+         "../common/dbl1nb.dsl" CDATA DSSSL>
 ]]>
-<!ENTITY dbl1no
+<!ENTITY dbl1nb
   PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Null Localization//EN"
          "../common/dbl1null.dsl" CDATA DSSSL>
 

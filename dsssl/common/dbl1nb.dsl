@@ -3,7 +3,7 @@
 %lat1;
 <!ENTITY % no.words
   PUBLIC "-//Norman Walsh//ENTITIES DocBook Stylesheet Localization//NO"
-         "dbl1no.ent">
+         "dbl1nb.ent">
 %no.words;
 ]>
 

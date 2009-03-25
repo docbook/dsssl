@@ -236,7 +236,7 @@
 
 <![%l10n-no;[
 <!ENTITY dbl1nb
-  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Localization//NO"
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Localization//NB"
          "../common/dbl1nb.dsl" CDATA DSSSL>
 ]]>
 <!ENTITY dbl1nb

@@ -2,7 +2,7 @@
 <!ENTITY % lat1 PUBLIC "ISO 8879:1986//ENTITIES Added Latin 1//EN">
 %lat1;
 <!ENTITY % no.words
-  PUBLIC "-//Norman Walsh//ENTITIES DocBook Stylesheet Localization//NO"
+  PUBLIC "-//Norman Walsh//ENTITIES DocBook Stylesheet Localization//NB"
          "dbl1nb.ent">
 %no.words;
 ]>

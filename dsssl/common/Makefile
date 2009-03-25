@@ -12,8 +12,8 @@ XMLDCL=../dtds/decls/xml.dcl
 SOURCES=dbl1af.ent dbl1bg.ent dbl1bs.ent \
         dbl1ca.ent dbl1cs.ent dbl1da.ent dbl1de.ent dbl1el.ent \
         dbl1en.ent dbl1es.ent dbl1et.ent dbl1eu.ent dbl1fi.ent dbl1fr.ent \
-        dbl1hu.ent dbl1id.ent dbl1it.ent dbl1ja.ent dbl1ko.ent \
-        dbl1nl.ent dbl1nn.ent dbl1no.ent dbl1pl.ent dbl1pt.ent dbl1ptbr.ent \
+        dbl1hu.ent dbl1id.ent dbl1it.ent dbl1ja.ent dbl1ko.ent dbl1ky.ent \
+        dbl1nl.ent dbl1nn.ent dbl1nb.ent dbl1pl.ent dbl1pt.ent dbl1ptbr.ent \
         dbl1ro.ent dbl1ru.ent dbl1sk.ent dbl1sl.ent dbl1sr.ent \
         dbl1sv.ent dbl1th.ent dbl1tr.ent dbl1uk.ent dbl1xh.ent \
         dbl1zhcn.ent dbl1zhtw.ent

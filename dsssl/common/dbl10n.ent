@@ -1,26 +1,55 @@
+<!ENTITY % l10n-am "INCLUDE">
 <!ENTITY % l10n-af "INCLUDE">
+<!ENTITY % l10n-ar "INCLUDE">
+<!ENTITY % l10n-as "INCLUDE">
+<!ENTITY % l10n-ast "INCLUDE">
+<!ENTITY % l10n-az "INCLUDE">
 <!ENTITY % l10n-bg "INCLUDE">
+<!ENTITY % l10n-bn "INCLUDE">
+<!ENTITY % l10n-bnin "INCLUDE">
 <!ENTITY % l10n-bs "INCLUDE">
 <!ENTITY % l10n-ca "INCLUDE">
 <!ENTITY % l10n-cs "INCLUDE">
+<!ENTITY % l10n-cy "INCLUDE">
 <!ENTITY % l10n-da "INCLUDE">
 <!ENTITY % l10n-de "INCLUDE">
 <!ENTITY % l10n-el "INCLUDE">
 <!ENTITY % l10n-en "INCLUDE">
+<!ENTITY % l10n-eo "INCLUDE">
 <!ENTITY % l10n-es "INCLUDE">
 <!ENTITY % l10n-et "INCLUDE">
 <!ENTITY % l10n-eu "INCLUDE">
+<!ENTITY % l10n-fa "INCLUDE">
 <!ENTITY % l10n-fi "INCLUDE">
 <!ENTITY % l10n-fr "INCLUDE">
+<!ENTITY % l10n-ga "INCLUDE">
+<!ENTITY % l10n-gl "INCLUDE">
+<!ENTITY % l10n-gu "INCLUDE">
+<!ENTITY % l10n-he "INCLUDE">
+<!ENTITY % l10n-hi "INCLUDE">
+<!ENTITY % l10n-hr "INCLUDE">
 <!ENTITY % l10n-hu "INCLUDE">
 <!ENTITY % l10n-id "INCLUDE">
+<!ENTITY % l10n-is "INCLUDE">
 <!ENTITY % l10n-it "INCLUDE">
 <!ENTITY % l10n-ja "INCLUDE">
+<!ENTITY % l10n-ka "INCLUDE">
+<!ENTITY % l10n-kn "INCLUDE">
 <!ENTITY % l10n-ko "INCLUDE">
 <!ENTITY % l10n-ky "INCLUDE">
+<!ENTITY % l10n-la "INCLUDE">
+<!ENTITY % l10n-lt "INCLUDE">
+<!ENTITY % l10n-lv "INCLUDE">
+<!ENTITY % l10n-ml "INCLUDE">
+<!ENTITY % l10n-mn "INCLUDE">
+<!ENTITY % l10n-mr "INCLUDE">                                                                                                                      
+<!ENTITY % l10n-nds "INCLUDE">
 <!ENTITY % l10n-nl "INCLUDE">
 <!ENTITY % l10n-nn "INCLUDE">
+<!ENTITY % l10n-nn "INCLUDE">
 <!ENTITY % l10n-no "INCLUDE">
+<!ENTITY % l10n-or "INCLUDE">
+<!ENTITY % l10n-pa "INCLUDE">
 <!ENTITY % l10n-pl "INCLUDE">
 <!ENTITY % l10n-pt "INCLUDE">
 <!ENTITY % l10n-ptbr "INCLUDE">
@@ -29,7 +58,12 @@
 <!ENTITY % l10n-sk "INCLUDE">
 <!ENTITY % l10n-sl "INCLUDE">
 <!ENTITY % l10n-sr "INCLUDE">
+<!ENTITY % l10n-srLatn "INCLUDE">
 <!ENTITY % l10n-sv "INCLUDE">
+<!ENTITY % l10n-ta "INCLUDE">
+<!ENTITY % l10n-te "INCLUDE">
+<!ENTITY % l10n-th "INCLUDE">
+<!ENTITY % l10n-tl "INCLUDE">
 <!ENTITY % l10n-tr "INCLUDE">
 <!ENTITY % l10n-uk "INCLUDE">
 <!ENTITY % l10n-xh "INCLUDE">
@@ -45,12 +79,75 @@
   PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Null Localization//EN"
           "../common/dbl1null.dsl" CDATA DSSSL>
 
+<![%l10n-am;[
+<!ENTITY dbl1am
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Localization//AM"
+         "../common/dbl1am.dsl" CDATA DSSSL>
+]]>
+<!ENTITY dbl1am
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Null Localization//EN"
+          "../common/dbl1null.dsl" CDATA DSSSL>
+
+<![%l10n-ar;[
+<!ENTITY dbl1ar
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Localization//AR"
+         "../common/dbl1ar.dsl" CDATA DSSSL>
+]]>
+<!ENTITY dbl1ar
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Null Localization//EN"
+          "../common/dbl1null.dsl" CDATA DSSSL>
+
+<![%l10n-as;[
+<!ENTITY dbl1as
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Localization//AS"
+         "../common/dbl1as.dsl" CDATA DSSSL>
+]]>
+<!ENTITY dbl1as
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Null Localization//EN"
+          "../common/dbl1null.dsl" CDATA DSSSL>
+
+<![%l10n-ast;[
+<!ENTITY dbl1ast
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Localization//AST"
+         "../common/dbl1ast.dsl" CDATA DSSSL>
+]]>
+<!ENTITY dbl1ast
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Null Localization//EN"
+          "../common/dbl1null.dsl" CDATA DSSSL>
+
+<![%l10n-az;[
+<!ENTITY dbl1az
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Localization//AZ"
+         "../common/dbl1az.dsl" CDATA DSSSL>
+]]>
+<!ENTITY dbl1az
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Null Localization//EN"
+          "../common/dbl1null.dsl" CDATA DSSSL>
+
 <![%l10n-bg;[
 <!ENTITY dbl1bg
   PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Localization//BG"
          "../common/dbl1bg.dsl" CDATA DSSSL>
 ]]>
 <!ENTITY dbl1bg
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Null Localization//EN"
+          "../common/dbl1null.dsl" CDATA DSSSL>
+
+<![%l10n-bn;[
+<!ENTITY dbl1bn
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Localization//BN"
+         "../common/dbl1bn.dsl" CDATA DSSSL>
+]]>
+<!ENTITY dbl1bn
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Null Localization//EN"
+          "../common/dbl1null.dsl" CDATA DSSSL>
+
+<![%l10n-bnin;[
+<!ENTITY dbl1bnin
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Localization//BNIN"
+         "../common/dbl1bnin.dsl" CDATA DSSSL>
+]]>
+<!ENTITY dbl1bnin
   PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Null Localization//EN"
           "../common/dbl1null.dsl" CDATA DSSSL>
 
@@ -80,6 +177,15 @@
 <!ENTITY dbl1cs
   PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Null Localization//EN"
          "../common/dbl1null.dsl" CDATA DSSSL>
+
+<![%l10n-cy;[
+<!ENTITY dbl1cy
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Localization//CY"
+         "../common/dbl1cy.dsl" CDATA DSSSL>
+]]>
+<!ENTITY dbl1cy
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Null Localization//EN"
+          "../common/dbl1null.dsl" CDATA DSSSL>
 
 <![%l10n-da;[
 <!ENTITY dbl1da
@@ -117,6 +223,15 @@
   PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Null Localization//EN"
          "../common/dbl1null.dsl" CDATA DSSSL>
 
+<![%l10n-eo;[
+<!ENTITY dbl1eo
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Localization//EO"
+         "../common/dbl1eo.dsl" CDATA DSSSL>
+]]>
+<!ENTITY dbl1eo
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Null Localization//EN"
+          "../common/dbl1null.dsl" CDATA DSSSL>
+
 <![%l10n-es;[
 <!ENTITY dbl1es
   PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Localization//ES"
@@ -144,6 +259,15 @@
   PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Null Localization//EN"
          "../common/dbl1null.dsl" CDATA DSSSL>
 
+<![%l10n-fa;[
+<!ENTITY dbl1fa
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Localization//FA"
+         "../common/dbl1fa.dsl" CDATA DSSSL>
+]]>
+<!ENTITY dbl1fa
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Null Localization//EN"
+          "../common/dbl1null.dsl" CDATA DSSSL>
+
 <![%l10n-fi;[
 <!ENTITY dbl1fi
   PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Localization//FI"
@@ -161,6 +285,60 @@
 <!ENTITY dbl1fr
   PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Null Localization//EN"
          "../common/dbl1null.dsl" CDATA DSSSL>
+
+<![%l10n-ga;[
+<!ENTITY dbl1ga
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Localization//GA"
+         "../common/dbl1ga.dsl" CDATA DSSSL>
+]]>
+<!ENTITY dbl1ga
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Null Localization//EN"
+          "../common/dbl1null.dsl" CDATA DSSSL>
+
+<![%l10n-gl;[
+<!ENTITY dbl1gl
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Localization//GL"
+         "../common/dbl1gl.dsl" CDATA DSSSL>
+]]>
+<!ENTITY dbl1gl
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Null Localization//EN"
+          "../common/dbl1null.dsl" CDATA DSSSL>
+
+<![%l10n-gu;[
+<!ENTITY dbl1gu
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Localization//GU"
+         "../common/dbl1gu.dsl" CDATA DSSSL>
+]]>
+<!ENTITY dbl1gu
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Null Localization//EN"
+          "../common/dbl1null.dsl" CDATA DSSSL>
+
+<![%l10n-he;[
+<!ENTITY dbl1he
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Localization//HE"
+         "../common/dbl1he.dsl" CDATA DSSSL>
+]]>
+<!ENTITY dbl1he
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Null Localization//EN"
+          "../common/dbl1null.dsl" CDATA DSSSL>
+
+<![%l10n-hi;[
+<!ENTITY dbl1hi
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Localization//HI"
+         "../common/dbl1hi.dsl" CDATA DSSSL>
+]]>
+<!ENTITY dbl1hi
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Null Localization//EN"
+          "../common/dbl1null.dsl" CDATA DSSSL>
+
+<![%l10n-hr;[
+<!ENTITY dbl1hr
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Localization//HR"
+         "../common/dbl1hr.dsl" CDATA DSSSL>
+]]>
+<!ENTITY dbl1hr
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Null Localization//EN"
+          "../common/dbl1null.dsl" CDATA DSSSL>
 
 <![%l10n-hu;[
 <!ENTITY dbl1hu
@@ -180,6 +358,15 @@
   PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Null Localization//EN"
          "../common/dbl1null.dsl" CDATA DSSSL>
 
+<![%l10n-is;[
+<!ENTITY dbl1is
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Localization//IS"
+         "../common/dbl1is.dsl" CDATA DSSSL>
+]]>
+<!ENTITY dbl1is
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Null Localization//EN"
+          "../common/dbl1null.dsl" CDATA DSSSL>
+
 <![%l10n-it;[
 <!ENTITY dbl1it
   PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Localization//IT"
@@ -198,6 +385,24 @@
   PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Null Localization//EN"
          "../common/dbl1null.dsl" CDATA DSSSL>
 
+<![%l10n-ka;[
+<!ENTITY dbl1ka
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Localization//KA"
+         "../common/dbl1ka.dsl" CDATA DSSSL>
+]]>
+<!ENTITY dbl1ka
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Null Localization//EN"
+          "../common/dbl1null.dsl" CDATA DSSSL>
+
+<![%l10n-kn;[
+<!ENTITY dbl1kn
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Localization//KN"
+         "../common/dbl1kn.dsl" CDATA DSSSL>
+]]>
+<!ENTITY dbl1kn
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Null Localization//EN"
+          "../common/dbl1null.dsl" CDATA DSSSL>
+
 <![%l10n-ko;[
 <!ENTITY dbl1ko
   PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Localization//KO"
@@ -209,12 +414,84 @@
 
 <![%l10n-ky;[
 <!ENTITY dbl1ky
-  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Localization//KO"
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Localization//KY"
          "../common/dbl1ky.dsl" CDATA DSSSL>
 ]]>
 <!ENTITY dbl1ky
   PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Null Localization//EN"
          "../common/dbl1null.dsl" CDATA DSSSL>
+
+<![%l10n-la;[
+<!ENTITY dbl1la
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Localization//LA"
+         "../common/dbl1la.dsl" CDATA DSSSL>
+]]>
+<!ENTITY dbl1la
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Null Localization//EN"
+          "../common/dbl1null.dsl" CDATA DSSSL>
+
+<![%l10n-lt;[
+<!ENTITY dbl1lt
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Localization//LT"
+         "../common/dbl1lt.dsl" CDATA DSSSL>
+]]>
+<!ENTITY dbl1lt
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Null Localization//EN"
+          "../common/dbl1null.dsl" CDATA DSSSL>
+
+<![%l10n-lv;[
+<!ENTITY dbl1lv
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Localization//LV"
+         "../common/dbl1lv.dsl" CDATA DSSSL>
+]]>
+<!ENTITY dbl1lv
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Null Localization//EN"
+          "../common/dbl1null.dsl" CDATA DSSSL>
+
+<![%l10n-ml;[
+<!ENTITY dbl1ml
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Localization//ML"
+         "../common/dbl1ml.dsl" CDATA DSSSL>
+]]>
+<!ENTITY dbl1ml
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Null Localization//EN"
+          "../common/dbl1null.dsl" CDATA DSSSL>
+
+<![%l10n-mn;[
+<!ENTITY dbl1mn
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Localization//MN"
+         "../common/dbl1mn.dsl" CDATA DSSSL>
+]]>
+<!ENTITY dbl1mn
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Null Localization//EN"
+          "../common/dbl1null.dsl" CDATA DSSSL>
+
+<![%l10n-mr;[
+<!ENTITY dbl1mr
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Localization//MR"
+         "../common/dbl1mr.dsl" CDATA DSSSL>
+]]>
+<!ENTITY dbl1mr
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Null Localization//EN"
+          "../common/dbl1null.dsl" CDATA DSSSL>
+
+<![%l10n-nb;[
+<!ENTITY dbl1nb
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Localization//NB"
+         "../common/dbl1nb.dsl" CDATA DSSSL>
+]]>
+<!ENTITY dbl1nb
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Null Localization//EN"
+          "../common/dbl1null.dsl" CDATA DSSSL>
+
+<![%l10n-nds;[
+<!ENTITY dbl1nds
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Localization//NDS"
+         "../common/dbl1nds.dsl" CDATA DSSSL>
+]]>
+<!ENTITY dbl1nds
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Null Localization//EN"
+          "../common/dbl1null.dsl" CDATA DSSSL>
 
 <![%l10n-nl;[
 <!ENTITY dbl1nl
@@ -242,6 +519,24 @@
 <!ENTITY dbl1nb
   PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Null Localization//EN"
          "../common/dbl1null.dsl" CDATA DSSSL>
+
+<![%l10n-or;[
+<!ENTITY dbl1or
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Localization//OR"
+         "../common/dbl1or.dsl" CDATA DSSSL>
+]]>
+<!ENTITY dbl1or
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Null Localization//EN"
+          "../common/dbl1null.dsl" CDATA DSSSL>
+
+<![%l10n-pa;[
+<!ENTITY dbl1pa
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Localization//PA"
+         "../common/dbl1pa.dsl" CDATA DSSSL>
+]]>
+<!ENTITY dbl1pa
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Null Localization//EN"
+          "../common/dbl1null.dsl" CDATA DSSSL>
 
 <![%l10n-pl;[
 <!ENTITY dbl1pl
@@ -315,6 +610,15 @@
   PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Null Localization//EN"
          "../common/dbl1null.dsl" CDATA DSSSL>
 
+<![%l10n-srLatn;[
+<!ENTITY dbl1srLatn
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Localization//SRLATN"
+         "../common/dbl1srLatn.dsl" CDATA DSSSL>
+]]>
+<!ENTITY dbl1srLatn
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Null Localization//EN"
+          "../common/dbl1null.dsl" CDATA DSSSL>
+
 <![%l10n-sv;[
 <!ENTITY dbl1sv
   PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Localization//SV"
@@ -323,6 +627,42 @@
 <!ENTITY dbl1sv
   PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Null Localization//EN"
          "../common/dbl1null.dsl" CDATA DSSSL>
+
+<![%l10n-ta;[
+<!ENTITY dbl1ta
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Localization//TA"
+         "../common/dbl1ta.dsl" CDATA DSSSL>
+]]>
+<!ENTITY dbl1ta
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Null Localization//EN"
+          "../common/dbl1null.dsl" CDATA DSSSL>
+
+<![%l10n-te;[
+<!ENTITY dbl1te
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Localization//TE"
+         "../common/dbl1te.dsl" CDATA DSSSL>
+]]>
+<!ENTITY dbl1te
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Null Localization//EN"
+          "../common/dbl1null.dsl" CDATA DSSSL>
+
+<![%l10n-th;[
+<!ENTITY dbl1th
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Localization//TH"
+         "../common/dbl1th.dsl" CDATA DSSSL>
+]]>
+<!ENTITY dbl1th
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Null Localization//EN"
+          "../common/dbl1null.dsl" CDATA DSSSL>
+
+<![%l10n-tl;[
+<!ENTITY dbl1tl
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Localization//TL"
+         "../common/dbl1tl.dsl" CDATA DSSSL>
+]]>
+<!ENTITY dbl1tl
+  PUBLIC "-//Norman Walsh//DOCUMENT DocBook Stylesheet Null Localization//EN"
+          "../common/dbl1null.dsl" CDATA DSSSL>
 
 <![%l10n-tr;[
 <!ENTITY dbl1tr

@@ -19,28 +19,57 @@
 ;; The following language codes from ISO 639 are recognized:
 ;; %%LANGUAGES%%
 ;; af - Afrikaans                           1.71
+;; am - Amharic                             1.76
+;; am - Arabic                              1.76
+;; as - Assamese                            1.76
+;; ast - Asturian                           1.76
+;; az - Azerbaijani                         1.76
 ;; bg - Bulgarian
+;; bn - Bengali                             1.76
+;; bn_in - Bengali (India)                  1.76
 ;; bs - Bosnian
 ;; ca - Catalan
 ;; cs - Czech
+;; cy - Welsh                               1.76
 ;; da - Danish (previously dk)
 ;; de - German (previously dege)
 ;; el - Greek
 ;; en - English (previously usen)
+;; eo - Esperanto                           1.76
 ;; es - Spanish
 ;; et - Estonian                            1.55
 ;; eu - Basque                              1.74
+;; fa - Persian                             1.76
 ;; fi - Finnish
 ;; fr - French
+;; ga - Irish                               1.76
+;; gl - Galician                            1.76
+;; gu - Gujarati                            1.76
+;; he - Hebrew                              1.76
+;; hi - Hindi                               1.76
+;; hr - Croatian                            1.76
 ;; hu - Hungarian                           1.55
 ;; id - Indonesian                          1.55
+;; is - Icelandic                           1.76
 ;; it - Italian
 ;; ja - Japanese
+;; ka - Georgian                            1.76
+;; kn - Kannada                             1.76
 ;; ko - Korean                              1.59
 ;; ky - Kirghiz
+;; la - Latin                               1.76
+;; lt - Lithuanian                          1.76
+;; lv - Latvian                             1.76
+;; ml - Malayalam                           1.76
+;; mn - Mongolian                           1.76
+;; mr - Marathi                             1.76
+;; nb - Norwegian (Bokmal)
+;; nds - Low German                         1.76
 ;; nl - Dutch
-;; nn - Nnyorsk                             1.74
-;; no - Norwegian (previously bmno) ???
+;; nn - Norwegian (Nynorsk)                 1.74
+;; no - Norwegian (previously bmno)
+;; or - Oriya                               1.76
+;; pa - Panjabi                             1.76
 ;; pl - Polish
 ;; pt - Portuguese
 ;; pt_br - Portuguese (Brazil)
@@ -49,7 +78,12 @@
 ;; sk - Slovak
 ;; sl - Slovenian                           1.55
 ;; sr - Serbian                             1.70
+;; sr_Latn - Serbian (Latin)                1.76
 ;; sv - Swedish (previously svse)
+;; ta - Tamil                               1.76
+;; te - Telugu                              1.76
+;; th - Thai                                1.76
+;; tl - Tagalog                             1.76
 ;; tr - Turkish                             1.71
 ;; uk - Ukranian                            1.74
 ;; xh - Xhosa                               1.74
@@ -59,7 +93,7 @@
 ;; The following language codes are recognized for historical reasons:
 
 ;; %%HISTORICAL%%
-;; bmno(no) - Norwegian (Norsk Bokmal) ???
+;; bmno(no) - Norwegian (Bokmal)
 ;; dege(de) - German
 ;; dk(da)   - Danish
 ;; svse(sv) - Swedish

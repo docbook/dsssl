@@ -1,11 +1,11 @@
-README for the DocBook Stylesheets
+= README for the DocBook Stylesheets
+
+NOTE: This project is no longer being maintained.
 
 These are DSSSL stylesheets for the DocBook DTD.
 
-For more information, see http://docbook.sourceforge.net/
+== Manifest
 
-Manifest
---------
 
 bin/     contains scripts for some (optional) post-processing
 common/  contains code common to both stylesheets
@@ -22,21 +22,23 @@ lib/	 contains DSSSL functions that are believed to be useful but
 olink/   contains olink support
 print/	 contains the print stylesheet
 
-Changes
--------
+== Changes
+
 
 See the ChangeLog in each directory for additional information
 about the specific changes.
 
 See WhatsNew for changes since the last release.
 
-Installation
-------------
+== Installation
+
 
 See doc/install.html and/or http://nwalsh.com/docbook/dsssl/
 
-Copyright
----------
+NOTE: The repository is possibly incomplete, you may need files from the distribution.
+
+== Copyright
+
 
 Copyright (C) 1997-2001 Norman Walsh
 
@@ -73,8 +75,7 @@ version strings in any derived Software will be changed so that
 no possibility of confusion between the derived package and this
 Software will exist.
 
-Warranty
---------
+=== Warranty
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
 EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
@@ -85,7 +86,6 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-Contacting the Author
----------------------
+=== Contacting the Author
 
 These stylesheets are maintained by Norman Walsh, <ndw@nwalsh.com>.
